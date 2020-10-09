@@ -8,7 +8,11 @@ import datetime
 
 app = Flask(__name__)
 
+CORS(app, support_credentials=True) # ■■■ ,の右部分
+
+
 @app.route("/calculator/contactangle_volume", methods=['GET','POST'])
+@cross_origin(supports_credentials=True)
 def calculate_contact_angle_and_firevolume():
     '''
     ・機能：基板上の液滴の厚み、直径から、体積と接触角を２Θ法で算出
@@ -36,7 +40,9 @@ def calculate_contact_angle_and_firevolume():
             flag_argments_are_good = True
         except:
             result = {
-                'condition' : 'argments were invalid!'
+                'condition' : 'argments were invalid!',
+                'correspondence' : 'make both thickness and diameter positive, and both the value types float'
+
             }
     
     #メソッド別パラメータ取得、GETメソッド
@@ -47,17 +53,19 @@ def calculate_contact_angle_and_firevolume():
             flag_argments_are_good = True
         except:
             result = {
-                'condition' : 'argments were invalid!'   
+                'condition' : 'argments were invalid!',
+                'correspondence' : 'make both thickness and diameter positive, and both the value types float'
             }         
     else:
         retult = {
             'condition' : 'the method is BAD'
         }
-    
+    #数値異常の検出
     if thickness <= 0 or diameter <= 0:
         flag_argments_are_good =False
         result = {
-            'condition' : 'argments were invalid, both thickness and diameter requires to be positive value'   
+            'condition' : 'argments were invalid, both thickness and diameter must be positive value',
+            'correspondence' : 'make both thickness and diameter positive.'
         }         
     
     #パラメータ取得時の計算
@@ -73,6 +81,7 @@ def calculate_contact_angle_and_firevolume():
     return result    
 
 @app.route("/calculator/contactangle_thickness", methods=['GET', 'POST'])
+@cross_origin(supports_credentials=True)
 def calculate_contact_angle_and_thickness():
     '''
     ・機能：基板上の液滴の直径と体積から、接触角と厚みを２Θ法で算出
@@ -97,7 +106,9 @@ def calculate_contact_angle_and_thickness():
             flag_argments_are_good = True
         except:
             result = {
-                'condition' : 'argments were invalid!'
+                'condition' : 'argments were invalid!',
+                'correspondence' : 'make both diameter and firevolume positive, and both the value types float'
+
             }
     elif request.method == 'GET':
         try:
@@ -106,7 +117,8 @@ def calculate_contact_angle_and_thickness():
             flag_argments_are_good = True
         except:
             result = {
-                'condition' : 'argments were invalid!'
+                'condition' : 'argments were invalid!',
+                'correspondence' : 'make both diameter and firevolume positive, and both the value types float'
             }
     
     else:
@@ -117,8 +129,9 @@ def calculate_contact_angle_and_thickness():
     if diameter <= 0 or firevolume <= 0:
         flag_argments_are_good =False
         result = {
-            'condition' : 'argments were invalid, both diameter and firevolume requires to be positive value'   
-        }         
+            'condition' : 'argments were invalid, both diameter and firevolume requires to be positive value',
+            'correspondence' : 'make both diameter and firevolume positive, and both the value types float'
+       }         
 
                              
     if flag_argments_are_good:
@@ -144,6 +157,7 @@ def calculate_contact_angle_and_thickness():
     return result
     
 @app.route("/calculator/diameter_thickness", methods=['GET', 'POST'])
+@cross_origin(supports_credentials=True)
 def calculate_diameter_and_thickness():
     '''
     ・機能：基板と液滴の接触角と体積から、直径と厚みを２Θ法で算出
@@ -168,7 +182,9 @@ def calculate_diameter_and_thickness():
             flag_argments_are_good = True            
         except:
             result = {
-                'condition' : 'argments were invalid!'
+                'condition' : 'argments were invalid!',
+                'correspondence' : 'make both contactangle and firevolume positive, and both the value types float'
+
             }
     elif request.method == 'GET':
         try:
@@ -177,7 +193,8 @@ def calculate_diameter_and_thickness():
             flag_argments_are_good = True            
         except:
             result = {
-                'condition' : 'argments were invalid!'
+                'condition' : 'argments were invalid!',
+                'correspondence' : 'make both contactangle and firevolume positive, and both the value types float'
             }
             
     else:
@@ -189,13 +206,15 @@ def calculate_diameter_and_thickness():
     if contactangle > 180 or contactangle < 0:
         flag_argments_are_good = False
         result = {
-            'condition' : 'contactangle must be between 0 and 180 degrees'            
+            'condition' : 'contactangle must be between 0 and 180 degrees',            
+            'correspondence' : 'make contactangle value between 0 and 180.'
         }
     
     if firevolume <= 0:
         flag_argments_are_good = False
         result = {
-            'condition' : 'firevolume must be positive value'                        
+            'condition' : 'firevolume must be positive value',                        
+            'correspondence' : 'make firevolume value positive.'
         }
                                
                                
@@ -214,16 +233,17 @@ def calculate_diameter_and_thickness():
     return result
 
 @app.route("/calculator/avethickness/", methods=['GET', 'GET'])
+@cross_origin(supports_credentials=True)
 def calculate_averagethickness():
     '''
     ・機能：印刷メッシュ、液滴サイズ、固形分濃度と繰り返し回数から平均膜厚を計算
-　　・URL：http://192.168.1.44:8080/calculator/avethickness/<string:lengthDefinition>
-　　　　　　lengthDefinition : string
-　　　　　　　　入力ピッチのdpi表記かマイクロメートル表記かを選択。"dpi"でdpi指定、その他でマイクロメートル指定。
-　　・パラメータ：dotpitch : float
-　　　　　　　　　　液滴ドットピッチ
+　　・URL：http://192.168.1.44:8080/calculator/avethickness/
+　　・パラメータ：pitchexpression : str
+                   入力パラメータの表現。「dpi」でdpi表記、それ以外でum表記               
+                 dotpitch : float
+　　　　　　　　    液滴ドットピッチ
 　　　　　　　　　firevolume : float
-　　　　　　　　　　液滴ラインピッチ
+　　　　　　　　　  液滴ラインピッチ
 　　　　　　　　　firevolume : float
 　　　　　　　　　　液滴体積 [pl]
 　　　　　　　　　printcount : int
@@ -232,9 +252,8 @@ def calculate_averagethickness():
 　　　　　　　　　　液滴固形分濃度[vol.%]
 　　・返り値：thickness_ave[nm] ：float
 　　　　　　　　　　平均膜厚、単位は[nm]
-　　・使用例：http://192.168.1.44:8080/calculator/avethickness/dpi?dotpitch=400.0&linepitch=400.0&firevolume=80.0&printcount=1&concentration=5.0
-　　　　　　　http://192.168.1.44:8080/calculator/avethickness/mictometer?dotpitch=50.0&linepitch=100.0&firevolume=30.0&printcount=1&concentration=5.0
     '''
+
     flagDPI = False
     dotpitchlength = 0.0
     linepitchlength = 0.0
@@ -253,7 +272,8 @@ def calculate_averagethickness():
             flag_argments_are_good = True
         except:
             result = {
-                'condition' : 'argments were invalid!'
+                'condition' : 'argments were invalid!',
+                'correspondence' : 'make all the argment types except pitchexpression float, and all the values positive. the type of pitchexpression should be string.'
             }
     elif request.method == 'POST':
         try:
@@ -266,7 +286,8 @@ def calculate_averagethickness():
             flag_argments_are_good = True
         except:
             result = {
-                'condition' : 'argments were invalid!'
+                'condition' : 'argments were invalid!',
+                'correspondence' : 'make all the argment types except pitchexpression float, and all the values positive. the type of pitchexpression should be string.'
             }
     else:
         retult = {
@@ -275,7 +296,8 @@ def calculate_averagethickness():
     
     if dotpitchlength <= 0 or linepitchlength <= 0 or firevolume <= 0 or numprint < 0 or concentration < 0:
         result = {
-            'condition' : 'argments were invalid! all params must be positive values'            
+            'condition' : 'argments were invalid! all the values must be positive values',            
+            'correspondence' : 'make all the values positive.'
         }
                                
     if flag_argments_are_good:
@@ -289,6 +311,7 @@ def calculate_averagethickness():
     return result
 
 @app.route("/auto_tracking", methods = ['GET', 'POST'])
+@cross_origin(supports_credentials=True)
 def get_autotracking():
     '''
     追尾→特徴量抽出関数   
@@ -380,4 +403,4 @@ def get_autotracking():
     return result
     
 if __name__ == "__main__":
-    app.run(debug=True, host='0.0.0.0', port=8080, threaded=True)
+    app.run(debug=False, host='0.0.0.0', port=8080, threaded=True)

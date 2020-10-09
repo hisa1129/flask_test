@@ -8,7 +8,11 @@ import datetime
 
 app = Flask(__name__)
 
+CORS(app, support_credentials=True) # ■■■ ,の右部分
+
+
 @app.route("/calculator/contactangle_volume", methods=['GET','POST'])
+@cross_origin(supports_credentials=True)
 def calculate_contact_angle_and_firevolume():
     '''
     ・機能：基板上の液滴の厚み、直径から、体積と接触角を２Θ法で算出
@@ -77,6 +81,7 @@ def calculate_contact_angle_and_firevolume():
     return result    
 
 @app.route("/calculator/contactangle_thickness", methods=['GET', 'POST'])
+@cross_origin(supports_credentials=True)
 def calculate_contact_angle_and_thickness():
     '''
     ・機能：基板上の液滴の直径と体積から、接触角と厚みを２Θ法で算出
@@ -152,6 +157,7 @@ def calculate_contact_angle_and_thickness():
     return result
     
 @app.route("/calculator/diameter_thickness", methods=['GET', 'POST'])
+@cross_origin(supports_credentials=True)
 def calculate_diameter_and_thickness():
     '''
     ・機能：基板と液滴の接触角と体積から、直径と厚みを２Θ法で算出
@@ -227,6 +233,7 @@ def calculate_diameter_and_thickness():
     return result
 
 @app.route("/calculator/avethickness/", methods=['GET', 'GET'])
+@cross_origin(supports_credentials=True)
 def calculate_averagethickness():
     '''
     ・機能：印刷メッシュ、液滴サイズ、固形分濃度と繰り返し回数から平均膜厚を計算
@@ -304,6 +311,7 @@ def calculate_averagethickness():
     return result
 
 @app.route("/auto_tracking", methods = ['GET', 'POST'])
+@cross_origin(supports_credentials=True)
 def get_autotracking():
     '''
     追尾→特徴量抽出関数   
