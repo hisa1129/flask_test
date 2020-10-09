@@ -406,4 +406,5 @@ def get_autotracking():
     return result
     
 if __name__ == "__main__":
-    app.run(debug=False, host='0.0.0.0', port=443, threaded=True)
+    
+    app.run(debug=False, host='0.0.0.0', ssl_context=context, port=443, threaded=True)
