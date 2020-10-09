@@ -12,7 +12,7 @@ app = Flask(__name__)
 
 CORS(app, support_credentials=True) # ■■■ ,の右部分
 context = ssl.SSLContext(ssl.PROTOCOL_TLSv1_2)
-context.load_cert_chain('server_pub.csr', 'server_secret.key')
+context.load_cert_chain('cert.crt', 'server_secret.key')
 
 @app.route("/calculator/contactangle_volume", methods=['GET','POST'])
 @cross_origin(supports_credentials=True)
