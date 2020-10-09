@@ -2,6 +2,7 @@ from flask import *
 import math
 
 import Get_AutoTracking_Results
+from flask_cors import CORS, cross_origin
 import pandas as pd
 import numpy as np
 import datetime
