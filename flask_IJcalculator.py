@@ -9,8 +9,7 @@ import numpy as np
 import datetime
 
 app = Flask(__name__)
-
-CORS(app, support_credentials=True) # ■■■ ,の右部分
+CORS(app, support_credentials=True)
 context = ssl.SSLContext(ssl.PROTOCOL_TLSv1_2)
 context.load_cert_chain('cert.crt', 'server_secret.key')
 
@@ -73,7 +72,7 @@ def calculate_contact_angle_and_firevolume():
     
     #パラメータ取得時の計算
     if flag_argments_are_good:         
-        radius = thickness/2.0
+        radius = diameter/2.0
         firevolume = math.pi / 6.0 * thickness * ((radius ** 2) * 3.0 + thickness ** 2) / 1000.0
         contactangle = math.degrees(math.atan(thickness / radius))
         result = {
@@ -406,4 +405,4 @@ def get_autotracking():
     return result
     
 if __name__ == "__main__":
-    app.run(debug=False, host='0.0.0.0', port=443, threaded=True)
+    app.run(debug=False, host='0.0.0.0',ssl_context=context, port=443, threaded=True)
