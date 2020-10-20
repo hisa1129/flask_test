@@ -8,6 +8,7 @@ import glob
 import sys
 from itertools import groupby
 import math
+from CalculationLog import calculation_log
 
 #analysisResults用インデックス、配列2番目にて指定。
 IDX_DELAY = 0
@@ -59,7 +60,7 @@ class Analysis_Result:
     
     def __init__(self, delay, main_X, main_Y, satellite_X, satellite_Y, arclength, area, center_X, center_Y, \
                  convex_hull_contour_area, convex_hull_contour_arclength, imgYMax, volume,\
-                 freq_num, freq_Y):
+                 freq_num, freq_Y, DEBUG = False):
         '''
         コンストラクタ
         各フィールドへの値の格納
@@ -113,6 +114,7 @@ class Analysis_Result:
         self.volume = volume
         self.freq_num = freq_num
         self.freq_Y = freq_Y
+        self.DEBUG = DEBUG
         
     def get_regament_length(self):
         '''
@@ -164,8 +166,9 @@ class Analysis_Result:
         flag_freqYNum = self.freq_num == cnt.freq_num
         flag_freqY = self.freq_Y == cnt.freq_Y
         
-        return (flag_delay and flag_mainX and flag_mainY and flag_satelliteX and flag_satelliteY and flag_arclength and flag_area and flag_centerX and\
-                flag_centerY and flag_convHullArea and flag_convHullArc and flag_imgMax and flag_volume and flag_freqYNum and flag_freqY)
+        return (flag_delay and flag_mainX and flag_mainY and flag_satelliteX and flag_satelliteY and\
+                flag_arclength and flag_area and flag_centerX and flag_centerY and flag_convHullArea and\
+                flag_convHullArc and flag_imgMax and flag_volume and flag_freqYNum and flag_freqY)
         
 
 #解析結果群格納クラス
@@ -177,7 +180,7 @@ class Analysis_Results_List:
         解析結果群
     '''
     
-    def __init__(self, analysisResultsList):
+    def __init__(self, analysisResultsList, DEBUG):
         '''
         コンストラクタ
         単純な輪郭データ群をディレイ時間でgroupByの後にリストとして格納
@@ -202,8 +205,11 @@ class Analysis_Results_List:
                 listGroup.sort(key=lambda rst:rst.area, reverse=True)
             #ディレイタイムでGroupBy、groupResultsを生成。
             groupResults.append([delay_key, listGroup])
+            if DEBUG:
+                calculation_log('delay = {}, and contour count = {}'.format(delay_key, len(listGroup)))
         #結果の格納
         self.analysisResults = groupResults
+        self.DEBUG = DEBUG
     
     #液滴分離検出関数
     def get_separated_delay(self, area_mirgin_detectSeparation = 2000, arc_length_mirgin_detectSeparation = 10, faced_delay = 150):
@@ -235,8 +241,10 @@ class Analysis_Results_List:
         flag_separated_is_detected = False
         seeking_results_list = [data for data in self.analysisResults if data[0] > faced_delay]
         for i in range(1, len(seeking_results_list)):
-            flag_convexhull_contour_area = (seeking_results_list[i][1][0].convex_hull_contour_area + area_mirgin_detectSeparation < seeking_results_list[i-1][1][0].convex_hull_contour_area)
-            flag_convexhull_contour_arclength = (seeking_results_list[i][1][0].arclength + arc_length_mirgin_detectSeparation < seeking_results_list[i-1][1][0].arclength)
+            flag_convexhull_contour_area = (seeking_results_list[i][1][0].convex_hull_contour_area +\
+                                            area_mirgin_detectSeparation < seeking_results_list[i-1][1][0].convex_hull_contour_area)
+            flag_convexhull_contour_arclength = (seeking_results_list[i][1][0].arclength + arc_length_mirgin_detectSeparation <\
+                                                 seeking_results_list[i-1][1][0].arclength)
             if flag_convexhull_contour_area and flag_convexhull_contour_arclength:
                 delay_separated = seeking_results_list[i][0]
                 flag_separated_is_detected = True
@@ -301,7 +309,8 @@ class Analysis_Results_List:
         
         return flag_is_needed_wiping
     
-    def get_magnitude_of_doubletDroplet(self, area_mirgin_detectSeparation = 2000, arc_length_mirgin_detectSeparation = 10):
+    def get_magnitude_of_doubletDroplet(self, area_mirgin_detectSeparation = 2000,
+                                        arc_length_mirgin_detectSeparation = 10):
         '''
         二重吐出度評価用関数
         液滴分離検出後のノズル面積 - 1枚目のノズル面積の最大値
@@ -323,7 +332,8 @@ class Analysis_Results_List:
         maximum_area_diff = max([data[1][0].area for data in self.analysisResults if data[0]>separated_delay]) - self.analysisResults[0][1][0].area
         return maximum_area_diff
     
-    def get_maximum_regament_length(self, area_mirgin_detectSeparation = 2000, arc_lengh_mirgin_detectSeparation = 10):
+    def get_maximum_regament_length(self, area_mirgin_detectSeparation = 2000,
+                                    arc_lengh_mirgin_detectSeparation = 10):
         '''
         最大リガメント長取得関数
         
@@ -351,7 +361,8 @@ class Analysis_Results_List:
         
         else:           
             #リガメント長格納用リスト
-            regamentLengthList = [[max([dat.get_regament_length() for dat in data[1]]), data[0]] for data in self.analysisResults if data[0] >= separated_detection[1]]
+            regamentLengthList = [[max([dat.get_regament_length() for dat in data[1]]), data[0]] for data in\
+                                  self.analysisResults if data[0] >= separated_detection[1]]
             
             #リガメント長さ順で昇順ソート
             regamentLengthList.sort(key=lambda rst:rst[0])
@@ -454,6 +465,22 @@ class Analysis_Results_List:
         cnt_target = list(filter(lambda dat: dat[0].convex_hull_contour_area / dat[0].area == self.get_cva_a_ratio() , rsts))[0][0]
         return cnt_target.freq_Y, cnt_target.freq_num
     
+    def get_NumContours_at_First(self):
+        '''
+        初期輪郭数抽出関数
+        
+        return
+        ------------------------
+        retNum : int
+            ディレイ時間にて最初の写真での輪郭数。
+        
+        ------------------------
+        
+        '''
+        delay_sorted_rsts = sorted(self.analysisResults, key = lambda rs: rs[0])
+        retNum = len(delay_sorted_rsts[0][1])
+        return retNum
+    
     def get_CntDist_is_closer(self, cntResult1, cntResult2, thresh):
         '''
         輪郭類似度計算関数
@@ -481,9 +508,12 @@ class Analysis_Results_List:
                                 
         '''
         
-        dMainXY = math.sqrt((cntResult1.main_X - cntResult2.main_X)**2 + (cntResult1.main_Y - cntResult2.main_Y)**2)
-        dSatelliteXY = math.sqrt((cntResult1.satellite_X - cntResult2.satellite_X)**2 + (cntResult1.satellite_Y - cntResult2.satellite_Y)**2)
-        dCenterXY = math.sqrt((cntResult1.center_X - cntResult2.center_X)**2 + (cntResult1.center_Y - cntResult2.center_Y)**2)
+        dMainXY = math.sqrt((cntResult1.main_X - cntResult2.main_X)**2 +\
+                            (cntResult1.main_Y - cntResult2.main_Y)**2)
+        dSatelliteXY = math.sqrt((cntResult1.satellite_X - cntResult2.satellite_X)**2 +\
+                                 (cntResult1.satellite_Y - cntResult2.satellite_Y)**2)
+        dCenterXY = math.sqrt((cntResult1.center_X - cntResult2.center_X)**2 +\
+                              (cntResult1.center_Y - cntResult2.center_Y)**2)
         dArea = math.sqrt((cntResult1.area - cntResult2.area)**2)
         dArcLength = math.sqrt((cntResult1.arclength - cntResult2.arclength)**2)
         flag_dcntResults_is_closer = (dMainXY + dSatelliteXY + dCenterXY + dArea + dArcLength < thresh)
@@ -525,6 +555,12 @@ class Analysis_Results_List:
                         if self.get_CntDist_is_closer(self.analysisResults[i][1][j], self.analysisResults[k][1][l], thresh):
                             area, regLength = self.analysisResults[k][1][l].area, self.analysisResults[k][1][l].get_regament_length()
                             if area < area_thresh:
+                                if self.DEBUG:
+                                    calculation_log('contour with X,Y = {}, {} and area = {} was deleted as noise'.format(
+                                        self.analysisResults[k][1][l].main_X,
+                                        self.analysisResults[k][1][l].main_Y,
+                                        self.analysisResults[k][1][l].area)
+                                                   )
                                 del self.analysisResults[k][1][l]
                                 flagDelDone = True
                             break
@@ -550,15 +586,19 @@ def analyse_Image(delay, path, min_area_thresh,
                   draw_coords = False,
                   exportImage = False,
                   mkdir=False,
-                  flag_export_fillImg = False):
+                  flag_export_fillImg = False,
+                  DEBUG = False):
     '''
     
     
 
     '''
-    
+    if DEBUG:
+        calculation_log('import file is {} with the fill img flag is {}'.format(path, flag_export_fillImg))
     #BGR画像の読み込み
     img = cv2.imread(path)
+    if DEBUG:
+        calculation_log('image file {} was imported'.format(path))
     #画像のグレイスケール化
     im = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
@@ -573,7 +613,6 @@ def analyse_Image(delay, path, min_area_thresh,
     #閾値でフィルタ
     contours = [cnt for cnt in contours if cv2.contourArea(cnt) > min_area_thresh]
     
-
     #インデックス値宣言、輪郭X座標インデックス、Y座標インデックスを指定。
     indX, indY = 0, 1
     
@@ -581,6 +620,8 @@ def analyse_Image(delay, path, min_area_thresh,
     #ターゲットとなる輪郭を抽出（ノズル輪郭は必ず画像上端にあるため、輪郭のうち少なくとも1つはY = 0を含む）
     targetCnts = [cnt for cnt in contours if any([pt[0,indY] == 0 for pt in cnt])]
     
+    if DEBUG:
+        calculation_log('the length of contour with Y = 0 point is {}'.format(len(targetCnts)))
     #ターゲット輪郭が存在する場合
     #targetCntがただ1つ→それはノズルがただ1つのブロブとして輪郭検出されていることを示す。
     if len (targetCnts) == 1:
@@ -594,6 +635,8 @@ def analyse_Image(delay, path, min_area_thresh,
         #輪郭が分割されない程度のヴォイドが発生していることを示す。
         #以下はそのようなヴォイドの有無を抽出するコード、すなわち輪郭両端座標内部（両端座標を除く）にてY == 0なる輪郭を抽出している。
         ptZeroListInnerVoid = [Pt for Pt in targetCnts[0] if Pt[0][indY] == 0 and Pt[0][indX] > leftX and Pt[0][indX] < rightX]
+        if DEBUG:
+            calculation_log('length of voided contour at nozzle is {}'.format(len(ptZeroListInnerVoid)))
         #ヴォイドが存在する場合
         if len(ptZeroListInnerVoid) != 0:
             #ヴォイド構成点の最も左端の座標を取得
@@ -626,7 +669,12 @@ def analyse_Image(delay, path, min_area_thresh,
                 
                 #元画像にて、上記長方形座標の内部を黒で塗りつぶす。
                 img = cv2.rectangle(img, (left_X_min, 0), (right_X_Max, Y), (0,0,0), -1)
-                
+                if DEBUG:
+                    calculation_log('img is filled with rectangle Xleft = {}, Xright = {}, Y = {}'.format(
+                        left_X_min, 
+                        right_X_Max,
+                        Y)
+                                   )
                 #塗りつぶし画像出力する処理
                 if flag_export_fillImg:
                     if not os.path.exists(os.path.dirname(path) + "/fillCnts"):
@@ -652,6 +700,8 @@ def analyse_Image(delay, path, min_area_thresh,
     if len(targetCnts) > 1:
         #各ターゲット輪郭のY = 0なる点を取得
         ptZeroListList = [[Pt for Pt in tgt if Pt[0,indY] == 0] for tgt in targetCnts]
+        if DEBUG:
+            calculation_log('nozzle contour is completely separated, filling processing is now called.')
         #各ターゲット輪郭の最大X座標の最大値、および最小X座標の最小値を取得（それぞれ、最左端、最右端座標となる）
         leftX = min([min([p[0,indX] for p in pts]) for pts in ptZeroListList]) 
         rightX = max([max([p[0,indX] for p in pts]) for pts in ptZeroListList])
@@ -685,6 +735,9 @@ def analyse_Image(delay, path, min_area_thresh,
         Y_ = (int)(YAreas / Areas)
         #長方形を黒で塗りつぶす。
         img = cv2.rectangle(img,(leftX, 0),(rightX, Y_),(0, 0, 0),-1)
+        if DEBUG:
+            calculation_log('img is filled with rectangle Xleft = {}, Xright = {}, Y = {}'.format(leftX, rightX, Y_))
+
         #塗りつぶし画像出力する処理
         if flag_export_fillImg:
             if not os.path.exists(os.path.dirname(path) + "/fillCnts"):
@@ -705,8 +758,11 @@ def analyse_Image(delay, path, min_area_thresh,
         #閾値でフィルタ
         contours = [cnt for cnt in contours if cv2.contourArea(cnt) > min_area_thresh]
 
+
     #輪郭面積でソート
     contours.sort(key=lambda cnt: cv2.contourArea(cnt), reverse = True)
+    if DEBUG:
+        calculation_log('the length of contours is {}'.format(len(contours)))
     #輪郭結果格納リストの宣言
     cntResults = []
     imgYMax, _= im.shape
@@ -730,13 +786,15 @@ def analyse_Image(delay, path, min_area_thresh,
         cy = int(M['m01']/M['m00'])
         
         #Y座標最大のpt左側にて
-        pt_yMax_xLeft = [pt for pt in cnt if pt[0, 1] == max(cnt, key = lambda pt2:pt2[0,1])[0,1] ][0][0]
-        pt_yMax_xRight = [pt for pt in cnt if pt[0, 1] == max(cnt, key = lambda pt2:pt2[0,1])[0,1] ][-1][0]
+        yMax = max(cnt, key = lambda pt2:pt2[0,1])[0,1] 
+        pt_yMax_xLeft = [pt for pt in cnt if pt[0, 1] == yMax][0][0]
+        pt_yMax_xRight = [pt for pt in cnt if pt[0, 1] == yMax][-1][0]
         main_X = (pt_yMax_xLeft[0] + pt_yMax_xRight[0]) / 2
         main_Y = pt_yMax_xRight[1]
         #Y座標最小のpt左側にて
-        pt_yMin_xLeft = [pt for pt in cnt if pt[0, 1] == min(cnt, key = lambda pt2:pt2[0,1])[0,1] ][0][0]
-        pt_yMin_xRight = [pt for pt in cnt if pt[0, 1] == min(cnt, key = lambda pt2:pt2[0,1])[0,1] ][-1][0]
+        ymin = min(cnt, key = lambda pt2:pt2[0,1])[0,1]
+        pt_yMin_xLeft = [pt for pt in cnt if pt[0, 1] == ymin][0][0]
+        pt_yMin_xRight = [pt for pt in cnt if pt[0, 1] == ymin][-1][0]
         satellite_X = (pt_yMin_xLeft[0] + pt_yMin_xRight[0]) / 2
         satellite_Y = pt_yMin_xLeft[1]
         
@@ -771,18 +829,23 @@ def analyse_Image(delay, path, min_area_thresh,
             imgYMax = imgYMax,
             volume = volume,
             freq_num = freq_num,
-            freq_Y = freq_Y)
+            freq_Y = freq_Y,
+            DEBUG = DEBUG)
         #解析結果のリストへの追加        
         cntResults.append(retResultTmp)
     
     #面積で降順ソート
     cntResults.sort(key= lambda res: res.area, reverse=True)
+    if DEBUG:
+        calculation_log('length of cntResults is {}'.format(len(cntResults)))
     #以下、画像出力対応
     if exportImage:
         #ディレクトリ作製
         if mkdir:
             if not os.path.exists(os.path.dirname(path) + "/drawRsts"):
                 os.makedirs(os.path.dirname(path) + "/drawRsts", exist_ok = True)
+                if DEBUG:
+                    calculation_log('mkdir at {}/drawRsts'.format(os.path.dirname(path)))
         #輪郭描画
         if draw_contour:
             #面積最大の輪郭のみ太線で描画
@@ -802,30 +865,40 @@ def analyse_Image(delay, path, min_area_thresh,
             for i in range(len(cntResults)):
                 main_X = cntResults[i].main_X
                 main_Y = cntResults[i].main_Y 
-                img = cv2.rectangle(img,((int)(main_X-5),(int)(main_Y-5)),((int)(main_X+5),(int)(main_Y+5)),\
-                                    (0,0,255), 2 if i == 0 else 1)
+                img = cv2.rectangle(img,
+                                    ((int)(main_X-5), (int)(main_Y-5)),
+                                    ((int)(main_X+5), (int)(main_Y+5)),
+                                    (0,0,255),
+                                    2 if i == 0 else 1)
                 satellite_X = cntResults[i].satellite_X
                 satellite_Y = cntResults[i].satellite_Y
-                img = cv2.rectangle(img,((int)(satellite_X-5),(int)(satellite_Y-5)),((int)(satellite_X+5),(int)(satellite_Y+5)),\
-                                    (0,255,255),2 if i == 0 else 1)
+                img = cv2.rectangle(img,
+                                    ((int)(satellite_X-5),(int)(satellite_Y-5)),
+                                    ((int)(satellite_X+5),(int)(satellite_Y+5)),
+                                    (0,255,255),
+                                    2 if i == 0 else 1)
                 center_X = cntResults[i].center_X
                 center_Y = cntResults[i].center_Y
-                img = cv2.rectangle(img,((int)(center_X-5),(int)(center_Y-5)),((int)(center_X+5),(int)(center_Y+5)),\
-                                    (255,255,255),2 if i == 0 else 1)      
+                img = cv2.rectangle(img,
+                                    ((int)(center_X-5),(int)(center_Y-5)),
+                                    ((int)(center_X+5),(int)(center_Y+5)),
+                                    (255,255,255),
+                                    2 if i == 0 else 1)      
         #ファイルパス生成
         savePath = (os.path.dirname(path) + '/drawRsts/'+ os.path.splitext(os.path.basename(path))[0] + \
                     '_drawResult.jpg') if mkdir else (os.path.splitext(path)[0] + "_drawResult.jpg")
         #ファイル生成
         cv2.imwrite(savePath, img)
-    #輪郭描画時出力。必要なければコメント消去
-#    print('{}:{}'.format(path, len(cntResults)))
+        if DEBUG:
+            calculation_log('export image at {}'.format(savePath))
     #輪郭解析結果リストを返す
     return cntResults      
 
 
 def analyse_Images_List(directoryPath, min_area_thresh, binarize_thresh=128, auto_binarize = True, mkdir=False, \
                         draw_contour = False, draw_convexhull = False, draw_coords = False, exportImage = False, \
-                        draw_reg_Detected = False, area_mirgin_detectSeparation = 2000, arc_length_mirgin_detectSeparation = 10):
+                        draw_reg_Detected = False, area_mirgin_detectSeparation = 2000, arc_length_mirgin_detectSeparation = 10, \
+                        DEBUG = False):
     '''
     追尾用輪郭解析関数
     
@@ -870,24 +943,31 @@ def analyse_Images_List(directoryPath, min_area_thresh, binarize_thresh=128, aut
     
     #ファイルリストの取得
     files = glob.glob(directoryPath + "/*.jpg")
+    if DEBUG:
+        calculation_log('files are imported, {}'.format(len(files)))
+        calculation_log('min_area_thresh is {}'.format(min_area_thresh))
     #解析結果集計用リスト
     analysisResultsList = []
 
     for filePath in files:
         #ファイル名前よりディレイ時間の取得
         delay = 0.0
-        try:
-            delay = float(filePath[-10:-4])
-        except:
+        i = 10
+        flag_delay_is_get = False
+        while i > 4:
             try:
-                delay = float(filePath[-9:-4])
+                delay = float(filePath[-i:-4])
+                flag_delay_is_get = True
+                break
             except:
-                try:
-                    delay = float(filePath[-8:-4])
-                except:
-                    delay = -1.0
+                i = i - 1
+        
+        if not flag_delay_is_get:
+            delay = -1.0
         #輪郭抽出結果の格納
 
+        if DEBUG:
+            calculation_log('analyse_image method is calling for the delay {} with file {}'.format(delay, filePath))
         appendResults = analyse_Image(
             delay,
             filePath,
@@ -898,33 +978,49 @@ def analyse_Images_List(directoryPath, min_area_thresh, binarize_thresh=128, aut
             draw_convexhull,
             draw_coords,
             exportImage,
-            mkdir)
+            mkdir,
+            flag_export_fillImg = False,
+            DEBUG = DEBUG)
         #一度バラしてリストに格納
         for rst in appendResults:
             analysisResultsList.append(rst)
     #返り値格納用リストに再集計、コンストラクタにてデータ整理
-    retAnalysisResults = Analysis_Results_List(analysisResultsList)
+    retAnalysisResults = Analysis_Results_List(analysisResultsList, DEBUG)
+    if DEBUG:
+        calculation_log('retAnalysisResults object were generated, length is {}'.format(len(retAnalysisResults.analysisResults)))
     #最大リガメント長さの描画、フラグにて有無を制御
     if draw_reg_Detected:
         #分離検出マージン
         separate_detect_area_mirgin = area_mirgin_detectSeparation
         #リガメント長さととのディレイの取得
         regamentResults = retAnalysisResults.get_maximum_regament_length(separate_detect_area_mirgin, arc_length_mirgin_detectSeparation)
+        if DEBUG:
+            calculation_log('detected delay is {} us, and detected length is {} pix'.format(regamentResults[1], regamentResults[0]))
         #当該輪郭の検出
         drawResultCnts = list(filter(lambda data: data[0] == regamentResults[1], retAnalysisResults.analysisResults))[0]
         drawResultCnt = list(filter(lambda cnt: cnt.get_regament_length() == regamentResults[0], drawResultCnts[1]))[0]
         #ディレクトリ生成
         os.makedirs(directoryPath+'/rgResult', exist_ok=True)
         #当該ディレイの画像ファイルパス取得
-        filePath = glob.glob(directoryPath+'/*{0}.jpg'.format(str(drawResultCnts[0])))[0]
+        if DEBUG:
+            calculation_log('mkdir at {}/rgResult'.format(directoryPath))
+        try:
+            filePath = glob.glob(directoryPath+'/*{0}.jpg'.format(str(drawResultCnts[0])))[0]
+        except:
+            filePath = glob.glob(directoryPath+'/*{0}.jpg'.format(str((int)(drawResultCnts[0]))))[0]
         #当該画像データ取得
         im = cv2.imread(filePath)
         #リガメント描画
-        im = cv2.line(im,((int)(drawResultCnt.main_X),(int)(drawResultCnt.main_Y)),((int)(drawResultCnt.satellite_X),(int)(drawResultCnt.satellite_Y)),\
-                      (255, 255, 128), 3)
+        im = cv2.line(im,
+                      ((int)(drawResultCnt.main_X),(int)(drawResultCnt.main_Y)),
+                      ((int)(drawResultCnt.satellite_X),(int)(drawResultCnt.satellite_Y)),
+                      (255, 255, 128),
+                      3)
         #ファイル出力
         savePath = directoryPath+'/rgResult/' + os.path.basename(filePath) + '_drawRegament.jpg'
         cv2.imwrite(savePath, im)
+        if DEBUG:
+            calculation_log('export regament result image, {}'.format(savePath))
     
     #返り値
     return retAnalysisResults
@@ -938,7 +1034,8 @@ def drawContours(delay,
                  draw_coords = False,
                  exportImage = False,
                  draw_reg_Detected = False,
-                 mkdir=False):
+                 mkdir=False,
+                 DEBUG = False):
     '''
     
     '''
@@ -946,6 +1043,8 @@ def drawContours(delay,
     if mkdir:
         if not os.path.exists(os.path.dirname(path) + "/drawRsts"):
             os.makedirs(os.path.dirname(path) + "/drawRsts", exist_ok = True)
+            if DEBUG:
+                calculation_log('mkdir at {}/drawRsts'.format(os.path.dirname(path)))
 
     im = cv2.imread(path)
     imGray = cv2.imread(path,0)
@@ -958,7 +1057,8 @@ def drawContours(delay,
     #輪郭抽出
     contours, hierarchy = cv2.findContours(im_bin, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
     #閾値でフィルタ
-    contours = [cnt for cnt in contours if cv2.contourArea(cnt) > min_area_thresh].sort(key = lambda rst: cv2.contourArea(rst), reverse=True)
+    contours = [cnt for cnt in contours if cv2.contourArea(cnt) > min_area_thresh].sort(
+        key = lambda rst: cv2.contourArea(rst), reverse=True)
     im = cv2.drawContours(im, [contours[0]], -1, (0,255,0), 2)
     if len(contours) > 1:
         im = cv2.drawContours(im, contours[1:], -1, (0,255,0), 1)
@@ -979,18 +1079,29 @@ def drawContours(delay,
         for i in range(len(coords)):
             main_X = coords[i].main_X
             main_Y = coords[i].main_Y       
-            im = cv2.rectangle(im,((int)(main_X-5),(int)(main_Y-5)),((int)(main_X+5),(int)(main_Y+5)),\
-                               (0,0,255), 2 if i == 0 else 1)
+            im = cv2.rectangle(im,
+                               ((int)(main_X-5),(int)(main_Y-5)),
+                               ((int)(main_X+5),(int)(main_Y+5)),
+                               (0,0,255),
+                               2 if i == 0 else 1)
             satellite_X = coords[i].satellite_X
             satellite_Y = coords[i].satellite_Y
-            im = cv2.rectangle(im,((int)(satellite_X-5),(int)(satellite_Y-5)),((int)(satellite_X+5),(int)(satellite_Y+5)),\
-                               (0,255,255),2 if i == 0 else 1)
+            im = cv2.rectangle(im,
+                               ((int)(satellite_X-5),(int)(satellite_Y-5)),
+                               ((int)(satellite_X+5),(int)(satellite_Y+5)),
+                               (0,255,255),
+                               2 if i == 0 else 1)
             center_X = coords[i].center_X
             center_Y = coords[i].center_Y
-            im = cv2.rectangle(im,((int)(center_X-5),(int)(center_Y-5)),((int)(center_X+5),(int)(center_Y+5)),\
-                               (255,255,255),2 if i == 0 else 1)            
+            im = cv2.rectangle(im,
+                               ((int)(center_X-5),(int)(center_Y-5)),
+                               ((int)(center_X+5),(int)(center_Y+5)),
+                               (255,255,255),
+                               2 if i == 0 else 1)            
        
     savePath = (os.path.dirname(path) + '/drawRsts/'+ os.path.splitext(os.path.basename(path))[0] + \
                 '_drawResult.jpg') if mkdir else (os.path.splitext(path)[0] + "_drawResult.jpg")
     cv2.imwrite(savePath, im)
+    if DEBUG:
+        calculation_log('export debug image at {}'.format(savePath))
     return

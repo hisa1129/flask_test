@@ -1,0 +1,25 @@
+<h2> 管理ファイルDL </h2>
+<body>
+{% if filetype == "result_csv" %}
+<form method="post" action="/download_file/result_csv">
+    <input type="string" name="ID" id="id_ID" placeholder="ID"/><br>
+    <input type="password" name="PW" id = "id_PW"/><br>
+    <input type="submit" value="Send">
+</form>
+{% elif filetype == "server_log" %}
+<form method="post" action="/download_file/server_log">
+    <input type="string" name="ID" id="id_ID" placeholder="ID"/><br>
+    <input type="password" name="PW" id = "id_PW"/><br>
+    <input type="submit" value="Send">
+</form>
+{% elif filetype == "calculation_log" %}
+<form method="post" action="/download_file/calculation_log">
+    <input type="string" name="ID" id="id_ID" placeholder="ID"/><br>
+    <input type="password" name="PW" id = "id_PW"/><br>
+    <input type="submit" value="Send">
+</form>
+{% else %}
+    <h1>none</h1>
+{% endif %}
+    
+</body>

@@ -1,0 +1,5 @@
+CODE_VER:
+    0.1.1:α版公開
+    
+THRESH_VALUES_VER:
+    0.1.1：デモ用α版公開

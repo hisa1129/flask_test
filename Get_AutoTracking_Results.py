@@ -1,5 +1,10 @@
 import AutoTracking
 import FindContourAnalysis
+from CalculationLog import calculation_log
+import datetime
+import math
+
+CODE_VER = '0.1.2'
 
 def get_autoTracking_Results(directory_path, exec_mode):
     '''
@@ -44,37 +49,41 @@ def get_autoTracking_Results(directory_path, exec_mode):
               吐出開始前ノズル輪郭の最大頻出Y座標
     '''
     DEBUG_MODE = 'DEBUG'
-    if exec_mode == DEBUG_MODE:
-        print(directory_path)
-        print(exec_mode)
+    flag_is_debugmode = exec_mode == DEBUG_MODE
+    if flag_is_debugmode:
+        calculation_log('analyse dir path = {}'.format(directory_path))
+        calculation_log('exec_mode = {}'.format(exec_mode))
     areaThresh = 2000
     arclengthThresh = 25
     flag_contour_select_was_done = False
-    if exec_mode == DEBUG_MODE:
-        print('contour selection function is calling')
-
+    if flag_is_debugmode:
+        calculation_log('contour selection function is calling')
+        
     try:
         contour_rsts = FindContourAnalysis.analyse_Images_List(
             directoryPath = directory_path,
             min_area_thresh = 10,
             binarize_thresh=128,
             auto_binarize = True,
-            mkdir=False,
-            draw_contour = False,
-            draw_convexhull = False,
-            draw_coords = True,
-            exportImage = False,
-            draw_reg_Detected = False,
+            mkdir=flag_is_debugmode,
+            draw_contour = flag_is_debugmode,
+            draw_convexhull = flag_is_debugmode,
+            draw_coords = flag_is_debugmode,
+            exportImage = flag_is_debugmode,
+            draw_reg_Detected = flag_is_debugmode,
             area_mirgin_detectSeparation = areaThresh,
-            arc_length_mirgin_detectSeparation = arclengthThresh)
+            arc_length_mirgin_detectSeparation = arclengthThresh,
+            DEBUG = flag_is_debugmode)
         flag_contour_select_was_done = True
         if exec_mode == DEBUG_MODE:
-            print('contour selection was done')
+            calculation_log('contour selection was done')
 
     except:
         if exec_mode == DEBUG_MODE:
-            print('contour_selection was failure.')
+            calculation_log('contour_selection was failure.')
         result = {
+            "analysis_date_time":datetime.datetime.now().strftime('%Y-%m-%d_%H:%M:%S'),
+            "dirPath":directory_path,
             'condition' : 'contour selection was failure.' 
         }
     
@@ -87,59 +96,94 @@ def get_autoTracking_Results(directory_path, exec_mode):
                 area_mirgin_detectSeparation = areaThresh,
                 arc_length_mirgin_detectSeparation = arclengthThresh,
                 auto_binarize = True,
-                draw_Tracking_Results = False,
-                draw_Fitting_Line = False)  
+                draw_Tracking_Results = flag_is_debugmode,
+                draw_Fitting_Line = flag_is_debugmode,
+                DEBUG = flag_is_debugmode)  
             flag_tracking_was_done = True
             if exec_mode == DEBUG_MODE:
-                print('auto_tracking was done')
+                calculation_log('auto_tracking was done')
         except:
             if exec_mode == DEBUG_MODE:
-                print('auto_tracking was failure.')
+                calculation_log('auto_tracking was failed')
             result = {
+                "analysis_date_time":datetime.datetime.now().strftime('%Y-%m-%d_%H:%M:%S'),
+                "dirPath":directory_path,
                 'condition' : 'auto_tracking was failure.'
             }
         if flag_tracking_was_done:
-            try:    
+            try:               
+                THRESH_VALUES_VER = '0.1.1'
+                pix_per_um = 3.20
+                velocity_upperthresh = 8.5
+                velocity_lowerthresh = 4.5
+                Solidity_upperthresh = 1.016
+                velocity_septhresh = 6.5
+                sep_thresh = 300.0
+                #90%の吐出が下記角度差範囲に入る
+                diff_angle_thresh = 1.403
+                
+                #出力用の値の整理
+                directory_path = directory_path.split('/')[-1]
+                num_first_contours = contour_rsts.get_NumContours_at_First()
+                solidity = contour_rsts.get_cva_a_ratio()
+                arc_solidity = contour_rsts.get_cval_al_ratio()
+                separated_delay = contour_rsts.get_separated_delay(areaThresh, arclengthThresh, contour_rsts.get_dropletFaced_delay(areaThresh)[1])[1]
+                faced_delay = contour_rsts.get_dropletFaced_delay(areaThresh)[1]
+                max_regament_length_delay = contour_rsts.get_maximum_regament_length(10)[0]
+                max_regament_length = contour_rsts.get_maximum_regament_length(10)[1]
+                main_average_velocity = trackingResults.Get_Main_Velocity()[0]
+                main_velocity_stdiv = trackingResults.Get_Main_Velocity()[1]
+                main_angle = trackingResults.Get_Main_Angle_degrees()
+                satellite_average_velocity = trackingResults.Get_Satellite_Velocity()[0]
+                satellite_velocity_stdiv = trackingResults.Get_Satellite_Velocity()[1]
+                satellite_angle = trackingResults.Get_Satellite_Angle_degrees()
+                main_average_velocity_stdized = main_average_velocity * pix_per_um
+                satellite_average_velocity_stdized = satellite_average_velocity * pix_per_um
+                diff_angle = abs(main_angle - satellite_angle)
+                
+                #dictionaryへの出力
                 result = {
-                    'dirPath':directory_path,
-                    'solidity[U]':contour_rsts.get_cva_a_ratio(),
-                    'arc_solidity[u]':contour_rsts.get_cval_al_ratio(),
-                    'separated_delay[us]':contour_rsts.get_separated_delay(areaThresh, arclengthThresh, contour_rsts.get_dropletFaced_delay(areaThresh)[1])[1],
-                    'faced_delay[us]':contour_rsts.get_dropletFaced_delay(areaThresh)[1],
-                    'regament_max_delay[us]':contour_rsts.get_maximum_regament_length(10)[0],
-                    'max_regament_length[pix]':contour_rsts.get_maximum_regament_length(10)[1],
-                    'main_average_velocity[pix/us]':trackingResults.Get_Main_Velocity()[0],
-                    'main_velocity_stddiv[pix/us]':trackingResults.Get_Main_Velocity()[1],
-                    'main_angle[degrees]':trackingResults.Get_Main_Angle_degrees(),
-                    'satellite_average_velocity[pix/us]':trackingResults.Get_Satellite_Velocity()[0],
-                    'satellite_velocity_stddiv[pix/us]':trackingResults.Get_Satellite_Velocity()[1],
-                    'satellite_angle[degrees]':trackingResults.Get_Satellite_Angle_degrees(),
-                    'main_linearity_error[pix]':trackingResults.Get_MainXY_Fit_Error_Min_Max_Range()[1] - trackingResults.Get_MainXY_Fit_Error_Min_Max_Range()[0],
-                    'satellite_linearity_error[pix]':trackingResults.Get_SatelliteXY_Fit_Error_Min_Max_Range()[1] - trackingResults.Get_SatelliteXY_Fit_Error_Min_Max_Range()[0],
-                    'most_freq_Y[pix]':contour_rsts.get_freq_YandNum()[1],
+                    "analysis_date_time":datetime.datetime.now().strftime('%Y-%m-%d_%H:%M:%S'),
+                    "dirPath":directory_path,
+                    "num_contours_at_first":num_first_contours,
+                    "solidity[U]":solidity,
+                    "arc_solidity[u]":arc_solidity,
+                    "separated_delay[us]":separated_delay,
+                    "faced_delay[us]":faced_delay,
+                    "regament_max_delay[us]":max_regament_length_delay,
+                    "max_regament_length[pix]":max_regament_length,
+                    "main_average_velocity[pix/us]":main_average_velocity,
+                    "main_average_velocity[m/s]":main_average_velocity_stdized,
+                    "main_velocity_stddiv[pix/us]":main_velocity_stdiv,
+                    "main_angle[degrees]":main_angle,
+                    "satellite_average_velocity[pix/us]":satellite_average_velocity,
+                    "satellite_average_velocity[m/s]":satellite_average_velocity_stdized,
+                    "satellite_velocity_stddiv[pix/us]":satellite_velocity_stdiv,
+                    "satellite_angle[degrees]":satellite_angle,
+                    "main-satellite_angle_diff[degrees]":diff_angle,
+                    "main_linearity_error[pix]":trackingResults.Get_MainXY_Fit_Error_Min_Max_Range()[1] - trackingResults.Get_MainXY_Fit_Error_Min_Max_Range()[0],
+                    "satellite_linearity_error[pix]":trackingResults.Get_SatelliteXY_Fit_Error_Min_Max_Range()[1] - trackingResults.Get_SatelliteXY_Fit_Error_Min_Max_Range()[0],
+                    "most_freq_Y[pix]":contour_rsts.get_freq_YandNum()[1],
+                    "CODE_VER":CODE_VER,
+                    "abnormal_ejaction":str(num_first_contours > 1),
+                    "main_velocity_is_too_fast":str(main_average_velocity_stdized > velocity_upperthresh),
+                    "main_velocity_is_too_slow":str(main_average_velocity_stdized < velocity_lowerthresh),
+                    "nozzle_is_needed_to_clean":str(solidity > Solidity_upperthresh),
+                    "suspicious_visco-elasticity":str(separated_delay > sep_thresh and main_average_velocity_stdized > velocity_septhresh),
+                    "angle-diff_is_too_large":str(diff_angle > diff_angle_thresh),
+                    "THRESH_VALUES_VER":THRESH_VALUES_VER,
                 }
+#                result = {
+#                    'test':"test"
+#                }
                 if exec_mode == DEBUG_MODE:
-                    print('get_feature_params was done')   
-                    print('dirP:{}'.format(directory_path))
-                    print('cva:{}'.format(contour_rsts.get_cva_a_ratio())) 
-                    print('cval:{}'.format(contour_rsts.get_cval_al_ratio()))
-                    print('sepdelay:{}'.format(contour_rsts.get_separated_delay(areaThresh, arclengthThresh, contour_rsts.get_dropletFaced_delay(areaThresh)[1])[1]))
-                    print('facdelay:{}'.format(contour_rsts.get_dropletFaced_delay(areaThresh)[1]))
-                    print('regMaxD:{}'.format(contour_rsts.get_maximum_regament_length(10)[0]))
-                    print('regMaxL:{}'.format(contour_rsts.get_maximum_regament_length(10)[1]))
-                    print('aveVelMain:{}'.format(trackingResults.Get_Main_Velocity()[0]))
-                    print('divVelMain:{}'.format(trackingResults.Get_Main_Velocity()[1]))
-                    print('angleMain:{}'.format(trackingResults.Get_Main_Angle_degrees()))
-                    print('aveVelSat:{}'.format(trackingResults.Get_Satellite_Velocity()[0]))
-                    print('divVelSat:{}'.format(trackingResults.Get_Satellite_Velocity()[1]))
-                    print('angleSat:{}'.format(trackingResults.Get_Satellite_Angle_degrees()))
-                    print('mainEr:{}'.format(trackingResults.Get_MainXY_Fit_Error_Min_Max_Range()[1] - trackingResults.Get_MainXY_Fit_Error_Min_Max_Range()[0]))
-                    print('satEr:{}'.format(trackingResults.Get_SatelliteXY_Fit_Error_Min_Max_Range()[1] - trackingResults.Get_SatelliteXY_Fit_Error_Min_Max_Range()[0]))
-                    print('freqY:{}'.format(contour_rsts.get_freq_YandNum()[1]))
+                    calculation_log(result)
             except:
                 if exec_mode == DEBUG_MODE:
-                    print('get_feature_params was failure.')
+                    calculation_log('get_feature_params was failure.')
                 result = {
+                    "analysis_date_time":datetime.datetime.now().strftime('%Y-%m-%d_%H:%M:%S'),
+                    "dirPath":directory_path,
                     'condition' : 'get_feature_params was failure.'
                 }
     return result

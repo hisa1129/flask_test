@@ -1,0 +1,914 @@
+20201016_165139 : auto_tracking_method is called with GET method
+20201016_165144 : ImmutableMultiDict([('uploadFile', <FileStorage: 'alternalia.zip' ('application/x-zip-compressed')>)]) file is posted
+20201016_165145 : auto_tracking is execute withuploads/20201016_165144_alternalia/alternalia, NOT_DEBUG_MODE
+20201016_165145 : {'analysis_date_time': '2020-10-16_16:51:45', 'dirPath': 'uploads/20201016_165144_alternalia/alternalia', 'num_contours_at_first': 1, 'solidity[U]': 1.03129203539823, 'arc_solidity[u]': 0.9751678516751165, 'separated_delay[us]': 259.4, 'faced_delay[us]': 163.7, 'regament_max_delay[us]': 252.0, 'max_regament_length[pix]': 307.8, 'main_average_velocity[pix/us]': 1.9770917557965937, 'main_average_velocity[m/s]': 6.3266936185491005, 'main_velocity_stddiv[pix/us]': 0.8845989994496875, 'main_angle[degrees]': 2.323209815425067, 'satellite_average_velocity[pix/us]': 1.4820600023236086, 'satellite_average_velocity[m/s]': 4.742592007435547, 'satellite_velocity_stddiv[pix/us]': 0.6914897034060684, 'satellite_angle[degrees]': 2.1149570943397604, 'main-satellite_angle_diff[degrees]': 0.20825272108530646, 'main_linearity_error[pix]': 2.677740263732261, 'satellite_linearity_error[pix]': 4.145553639900868, 'most_freq_Y[pix]': 19, 'CODE_VER': '0.1.2', 'abnormal_ejaction': 'False', 'main_velocity_is_too_fast': 'False', 'main_velocity_is_too_slow': 'False', 'nozzle_is_needed_to_clean': 'True', 'suspicious_visco-elasticity': 'False', 'angle-diff_is_too_large': 'False', 'THRESH_VALUES_VER': '0.1.1'}
+20201016_165145 : file is deleted
+20201016_165601 : auto_tracking_method is called with GET method
+20201016_165823 : calculate_contact_agnle_and_firevolume method is called with GET method.
+20201016_165823 : calculation was done.
+20201016_171502 : auto_tracking_method is called with GET method
+20201016_171506 : download calculation result is called with GET method.
+20201016_171511 : download calculation result is called with POST method.
+20201016_171511 : form was input ID : aaa,  PW : bbb
+20201016_171511 : download was not started.
+20201016_171534 : download calculation result is called with POST method.
+20201016_171534 : form was input ID : microjet,  PW : microjet-python
+20201016_171534 : download was not started.
+20201016_171549 : download calculation result is called with POST method.
+20201016_171549 : form was input ID : microjet,  PW : microjet_python
+20201016_171549 : download was started.
+20201016_171845 : ImmutableMultiDict([('uploadFile', <FileStorage: 'SMZ_test.zip' ('application/x-zip-compressed')>)]) file is posted
+20201016_171847 : auto_tracking is execute withuploads/20201016_171845_SMZ_test/SMZ_test, DEBUG
+20201016_171847 : file is restored
+20201016_172006 : auto_tracking_method is called with GET method
+20201016_172011 : ImmutableMultiDict([('uploadFile', <FileStorage: 'KC_test.zip' ('application/x-zip-compressed')>)]) file is posted
+20201016_172012 : auto_tracking is execute withuploads/20201016_172011_KC_test/KC_test, NOT_DEBUG_MODE
+20201016_172012 : file is deleted
+20201016_172217 : auto_tracking_method is called with GET method
+20201016_172228 : ImmutableMultiDict([('uploadFile', <FileStorage: 'E1657_吐出画像20201016160740.zip' ('application/x-zip-compressed')>)]) file is posted
+20201016_172230 : auto_tracking is execute withuploads/20201016_172228_E1657_20201016160740/E1657_吐出画像20201016160740, NOT_DEBUG_MODE
+20201016_172230 : file is deleted
+20201016_172527 : auto_tracking_method is called with GET method
+20201016_172533 : ImmutableMultiDict([('uploadFile', <FileStorage: 'KC_test.zip' ('application/x-zip-compressed')>)]) file is posted
+20201016_172534 : auto_tracking is execute withuploads/20201016_172533_KC_test/KC_test, NOT_DEBUG_MODE
+20201016_172534 : read result as json was failured.
+20201016_172534 : file is deleted
+20201016_172649 : auto_tracking_method is called with GET method
+20201016_172653 : ImmutableMultiDict([('uploadFile', <FileStorage: 'E1657_吐出画像20201016140736.zip' ('application/x-zip-compressed')>)]) file is posted
+20201016_172654 : auto_tracking is execute withuploads/20201016_172653_E1657_20201016140736/E1657_吐出画像20201016140736, NOT_DEBUG_MODE
+20201016_172654 : export calculation result was succeed.
+20201016_172654 : file is deleted
+20201016_180159 : auto_tracking_method is called with GET method
+20201016_180312 : auto_tracking without zip file method is called with GET method.
+20201016_180312 : calculation was done.
+20201016_180312 : export calculation result was succeed.
+20201016_180316 : auto_tracking without zip file method is called with GET method.
+20201016_180317 : calculation was done.
+20201016_180317 : export calculation result was succeed.
+20201016_180339 : auto_tracking_method is called with GET method
+20201016_180350 : ImmutableMultiDict([('uploadFile', <FileStorage: 'E1657_吐出画像20201016160740.zip' ('application/x-zip-compressed')>)]) file is posted
+20201016_180352 : auto_tracking is execute with uploads/20201016_180350_E1657_20201016160740/E1657_吐出画像20201016160740, DEBUG
+20201016_180352 : export calculation result was succeed.
+20201016_180352 : file is restored
+20201016_180416 : download calculation result is called with GET method.
+20201016_180426 : download calculation result is called with POST method.
+20201016_180426 : form was input ID : microjet,  PW : microjet_python
+20201016_180426 : download was started.
+20201019_095903 : auto_tracking without zip file method is called with GET method.
+20201019_095940 : auto_tracking without zip file method is called with GET method.
+20201019_095940 : test_dirs are exist as ['test1', 'test2', 'test3', 'test4']
+20201019_100102 : auto_tracking without zip file method is called with GET method.
+20201019_100102 : test_dirs are exist as ['test1', 'test2', 'test3', 'test4']
+20201019_100105 : calculation was done.
+20201019_100105 : export calculation result was succeed.
+20201019_100411 : auto_tracking without zip file method is called with GET method.
+20201019_100411 : test_dirs are exist as ['test1', 'test2', 'test3', 'test4']
+20201019_100413 : calculation was done.
+20201019_100414 : export calculation result was succeed.
+20201019_101412 : auto_tracking without zip file method is called with GET method.
+20201019_101412 : test_dirs are exist as ['test1', 'test2', 'test3', 'test4']
+20201019_101412 : import results from resultsDB.csv was done
+20201019_101413 : calculation was done.
+20201019_101413 : export calculation result to resultsDB.csv was succeed.
+20201019_101549 : download calculation result is called with GET method.
+20201019_112332 : auto_tracking calculation with GET method was called
+20201019_112332 : file upload was FAILED
+20201019_112520 : auto_tracking calculation with GET method was called
+20201019_112520 : file upload was FAILED
+20201019_112614 : auto_tracking calculation with GET method was called
+20201019_112614 : file upload was FAILED
+20201019_112703 : auto_tracking calculation with GET method was called
+20201019_112703 : file upload was FAILED
+20201019_112751 : auto_tracking calculation with GET method was called
+20201019_112751 : T1356_20200625135440.zip file is going to be analysed
+20201019_113242 : auto_tracking calculation with GET method was called
+20201019_113242 : T1356_20200625135440.zip file is going to be analysed
+20201019_113242 : extraction uploaded zip file at uploads/T1356_20200625135440.
+20201019_113242 : import results from resultsDB.csv was done
+20201019_113242 : auto_tracking is execute with uploads/T1356_20200625135440/T1356_20200625135440, DEBUG
+20201019_113242 : export calculation result to resultsDB.csv was succeed.
+20201019_113242 : files at uploads/T1356_20200625135440 and uploads/T1356_20200625135440.zip were deleted
+20201019_113419 : auto_tracking calculation with GET method was called
+20201019_113419 : file upload was FAILED
+20201019_113444 : auto_tracking calculation with GET method was called
+20201019_113444 : T1356_吐出画像20200625135440.zip file is going to be analysed
+20201019_113444 : extraction uploaded zip file at uploads/T1356_吐出画像20200625135440.
+20201019_113444 : import results from resultsDB.csv was done
+20201019_113446 : auto_tracking is execute with uploads/T1356_吐出画像20200625135440/T1356_吐出画像20200625135440, DEBUG
+20201019_113446 : export calculation result to resultsDB.csv was succeed.
+20201019_113446 : files at uploads/T1356_吐出画像20200625135440 and uploads/T1356_吐出画像20200625135440.zip were deleted
+20201019_113645 : auto_tracking calculation with GET method was called
+20201019_113645 : T1356_吐出画像20200625135440.zip file is going to be analysed
+20201019_113645 : extraction uploaded zip file at uploads/T1356_吐出画像20200625135440.
+20201019_113645 : import results from resultsDB.csv was done
+20201019_113647 : auto_tracking is execute with uploads/T1356_吐出画像20200625135440/T1356_吐出画像20200625135440, DEBUG
+20201019_113647 : export calculation result to resultsDB.csv was succeed.
+20201019_113747 : auto_tracking calculation with GET method was called
+20201019_113747 : T1356_吐出画像20200625135440.zip file is going to be analysed
+20201019_113747 : extraction uploaded zip file at uploads/T1356_吐出画像20200625135440.
+20201019_113747 : import results from resultsDB.csv was done
+20201019_113749 : auto_tracking is execute with uploads/T1356_吐出画像20200625135440/T1356_吐出画像20200625135440, DEBUG
+20201019_113749 : export calculation result to resultsDB.csv was succeed.
+20201019_113749 : files were saved at restored_data/T1356_吐出画像20200625135440
+20201019_113749 : files at uploads/T1356_吐出画像20200625135440 and uploads/T1356_吐出画像20200625135440.zip were deleted
+20201019_113816 : auto_tracking calculation with GET method was called
+20201019_113816 : file upload was FAILED
+20201019_114101 : auto_tracking calculation with POST method was called
+20201019_114101 : ImmutableMultiDict([('uploadFile', <FileStorage: 'E1657_吐出画像20201014105124.zip' ('application/x-zip-compressed')>)]) file is posted
+20201019_114101 : extraction uploaded zip file at uploads/E1657_吐出画像20201014105124.
+20201019_114101 : import results from resultsDB.csv was done
+20201019_114102 : auto_tracking is execute with uploads/E1657_吐出画像20201014105124/E1657_吐出画像20201014105124, DEBUG
+20201019_114102 : export calculation result to resultsDB.csv was succeed.
+20201019_114142 : auto_tracking calculation with POST method was called
+20201019_114142 : ImmutableMultiDict([('uploadFile', <FileStorage: 'SMZ_test.zip' ('application/x-zip-compressed')>)]) file is posted
+20201019_114142 : extraction uploaded zip file at uploads/SMZ_test.
+20201019_114142 : import results from resultsDB.csv was done
+20201019_114144 : auto_tracking is execute with uploads/SMZ_test/SMZ_test, DEBUG
+20201019_114144 : export calculation result to resultsDB.csv was succeed.
+20201019_114144 : files were saved at restored_data/SMZ_test
+20201019_114144 : files at uploads/SMZ_test and uploads/SMZ_test.zip were deleted
+20201019_114226 : auto_tracking calculation with GET method was called
+20201019_114226 : E1657_吐出画像20201014105124.zip file is going to be analysed
+20201019_114226 : extraction uploaded zip file at uploads/E1657_吐出画像20201014105124.
+20201019_114226 : import results from resultsDB.csv was done
+20201019_114228 : auto_tracking is execute with uploads/E1657_吐出画像20201014105124/E1657_吐出画像20201014105124, DEBUG
+20201019_114228 : export calculation result to resultsDB.csv was succeed.
+20201019_114228 : files were saved at restored_data/E1657_吐出画像20201014105124
+20201019_114228 : files at uploads/E1657_吐出画像20201014105124 and uploads/E1657_吐出画像20201014105124.zip were deleted
+20201019_114642 : auto_tracking calculation with GET method was called
+20201019_114642 : file upload was FAILED
+20201019_114646 : auto_tracking calculation with GET method was called
+20201019_114646 : file upload was FAILED
+20201019_114706 : auto_tracking calculation with GET method was called
+20201019_114706 : E1657_吐出画像20201016140736.zip file is going to be analysed
+20201019_114706 : extraction uploaded zip file at uploads/E1657_吐出画像20201016140736.
+20201019_114706 : import results from resultsDB.csv was done
+20201019_114707 : auto_tracking is execute with uploads/E1657_吐出画像20201016140736/E1657_吐出画像20201016140736, NOT_DEBUG_MODE
+20201019_114707 : export calculation result to resultsDB.csv was succeed.
+20201019_114707 : files at uploads/E1657_吐出画像20201016140736 and uploads/E1657_吐出画像20201016140736.zip were deleted
+20201019_114805 : auto_tracking calculation with GET method was called
+20201019_114805 : T1356_吐出画像20200625135440.zip file is going to be analysed
+20201019_114805 : extraction uploaded zip file at uploads/T1356_吐出画像20200625135440.
+20201019_114805 : import results from resultsDB.csv was done
+20201019_114807 : auto_tracking is execute with uploads/T1356_吐出画像20200625135440/T1356_吐出画像20200625135440, DEBUG
+20201019_114807 : export calculation result to resultsDB.csv was succeed.
+20201019_114807 : files were saved at restored_data/T1356_吐出画像20200625135440_2
+20201019_114807 : files at uploads/T1356_吐出画像20200625135440 and uploads/T1356_吐出画像20200625135440.zip were deleted
+20201019_131349 : download calculation result is called with GET method.
+20201019_131354 : download restored_files is called with GET method.
+20201019_131457 : download restored_files is called with GET method.
+20201019_131517 : download restored_files is called with GET method.
+20201019_131521 : download restored_files is called with POST method.
+20201019_131521 : form was input ID : aaa,  PW : bbb, file Delete : False
+20201019_131558 : download restored_files is called with GET method.
+20201019_131601 : download restored_files is called with POST method.
+20201019_131601 : form was input ID : sss,  PW : nnn, file Delete : False
+20201019_131609 : download restored_files is called with POST method.
+20201019_131609 : form was input ID : microjet,  PW : microjet-python7, file Delete : False
+20201019_131623 : download restored_files is called with POST method.
+20201019_131623 : form was input ID : microjet,  PW : microjet_python, file Delete : False
+20201019_131625 : download restored_files with the name "restored_files20201019131623.zip" was started.
+20201019_131625 : restored files were destroyed
+20201019_131726 : download restored_files is called with GET method.
+20201019_131733 : download restored_files is called with POST method.
+20201019_131733 : form was input ID : microjet,  PW : microjet_python, file Delete : False
+20201019_131733 : download restored_files with the name "restored_files20201019131733.zip" was started.
+20201019_131733 : restored files were destroyed
+20201019_132122 : download restored_files is called with GET method.
+20201019_132129 : download restored_files is called with POST method.
+20201019_132129 : form was input ID : microjet,  PW : microjet_python, file Delete : False
+20201019_132129 : download restored_files with the name "restored_files20201019132129" was started.
+20201019_132129 : restored files were destroyed
+20201019_132129 : waiting file creation, waiting time = 0
+20201019_132130 : waiting file creation, waiting time = 1
+20201019_132131 : waiting file creation, waiting time = 2
+20201019_132132 : waiting file creation, waiting time = 3
+20201019_132133 : waiting file creation, waiting time = 4
+20201019_132134 : waiting file creation, waiting time = 5
+20201019_132135 : waiting file creation, waiting time = 6
+20201019_132137 : waiting file creation, waiting time = 7
+20201019_132138 : waiting file creation, waiting time = 8
+20201019_132139 : waiting file creation, waiting time = 9
+20201019_132140 : waiting file creation, waiting time = 10
+20201019_132141 : waiting file creation, waiting time = 11
+20201019_132142 : waiting file creation, waiting time = 12
+20201019_132143 : waiting file creation, waiting time = 13
+20201019_132144 : waiting file creation, waiting time = 14
+20201019_132145 : waiting file creation, waiting time = 15
+20201019_132146 : waiting file creation, waiting time = 16
+20201019_132147 : waiting file creation, waiting time = 17
+20201019_132148 : waiting file creation, waiting time = 18
+20201019_132149 : waiting file creation, waiting time = 19
+20201019_132150 : waiting file creation, waiting time = 20
+20201019_132151 : waiting file creation, waiting time = 21
+20201019_132152 : waiting file creation, waiting time = 22
+20201019_132153 : waiting file creation, waiting time = 23
+20201019_132154 : waiting file creation, waiting time = 24
+20201019_132155 : waiting file creation, waiting time = 25
+20201019_132156 : waiting file creation, waiting time = 26
+20201019_132157 : waiting file creation, waiting time = 27
+20201019_132158 : waiting file creation, waiting time = 28
+20201019_132159 : waiting file creation, waiting time = 29
+20201019_132200 : waiting file creation, waiting time = 30
+20201019_132201 : waiting file creation, waiting time = 31
+20201019_132202 : waiting file creation, waiting time = 32
+20201019_132203 : waiting file creation, waiting time = 33
+20201019_132204 : waiting file creation, waiting time = 34
+20201019_132205 : waiting file creation, waiting time = 35
+20201019_132206 : waiting file creation, waiting time = 36
+20201019_132207 : waiting file creation, waiting time = 37
+20201019_132208 : waiting file creation, waiting time = 38
+20201019_132209 : waiting file creation, waiting time = 39
+20201019_132210 : waiting file creation, waiting time = 40
+20201019_132211 : waiting file creation, waiting time = 41
+20201019_132212 : waiting file creation, waiting time = 42
+20201019_132213 : waiting file creation, waiting time = 43
+20201019_132214 : waiting file creation, waiting time = 44
+20201019_132215 : waiting file creation, waiting time = 45
+20201019_132216 : waiting file creation, waiting time = 46
+20201019_132217 : waiting file creation, waiting time = 47
+20201019_132218 : waiting file creation, waiting time = 48
+20201019_132219 : waiting file creation, waiting time = 49
+20201019_132220 : waiting file creation, waiting time = 50
+20201019_132221 : waiting file creation, waiting time = 51
+20201019_132222 : waiting file creation, waiting time = 52
+20201019_132223 : waiting file creation, waiting time = 53
+20201019_132224 : waiting file creation, waiting time = 54
+20201019_132225 : waiting file creation, waiting time = 55
+20201019_132226 : waiting file creation, waiting time = 56
+20201019_132227 : waiting file creation, waiting time = 57
+20201019_132228 : waiting file creation, waiting time = 58
+20201019_132229 : waiting file creation, waiting time = 59
+20201019_132230 : waiting file creation, waiting time = 60
+20201019_132231 : waiting file creation, waiting time = 61
+20201019_132232 : waiting file creation, waiting time = 62
+20201019_132233 : waiting file creation, waiting time = 63
+20201019_132234 : waiting file creation, waiting time = 64
+20201019_132235 : waiting file creation, waiting time = 65
+20201019_132236 : waiting file creation, waiting time = 66
+20201019_132237 : waiting file creation, waiting time = 67
+20201019_132238 : waiting file creation, waiting time = 68
+20201019_132239 : waiting file creation, waiting time = 69
+20201019_132240 : waiting file creation, waiting time = 70
+20201019_132241 : waiting file creation, waiting time = 71
+20201019_132242 : waiting file creation, waiting time = 72
+20201019_132243 : waiting file creation, waiting time = 73
+20201019_132244 : waiting file creation, waiting time = 74
+20201019_132554 : download restored_files is called with GET method.
+20201019_132559 : download restored_files is called with POST method.
+20201019_132559 : form was input ID : microjet,  PW : microjet_python, file Delete : False
+20201019_132559 : download restored_files with the name "restored_files20201019132559" was started.
+20201019_132559 : restored files were destroyed
+20201019_132559 : zipfile_creation was failed
+20201019_132617 : download restored_files is called with GET method.
+20201019_132622 : download restored_files is called with POST method.
+20201019_132622 : form was input ID : microjet,  PW : microjoet_python, file Delete : False
+20201019_132642 : download restored_files is called with POST method.
+20201019_132642 : form was input ID : microjet,  PW : microjet_python, file Delete : False
+20201019_132642 : download restored_files with the name "restored_files20201019132642" was started.
+20201019_132642 : restored files were destroyed
+20201019_132642 : waiting file creation, waiting time = 0
+20201019_132643 : waiting file creation, waiting time = 1
+20201019_132644 : waiting file creation, waiting time = 2
+20201019_132645 : waiting file creation, waiting time = 3
+20201019_132646 : waiting file creation, waiting time = 4
+20201019_132647 : waiting file creation, waiting time = 5
+20201019_132648 : waiting file creation, waiting time = 6
+20201019_132649 : waiting file creation, waiting time = 7
+20201019_132650 : waiting file creation, waiting time = 8
+20201019_132651 : waiting file creation, waiting time = 9
+20201019_132652 : waiting file creation, waiting time = 10
+20201019_132653 : waiting file creation, waiting time = 11
+20201019_132654 : waiting file creation, waiting time = 12
+20201019_132655 : waiting file creation, waiting time = 13
+20201019_132656 : waiting file creation, waiting time = 14
+20201019_132657 : waiting file creation, waiting time = 15
+20201019_132658 : waiting file creation, waiting time = 16
+20201019_132659 : waiting file creation, waiting time = 17
+20201019_132700 : waiting file creation, waiting time = 18
+20201019_132701 : waiting file creation, waiting time = 19
+20201019_132702 : waiting file creation, waiting time = 20
+20201019_132703 : waiting file creation, waiting time = 21
+20201019_132704 : waiting file creation, waiting time = 22
+20201019_132705 : waiting file creation, waiting time = 23
+20201019_132706 : waiting file creation, waiting time = 24
+20201019_132707 : waiting file creation, waiting time = 25
+20201019_132708 : waiting file creation, waiting time = 26
+20201019_132709 : waiting file creation, waiting time = 27
+20201019_132710 : waiting file creation, waiting time = 28
+20201019_132711 : waiting file creation, waiting time = 29
+20201019_132712 : zipfile_creation was failed
+20201019_133154 : auto_tracking calculation with GET method was called
+20201019_133154 : E1657_吐出画像20201016140736.zip file is going to be analysed
+20201019_133154 : exec_mode is DEBUG, fire restore is True
+20201019_133154 : extraction uploaded zip file at uploads/E1657_吐出画像20201016140736.
+20201019_133154 : import results from resultsDB.csv was done
+20201019_133155 : auto_tracking is execute with uploads/E1657_吐出画像20201016140736/E1657_吐出画像20201016140736, the exec_mode DEBUG
+20201019_133155 : export calculation result to resultsDB.csv was succeed.
+20201019_133156 : files were saved at restored_data/E1657_吐出画像20201016140736
+20201019_133156 : files at uploads/E1657_吐出画像20201016140736 and uploads/E1657_吐出画像20201016140736.zip were deleted
+20201019_133357 : download calculation result is called with GET method.
+20201019_133402 : download calculation result is called with POST method.
+20201019_133402 : form was input ID : microjet,  PW : microjet_python
+20201019_133402 : download was started.
+20201019_133411 : download calculation result is called with POST method.
+20201019_133411 : form was input ID : microjet,  PW : microjet_python
+20201019_133411 : download was started.
+20201019_134213 : download calculation result is called with POST method.
+20201019_134213 : form was input ID : microjet,  PW : microjet_python
+20201019_134213 : download was started.
+20201019_134714 : download calculation result is called with GET method.
+20201019_134719 : download calculation result is called with POST method.
+20201019_134719 : form was input ID : microjet,  PW : microjet_python
+20201019_134719 : download was started.
+20201019_134802 : download calculation result is called with POST method.
+20201019_134802 : form was input ID : microjet,  PW : microjet_python
+20201019_134802 : download was started.
+20201019_134811 : download calculation result is called with POST method.
+20201019_134811 : form was input ID : microjet,  PW : microjet_python
+20201019_134811 : download was started.
+20201019_134905 : download restored_files is called with GET method.
+20201019_134911 : download restored_files is called with POST method.
+20201019_135012 : download restored_files is called with POST method.
+20201019_135012 : form was input ID : microjet,  PW : microjet_python, file Delete : False
+20201019_135013 : download restored_files with the name "restored_files20201019135012" was started.
+20201019_135013 : waiting file creation, waiting time = 0
+20201019_135014 : waiting file creation, waiting time = 1
+20201019_135015 : waiting file creation, waiting time = 2
+20201019_135016 : waiting file creation, waiting time = 3
+20201019_135017 : waiting file creation, waiting time = 4
+20201019_135018 : waiting file creation, waiting time = 5
+20201019_135019 : waiting file creation, waiting time = 6
+20201019_135020 : waiting file creation, waiting time = 7
+20201019_135021 : waiting file creation, waiting time = 8
+20201019_135022 : waiting file creation, waiting time = 9
+20201019_135023 : waiting file creation, waiting time = 10
+20201019_135024 : waiting file creation, waiting time = 11
+20201019_135025 : waiting file creation, waiting time = 12
+20201019_135026 : waiting file creation, waiting time = 13
+20201019_135027 : waiting file creation, waiting time = 14
+20201019_135028 : waiting file creation, waiting time = 15
+20201019_135029 : waiting file creation, waiting time = 16
+20201019_135030 : waiting file creation, waiting time = 17
+20201019_135031 : waiting file creation, waiting time = 18
+20201019_135032 : waiting file creation, waiting time = 19
+20201019_135033 : waiting file creation, waiting time = 20
+20201019_135034 : waiting file creation, waiting time = 21
+20201019_135035 : waiting file creation, waiting time = 22
+20201019_135036 : waiting file creation, waiting time = 23
+20201019_135037 : waiting file creation, waiting time = 24
+20201019_135038 : waiting file creation, waiting time = 25
+20201019_135039 : waiting file creation, waiting time = 26
+20201019_135040 : waiting file creation, waiting time = 27
+20201019_135041 : waiting file creation, waiting time = 28
+20201019_135042 : waiting file creation, waiting time = 29
+20201019_135043 : waiting file creation, waiting time = 30
+20201019_135044 : waiting file creation, waiting time = 31
+20201019_135045 : waiting file creation, waiting time = 32
+20201019_135046 : waiting file creation, waiting time = 33
+20201019_135047 : waiting file creation, waiting time = 34
+20201019_135048 : waiting file creation, waiting time = 35
+20201019_135049 : waiting file creation, waiting time = 36
+20201019_135050 : waiting file creation, waiting time = 37
+20201019_135051 : waiting file creation, waiting time = 38
+20201019_135052 : waiting file creation, waiting time = 39
+20201019_135053 : waiting file creation, waiting time = 40
+20201019_135054 : waiting file creation, waiting time = 41
+20201019_135055 : waiting file creation, waiting time = 42
+20201019_135056 : waiting file creation, waiting time = 43
+20201019_135057 : waiting file creation, waiting time = 44
+20201019_135058 : waiting file creation, waiting time = 45
+20201019_135059 : waiting file creation, waiting time = 46
+20201019_135100 : waiting file creation, waiting time = 47
+20201019_135101 : waiting file creation, waiting time = 48
+20201019_135102 : waiting file creation, waiting time = 49
+20201019_135103 : waiting file creation, waiting time = 50
+20201019_135104 : waiting file creation, waiting time = 51
+20201019_135105 : waiting file creation, waiting time = 52
+20201019_135106 : waiting file creation, waiting time = 53
+20201019_135107 : waiting file creation, waiting time = 54
+20201019_135108 : waiting file creation, waiting time = 55
+20201019_135109 : waiting file creation, waiting time = 56
+20201019_135110 : waiting file creation, waiting time = 57
+20201019_135111 : waiting file creation, waiting time = 58
+20201019_135112 : waiting file creation, waiting time = 59
+20201019_135113 : waiting file creation, waiting time = 60
+20201019_135114 : waiting file creation, waiting time = 61
+20201019_135115 : waiting file creation, waiting time = 62
+20201019_135116 : waiting file creation, waiting time = 63
+20201019_135117 : waiting file creation, waiting time = 64
+20201019_135118 : waiting file creation, waiting time = 65
+20201019_135120 : download restored_files is called with POST method.
+20201019_135120 : form was input ID : microjet,  PW : microjet_python, file Delete : False
+20201019_135120 : download restored_files with the name "restored_files20201019135120" was started.
+20201019_135120 : waiting file creation, waiting time = 0
+20201019_135121 : waiting file creation, waiting time = 1
+20201019_135122 : waiting file creation, waiting time = 2
+20201019_135123 : waiting file creation, waiting time = 3
+20201019_135124 : waiting file creation, waiting time = 4
+20201019_135125 : waiting file creation, waiting time = 5
+20201019_135131 : download restored_files is called with GET method.
+20201019_135147 : download restored_files is called with POST method.
+20201019_135147 : form was input ID : microjet,  PW : microjet_python, file Delete : False
+20201019_135147 : download restored_files with the name "restored_files20201019135147" was started.
+20201019_135147 : waiting file creation, waiting time = 0
+20201019_135148 : waiting file creation, waiting time = 1
+20201019_135149 : waiting file creation, waiting time = 2
+20201019_135150 : waiting file creation, waiting time = 3
+20201019_135151 : waiting file creation, waiting time = 4
+20201019_135152 : waiting file creation, waiting time = 5
+20201019_135153 : waiting file creation, waiting time = 6
+20201019_135154 : waiting file creation, waiting time = 7
+20201019_135155 : waiting file creation, waiting time = 8
+20201019_135156 : waiting file creation, waiting time = 9
+20201019_135157 : waiting file creation, waiting time = 10
+20201019_135158 : waiting file creation, waiting time = 11
+20201019_135159 : waiting file creation, waiting time = 12
+20201019_135200 : waiting file creation, waiting time = 13
+20201019_135201 : waiting file creation, waiting time = 14
+20201019_135202 : waiting file creation, waiting time = 15
+20201019_135203 : waiting file creation, waiting time = 16
+20201019_135204 : waiting file creation, waiting time = 17
+20201019_135205 : waiting file creation, waiting time = 18
+20201019_135206 : waiting file creation, waiting time = 19
+20201019_135207 : waiting file creation, waiting time = 20
+20201019_135208 : waiting file creation, waiting time = 21
+20201019_135209 : waiting file creation, waiting time = 22
+20201019_135210 : waiting file creation, waiting time = 23
+20201019_135211 : waiting file creation, waiting time = 24
+20201019_135213 : waiting file creation, waiting time = 25
+20201019_135214 : waiting file creation, waiting time = 26
+20201019_135215 : waiting file creation, waiting time = 27
+20201019_135216 : waiting file creation, waiting time = 28
+20201019_135217 : waiting file creation, waiting time = 29
+20201019_135218 : zip file creation was done.
+20201019_135505 : download restored_files is called with GET method.
+20201019_135511 : download restored_files is called with POST method.
+20201019_135511 : form was input ID : microjet,  PW : microjet_python, file Delete : False
+20201019_135511 : download restored_files with the name "restored_files20201019135511" was started.
+20201019_135511 : waiting file creation, waiting time = 0
+20201019_135512 : waiting file creation, waiting time = 1
+20201019_135513 : waiting file creation, waiting time = 2
+20201019_135514 : waiting file creation, waiting time = 3
+20201019_135515 : waiting file creation, waiting time = 4
+20201019_135516 : waiting file creation, waiting time = 5
+20201019_135517 : waiting file creation, waiting time = 6
+20201019_135518 : waiting file creation, waiting time = 7
+20201019_135519 : waiting file creation, waiting time = 8
+20201019_135520 : waiting file creation, waiting time = 9
+20201019_135521 : waiting file creation, waiting time = 10
+20201019_135522 : waiting file creation, waiting time = 11
+20201019_135523 : waiting file creation, waiting time = 12
+20201019_135524 : waiting file creation, waiting time = 13
+20201019_135525 : waiting file creation, waiting time = 14
+20201019_135527 : waiting file creation, waiting time = 15
+20201019_135528 : waiting file creation, waiting time = 16
+20201019_135529 : waiting file creation, waiting time = 17
+20201019_135530 : waiting file creation, waiting time = 18
+20201019_135531 : waiting file creation, waiting time = 19
+20201019_135532 : waiting file creation, waiting time = 20
+20201019_135533 : waiting file creation, waiting time = 21
+20201019_135534 : waiting file creation, waiting time = 22
+20201019_135535 : waiting file creation, waiting time = 23
+20201019_135536 : waiting file creation, waiting time = 24
+20201019_135537 : waiting file creation, waiting time = 25
+20201019_135538 : waiting file creation, waiting time = 26
+20201019_135539 : waiting file creation, waiting time = 27
+20201019_135540 : waiting file creation, waiting time = 28
+20201019_135541 : waiting file creation, waiting time = 29
+20201019_135542 : zip file creation was done.
+20201019_135713 : download restored_files is called with GET method.
+20201019_135719 : download restored_files is called with POST method.
+20201019_135719 : form was input ID : microjet,  PW : microjet_python, file Delete : False
+20201019_135719 : download restored_files with the name "restored_files20201019135719" was started.
+20201019_135719 : waiting file creation, waiting time = 0
+20201019_135720 : waiting file creation, waiting time = 1
+20201019_135721 : waiting file creation, waiting time = 2
+20201019_135722 : waiting file creation, waiting time = 3
+20201019_135723 : waiting file creation, waiting time = 4
+20201019_135724 : waiting file creation, waiting time = 5
+20201019_135725 : waiting file creation, waiting time = 6
+20201019_135726 : waiting file creation, waiting time = 7
+20201019_135727 : waiting file creation, waiting time = 8
+20201019_135728 : waiting file creation, waiting time = 9
+20201019_135729 : waiting file creation, waiting time = 10
+20201019_135730 : waiting file creation, waiting time = 11
+20201019_135731 : waiting file creation, waiting time = 12
+20201019_135732 : waiting file creation, waiting time = 13
+20201019_135733 : waiting file creation, waiting time = 14
+20201019_135734 : waiting file creation, waiting time = 15
+20201019_135735 : waiting file creation, waiting time = 16
+20201019_135736 : waiting file creation, waiting time = 17
+20201019_135737 : waiting file creation, waiting time = 18
+20201019_135738 : waiting file creation, waiting time = 19
+20201019_135739 : waiting file creation, waiting time = 20
+20201019_135740 : waiting file creation, waiting time = 21
+20201019_135741 : waiting file creation, waiting time = 22
+20201019_135742 : waiting file creation, waiting time = 23
+20201019_135743 : waiting file creation, waiting time = 24
+20201019_135744 : waiting file creation, waiting time = 25
+20201019_135745 : waiting file creation, waiting time = 26
+20201019_135746 : waiting file creation, waiting time = 27
+20201019_135747 : waiting file creation, waiting time = 28
+20201019_135748 : waiting file creation, waiting time = 29
+20201019_135749 : zip file creation was done.
+20201019_135913 : download restored_files is called with POST method.
+20201019_135913 : form was input ID : microjet,  PW : microjet_python, file Delete : False
+20201019_135937 : download restored_files is called with GET method.
+20201019_135942 : download restored_files is called with POST method.
+20201019_135942 : form was input ID : microjet,  PW : microjet_python, file Delete : False
+20201019_135942 : download restored_files with the name "restored_files20201019135942.zip" was started.
+20201019_135942 : zip file creation was done.
+20201019_140123 : download restored_files is called with POST method.
+20201019_140123 : form was input ID : microjet,  PW : microjet_python, file Delete : False
+20201019_140124 : download restored_files with the name "restored_files20201019140123.zip" was started.
+20201019_140124 : zip file creation was done.
+20201019_140143 : download restored_files is called with POST method.
+20201019_140143 : form was input ID : microjet,  PW : microjet_python, file Delete : True
+20201019_140143 : download restored_files with the name "restored_files20201019140143.zip" was started.
+20201019_140143 : zip file creation was done.
+20201019_140144 : restored files were destroyed
+20201019_140416 : download restored_files is called with GET method.
+20201019_140424 : download restored_files is called with POST method.
+20201019_140424 : form was input ID : microjet,  PW : micorjet_python, file Delete : False
+20201019_140430 : download restored_files is called with POST method.
+20201019_140430 : form was input ID : microjet,  PW : microjet_python, file Delete : False
+20201019_140537 : auto_tracking calculation with GET method was called
+20201019_140537 : file upload was FAILED
+20201019_140552 : auto_tracking calculation with GET method was called
+20201019_140552 : E1657_吐出画像20201014105124.zip file is going to be analysed
+20201019_140552 : exec_mode is NOT_DEBUG_MODE, fire restore is False
+20201019_140552 : extraction uploaded zip file at uploads/E1657_吐出画像20201014105124.
+20201019_140552 : import results from resultsDB.csv was done
+20201019_140553 : auto_tracking is execute with uploads/E1657_吐出画像20201014105124/E1657_吐出画像20201014105124, the exec_mode NOT_DEBUG_MODE
+20201019_140553 : export calculation result to resultsDB.csv was succeed.
+20201019_140553 : files at uploads/E1657_吐出画像20201014105124 and uploads/E1657_吐出画像20201014105124.zip were deleted
+20201019_140635 : auto_tracking calculation with GET method was called
+20201019_140635 : E1657_吐出画像20201016134747.zip file is going to be analysed
+20201019_140635 : exec_mode is DEBUG, fire restore is True
+20201019_140635 : extraction uploaded zip file at uploads/E1657_吐出画像20201016134747.
+20201019_140635 : import results from resultsDB.csv was done
+20201019_140636 : auto_tracking is execute with uploads/E1657_吐出画像20201016134747/E1657_吐出画像20201016134747, the exec_mode DEBUG
+20201019_140636 : export calculation result to resultsDB.csv was succeed.
+20201019_140637 : files were saved at restored_data/E1657_吐出画像20201016134747
+20201019_140637 : files at uploads/E1657_吐出画像20201016134747 and uploads/E1657_吐出画像20201016134747.zip were deleted
+20201019_141708 : auto_tracking without zip file method is called with GET method.
+20201019_141708 : test_dirs are exist as ['test1', 'test2', 'test3', 'test4']
+20201019_141708 : import results from resultsDB.csv was done
+20201019_141709 : calculation was done.
+20201019_141709 : export calculation result to resultsDB.csv was succeed.
+20201019_141802 : auto_tracking calculation with GET method was called
+20201019_141802 : E1657_吐出画像20201016160740.zip file is going to be analysed
+20201019_141802 : exec_mode is DEBUG, fire restore is True
+20201019_141802 : extraction uploaded zip file at uploads/E1657_吐出画像20201016160740.
+20201019_141802 : import results from resultsDB.csv was done
+20201019_141803 : auto_tracking is execute with uploads/E1657_吐出画像20201016160740/E1657_吐出画像20201016160740, the exec_mode DEBUG
+20201019_141803 : export calculation result to resultsDB.csv was succeed.
+20201019_141804 : files were saved at restored_data/E1657_吐出画像20201016160740
+20201019_141804 : files at uploads/E1657_吐出画像20201016160740 and uploads/E1657_吐出画像20201016160740.zip were deleted
+20201019_161014 : auto_tracking calculation with GET method was called
+20201019_161014 : E0893_吐出画像20201019143627_side.zip file is going to be analysed
+20201019_161014 : exec_mode is DEBUG, fire restore is True
+20201019_161014 : extraction uploaded zip file at uploads/E0893_吐出画像20201019143627_side.
+20201019_161014 : import results from resultsDB.csv was done
+20201019_161014 : auto_tracking is execute with uploads/E0893_吐出画像20201019143627_side/E0893_吐出画像20201019143627_side, the exec_mode DEBUG
+20201019_161014 : export calculation result to resultsDB.csv was succeed.
+20201019_161014 : files were saved at restored_data/E0893_吐出画像20201019143627_side
+20201019_161014 : files at uploads/E0893_吐出画像20201019143627_side and uploads/E0893_吐出画像20201019143627_side.zip were deleted
+20201019_162612 : auto_tracking calculation with GET method was called
+20201019_162612 : E0893_吐出画像20201019143627_side.zip file is going to be analysed
+20201019_162612 : exec_mode is DEBUG, fire restore is True
+20201019_162612 : extraction uploaded zip file at uploads/E0893_吐出画像20201019143627_side.
+20201019_162612 : import results from resultsDB.csv was done
+20201019_162612 : auto_tracking is execute with uploads/E0893_吐出画像20201019143627_side/E0893_吐出画像20201019143627_side, the exec_mode DEBUG
+20201019_162612 : export calculation result to resultsDB.csv was succeed.
+20201019_162613 : files were saved at restored_data/E0893_吐出画像20201019143627_side_2
+20201019_162613 : files at uploads/E0893_吐出画像20201019143627_side and uploads/E0893_吐出画像20201019143627_side.zip were deleted
+20201019_162818 : auto_tracking calculation with GET method was called
+20201019_162818 : E1657_吐出画像20201016140736.zip file is going to be analysed
+20201019_162818 : exec_mode is DEBUG, fire restore is True
+20201019_162818 : extraction uploaded zip file at uploads/E1657_吐出画像20201016140736.
+20201019_162818 : import results from resultsDB.csv was done
+20201019_162818 : auto_tracking is execute with uploads/E1657_吐出画像20201016140736/E1657_吐出画像20201016140736, the exec_mode DEBUG
+20201019_162818 : export calculation result to resultsDB.csv was succeed.
+20201019_162818 : files were saved at restored_data/E1657_吐出画像20201016140736
+20201019_162818 : files at uploads/E1657_吐出画像20201016140736 and uploads/E1657_吐出画像20201016140736.zip were deleted
+20201019_163037 : auto_tracking without zip file method is called with GET method.
+20201019_163037 : test_dirs are exist as ['test1', 'test2', 'test3', 'test4']
+20201019_163037 : import results from resultsDB.csv was done
+20201019_163037 : calculation was done.
+20201019_163037 : export calculation result to resultsDB.csv was succeed.
+20201019_163304 : auto_tracking without zip file method is called with GET method.
+20201019_163304 : test_dirs are exist as ['test1', 'test2', 'test3', 'test4']
+20201019_163304 : import results from resultsDB.csv was done
+20201019_163304 : calculation was done.
+20201019_163304 : export calculation result to resultsDB.csv was succeed.
+20201019_163347 : auto_tracking without zip file method is called with GET method.
+20201019_163347 : test_dirs are exist as ['test1', 'test2', 'test3', 'test4']
+20201019_163347 : import results from resultsDB.csv was done
+20201019_163347 : calculation was done.
+20201019_163347 : export calculation result to resultsDB.csv was succeed.
+20201019_163447 : auto_tracking without zip file method is called with GET method.
+20201019_163447 : test_dirs are exist as ['test1', 'test2', 'test3', 'test4']
+20201019_163447 : import results from resultsDB.csv was done
+20201019_163447 : calculation was done.
+20201019_163447 : export calculation result to resultsDB.csv was succeed.
+20201019_163547 : auto_tracking calculation with GET method was called
+20201019_163547 : E1657_吐出画像20201016160740.zip file is going to be analysed
+20201019_163547 : exec_mode is DEBUG, fire restore is True
+20201019_163547 : extraction uploaded zip file at uploads/E1657_吐出画像20201016160740.
+20201019_163547 : import results from resultsDB.csv was done
+20201019_163547 : auto_tracking is execute with uploads/E1657_吐出画像20201016160740/E1657_吐出画像20201016160740, the exec_mode DEBUG
+20201019_163547 : export calculation result to resultsDB.csv was succeed.
+20201019_163548 : files were saved at restored_data/E1657_吐出画像20201016160740_2
+20201019_163548 : files at uploads/E1657_吐出画像20201016160740 and uploads/E1657_吐出画像20201016160740.zip were deleted
+20201019_165551 : auto_tracking calculation with GET method was called
+20201019_165551 : E1657_吐出画像20201016160740.zip file is going to be analysed
+20201019_165551 : exec_mode is DEBUG, fire restore is True
+20201019_165551 : extraction uploaded zip file at uploads/E1657_吐出画像20201016160740.
+20201019_165551 : import results from resultsDB.csv was done
+20201019_165551 : auto_tracking is execute with uploads/E1657_吐出画像20201016160740/E1657_吐出画像20201016160740, the exec_mode DEBUG
+20201019_165551 : export calculation result to resultsDB.csv was succeed.
+20201019_165551 : files were saved at restored_data/E1657_吐出画像20201016160740_2_3
+20201019_165551 : files at uploads/E1657_吐出画像20201016160740 and uploads/E1657_吐出画像20201016160740.zip were deleted
+20201019_165836 : auto_tracking calculation with GET method was called
+20201019_165836 : file upload was FAILED
+20201019_165933 : auto_tracking calculation with GET method was called
+20201019_165933 : E1657_吐出画像20201016140736.zip file is going to be analysed
+20201019_165933 : exec_mode is DEBUG, fire restore is True
+20201019_165933 : extraction uploaded zip file at uploads/E1657_吐出画像20201016140736.
+20201019_165933 : import results from resultsDB.csv was done
+20201019_165933 : auto_tracking is execute with uploads/E1657_吐出画像20201016140736/E1657_吐出画像20201016140736, the exec_mode DEBUG
+20201019_165933 : export calculation result to resultsDB.csv was succeed.
+20201019_165933 : files were saved at restored_data/E1657_吐出画像20201016140736_2
+20201019_165933 : files at uploads/E1657_吐出画像20201016140736 and uploads/E1657_吐出画像20201016140736.zip were deleted
+20201019_170138 : auto_tracking calculation with GET method was called
+20201019_170138 : E1657_吐出画像20201016140736.zip file is going to be analysed
+20201019_170138 : exec_mode is DEBUG, fire restore is True
+20201019_170138 : extraction uploaded zip file at uploads/E1657_吐出画像20201016140736.
+20201019_170138 : import results from resultsDB.csv was done
+20201019_170138 : auto_tracking is execute with uploads/E1657_吐出画像20201016140736/E1657_吐出画像20201016140736, the exec_mode DEBUG
+20201019_170138 : export calculation result to resultsDB.csv was succeed.
+20201019_170138 : files were saved at restored_data/E1657_吐出画像20201016140736_2_3
+20201019_170138 : files at uploads/E1657_吐出画像20201016140736 and uploads/E1657_吐出画像20201016140736.zip were deleted
+20201019_170514 : auto_tracking calculation with GET method was called
+20201019_170514 : file upload was FAILED
+20201019_170600 : auto_tracking calculation with GET method was called
+20201019_170600 : file upload was FAILED
+20201019_170607 : auto_tracking calculation with GET method was called
+20201019_170607 : T1356_吐出画像20200625135440.zip file is going to be analysed
+20201019_170607 : exec_mode is DEBUG, fire restore is True
+20201019_170607 : extraction uploaded zip file at uploads/T1356_吐出画像20200625135440.
+20201019_170607 : import results from resultsDB.csv was done
+20201019_170607 : auto_tracking is execute with uploads/T1356_吐出画像20200625135440/T1356_吐出画像20200625135440, the exec_mode DEBUG
+20201019_170607 : export calculation result to resultsDB.csv was succeed.
+20201019_170607 : files were saved at restored_data/T1356_吐出画像20200625135440
+20201019_170607 : files at uploads/T1356_吐出画像20200625135440 and uploads/T1356_吐出画像20200625135440.zip were deleted
+20201019_170735 : auto_tracking calculation with GET method was called
+20201019_170735 : E1657_吐出画像20201014105124.zip file is going to be analysed
+20201019_170735 : exec_mode is DEBUG, fire restore is True
+20201019_170735 : extraction uploaded zip file at uploads/E1657_吐出画像20201014105124.
+20201019_170735 : import results from resultsDB.csv was done
+20201019_170735 : auto_tracking is execute with uploads/E1657_吐出画像20201014105124/E1657_吐出画像20201014105124, the exec_mode DEBUG
+20201019_170735 : export calculation result to resultsDB.csv was succeed.
+20201019_170735 : files were saved at restored_data/E1657_吐出画像20201014105124
+20201019_170735 : files at uploads/E1657_吐出画像20201014105124 and uploads/E1657_吐出画像20201014105124.zip were deleted
+20201019_172004 : auto_tracking calculation with GET method was called
+20201019_172004 : E1657_吐出画像20201016160740.zip file is going to be analysed
+20201019_172004 : exec_mode is DEBUG, fire restore is True
+20201019_172004 : extraction uploaded zip file at uploads/E1657_吐出画像20201016160740.
+20201019_172004 : import results from resultsDB.csv was done
+20201019_172004 : auto_tracking is execute with uploads/E1657_吐出画像20201016160740/E1657_吐出画像20201016160740, the exec_mode DEBUG
+20201019_172004 : export calculation result to resultsDB.csv was succeed.
+20201019_172004 : files were saved at restored_data/E1657_吐出画像20201016160740_2_3_4
+20201019_172004 : files at uploads/E1657_吐出画像20201016160740 and uploads/E1657_吐出画像20201016160740.zip were deleted
+20201019_172533 : auto_tracking calculation with GET method was called
+20201019_172533 : file upload was FAILED
+20201019_172547 : auto_tracking calculation with GET method was called
+20201019_172547 : file upload was FAILED
+20201019_172612 : auto_tracking calculation with GET method was called
+20201019_172612 : E1657_吐出画像20201016140736.zip file is going to be analysed
+20201019_172612 : exec_mode is DEBUG, fire restore is True
+20201019_172612 : extraction uploaded zip file at uploads/E1657_吐出画像20201016140736.
+20201019_172612 : import results from resultsDB.csv was done
+20201019_172612 : auto_tracking is execute with uploads/E1657_吐出画像20201016140736/E1657_吐出画像20201016140736, the exec_mode DEBUG
+20201019_172612 : export calculation result to resultsDB.csv was succeed.
+20201019_172612 : files were saved at restored_data/E1657_吐出画像20201016140736
+20201019_172612 : files at uploads/E1657_吐出画像20201016140736 and uploads/E1657_吐出画像20201016140736.zip were deleted
+20201019_172904 : auto_tracking calculation with GET method was called
+20201019_172904 : E1657_吐出画像20201016134747.zip file is going to be analysed
+20201019_172904 : exec_mode is DEBUG, fire restore is True
+20201019_172904 : extraction uploaded zip file at uploads/E1657_吐出画像20201016134747.
+20201019_172904 : import results from resultsDB.csv was done
+20201019_172904 : auto_tracking is execute with uploads/E1657_吐出画像20201016134747/E1657_吐出画像20201016134747, the exec_mode DEBUG
+20201019_172904 : export calculation result to resultsDB.csv was succeed.
+20201019_172904 : files were saved at restored_data/E1657_吐出画像20201016134747
+20201019_172904 : files at uploads/E1657_吐出画像20201016134747 and uploads/E1657_吐出画像20201016134747.zip were deleted
+20201019_173432 : auto_tracking calculation with GET method was called
+20201019_173432 : E1657_吐出画像20201016160740.zip file is going to be analysed
+20201019_173432 : exec_mode is DEBUG, fire restore is True
+20201019_173432 : extraction uploaded zip file at uploads/E1657_吐出画像20201016160740.
+20201019_173432 : import results from resultsDB.csv was done
+20201019_173432 : auto_tracking is execute with uploads/E1657_吐出画像20201016160740/E1657_吐出画像20201016160740, the exec_mode DEBUG
+20201019_173432 : export calculation result to resultsDB.csv was succeed.
+20201019_173433 : files were saved at restored_data/E1657_吐出画像20201016160740
+20201019_173433 : files at uploads/E1657_吐出画像20201016160740 and uploads/E1657_吐出画像20201016160740.zip were deleted
+20201019_173610 : auto_tracking calculation with GET method was called
+20201019_173610 : E1657_吐出画像20201016160740.zip file is going to be analysed
+20201019_173610 : exec_mode is DEBUG, fire restore is True
+20201019_173610 : extraction uploaded zip file at uploads/E1657_吐出画像20201016160740.
+20201019_173610 : import results from resultsDB.csv was done
+20201019_173610 : auto_tracking is execute with uploads/E1657_吐出画像20201016160740/E1657_吐出画像20201016160740, the exec_mode DEBUG
+20201019_173610 : export calculation result to resultsDB.csv was succeed.
+20201019_173610 : files were saved at restored_data/E1657_吐出画像20201016160740_2
+20201019_173610 : files at uploads/E1657_吐出画像20201016160740 and uploads/E1657_吐出画像20201016160740.zip were deleted
+20201019_173720 : auto_tracking calculation with GET method was called
+20201019_173720 : E1657_吐出画像20201016160740.zip file is going to be analysed
+20201019_173720 : exec_mode is DEBUG, fire restore is True
+20201019_173720 : extraction uploaded zip file at uploads/E1657_吐出画像20201016160740.
+20201019_173720 : import results from resultsDB.csv was done
+20201019_173720 : auto_tracking is execute with uploads/E1657_吐出画像20201016160740/E1657_吐出画像20201016160740, the exec_mode DEBUG
+20201019_173720 : export calculation result to resultsDB.csv was succeed.
+20201019_173720 : files were saved at restored_data/E1657_吐出画像20201016160740_2_3
+20201019_173720 : files at uploads/E1657_吐出画像20201016160740 and uploads/E1657_吐出画像20201016160740.zip were deleted
+20201019_174718 : auto_tracking calculation with GET method was called
+20201019_174718 : E1657_吐出画像20201016160740.zip file is going to be analysed
+20201019_174718 : exec_mode is DEBUG, fire restore is True
+20201019_174718 : extraction uploaded zip file at uploads/E1657_吐出画像20201016160740.
+20201019_174718 : import results from resultsDB.csv was done
+20201019_174718 : auto_tracking is execute with uploads/E1657_吐出画像20201016160740/E1657_吐出画像20201016160740, the exec_mode DEBUG
+20201019_174718 : export calculation result to resultsDB.csv was succeed.
+20201019_174718 : files were saved at restored_data/E1657_吐出画像20201016160740_2_3_4
+20201019_174718 : files at uploads/E1657_吐出画像20201016160740 and uploads/E1657_吐出画像20201016160740.zip were deleted
+20201019_174912 : auto_tracking calculation with GET method was called
+20201019_174912 : E1657_吐出画像20201016160740.zip file is going to be analysed
+20201019_174912 : exec_mode is DEBUG, fire restore is True
+20201019_174912 : extraction uploaded zip file at uploads/E1657_吐出画像20201016160740.
+20201019_174912 : import results from resultsDB.csv was done
+20201019_174913 : auto_tracking is execute with uploads/E1657_吐出画像20201016160740/E1657_吐出画像20201016160740, the exec_mode DEBUG
+20201019_174913 : export calculation result to resultsDB.csv was succeed.
+20201019_174914 : files were saved at restored_data/E1657_吐出画像20201016160740_2_3_4_5
+20201019_174914 : files at uploads/E1657_吐出画像20201016160740 and uploads/E1657_吐出画像20201016160740.zip were deleted
+20201019_180255 : auto_tracking calculation with GET method was called
+20201019_180255 : E1657_吐出画像20201016134747.zip file is going to be analysed
+20201019_180255 : exec_mode is DEBUG, fire restore is True
+20201019_180255 : extraction uploaded zip file at uploads/E1657_吐出画像20201016134747.
+20201019_180255 : import results from resultsDB.csv was done
+20201019_180256 : auto_tracking is execute with uploads/E1657_吐出画像20201016134747/E1657_吐出画像20201016134747, the exec_mode DEBUG
+20201019_180256 : export calculation result to resultsDB.csv was succeed.
+20201019_180256 : files were saved at restored_data/E1657_吐出画像20201016134747
+20201019_180256 : files at uploads/E1657_吐出画像20201016134747 and uploads/E1657_吐出画像20201016134747.zip were deleted
+20201019_180539 : auto_tracking calculation with GET method was called
+20201019_180539 : E1657_吐出画像20201016160740.zip file is going to be analysed
+20201019_180540 : exec_mode is DEBUG, fire restore is True
+20201019_180540 : extraction uploaded zip file at uploads/E1657_吐出画像20201016160740.
+20201019_180540 : import results from resultsDB.csv was done
+20201019_180542 : auto_tracking is execute with uploads/E1657_吐出画像20201016160740/E1657_吐出画像20201016160740, the exec_mode DEBUG
+20201019_180542 : export calculation result to resultsDB.csv was succeed.
+20201019_180542 : files were saved at restored_data/E1657_吐出画像20201016160740
+20201019_180542 : files at uploads/E1657_吐出画像20201016160740 and uploads/E1657_吐出画像20201016160740.zip were deleted
+20201019_181702 : auto_tracking calculation with GET method was called
+20201019_181702 : file upload was FAILED
+20201019_181719 : auto_tracking calculation with GET method was called
+20201019_181719 : E1657_吐出画像20201016160740.zip file is going to be analysed
+20201019_181719 : exec_mode is DEBUG, fire restore is True
+20201019_181719 : extraction uploaded zip file at uploads/E1657_吐出画像20201016160740.
+20201019_181719 : import results from resultsDB.csv was done
+20201019_181721 : auto_tracking is execute with uploads/E1657_吐出画像20201016160740/E1657_吐出画像20201016160740, the exec_mode DEBUG
+20201019_181721 : export calculation result to resultsDB.csv was succeed.
+20201019_181721 : files were saved at restored_data/E1657_吐出画像20201016160740_2
+20201019_181721 : files at uploads/E1657_吐出画像20201016160740 and uploads/E1657_吐出画像20201016160740.zip were deleted
+20201019_183418 : download server_log file is called with GET method.
+20201019_183424 : download server_log file is called with POST method.
+20201019_183424 : form was input ID : microjet,  PW : microjet_python
+20201019_183424 : download was started.
+20201019_183442 : download calculation_log file is called with GET method.
+20201019_183447 : download calculation_log file is called with POST method.
+20201019_183447 : form was input ID : microjet,  PW : microjet_python
+20201019_183447 : download was started.
+20201019_183503 : download result_csv file is called with GET method.
+20201019_183508 : download result_csv file is called with POST method.
+20201019_183508 : form was input ID : microjet,  PW : microjet_python
+20201019_183508 : download was started.
+20201019_183533 : download restored_files is called with GET method.
+20201019_183541 : download restored_files is called with POST method.
+20201019_183541 : form was input ID : microjet,  PW : microjet_python, file Delete : True
+20201019_183542 : download restored_files with the name "restored_files20201019183541.zip" was started.
+20201019_183542 : zip file creation was done.
+20201019_183542 : restored files were destroyed
+20201019_183545 : download restored_files is called with POST method.
+20201019_183545 : form was input ID : microjet,  PW : microjet_python, file Delete : True
+20201019_183639 : auto_tracking without zip file method is called with GET method.
+20201019_183639 : test_dirs are exist as ['test1', 'test2', 'test3', 'test4']
+20201019_183639 : import results from resultsDB.csv was done
+20201019_183640 : calculation was done.
+20201019_183640 : export calculation result to resultsDB.csv was succeed.
+20201019_184218 : auto_tracking calculation with POST method was called
+20201019_184218 : ImmutableMultiDict([('uploadFile', <FileStorage: 'SMZ_test.zip' ('application/x-zip-compressed')>)]) file is posted
+20201019_184218 : exec_mode is DEBUG, fire restore is True
+20201019_184218 : extraction uploaded zip file at uploads/SMZ_test.
+20201019_184219 : import results from resultsDB.csv was done
+20201019_184221 : auto_tracking is execute with uploads/SMZ_test/SMZ_test, the exec_mode DEBUG
+20201019_184221 : export calculation result to resultsDB.csv was succeed.
+20201019_184221 : files were saved at restored_data/SMZ_test
+20201019_184221 : files at uploads/SMZ_test and uploads/SMZ_test.zip were deleted
+20201019_184504 : auto_tracking calculation with POST method was called
+20201019_184504 : ImmutableMultiDict([('uploadFile', <FileStorage: 'alternalia.zip' ('application/x-zip-compressed')>)]) file is posted
+20201019_184504 : exec_mode is DEBUG, fire restore is True
+20201019_184504 : extraction uploaded zip file at uploads/alternalia.
+20201019_184504 : import results from resultsDB.csv was done
+20201019_184506 : auto_tracking is execute with uploads/alternalia/alternalia, the exec_mode DEBUG
+20201019_184506 : export calculation result to resultsDB.csv was succeed.
+20201019_184507 : files were saved at restored_data/alternalia
+20201019_184507 : files at uploads/alternalia and uploads/alternalia.zip were deleted
+20201019_184753 : auto_tracking calculation with POST method was called
+20201019_184753 : ImmutableMultiDict([('uploadFile', <FileStorage: 'E0893_吐出画像20201019143627_side.zip' ('application/x-zip-compressed')>)]) file is posted
+20201019_184753 : exec_mode is DEBUG, fire restore is True
+20201019_184753 : extraction uploaded zip file at uploads/E0893_吐出画像20201019143627_side.
+20201019_184753 : import results from resultsDB.csv was done
+20201019_184753 : auto_tracking is execute with uploads/E0893_吐出画像20201019143627_side/E0893_吐出画像20201019143627_side, the exec_mode DEBUG
+20201019_184753 : export calculation result to resultsDB.csv was succeed.
+20201019_184754 : files were saved at restored_data/E0893_吐出画像20201019143627_side
+20201019_184754 : files at uploads/E0893_吐出画像20201019143627_side and uploads/E0893_吐出画像20201019143627_side.zip were deleted
+20201019_185832 : auto_tracking calculation with GET method was called
+20201019_185832 : E0893_吐出画像20201019143627_side.zip file is going to be analysed
+20201019_185832 : exec_mode is DEBUG, fire restore is True
+20201019_185832 : extraction uploaded zip file at uploads/E0893_吐出画像20201019143627_side.
+20201019_185832 : import results from resultsDB.csv was done
+20201019_185832 : auto_tracking is execute with uploads/E0893_吐出画像20201019143627_side/E0893_吐出画像20201019143627_side, the exec_mode DEBUG
+20201019_185832 : export calculation result to resultsDB.csv was succeed.
+20201019_185832 : files were saved at restored_data/E0893_吐出画像20201019143627_side_2
+20201019_185832 : files at uploads/E0893_吐出画像20201019143627_side and uploads/E0893_吐出画像20201019143627_side.zip were deleted
+20201019_185904 : auto_tracking calculation with GET method was called
+20201019_185904 : E1657_吐出画像20201016140736.zip file is going to be analysed
+20201019_185904 : exec_mode is DEBUG, fire restore is True
+20201019_185904 : extraction uploaded zip file at uploads/E1657_吐出画像20201016140736.
+20201019_185904 : import results from resultsDB.csv was done
+20201019_185906 : auto_tracking is execute with uploads/E1657_吐出画像20201016140736/E1657_吐出画像20201016140736, the exec_mode DEBUG
+20201019_185906 : export calculation result to resultsDB.csv was succeed.
+20201019_185906 : files were saved at restored_data/E1657_吐出画像20201016140736
+20201019_185906 : files at uploads/E1657_吐出画像20201016140736 and uploads/E1657_吐出画像20201016140736.zip were deleted
+20201019_190306 : auto_tracking calculation with GET method was called
+20201019_190306 : E0893_吐出画像20201019143627.zip file is going to be analysed
+20201019_190306 : exec_mode is DEBUG, fire restore is True
+20201019_190306 : extraction uploaded zip file at uploads/E0893_吐出画像20201019143627.
+20201019_190306 : import results from resultsDB.csv was done
+20201019_190308 : auto_tracking is execute with uploads/E0893_吐出画像20201019143627/E0893_吐出画像20201019143627, the exec_mode DEBUG
+20201019_190308 : export calculation result to resultsDB.csv was succeed.
+20201019_190309 : files were saved at restored_data/E0893_吐出画像20201019143627
+20201019_190309 : files at uploads/E0893_吐出画像20201019143627 and uploads/E0893_吐出画像20201019143627.zip were deleted
+20201020_090702 : auto_tracking without zip file method is called with GET method.
+20201020_090702 : test_dirs are exist as ['test1', 'test2', 'test3', 'test4']
+20201020_090702 : import results from resultsDB.csv was done
+20201020_090702 : calculation was done.
+20201020_090702 : export calculation result to resultsDB.csv was succeed.
+20201020_090719 : auto_tracking calculation with POST method was called
+20201020_090719 : ImmutableMultiDict([('uploadFile', <FileStorage: 'E1657_吐出画像20201014105124.zip' ('application/x-zip-compressed')>)]) file is posted
+20201020_090719 : exec_mode is DEBUG, fire restore is True
+20201020_090719 : extraction uploaded zip file at uploads/E1657_吐出画像20201014105124.
+20201020_090719 : import results from resultsDB.csv was done
+20201020_090721 : auto_tracking is execute with uploads/E1657_吐出画像20201014105124/E1657_吐出画像20201014105124, the exec_mode DEBUG
+20201020_090721 : export calculation result to resultsDB.csv was succeed.
+20201020_090721 : files were saved at restored_data/E1657_吐出画像20201014105124
+20201020_090721 : files at uploads/E1657_吐出画像20201014105124 and uploads/E1657_吐出画像20201014105124.zip were deleted
+20201020_091450 : auto_tracking calculation with POST method was called
+20201020_091450 : ImmutableMultiDict([('uploadFile', <FileStorage: 'E1657_吐出画像20201016140736.zip' ('application/x-zip-compressed')>)]) file is posted
+20201020_091450 : exec_mode is DEBUG, fire restore is True
+20201020_091450 : extraction uploaded zip file at uploads/E1657_吐出画像20201016140736.
+20201020_091450 : import results from resultsDB.csv was done
+20201020_091451 : auto_tracking is execute with uploads/E1657_吐出画像20201016140736/E1657_吐出画像20201016140736, the exec_mode DEBUG
+20201020_091451 : export calculation result to resultsDB.csv was succeed.
+20201020_091452 : files were saved at restored_data/E1657_吐出画像20201016140736_2
+20201020_091452 : files at uploads/E1657_吐出画像20201016140736 and uploads/E1657_吐出画像20201016140736.zip were deleted
+20201020_091540 : download server_log file is called with GET method.
+20201020_091548 : download server_log file is called with POST method.
+20201020_091548 : form was input ID : microjet,  PW : microjet_python
+20201020_091548 : download was started.
+20201020_091613 : download result_csv file is called with GET method.
+20201020_091618 : download result_csv file is called with POST method.
+20201020_091618 : form was input ID : microjet,  PW : microjet_python
+20201020_091618 : download was started.
+20201020_094300 : auto_tracking calculation with POST method was called
+20201020_094300 : ImmutableMultiDict([('uploadFile', <FileStorage: 'E0893_吐出画像20201019143627_side.zip' ('application/x-zip-compressed')>)]) file is posted
+20201020_094301 : exec_mode is DEBUG, fire restore is True
+20201020_094301 : extraction uploaded zip file at uploads/E0893_吐出画像20201019143627_side.zip
+20201020_094422 : download result_csv file is called with GET method.
+20201020_094426 : auto_tracking calculation with POST method was called
+20201020_094426 : ImmutableMultiDict([('uploadFile', <FileStorage: 'E0893_吐出画像20201019143627_side.zip' ('application/x-zip-compressed')>)]) file is posted
+20201020_094426 : exec_mode is DEBUG, fire restore is True
+20201020_094426 : extraction uploaded zip file at uploads/E0893_吐出画像20201019143627_side
+20201020_094426 : import results from resultsDB.csv was done
+20201020_094427 : auto_tracking is execute with uploads/E0893_吐出画像20201019143627_side/E0893_吐出画像20201019143627, the exec_mode DEBUG
+20201020_094427 : export calculation result to resultsDB.csv was succeed.
+20201020_094428 : files were saved at restored_data/E0893_吐出画像20201019143627_side_3
+20201020_094428 : files at uploads/E0893_吐出画像20201019143627_side and uploads/E0893_吐出画像20201019143627_side.zip were deleted
+20201020_095410 : download restored_files is called with GET method.
+20201020_095423 : download restored_files is called with POST method.
+20201020_095423 : form was input ID : microjet,  PW : icrojet_python, file Delete : True
+20201020_095432 : download restored_files is called with POST method.
+20201020_095432 : form was input ID : microjet,  PW : microjet_python, file Delete : True
+20201020_095436 : download restored_files with the name "restored_files20201020095432.zip" was started.
+20201020_095436 : zip file creation was done.
+20201020_095436 : restored files were destroyed
+20201020_095442 : download restored_files is called with POST method.
+20201020_095442 : form was input ID : microjet,  PW : microjet_python, file Delete : False
