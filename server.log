@@ -912,3 +912,1445 @@
 20201020_095436 : restored files were destroyed
 20201020_095442 : download restored_files is called with POST method.
 20201020_095442 : form was input ID : microjet,  PW : microjet_python, file Delete : False
+20201020_130128 : auto_tracking calculation with POST method was called
+20201020_130128 : ImmutableMultiDict([('uploadFile', <FileStorage: 'alternalia.zip' ('application/x-zip-compressed')>)]) file is posted
+20201020_130128 : exec_mode is DEBUG, fire restore is True
+20201020_130128 : extraction uploaded zip file at uploads/alternalia
+20201020_130129 : import results from resultsDB.csv was done
+20201020_130130 : auto_tracking is execute with uploads/alternalia/alternalia, the exec_mode DEBUG
+20201020_130130 : export calculation result to resultsDB.csv was succeed.
+20201020_130130 : files were saved at restored_data/alternalia
+20201020_130130 : files at uploads/alternalia and uploads/alternalia.zip were deleted
+20201020_130835 : auto_tracking without zip file method is called with GET method.
+20201020_130835 : test_dirs are exist as ['test1', 'test2', 'test3', 'test4']
+20201020_130835 : import results from resultsDB.csv was done
+20201020_130835 : calculation was done.
+20201020_130835 : export calculation result to resultsDB.csv was succeed.
+20201020_130839 : auto_tracking without zip file method is called with GET method.
+20201020_130839 : test_dirs are exist as ['test1', 'test2', 'test3', 'test4']
+20201020_130839 : import results from resultsDB.csv was done
+20201020_130839 : calculation was done.
+20201020_130839 : export calculation result to resultsDB.csv was succeed.
+20201020_130858 : auto_tracking calculation with POST method was called
+20201020_130858 : ImmutableMultiDict([('uploadFile', <FileStorage: 'E0893_吐出画像20201019143627_side.zip' ('application/x-zip-compressed')>)]) file is posted
+20201020_130858 : exec_mode is DEBUG, fire restore is True
+20201020_130858 : extraction uploaded zip file at uploads/E0893_吐出画像20201019143627_side
+20201020_130858 : import results from resultsDB.csv was done
+20201020_130900 : auto_tracking is execute with uploads/E0893_吐出画像20201019143627_side/E0893_吐出画像20201019143627, the exec_mode DEBUG
+20201020_130900 : export calculation result to resultsDB.csv was succeed.
+20201020_130900 : files were saved at restored_data/E0893_吐出画像20201019143627_side
+20201020_130900 : files at uploads/E0893_吐出画像20201019143627_side and uploads/E0893_吐出画像20201019143627_side.zip were deleted
+20201020_131404 : auto_tracking calculation with POST method was called
+20201020_131404 : ImmutableMultiDict([('uploadFile', <FileStorage: '' ('application/octet-stream')>)]) file is posted
+20201020_131818 : auto_tracking calculation with POST method was called
+20201020_131818 : ImmutableMultiDict([('uploadFile', <FileStorage: '' ('application/octet-stream')>)]) file is posted
+20201020_131826 : auto_tracking calculation with POST method was called
+20201020_131826 : ImmutableMultiDict([('uploadFile', <FileStorage: '300px-Phase_change_-_ja.svg.png' ('image/png')>)]) file is posted
+20201020_131826 : extension of uploaded file was not zip.
+20201020_133308 : auto_tracking calculation with POST method was called
+20201020_133308 : ImmutableMultiDict([('uploadFile', <FileStorage: 'E1657_吐出画像20201016140736.zip' ('application/x-zip-compressed')>)]) file is posted
+20201020_133308 : exec_mode is DEBUG, fire restore is True
+20201020_133308 : extraction uploaded zip file at uploads/E1657_吐出画像20201016140736
+20201020_133309 : import results from resultsDB.csv was done
+20201020_133310 : auto_tracking is execute with uploads/E1657_吐出画像20201016140736/E1657_吐出画像20201016140736, the exec_mode DEBUG
+20201020_133310 : export calculation result to resultsDB.csv was succeed.
+20201020_133311 : files were saved at restored_data/E1657_吐出画像20201016140736
+20201020_133311 : files at uploads/E1657_吐出画像20201016140736 and uploads/E1657_吐出画像20201016140736.zip were deleted
+20201020_133449 : auto_tracking calculation with POST method was called
+20201020_133449 : ImmutableMultiDict([('uploadFile', <FileStorage: '' ('application/octet-stream')>)]) file is posted
+20201020_133602 : auto_tracking without zip file method is called with GET method.
+20201020_133602 : test_dirs are exist as ['test1', 'test2', 'test3', 'test4']
+20201020_133602 : import results from resultsDB.csv was done
+20201020_133602 : calculation was done.
+20201020_133602 : export calculation result to resultsDB.csv was succeed.
+20201020_133608 : auto_tracking without zip file method is called with GET method.
+20201020_133608 : test_dirs are exist as ['test1', 'test2', 'test3', 'test4']
+20201020_133608 : import results from resultsDB.csv was done
+20201020_133608 : calculation was done.
+20201020_133608 : export calculation result to resultsDB.csv was succeed.
+20201021_112541 : auto_tracking calculation with POST method was called
+20201021_112541 : ImmutableMultiDict([('uploadFile', <FileStorage: 'SMZ_test.zip' ('application/x-zip-compressed')>)]) file is posted
+20201021_112541 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201021_112541 : extraction uploaded zip file at uploads/SMZ_test
+20201021_112541 : import results from resultsDB.csv was done
+20201021_112543 : auto_tracking is execute with uploads/SMZ_test/SMZ_test, the exec_mode DEBUG
+20201021_112543 : export calculation result to resultsDB.csv was succeed.
+20201021_112543 : files were saved at restored_data/SMZ_test
+20201021_112543 : files at uploads/SMZ_test and uploads/SMZ_test.zip were deleted
+20201021_112952 : auto_tracking calculation with POST method was called
+20201021_112952 : ImmutableMultiDict([('uploadFile', <FileStorage: 'SMZ_test.zip' ('application/x-zip-compressed')>)]) file is posted
+20201021_112952 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201021_112952 : extraction uploaded zip file at uploads/SMZ_test
+20201021_112952 : import results from resultsDB.csv was done
+20201021_112954 : auto_tracking is execute with uploads/SMZ_test/SMZ_test, the exec_mode DEBUG
+20201021_112954 : export calculation result to resultsDB.csv was succeed.
+20201021_112954 : files were saved at restored_data/SMZ_test_2
+20201021_112954 : files at uploads/SMZ_test and uploads/SMZ_test.zip were deleted
+20201021_113549 : auto_tracking calculation with POST method was called
+20201021_113549 : ImmutableMultiDict([('uploadFile', <FileStorage: 'SMZ_test.zip' ('application/x-zip-compressed')>)]) file is posted
+20201021_113549 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201021_113549 : extraction uploaded zip file at uploads/SMZ_test
+20201021_113550 : import results from resultsDB.csv was done
+20201021_113552 : auto_tracking is execute with uploads/SMZ_test/SMZ_test, the exec_mode DEBUG
+20201021_113552 : export calculation result to resultsDB.csv was succeed.
+20201021_113552 : files were saved at restored_data/SMZ_test_3
+20201021_113552 : files at uploads/SMZ_test and uploads/SMZ_test.zip were deleted
+20201021_113635 : auto_tracking calculation with POST method was called
+20201021_113635 : ImmutableMultiDict([('uploadFile', <FileStorage: 'alternalia.zip' ('application/x-zip-compressed')>)]) file is posted
+20201021_113635 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201021_113635 : extraction uploaded zip file at uploads/alternalia
+20201021_113635 : import results from resultsDB.csv was done
+20201021_113637 : auto_tracking is execute with uploads/alternalia/alternalia, the exec_mode DEBUG
+20201021_113637 : export calculation result to resultsDB.csv was succeed.
+20201021_113637 : files were saved at restored_data/alternalia_2
+20201021_113637 : files at uploads/alternalia and uploads/alternalia.zip were deleted
+20201021_114824 : auto_tracking calculation with POST method was called
+20201021_114824 : ImmutableMultiDict([('uploadFile', <FileStorage: 'KC_test.zip' ('application/x-zip-compressed')>)]) file is posted
+20201021_114824 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201021_114824 : extraction uploaded zip file at uploads/KC_test
+20201021_114824 : import results from resultsDB.csv was done
+20201021_114826 : auto_tracking is execute with uploads/KC_test/KC_test, the exec_mode DEBUG
+20201021_114826 : export calculation result to resultsDB.csv was succeed.
+20201021_114826 : files were saved at restored_data/KC_test
+20201021_114826 : files at uploads/KC_test and uploads/KC_test.zip were deleted
+20201021_115057 : auto_tracking calculation with POST method was called
+20201021_115058 : ImmutableMultiDict([('uploadFile', <FileStorage: 'SMZ_test.zip' ('application/x-zip-compressed')>)]) file is posted
+20201021_115058 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201021_115058 : extraction uploaded zip file at uploads/SMZ_test
+20201021_115058 : import results from resultsDB.csv was done
+20201021_115100 : auto_tracking is execute with uploads/SMZ_test/SMZ_test, the exec_mode DEBUG
+20201021_115100 : export calculation result to resultsDB.csv was succeed.
+20201021_115100 : files were saved at restored_data/SMZ_test_4
+20201021_115100 : files at uploads/SMZ_test and uploads/SMZ_test.zip were deleted
+20201021_120217 : auto_tracking calculation with POST method was called
+20201021_120217 : ImmutableMultiDict([('uploadFile', <FileStorage: 'SMZ_test.zip' ('application/x-zip-compressed')>)]) file is posted
+20201021_120217 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201021_120217 : extraction uploaded zip file at uploads/SMZ_test
+20201021_120217 : import results from resultsDB.csv was done
+20201021_120219 : auto_tracking is execute with uploads/SMZ_test/SMZ_test, the exec_mode DEBUG
+20201021_120219 : export calculation result to resultsDB.csv was succeed.
+20201021_120220 : files were saved at restored_data/SMZ_test_5
+20201021_120220 : files at uploads/SMZ_test and uploads/SMZ_test.zip were deleted
+20201021_120607 : auto_tracking calculation with POST method was called
+20201021_120607 : ImmutableMultiDict([('uploadFile', <FileStorage: 'SMZ_test.zip' ('application/x-zip-compressed')>)]) file is posted
+20201021_120607 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201021_120607 : extraction uploaded zip file at uploads/SMZ_test
+20201021_120607 : import results from resultsDB.csv was done
+20201021_120609 : auto_tracking is execute with uploads/SMZ_test/SMZ_test, the exec_mode DEBUG
+20201021_120609 : export calculation result to resultsDB.csv was succeed.
+20201021_120609 : files were saved at restored_data/SMZ_test_6
+20201021_120609 : files at uploads/SMZ_test and uploads/SMZ_test.zip were deleted
+20201021_120909 : auto_tracking calculation with POST method was called
+20201021_120909 : ImmutableMultiDict([('uploadFile', <FileStorage: 'SMZ_test.zip' ('application/x-zip-compressed')>)]) file is posted
+20201021_120909 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201021_120909 : extraction uploaded zip file at uploads/SMZ_test
+20201021_120910 : import results from resultsDB.csv was done
+20201021_120912 : auto_tracking is execute with uploads/SMZ_test/SMZ_test, the exec_mode DEBUG
+20201021_120912 : export calculation result to resultsDB.csv was succeed.
+20201021_120912 : files were saved at restored_data/SMZ_test_7
+20201021_120912 : files at uploads/SMZ_test and uploads/SMZ_test.zip were deleted
+20201021_135610 : auto_tracking calculation with POST method was called
+20201021_135610 : ImmutableMultiDict([('uploadFile', <FileStorage: 'SMZ_test.zip' ('application/x-zip-compressed')>)]) file is posted
+20201021_135610 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201021_135610 : extraction uploaded zip file at uploads/SMZ_test
+20201021_135610 : import results from resultsDB.csv was done
+20201021_135611 : auto_tracking is execute with uploads/SMZ_test/SMZ_test, the exec_mode DEBUG
+20201021_135611 : export calculation result to resultsDB.csv was succeed.
+20201021_135612 : files were saved at restored_data/SMZ_test_8
+20201021_135612 : files at uploads/SMZ_test and uploads/SMZ_test.zip were deleted
+20201021_140146 : auto_tracking calculation with POST method was called
+20201021_140146 : ImmutableMultiDict([('uploadFile', <FileStorage: 'SMZ_test.zip' ('application/x-zip-compressed')>)]) file is posted
+20201021_140146 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201021_140146 : extraction uploaded zip file at uploads/SMZ_test
+20201021_140146 : import results from resultsDB.csv was done
+20201021_140148 : auto_tracking is execute with uploads/SMZ_test/SMZ_test, the exec_mode DEBUG
+20201021_140148 : export calculation result to resultsDB.csv was succeed.
+20201021_140148 : files were saved at restored_data/SMZ_test_9
+20201021_140148 : files at uploads/SMZ_test and uploads/SMZ_test.zip were deleted
+20201021_140300 : auto_tracking calculation with POST method was called
+20201021_140300 : ImmutableMultiDict([('uploadFile', <FileStorage: 'SMZ_test.zip' ('application/x-zip-compressed')>)]) file is posted
+20201021_140300 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201021_140300 : extraction uploaded zip file at uploads/SMZ_test
+20201021_140300 : import results from resultsDB.csv was done
+20201021_140302 : auto_tracking is execute with uploads/SMZ_test/SMZ_test, the exec_mode DEBUG
+20201021_140302 : export calculation result to resultsDB.csv was succeed.
+20201021_140303 : files were saved at restored_data/SMZ_test_10
+20201021_140303 : files at uploads/SMZ_test and uploads/SMZ_test.zip were deleted
+20201021_141407 : auto_tracking calculation with POST method was called
+20201021_141407 : ImmutableMultiDict([('uploadFile', <FileStorage: 'SMZ_test.zip' ('application/x-zip-compressed')>)]) file is posted
+20201021_141407 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201021_141407 : extraction uploaded zip file at uploads/SMZ_test
+20201021_141407 : import results from resultsDB.csv was done
+20201021_141409 : auto_tracking is execute with uploads/SMZ_test/SMZ_test, the exec_mode DEBUG
+20201021_141409 : export calculation result to resultsDB.csv was succeed.
+20201021_141410 : files were saved at restored_data/SMZ_test_11
+20201021_141410 : files at uploads/SMZ_test and uploads/SMZ_test.zip were deleted
+20201021_141833 : auto_tracking calculation with POST method was called
+20201021_141833 : ImmutableMultiDict([('uploadFile', <FileStorage: 'SMZ_test.zip' ('application/x-zip-compressed')>)]) file is posted
+20201021_141833 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201021_141833 : extraction uploaded zip file at uploads/SMZ_test
+20201021_141833 : import results from resultsDB.csv was done
+20201021_142255 : auto_tracking calculation with POST method was called
+20201021_142255 : ImmutableMultiDict([('uploadFile', <FileStorage: 'SMZ_test.zip' ('application/x-zip-compressed')>)]) file is posted
+20201021_142255 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201021_142255 : extraction uploaded zip file at uploads/SMZ_test
+20201021_142255 : import results from resultsDB.csv was done
+20201021_142257 : auto_tracking is execute with uploads/SMZ_test/SMZ_test, the exec_mode DEBUG
+20201021_142257 : export calculation result to resultsDB.csv was succeed.
+20201021_142258 : files were saved at restored_data/SMZ_test_12
+20201021_142258 : files at uploads/SMZ_test and uploads/SMZ_test.zip were deleted
+20201021_142547 : auto_tracking calculation with POST method was called
+20201021_142547 : ImmutableMultiDict([('uploadFile', <FileStorage: 'SMZ_test.zip' ('application/x-zip-compressed')>)]) file is posted
+20201021_142547 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201021_142547 : extraction uploaded zip file at uploads/SMZ_test
+20201021_142547 : import results from resultsDB.csv was done
+20201021_142550 : auto_tracking is execute with uploads/SMZ_test/SMZ_test, the exec_mode DEBUG
+20201021_142550 : export calculation result to resultsDB.csv was succeed.
+20201021_142550 : files were saved at restored_data/SMZ_test_13
+20201021_142550 : files at uploads/SMZ_test and uploads/SMZ_test.zip were deleted
+20201021_142608 : auto_tracking calculation with POST method was called
+20201021_142608 : ImmutableMultiDict([('uploadFile', <FileStorage: 'alternalia.zip' ('application/x-zip-compressed')>)]) file is posted
+20201021_142608 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201021_142608 : extraction uploaded zip file at uploads/alternalia
+20201021_142608 : import results from resultsDB.csv was done
+20201021_142610 : auto_tracking is execute with uploads/alternalia/alternalia, the exec_mode DEBUG
+20201021_142610 : export calculation result to resultsDB.csv was succeed.
+20201021_142610 : files were saved at restored_data/alternalia_3
+20201021_142610 : files at uploads/alternalia and uploads/alternalia.zip were deleted
+20201021_150305 : auto_tracking calculation with POST method was called
+20201021_150305 : ImmutableMultiDict([('uploadFile', <FileStorage: 'T1172_吐出画像20200330102520.zip' ('application/x-zip-compressed')>)]) file is posted
+20201021_150305 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201021_150305 : extraction uploaded zip file at uploads/T1172_吐出画像20200330102520
+20201021_150305 : import results from resultsDB.csv was done
+20201021_150307 : auto_tracking is execute with uploads/T1172_吐出画像20200330102520/T1172_吐出画像20200330102520, the exec_mode DEBUG
+20201021_150308 : export calculation result to resultsDB.csv was succeed.
+20201021_150308 : files were saved at restored_data/T1172_吐出画像20200330102520
+20201021_150308 : files at uploads/T1172_吐出画像20200330102520 and uploads/T1172_吐出画像20200330102520.zip were deleted
+20201021_150631 : auto_tracking calculation with POST method was called
+20201021_150631 : ImmutableMultiDict([('uploadFile', <FileStorage: 'T1172_吐出画像20200330102520.zip' ('application/x-zip-compressed')>)]) file is posted
+20201021_150631 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201021_150631 : extraction uploaded zip file at uploads/T1172_吐出画像20200330102520
+20201021_150631 : import results from resultsDB.csv was done
+20201021_150633 : auto_tracking is execute with uploads/T1172_吐出画像20200330102520/T1172_吐出画像20200330102520, the exec_mode DEBUG
+20201021_150633 : export calculation result to resultsDB.csv was succeed.
+20201021_150634 : files were saved at restored_data/T1172_吐出画像20200330102520_2
+20201021_150634 : files at uploads/T1172_吐出画像20200330102520 and uploads/T1172_吐出画像20200330102520.zip were deleted
+20201021_153655 : auto_tracking calculation with POST method was called
+20201021_153655 : ImmutableMultiDict([('uploadFile', <FileStorage: 'E0893_吐出画像20201019143627_side.zip' ('application/x-zip-compressed')>)]) file is posted
+20201021_153655 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201021_153655 : extraction uploaded zip file at uploads/E0893_吐出画像20201019143627_side
+20201021_153655 : import results from resultsDB.csv was done
+20201021_153657 : auto_tracking is execute with uploads/E0893_吐出画像20201019143627_side/E0893_吐出画像20201019143627, the exec_mode DEBUG
+20201021_153657 : export calculation result to resultsDB.csv was succeed.
+20201021_153657 : files were saved at restored_data/E0893_吐出画像20201019143627_side_2
+20201021_153657 : files at uploads/E0893_吐出画像20201019143627_side and uploads/E0893_吐出画像20201019143627_side.zip were deleted
+20201021_154011 : auto_tracking calculation with POST method was called
+20201021_154011 : ImmutableMultiDict([('uploadFile', <FileStorage: 'E0893_吐出画像20201019143627_side.zip' ('application/x-zip-compressed')>)]) file is posted
+20201021_154011 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201021_154011 : extraction uploaded zip file at uploads/E0893_吐出画像20201019143627_side
+20201021_154011 : import results from resultsDB.csv was done
+20201021_154013 : auto_tracking is execute with uploads/E0893_吐出画像20201019143627_side/E0893_吐出画像20201019143627, the exec_mode DEBUG
+20201021_154013 : export calculation result to resultsDB.csv was succeed.
+20201021_154014 : files were saved at restored_data/E0893_吐出画像20201019143627_side_3
+20201021_154014 : files at uploads/E0893_吐出画像20201019143627_side and uploads/E0893_吐出画像20201019143627_side.zip were deleted
+20201021_154251 : auto_tracking calculation with POST method was called
+20201021_154251 : ImmutableMultiDict([('uploadFile', <FileStorage: 'E0893_吐出画像20201019143627_side.zip' ('application/x-zip-compressed')>)]) file is posted
+20201021_154251 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201021_154251 : extraction uploaded zip file at uploads/E0893_吐出画像20201019143627_side
+20201021_154251 : import results from resultsDB.csv was done
+20201021_154253 : auto_tracking is execute with uploads/E0893_吐出画像20201019143627_side/E0893_吐出画像20201019143627, the exec_mode DEBUG
+20201021_154253 : export calculation result to resultsDB.csv was succeed.
+20201021_154253 : files were saved at restored_data/E0893_吐出画像20201019143627_side_4
+20201021_154253 : files at uploads/E0893_吐出画像20201019143627_side and uploads/E0893_吐出画像20201019143627_side.zip were deleted
+20201021_154426 : auto_tracking calculation with POST method was called
+20201021_154426 : ImmutableMultiDict([('uploadFile', <FileStorage: 'E0893_吐出画像20201019143627_side.zip' ('application/x-zip-compressed')>)]) file is posted
+20201021_154426 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201021_154426 : extraction uploaded zip file at uploads/E0893_吐出画像20201019143627_side
+20201021_154426 : import results from resultsDB.csv was done
+20201021_154428 : auto_tracking is execute with uploads/E0893_吐出画像20201019143627_side/E0893_吐出画像20201019143627, the exec_mode DEBUG
+20201021_154428 : export calculation result to resultsDB.csv was succeed.
+20201021_154428 : files were saved at restored_data/E0893_吐出画像20201019143627_side_5
+20201021_154428 : files at uploads/E0893_吐出画像20201019143627_side and uploads/E0893_吐出画像20201019143627_side.zip were deleted
+20201021_154844 : auto_tracking calculation with POST method was called
+20201021_154844 : ImmutableMultiDict([('uploadFile', <FileStorage: 'E0893_吐出画像20201019143627_side.zip' ('application/x-zip-compressed')>)]) file is posted
+20201021_154844 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201021_154844 : extraction uploaded zip file at uploads/E0893_吐出画像20201019143627_side
+20201021_154844 : import results from resultsDB.csv was done
+20201021_154846 : auto_tracking is execute with uploads/E0893_吐出画像20201019143627_side/E0893_吐出画像20201019143627, the exec_mode DEBUG
+20201021_154846 : export calculation result to resultsDB.csv was succeed.
+20201021_154846 : files were saved at restored_data/E0893_吐出画像20201019143627_side_6
+20201021_154846 : files at uploads/E0893_吐出画像20201019143627_side and uploads/E0893_吐出画像20201019143627_side.zip were deleted
+20201021_155056 : auto_tracking calculation with POST method was called
+20201021_155056 : ImmutableMultiDict([('uploadFile', <FileStorage: 'E0893_吐出画像20201019143627_side.zip' ('application/x-zip-compressed')>)]) file is posted
+20201021_155056 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201021_155056 : extraction uploaded zip file at uploads/E0893_吐出画像20201019143627_side
+20201021_155056 : import results from resultsDB.csv was done
+20201021_155059 : auto_tracking is execute with uploads/E0893_吐出画像20201019143627_side/E0893_吐出画像20201019143627, the exec_mode DEBUG
+20201021_155059 : export calculation result to resultsDB.csv was succeed.
+20201021_155059 : files were saved at restored_data/E0893_吐出画像20201019143627_side_7
+20201021_155059 : files at uploads/E0893_吐出画像20201019143627_side and uploads/E0893_吐出画像20201019143627_side.zip were deleted
+20201021_155425 : auto_tracking calculation with POST method was called
+20201021_155425 : ImmutableMultiDict([('uploadFile', <FileStorage: 'E0893_吐出画像20201019143627_side.zip' ('application/x-zip-compressed')>)]) file is posted
+20201021_155425 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201021_155425 : extraction uploaded zip file at uploads/E0893_吐出画像20201019143627_side
+20201021_155425 : import results from resultsDB.csv was done
+20201021_155428 : auto_tracking is execute with uploads/E0893_吐出画像20201019143627_side/E0893_吐出画像20201019143627, the exec_mode DEBUG
+20201021_155428 : export calculation result to resultsDB.csv was succeed.
+20201021_155428 : files were saved at restored_data/E0893_吐出画像20201019143627_side_8
+20201021_155428 : files at uploads/E0893_吐出画像20201019143627_side and uploads/E0893_吐出画像20201019143627_side.zip were deleted
+20201021_160017 : auto_tracking calculation with POST method was called
+20201021_160017 : ImmutableMultiDict([('uploadFile', <FileStorage: 'SMZ_test.zip' ('application/x-zip-compressed')>)]) file is posted
+20201021_160017 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201021_160017 : extraction uploaded zip file at uploads/SMZ_test
+20201021_160017 : import results from resultsDB.csv was done
+20201021_160019 : auto_tracking is execute with uploads/SMZ_test/SMZ_test, the exec_mode DEBUG
+20201021_160019 : export calculation result to resultsDB.csv was succeed.
+20201021_160020 : files were saved at restored_data/SMZ_test_14
+20201021_160020 : files at uploads/SMZ_test and uploads/SMZ_test.zip were deleted
+20201021_160730 : auto_tracking calculation with POST method was called
+20201021_160730 : ImmutableMultiDict([('uploadFile', <FileStorage: 'E1657_吐出画像20201016140736.zip' ('application/x-zip-compressed')>)]) file is posted
+20201021_160730 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201021_160730 : extraction uploaded zip file at uploads/E1657_吐出画像20201016140736
+20201021_160730 : import results from resultsDB.csv was done
+20201021_160732 : auto_tracking is execute with uploads/E1657_吐出画像20201016140736/E1657_吐出画像20201016140736, the exec_mode DEBUG
+20201021_160732 : export calculation result to resultsDB.csv was succeed.
+20201021_160732 : files were saved at restored_data/E1657_吐出画像20201016140736_2
+20201021_160732 : files at uploads/E1657_吐出画像20201016140736 and uploads/E1657_吐出画像20201016140736.zip were deleted
+20201021_172251 : auto_tracking calculation with POST method was called
+20201021_172251 : ImmutableMultiDict([('uploadFile', <FileStorage: 'E1657_吐出画像20201016140736.zip' ('application/x-zip-compressed')>)]) file is posted
+20201021_172251 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201021_172251 : extraction uploaded zip file at uploads/E1657_吐出画像20201016140736
+20201021_172251 : import results from resultsDB.csv was done
+20201021_172253 : auto_tracking is execute with uploads/E1657_吐出画像20201016140736/E1657_吐出画像20201016140736, the exec_mode DEBUG
+20201021_172253 : export calculation result to resultsDB.csv was succeed.
+20201021_172253 : files were saved at restored_data/E1657_吐出画像20201016140736_3
+20201021_172253 : files at uploads/E1657_吐出画像20201016140736 and uploads/E1657_吐出画像20201016140736.zip were deleted
+20201021_172504 : auto_tracking calculation with POST method was called
+20201021_172504 : ImmutableMultiDict([('uploadFile', <FileStorage: 'E1657_吐出画像20201016140736.zip' ('application/x-zip-compressed')>)]) file is posted
+20201021_172504 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201021_172504 : extraction uploaded zip file at uploads/E1657_吐出画像20201016140736
+20201021_172504 : import results from resultsDB.csv was done
+20201021_172506 : auto_tracking is execute with uploads/E1657_吐出画像20201016140736/E1657_吐出画像20201016140736, the exec_mode DEBUG
+20201021_172506 : export calculation result to resultsDB.csv was succeed.
+20201021_172506 : files were saved at restored_data/E1657_吐出画像20201016140736_4
+20201021_172507 : files at uploads/E1657_吐出画像20201016140736 and uploads/E1657_吐出画像20201016140736.zip were deleted
+20201021_172640 : auto_tracking calculation with POST method was called
+20201021_172640 : ImmutableMultiDict([('uploadFile', <FileStorage: 'E1657_吐出画像20201016140736.zip' ('application/x-zip-compressed')>)]) file is posted
+20201021_172640 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201021_172640 : extraction uploaded zip file at uploads/E1657_吐出画像20201016140736
+20201021_172640 : import results from resultsDB.csv was done
+20201021_172642 : auto_tracking is execute with uploads/E1657_吐出画像20201016140736/E1657_吐出画像20201016140736, the exec_mode DEBUG
+20201021_172642 : export calculation result to resultsDB.csv was succeed.
+20201021_172642 : files were saved at restored_data/E1657_吐出画像20201016140736_5
+20201021_172642 : files at uploads/E1657_吐出画像20201016140736 and uploads/E1657_吐出画像20201016140736.zip were deleted
+20201021_172908 : auto_tracking calculation with POST method was called
+20201021_172908 : ImmutableMultiDict([('uploadFile', <FileStorage: 'E1657_吐出画像20201016160740.zip' ('application/x-zip-compressed')>)]) file is posted
+20201021_172908 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201021_172908 : extraction uploaded zip file at uploads/E1657_吐出画像20201016160740
+20201021_172908 : import results from resultsDB.csv was done
+20201021_172910 : auto_tracking is execute with uploads/E1657_吐出画像20201016160740/E1657_吐出画像20201016160740, the exec_mode DEBUG
+20201021_172910 : export calculation result to resultsDB.csv was succeed.
+20201021_172910 : files were saved at restored_data/E1657_吐出画像20201016160740
+20201021_172910 : files at uploads/E1657_吐出画像20201016160740 and uploads/E1657_吐出画像20201016160740.zip were deleted
+20201021_174924 : auto_tracking calculation with POST method was called
+20201021_174924 : ImmutableMultiDict([('uploadFile', <FileStorage: 'E1657_吐出画像20201016160740.zip' ('application/x-zip-compressed')>)]) file is posted
+20201021_174924 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201021_174924 : extraction uploaded zip file at uploads/E1657_吐出画像20201016160740
+20201021_174924 : import results from resultsDB.csv was done
+20201021_174925 : auto_tracking is execute with uploads/E1657_吐出画像20201016160740/E1657_吐出画像20201016160740, the exec_mode DEBUG
+20201021_174925 : export calculation result to resultsDB.csv was succeed.
+20201021_174926 : files were saved at restored_data/E1657_吐出画像20201016160740_2
+20201021_174926 : files at uploads/E1657_吐出画像20201016160740 and uploads/E1657_吐出画像20201016160740.zip were deleted
+20201021_182828 : download restored_files is called with GET method.
+20201021_182836 : download restored_files is called with POST method.
+20201021_182836 : form was input ID : microjet,  PW : microjet_python, file Delete : True
+20201021_182852 : download restored_files with the name "restored_files20201021182836.zip" was started.
+20201021_182852 : zip file creation was done.
+20201021_182854 : download restored_files is called with POST method.
+20201021_182854 : form was input ID : microjet,  PW : microjet_python, file Delete : True
+20201021_182854 : restored files were destroyed
+20201021_182935 : download restored_files is called with POST method.
+20201021_182935 : form was input ID : microjet,  PW : microje_python, file Delete : False
+20201021_182939 : download restored_files is called with POST method.
+20201021_182939 : form was input ID : microjet,  PW : microjet_python, file Delete : False
+20201021_204853 : download restored_files is called with GET method.
+20201021_204902 : auto_tracking calculation with POST method was called
+20201021_204902 : ImmutableMultiDict([('uploadFile', <FileStorage: 'E0893_吐出画像20201019143627_side.zip' ('application/x-zip-compressed')>)]) file is posted
+20201021_204902 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201021_204902 : extraction uploaded zip file at uploads/E0893_吐出画像20201019143627_side
+20201021_204902 : import results from resultsDB.csv was done
+20201021_204904 : auto_tracking is execute with uploads/E0893_吐出画像20201019143627_side/E0893_吐出画像20201019143627, the exec_mode DEBUG
+20201021_204904 : export calculation result to resultsDB.csv was succeed.
+20201021_204904 : files were saved at restored_data/E0893_吐出画像20201019143627_side
+20201021_204904 : files at uploads/E0893_吐出画像20201019143627_side and uploads/E0893_吐出画像20201019143627_side.zip were deleted
+20201023_100823 : auto_tracking calculation with GET method was called
+20201023_100823 : file upload was FAILED
+20201023_100904 : auto_tracking calculation with GET method was called
+20201023_100904 : file upload was FAILED
+20201023_100911 : auto_tracking calculation with GET method was called
+20201023_100911 : T1172_吐出画像20200330102520.zip file is going to be analysed.
+20201023_100911 : exec_mode is NOT_DEBUG_MODE, fire restore is False, camera_resolution is 3.5
+20201023_100911 : extraction uploaded zip file at uploads/T1172_吐出画像20200330102520
+20201023_100911 : import results from resultsDB.csv was done
+20201023_100912 : auto_tracking is execute with uploads/T1172_吐出画像20200330102520/T1172_吐出画像20200330102520, the exec_mode NOT_DEBUG_MODE
+20201023_100912 : export calculation result to resultsDB.csv was succeed.
+20201023_100912 : Both files at uploads/T1172_吐出画像20200330102520, and the uploaded zipfile uploads/T1172_吐出画像20200330102520.zip were deleted
+20201023_101256 : auto_tracking calculation with GET method was called
+20201023_101256 : T1172_吐出画像20200330102520.zip file is going to be analysed.
+20201023_101256 : exec_mode is NOT_DEBUG_MODE, fire restore is False, camera_resolution is 3.5
+20201023_101256 : extraction uploaded zip file at uploads/T1172_吐出画像20200330102520
+20201023_101256 : import results from resultsDB.csv was done
+20201023_101257 : auto_tracking is execute with uploads/T1172_吐出画像20200330102520/T1172_吐出画像20200330102520, the exec_mode NOT_DEBUG_MODE
+20201023_101257 : export calculation result to resultsDB.csv was succeed.
+20201023_101257 : Both files at uploads/T1172_吐出画像20200330102520, and the uploaded zipfile uploads/T1172_吐出画像20200330102520.zip were deleted
+20201023_101422 : auto_tracking calculation with GET method was called
+20201023_101422 : file upload was FAILED
+20201023_131855 : auto_tracking calculation with GET method was called
+20201023_131855 : file upload was FAILED
+20201023_131905 : auto_tracking calculation with POST method was called
+20201023_131905 : ImmutableMultiDict([('uploadFile', <FileStorage: '' ('application/octet-stream')>)]) file is posted
+20201023_131954 : auto_tracking calculation with POST method was called
+20201023_131954 : ImmutableMultiDict([('uploadFile', <FileStorage: '' ('application/octet-stream')>)]) file is posted
+20201023_132115 : auto_tracking calculation with POST method was called
+20201023_132115 : ImmutableMultiDict([('uploadFile', <FileStorage: '' ('application/octet-stream')>)]) file is posted
+20201023_132139 : auto_tracking calculation with POST method was called
+20201023_132139 : ImmutableMultiDict([('uploadFile', <FileStorage: '' ('application/octet-stream')>)]) file is posted
+20201023_132139 : file upload was FAILED
+20201023_132221 : auto_tracking calculation with POST method was called
+20201023_132221 : ImmutableMultiDict([('uploadFile', <FileStorage: '' ('application/octet-stream')>)]) file is posted
+20201023_132221 : file upload was FAILED
+20201023_132228 : auto_tracking calculation with POST method was called
+20201023_132228 : ImmutableMultiDict([('uploadFile', <FileStorage: '' ('application/octet-stream')>)]) file is posted
+20201023_132228 : exec_mode is NOT_DEBUG_MODE, fire restore is False, camera_resolution is 3.5
+20201023_132228 : extraction uploaded zip file at uploads/T1356_吐出画像20200625135440
+20201023_132228 : import results from resultsDB.csv was done
+20201023_132228 : auto_tracking is execute with uploads/T1356_吐出画像20200625135440/T1356_吐出画像20200625135440, the exec_mode NOT_DEBUG_MODE
+20201023_132228 : export calculation result to resultsDB.csv was succeed.
+20201023_132228 : Both files at uploads/T1356_吐出画像20200625135440, and the uploaded zipfile uploads/T1356_吐出画像20200625135440.zip were deleted
+20201023_132333 : auto_tracking calculation with POST method was called
+20201023_132333 : ImmutableMultiDict([('uploadFile', <FileStorage: '' ('application/octet-stream')>)]) file is posted
+20201023_132333 : file upload was FAILED
+20201026_100041 : auto_tracking calculation with POST method was called
+20201026_100041 : ImmutableMultiDict([('upload_file', <FileStorage: 'SMZ_test.zip' ('application/x-zip-compressed')>)]) file is posted
+20201026_100042 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201026_100042 : extraction uploaded zip file at uploads/SMZ_test
+20201026_100042 : import results from resultsDB.csv was done
+20201026_100042 : auto_tracking is execute with uploads/SMZ_test/SMZ_test, the exec_mode DEBUG
+20201026_100042 : export calculation result to resultsDB.csv was succeed.
+20201026_100042 : files were saved at restored_data/SMZ_test
+20201026_100042 : files at uploads/SMZ_test and uploads/SMZ_test.zip were deleted
+20201026_100138 : auto_tracking calculation with POST method was called
+20201026_100138 : ImmutableMultiDict([('upload_file', <FileStorage: 'T1172_吐出画像20200330102520.zip' ('application/x-zip-compressed')>)]) file is posted
+20201026_100138 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201026_100138 : extraction uploaded zip file at uploads/T1172_吐出画像20200330102520
+20201026_100138 : import results from resultsDB.csv was done
+20201026_100138 : auto_tracking is execute with uploads/T1172_吐出画像20200330102520/T1172_吐出画像20200330102520, the exec_mode DEBUG
+20201026_100138 : export calculation result to resultsDB.csv was succeed.
+20201026_100138 : files were saved at restored_data/T1172_吐出画像20200330102520
+20201026_100138 : files at uploads/T1172_吐出画像20200330102520 and uploads/T1172_吐出画像20200330102520.zip were deleted
+20201026_100514 : auto_tracking calculation with POST method was called
+20201026_100514 : ImmutableMultiDict([('upload_file', <FileStorage: 'T1172_吐出画像20200330102520.zip' ('application/x-zip-compressed')>)]) file is posted
+20201026_100514 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201026_100514 : extraction uploaded zip file at uploads/T1172_吐出画像20200330102520
+20201026_100514 : import results from resultsDB.csv was done
+20201026_100515 : auto_tracking is execute with uploads/T1172_吐出画像20200330102520/T1172_吐出画像20200330102520, the exec_mode DEBUG
+20201026_100515 : export calculation result to resultsDB.csv was succeed.
+20201026_100515 : files were saved at restored_data/T1172_吐出画像20200330102520_2
+20201026_100515 : files at uploads/T1172_吐出画像20200330102520 and uploads/T1172_吐出画像20200330102520.zip were deleted
+20201026_100532 : auto_tracking calculation with POST method was called
+20201026_100532 : ImmutableMultiDict([('upload_file', <FileStorage: 'T1172_吐出画像20200330102520.zip' ('application/x-zip-compressed')>)]) file is posted
+20201026_100532 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201026_100532 : extraction uploaded zip file at uploads/T1172_吐出画像20200330102520
+20201026_100532 : import results from resultsDB.csv was done
+20201026_100532 : auto_tracking is execute with uploads/T1172_吐出画像20200330102520/T1172_吐出画像20200330102520, the exec_mode DEBUG
+20201026_100532 : export calculation result to resultsDB.csv was succeed.
+20201026_100532 : files were saved at restored_data/T1172_吐出画像20200330102520_3
+20201026_100532 : files at uploads/T1172_吐出画像20200330102520 and uploads/T1172_吐出画像20200330102520.zip were deleted
+20201026_101146 : auto_tracking calculation with POST method was called
+20201026_101146 : ImmutableMultiDict([('upload_file', <FileStorage: 'T1172_吐出画像20200330102520.zip' ('application/x-zip-compressed')>)]) file is posted
+20201026_101146 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201026_101146 : extraction uploaded zip file at uploads/T1172_吐出画像20200330102520
+20201026_101146 : import results from resultsDB.csv was done
+20201026_101146 : auto_tracking is execute with uploads/T1172_吐出画像20200330102520/T1172_吐出画像20200330102520, the exec_mode DEBUG
+20201026_101146 : export calculation result to resultsDB.csv was succeed.
+20201026_101146 : files were saved at restored_data/T1172_吐出画像20200330102520
+20201026_101146 : files at uploads/T1172_吐出画像20200330102520 and uploads/T1172_吐出画像20200330102520.zip were deleted
+20201026_102044 : auto_tracking calculation with POST method was called
+20201026_102044 : ImmutableMultiDict([('upload_file', <FileStorage: 'T1172_吐出画像20200330102520.zip' ('application/x-zip-compressed')>)]) file is posted
+20201026_102044 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201026_102044 : extraction uploaded zip file at uploads/T1172_吐出画像20200330102520
+20201026_102044 : import results from resultsDB.csv was done
+20201026_102044 : auto_tracking is execute with uploads/T1172_吐出画像20200330102520/T1172_吐出画像20200330102520, the exec_mode DEBUG
+20201026_102044 : export calculation result to resultsDB.csv was succeed.
+20201026_102044 : files were saved at restored_data/T1172_吐出画像20200330102520_2
+20201026_102044 : files at uploads/T1172_吐出画像20200330102520 and uploads/T1172_吐出画像20200330102520.zip were deleted
+20201026_102226 : auto_tracking calculation with POST method was called
+20201026_102226 : ImmutableMultiDict([('upload_file', <FileStorage: 'T1172_吐出画像20200330102520.zip' ('application/x-zip-compressed')>)]) file is posted
+20201026_102226 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201026_102226 : extraction uploaded zip file at uploads/T1172_吐出画像20200330102520
+20201026_102226 : import results from resultsDB.csv was done
+20201026_102226 : auto_tracking is execute with uploads/T1172_吐出画像20200330102520/T1172_吐出画像20200330102520, the exec_mode DEBUG
+20201026_102226 : export calculation result to resultsDB.csv was succeed.
+20201026_102226 : files were saved at restored_data/T1172_吐出画像20200330102520_3
+20201026_102226 : files at uploads/T1172_吐出画像20200330102520 and uploads/T1172_吐出画像20200330102520.zip were deleted
+20201026_102400 : auto_tracking calculation with POST method was called
+20201026_102400 : ImmutableMultiDict([('upload_file', <FileStorage: 'T1172_吐出画像20200330102520.zip' ('application/x-zip-compressed')>)]) file is posted
+20201026_102400 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201026_102400 : extraction uploaded zip file at uploads/T1172_吐出画像20200330102520
+20201026_102400 : import results from resultsDB.csv was done
+20201026_102400 : auto_tracking is execute with uploads/T1172_吐出画像20200330102520/T1172_吐出画像20200330102520, the exec_mode DEBUG
+20201026_102400 : export calculation result to resultsDB.csv was succeed.
+20201026_102400 : files were saved at restored_data/T1172_吐出画像20200330102520_4
+20201026_102400 : files at uploads/T1172_吐出画像20200330102520 and uploads/T1172_吐出画像20200330102520.zip were deleted
+20201026_102457 : auto_tracking calculation with POST method was called
+20201026_102457 : ImmutableMultiDict([('upload_file', <FileStorage: 'T1172_吐出画像20200330102520.zip' ('application/x-zip-compressed')>)]) file is posted
+20201026_102457 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201026_102457 : extraction uploaded zip file at uploads/T1172_吐出画像20200330102520
+20201026_102458 : import results from resultsDB.csv was done
+20201026_102458 : auto_tracking is execute with uploads/T1172_吐出画像20200330102520/T1172_吐出画像20200330102520, the exec_mode DEBUG
+20201026_102458 : export calculation result to resultsDB.csv was succeed.
+20201026_102458 : files were saved at restored_data/T1172_吐出画像20200330102520_5
+20201026_102458 : files at uploads/T1172_吐出画像20200330102520 and uploads/T1172_吐出画像20200330102520.zip were deleted
+20201026_103017 : auto_tracking calculation with POST method was called
+20201026_103017 : ImmutableMultiDict([('upload_file', <FileStorage: 'T1172_吐出画像20200330102520.zip' ('application/x-zip-compressed')>)]) file is posted
+20201026_103017 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201026_103017 : extraction uploaded zip file at uploads/T1172_吐出画像20200330102520
+20201026_103017 : import results from resultsDB.csv was done
+20201026_103017 : auto_tracking is execute with uploads/T1172_吐出画像20200330102520/T1172_吐出画像20200330102520, the exec_mode DEBUG
+20201026_103017 : export calculation result to resultsDB.csv was succeed.
+20201026_103017 : files were saved at restored_data/T1172_吐出画像20200330102520_6
+20201026_103017 : files at uploads/T1172_吐出画像20200330102520 and uploads/T1172_吐出画像20200330102520.zip were deleted
+20201026_103336 : auto_tracking calculation with POST method was called
+20201026_103336 : ImmutableMultiDict([('upload_file', <FileStorage: 'T1172_吐出画像20200330102520.zip' ('application/x-zip-compressed')>)]) file is posted
+20201026_103336 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201026_103336 : extraction uploaded zip file at uploads/T1172_吐出画像20200330102520
+20201026_103336 : import results from resultsDB.csv was done
+20201026_103336 : auto_tracking is execute with uploads/T1172_吐出画像20200330102520/T1172_吐出画像20200330102520, the exec_mode DEBUG
+20201026_103336 : export calculation result to resultsDB.csv was succeed.
+20201026_103337 : files were saved at restored_data/T1172_吐出画像20200330102520_7
+20201026_103337 : files at uploads/T1172_吐出画像20200330102520 and uploads/T1172_吐出画像20200330102520.zip were deleted
+20201026_103555 : auto_tracking calculation with POST method was called
+20201026_103555 : ImmutableMultiDict([('upload_file', <FileStorage: 'T1172_吐出画像20200330102520.zip' ('application/x-zip-compressed')>)]) file is posted
+20201026_103555 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201026_103555 : extraction uploaded zip file at uploads/T1172_吐出画像20200330102520
+20201026_103555 : import results from resultsDB.csv was done
+20201026_103555 : auto_tracking is execute with uploads/T1172_吐出画像20200330102520/T1172_吐出画像20200330102520, the exec_mode DEBUG
+20201026_103555 : export calculation result to resultsDB.csv was succeed.
+20201026_103555 : files were saved at restored_data/T1172_吐出画像20200330102520_8
+20201026_103555 : files at uploads/T1172_吐出画像20200330102520 and uploads/T1172_吐出画像20200330102520.zip were deleted
+20201026_103740 : auto_tracking calculation with POST method was called
+20201026_103740 : ImmutableMultiDict([('upload_file', <FileStorage: 'T1172_吐出画像20200330102520.zip' ('application/x-zip-compressed')>)]) file is posted
+20201026_103740 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201026_103740 : extraction uploaded zip file at uploads/T1172_吐出画像20200330102520
+20201026_103740 : import results from resultsDB.csv was done
+20201026_103741 : auto_tracking is execute with uploads/T1172_吐出画像20200330102520/T1172_吐出画像20200330102520, the exec_mode DEBUG
+20201026_103742 : export calculation result to resultsDB.csv was succeed.
+20201026_103742 : files were saved at restored_data/T1172_吐出画像20200330102520_9
+20201026_103742 : files at uploads/T1172_吐出画像20200330102520 and uploads/T1172_吐出画像20200330102520.zip were deleted
+20201026_105246 : auto_tracking calculation with POST method was called
+20201026_105246 : ImmutableMultiDict([('upload_file', <FileStorage: 'T1172_吐出画像20200330102520.zip' ('application/x-zip-compressed')>)]) file is posted
+20201026_105246 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201026_105246 : extraction uploaded zip file at uploads/T1172_吐出画像20200330102520
+20201026_105246 : import results from resultsDB.csv was done
+20201026_105248 : auto_tracking is execute with uploads/T1172_吐出画像20200330102520/T1172_吐出画像20200330102520, the exec_mode DEBUG
+20201026_105248 : export calculation result to resultsDB.csv was succeed.
+20201026_105248 : files were saved at restored_data/T1172_吐出画像20200330102520
+20201026_105248 : files at uploads/T1172_吐出画像20200330102520 and uploads/T1172_吐出画像20200330102520.zip were deleted
+20201026_105256 : auto_tracking calculation with POST method was called
+20201026_105256 : ImmutableMultiDict([('upload_file', <FileStorage: 'T1172_吐出画像20200330102520.zip' ('application/x-zip-compressed')>)]) file is posted
+20201026_105256 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201026_105256 : extraction uploaded zip file at uploads/T1172_吐出画像20200330102520
+20201026_105257 : import results from resultsDB.csv was done
+20201026_105258 : auto_tracking is execute with uploads/T1172_吐出画像20200330102520/T1172_吐出画像20200330102520, the exec_mode DEBUG
+20201026_105258 : export calculation result to resultsDB.csv was succeed.
+20201026_105258 : files were saved at restored_data/T1172_吐出画像20200330102520_2
+20201026_105258 : files at uploads/T1172_吐出画像20200330102520 and uploads/T1172_吐出画像20200330102520.zip were deleted
+20201026_105514 : auto_tracking calculation with POST method was called
+20201026_105514 : ImmutableMultiDict([('upload_file', <FileStorage: 'SMZ_test.zip' ('application/x-zip-compressed')>)]) file is posted
+20201026_105514 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201026_105514 : extraction uploaded zip file at uploads/SMZ_test
+20201026_105514 : import results from resultsDB.csv was done
+20201026_105516 : auto_tracking is execute with uploads/SMZ_test/SMZ_test, the exec_mode DEBUG
+20201026_105516 : export calculation result to resultsDB.csv was succeed.
+20201026_105516 : files were saved at restored_data/SMZ_test
+20201026_105516 : files at uploads/SMZ_test and uploads/SMZ_test.zip were deleted
+20201026_105755 : auto_tracking calculation with POST method was called
+20201026_105755 : ImmutableMultiDict([('upload_file', <FileStorage: 'SMZ_test.zip' ('application/x-zip-compressed')>)]) file is posted
+20201026_105755 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201026_105755 : extraction uploaded zip file at uploads/SMZ_test
+20201026_105755 : import results from resultsDB.csv was done
+20201026_105757 : auto_tracking is execute with uploads/SMZ_test/SMZ_test, the exec_mode DEBUG
+20201026_105757 : export calculation result to resultsDB.csv was succeed.
+20201026_105757 : files were saved at restored_data/SMZ_test_2
+20201026_105757 : files at uploads/SMZ_test and uploads/SMZ_test.zip were deleted
+20201026_105842 : auto_tracking calculation with POST method was called
+20201026_105843 : ImmutableMultiDict([('upload_file', <FileStorage: 'SMZ_test.zip' ('application/x-zip-compressed')>)]) file is posted
+20201026_105843 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201026_105843 : extraction uploaded zip file at uploads/SMZ_test
+20201026_105843 : import results from resultsDB.csv was done
+20201026_105844 : auto_tracking is execute with uploads/SMZ_test/SMZ_test, the exec_mode DEBUG
+20201026_105844 : export calculation result to resultsDB.csv was succeed.
+20201026_105844 : files were saved at restored_data/SMZ_test_3
+20201026_105844 : files at uploads/SMZ_test and uploads/SMZ_test.zip were deleted
+20201026_110052 : auto_tracking calculation with POST method was called
+20201026_110052 : ImmutableMultiDict([('upload_file', <FileStorage: 'SMZ_test.zip' ('application/x-zip-compressed')>)]) file is posted
+20201026_110052 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201026_110052 : extraction uploaded zip file at uploads/SMZ_test
+20201026_110053 : import results from resultsDB.csv was done
+20201026_110054 : auto_tracking is execute with uploads/SMZ_test/SMZ_test, the exec_mode DEBUG
+20201026_110054 : export calculation result to resultsDB.csv was succeed.
+20201026_110054 : files were saved at restored_data/SMZ_test_4
+20201026_110054 : files at uploads/SMZ_test and uploads/SMZ_test.zip were deleted
+20201026_110144 : auto_tracking calculation with POST method was called
+20201026_110144 : ImmutableMultiDict([('upload_file', <FileStorage: 'SMZ_test.zip' ('application/x-zip-compressed')>)]) file is posted
+20201026_110144 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201026_110144 : extraction uploaded zip file at uploads/SMZ_test
+20201026_110144 : import results from resultsDB.csv was done
+20201026_110145 : auto_tracking is execute with uploads/SMZ_test/SMZ_test, the exec_mode DEBUG
+20201026_110146 : export calculation result to resultsDB.csv was succeed.
+20201026_110146 : files were saved at restored_data/SMZ_test_5
+20201026_110146 : files at uploads/SMZ_test and uploads/SMZ_test.zip were deleted
+20201026_110547 : auto_tracking calculation with POST method was called
+20201026_110547 : ImmutableMultiDict([('upload_file', <FileStorage: 'SMZ_test.zip' ('application/x-zip-compressed')>)]) file is posted
+20201026_110547 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201026_110547 : extraction uploaded zip file at uploads/SMZ_test
+20201026_110547 : import results from resultsDB.csv was done
+20201026_110549 : auto_tracking is execute with uploads/SMZ_test/SMZ_test, the exec_mode DEBUG
+20201026_110549 : export calculation result to resultsDB.csv was succeed.
+20201026_110549 : files were saved at restored_data/SMZ_test_6
+20201026_110549 : files at uploads/SMZ_test and uploads/SMZ_test.zip were deleted
+20201026_110811 : auto_tracking calculation with POST method was called
+20201026_110811 : ImmutableMultiDict([('upload_file', <FileStorage: 'SMZ_test.zip' ('application/x-zip-compressed')>)]) file is posted
+20201026_110811 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201026_110811 : extraction uploaded zip file at uploads/SMZ_test
+20201026_110811 : import results from resultsDB.csv was done
+20201026_110813 : auto_tracking is execute with uploads/SMZ_test/SMZ_test, the exec_mode DEBUG
+20201026_110813 : export calculation result to resultsDB.csv was succeed.
+20201026_110813 : files were saved at restored_data/SMZ_test_7
+20201026_110813 : files at uploads/SMZ_test and uploads/SMZ_test.zip were deleted
+20201026_110910 : auto_tracking calculation with POST method was called
+20201026_110910 : ImmutableMultiDict([('upload_file', <FileStorage: 'SMZ_test.zip' ('application/x-zip-compressed')>)]) file is posted
+20201026_110910 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201026_110910 : extraction uploaded zip file at uploads/SMZ_test
+20201026_110911 : import results from resultsDB.csv was done
+20201026_110912 : auto_tracking is execute with uploads/SMZ_test/SMZ_test, the exec_mode DEBUG
+20201026_110912 : export calculation result to resultsDB.csv was succeed.
+20201026_110912 : files were saved at restored_data/SMZ_test_8
+20201026_110912 : files at uploads/SMZ_test and uploads/SMZ_test.zip were deleted
+20201026_111051 : auto_tracking calculation with POST method was called
+20201026_111051 : ImmutableMultiDict([('upload_file', <FileStorage: 'SMZ_test.zip' ('application/x-zip-compressed')>)]) file is posted
+20201026_111051 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201026_111051 : extraction uploaded zip file at uploads/SMZ_test
+20201026_111051 : import results from resultsDB.csv was done
+20201026_111053 : auto_tracking is execute with uploads/SMZ_test/SMZ_test, the exec_mode DEBUG
+20201026_111053 : export calculation result to resultsDB.csv was succeed.
+20201026_111053 : files were saved at restored_data/SMZ_test_9
+20201026_111053 : files at uploads/SMZ_test and uploads/SMZ_test.zip were deleted
+20201026_111235 : auto_tracking calculation with POST method was called
+20201026_111235 : ImmutableMultiDict([('upload_file', <FileStorage: 'SMZ_test.zip' ('application/x-zip-compressed')>)]) file is posted
+20201026_111235 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201026_111235 : extraction uploaded zip file at uploads/SMZ_test
+20201026_111236 : import results from resultsDB.csv was done
+20201026_111237 : auto_tracking is execute with uploads/SMZ_test/SMZ_test, the exec_mode DEBUG
+20201026_111237 : export calculation result to resultsDB.csv was succeed.
+20201026_111238 : files were saved at restored_data/SMZ_test_10
+20201026_111238 : files at uploads/SMZ_test and uploads/SMZ_test.zip were deleted
+20201026_111433 : auto_tracking calculation with POST method was called
+20201026_111433 : ImmutableMultiDict([('upload_file', <FileStorage: 'SMZ_test.zip' ('application/x-zip-compressed')>)]) file is posted
+20201026_111433 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201026_111433 : extraction uploaded zip file at uploads/SMZ_test
+20201026_111433 : import results from resultsDB.csv was done
+20201026_111435 : auto_tracking is execute with uploads/SMZ_test/SMZ_test, the exec_mode DEBUG
+20201026_111435 : export calculation result to resultsDB.csv was succeed.
+20201026_111435 : files were saved at restored_data/SMZ_test_11
+20201026_111435 : files at uploads/SMZ_test and uploads/SMZ_test.zip were deleted
+20201026_111506 : auto_tracking calculation with POST method was called
+20201026_111506 : ImmutableMultiDict([('upload_file', <FileStorage: 'SMZ_test.zip' ('application/x-zip-compressed')>)]) file is posted
+20201026_111506 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201026_111506 : extraction uploaded zip file at uploads/SMZ_test
+20201026_111506 : import results from resultsDB.csv was done
+20201026_111508 : auto_tracking is execute with uploads/SMZ_test/SMZ_test, the exec_mode DEBUG
+20201026_111508 : export calculation result to resultsDB.csv was succeed.
+20201026_111509 : files were saved at restored_data/SMZ_test_12
+20201026_111509 : files at uploads/SMZ_test and uploads/SMZ_test.zip were deleted
+20201026_111908 : auto_tracking calculation with POST method was called
+20201026_111908 : ImmutableMultiDict([('upload_file', <FileStorage: 'SMZ_test.zip' ('application/x-zip-compressed')>)]) file is posted
+20201026_111908 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201026_111908 : extraction uploaded zip file at uploads/SMZ_test
+20201026_111909 : import results from resultsDB.csv was done
+20201026_111911 : auto_tracking is execute with uploads/SMZ_test/SMZ_test, the exec_mode DEBUG
+20201026_111911 : export calculation result to resultsDB.csv was succeed.
+20201026_111911 : files were saved at restored_data/SMZ_test_13
+20201026_111911 : files at uploads/SMZ_test and uploads/SMZ_test.zip were deleted
+20201026_112205 : auto_tracking calculation with POST method was called
+20201026_112205 : ImmutableMultiDict([('upload_file', <FileStorage: 'SMZ_test.zip' ('application/x-zip-compressed')>)]) file is posted
+20201026_112205 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201026_112205 : extraction uploaded zip file at uploads/SMZ_test
+20201026_112205 : import results from resultsDB.csv was done
+20201026_112207 : auto_tracking is execute with uploads/SMZ_test/SMZ_test, the exec_mode DEBUG
+20201026_112207 : export calculation result to resultsDB.csv was succeed.
+20201026_112207 : files were saved at restored_data/SMZ_test_14
+20201026_112207 : files at uploads/SMZ_test and uploads/SMZ_test.zip were deleted
+20201026_112505 : auto_tracking calculation with POST method was called
+20201026_112505 : ImmutableMultiDict([('upload_file', <FileStorage: 'SMZ_test.zip' ('application/x-zip-compressed')>)]) file is posted
+20201026_112505 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201026_112505 : extraction uploaded zip file at uploads/SMZ_test
+20201026_112505 : import results from resultsDB.csv was done
+20201026_112507 : auto_tracking is execute with uploads/SMZ_test/SMZ_test, the exec_mode DEBUG
+20201026_112507 : export calculation result to resultsDB.csv was succeed.
+20201026_112507 : files were saved at restored_data/SMZ_test_15
+20201026_112507 : files at uploads/SMZ_test and uploads/SMZ_test.zip were deleted
+20201026_112548 : auto_tracking calculation with POST method was called
+20201026_112548 : ImmutableMultiDict([('upload_file', <FileStorage: 'T1356_吐出画像20200625135440.zip' ('application/x-zip-compressed')>)]) file is posted
+20201026_112548 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201026_112548 : extraction uploaded zip file at uploads/T1356_吐出画像20200625135440
+20201026_112548 : import results from resultsDB.csv was done
+20201026_112550 : auto_tracking is execute with uploads/T1356_吐出画像20200625135440/T1356_吐出画像20200625135440, the exec_mode DEBUG
+20201026_112550 : export calculation result to resultsDB.csv was succeed.
+20201026_112550 : files were saved at restored_data/T1356_吐出画像20200625135440
+20201026_112550 : files at uploads/T1356_吐出画像20200625135440 and uploads/T1356_吐出画像20200625135440.zip were deleted
+20201026_112904 : auto_tracking calculation with POST method was called
+20201026_112904 : ImmutableMultiDict([('upload_file', <FileStorage: 'T1356_吐出画像20200625135440.zip' ('application/x-zip-compressed')>)]) file is posted
+20201026_112904 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201026_112904 : extraction uploaded zip file at uploads/T1356_吐出画像20200625135440
+20201026_112904 : import results from resultsDB.csv was done
+20201026_112905 : auto_tracking is execute with uploads/T1356_吐出画像20200625135440/T1356_吐出画像20200625135440, the exec_mode DEBUG
+20201026_112906 : export calculation result to resultsDB.csv was succeed.
+20201026_112906 : files were saved at restored_data/T1356_吐出画像20200625135440_2
+20201026_112906 : files at uploads/T1356_吐出画像20200625135440 and uploads/T1356_吐出画像20200625135440.zip were deleted
+20201026_113029 : auto_tracking calculation with POST method was called
+20201026_113029 : ImmutableMultiDict([('upload_file', <FileStorage: 'T1356_吐出画像20200625135440.zip' ('application/x-zip-compressed')>)]) file is posted
+20201026_113029 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201026_113029 : extraction uploaded zip file at uploads/T1356_吐出画像20200625135440
+20201026_113029 : import results from resultsDB.csv was done
+20201026_113030 : auto_tracking is execute with uploads/T1356_吐出画像20200625135440/T1356_吐出画像20200625135440, the exec_mode DEBUG
+20201026_113030 : export calculation result to resultsDB.csv was succeed.
+20201026_113031 : files were saved at restored_data/T1356_吐出画像20200625135440_3
+20201026_113031 : files at uploads/T1356_吐出画像20200625135440 and uploads/T1356_吐出画像20200625135440.zip were deleted
+20201026_113141 : auto_tracking calculation with POST method was called
+20201026_113141 : ImmutableMultiDict([('upload_file', <FileStorage: 'T1356_吐出画像20200625135440.zip' ('application/x-zip-compressed')>)]) file is posted
+20201026_113141 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201026_113141 : extraction uploaded zip file at uploads/T1356_吐出画像20200625135440
+20201026_113141 : import results from resultsDB.csv was done
+20201026_113143 : auto_tracking is execute with uploads/T1356_吐出画像20200625135440/T1356_吐出画像20200625135440, the exec_mode DEBUG
+20201026_113143 : export calculation result to resultsDB.csv was succeed.
+20201026_113143 : files were saved at restored_data/T1356_吐出画像20200625135440_4
+20201026_113143 : files at uploads/T1356_吐出画像20200625135440 and uploads/T1356_吐出画像20200625135440.zip were deleted
+20201026_113834 : auto_tracking calculation with POST method was called
+20201026_113834 : ImmutableMultiDict([('upload_file', <FileStorage: 'T1356_吐出画像20200625135440.zip' ('application/x-zip-compressed')>)]) file is posted
+20201026_113834 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201026_113834 : extraction uploaded zip file at uploads/T1356_吐出画像20200625135440
+20201026_113834 : import results from resultsDB.csv was done
+20201026_113836 : auto_tracking is execute with uploads/T1356_吐出画像20200625135440/T1356_吐出画像20200625135440, the exec_mode DEBUG
+20201026_113836 : export calculation result to resultsDB.csv was succeed.
+20201026_113836 : files were saved at restored_data/T1356_吐出画像20200625135440_5
+20201026_113836 : files at uploads/T1356_吐出画像20200625135440 and uploads/T1356_吐出画像20200625135440.zip were deleted
+20201026_113917 : auto_tracking calculation with POST method was called
+20201026_113917 : ImmutableMultiDict([('upload_file', <FileStorage: 'SMZ_test.zip' ('application/x-zip-compressed')>)]) file is posted
+20201026_113917 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201026_113917 : extraction uploaded zip file at uploads/SMZ_test
+20201026_113917 : import results from resultsDB.csv was done
+20201026_113919 : auto_tracking is execute with uploads/SMZ_test/SMZ_test, the exec_mode DEBUG
+20201026_113919 : export calculation result to resultsDB.csv was succeed.
+20201026_113920 : files were saved at restored_data/SMZ_test_16
+20201026_113920 : files at uploads/SMZ_test and uploads/SMZ_test.zip were deleted
+20201026_114936 : auto_tracking calculation with POST method was called
+20201026_114936 : ImmutableMultiDict([('upload_file', <FileStorage: 'SMZ_test.zip' ('application/x-zip-compressed')>)]) file is posted
+20201026_114936 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201026_114936 : extraction uploaded zip file at uploads/SMZ_test
+20201026_114936 : import results from resultsDB.csv was done
+20201026_114939 : auto_tracking is execute with uploads/SMZ_test/SMZ_test, the exec_mode DEBUG
+20201026_114939 : export calculation result to resultsDB.csv was succeed.
+20201026_114939 : files were saved at restored_data/SMZ_test
+20201026_114939 : files at uploads/SMZ_test and uploads/SMZ_test.zip were deleted
+20201026_115004 : auto_tracking calculation with POST method was called
+20201026_115004 : ImmutableMultiDict([('upload_file', <FileStorage: 'SMZ_test.zip' ('application/x-zip-compressed')>)]) file is posted
+20201026_115004 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201026_115004 : extraction uploaded zip file at uploads/SMZ_test
+20201026_115004 : import results from resultsDB.csv was done
+20201026_115006 : auto_tracking is execute with uploads/SMZ_test/SMZ_test, the exec_mode DEBUG
+20201026_115006 : export calculation result to resultsDB.csv was succeed.
+20201026_115006 : files were saved at restored_data/SMZ_test_2
+20201026_115006 : files at uploads/SMZ_test and uploads/SMZ_test.zip were deleted
+20201026_115521 : auto_tracking calculation with POST method was called
+20201026_115521 : ImmutableMultiDict([('upload_file', <FileStorage: 'SMZ_test.zip' ('application/x-zip-compressed')>)]) file is posted
+20201026_115521 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201026_115521 : extraction uploaded zip file at uploads/SMZ_test
+20201026_115521 : import results from resultsDB.csv was done
+20201026_115523 : auto_tracking is execute with uploads/SMZ_test/SMZ_test, the exec_mode DEBUG
+20201026_115523 : export calculation result to resultsDB.csv was succeed.
+20201026_115523 : files were saved at restored_data/SMZ_test_3
+20201026_115523 : files at uploads/SMZ_test and uploads/SMZ_test.zip were deleted
+20201026_115656 : auto_tracking calculation with POST method was called
+20201026_115656 : ImmutableMultiDict([('upload_file', <FileStorage: 'SMZ_test.zip' ('application/x-zip-compressed')>)]) file is posted
+20201026_115656 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201026_115656 : extraction uploaded zip file at uploads/SMZ_test
+20201026_115656 : import results from resultsDB.csv was done
+20201026_115658 : auto_tracking is execute with uploads/SMZ_test/SMZ_test, the exec_mode DEBUG
+20201026_115658 : export calculation result to resultsDB.csv was succeed.
+20201026_115658 : files were saved at restored_data/SMZ_test_4
+20201026_115658 : files at uploads/SMZ_test and uploads/SMZ_test.zip were deleted
+20201026_115904 : auto_tracking calculation with POST method was called
+20201026_115904 : ImmutableMultiDict([('upload_file', <FileStorage: 'SMZ_test.zip' ('application/x-zip-compressed')>)]) file is posted
+20201026_115904 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201026_115904 : extraction uploaded zip file at uploads/SMZ_test
+20201026_115904 : import results from resultsDB.csv was done
+20201026_115906 : auto_tracking is execute with uploads/SMZ_test/SMZ_test, the exec_mode DEBUG
+20201026_115906 : export calculation result to resultsDB.csv was succeed.
+20201026_115906 : files were saved at restored_data/SMZ_test_5
+20201026_115906 : files at uploads/SMZ_test and uploads/SMZ_test.zip were deleted
+20201026_120024 : auto_tracking calculation with POST method was called
+20201026_120024 : ImmutableMultiDict([('upload_file', <FileStorage: 'SMZ_test.zip' ('application/x-zip-compressed')>)]) file is posted
+20201026_120024 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201026_120024 : extraction uploaded zip file at uploads/SMZ_test
+20201026_120024 : import results from resultsDB.csv was done
+20201026_120026 : auto_tracking is execute with uploads/SMZ_test/SMZ_test, the exec_mode DEBUG
+20201026_120026 : export calculation result to resultsDB.csv was succeed.
+20201026_120027 : files were saved at restored_data/SMZ_test_6
+20201026_120027 : files at uploads/SMZ_test and uploads/SMZ_test.zip were deleted
+20201026_120137 : auto_tracking calculation with POST method was called
+20201026_120137 : ImmutableMultiDict([('upload_file', <FileStorage: 'E0893_吐出画像20201019143627_side.zip' ('application/x-zip-compressed')>)]) file is posted
+20201026_120137 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201026_120137 : extraction uploaded zip file at uploads/E0893_吐出画像20201019143627_side
+20201026_120137 : import results from resultsDB.csv was done
+20201026_120140 : auto_tracking is execute with uploads/E0893_吐出画像20201019143627_side/E0893_吐出画像20201019143627, the exec_mode DEBUG
+20201026_120140 : export calculation result to resultsDB.csv was succeed.
+20201026_120140 : files were saved at restored_data/E0893_吐出画像20201019143627_side
+20201026_120140 : files at uploads/E0893_吐出画像20201019143627_side and uploads/E0893_吐出画像20201019143627_side.zip were deleted
+20201026_120431 : auto_tracking calculation with POST method was called
+20201026_120431 : ImmutableMultiDict([('upload_file', <FileStorage: 'E0893_吐出画像20201019143627_side.zip' ('application/x-zip-compressed')>)]) file is posted
+20201026_120431 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201026_120431 : extraction uploaded zip file at uploads/E0893_吐出画像20201019143627_side
+20201026_120431 : import results from resultsDB.csv was done
+20201026_120434 : auto_tracking is execute with uploads/E0893_吐出画像20201019143627_side/E0893_吐出画像20201019143627, the exec_mode DEBUG
+20201026_120434 : export calculation result to resultsDB.csv was succeed.
+20201026_120434 : files were saved at restored_data/E0893_吐出画像20201019143627_side_2
+20201026_120434 : files at uploads/E0893_吐出画像20201019143627_side and uploads/E0893_吐出画像20201019143627_side.zip were deleted
+20201026_120520 : auto_tracking calculation with POST method was called
+20201026_120520 : ImmutableMultiDict([('upload_file', <FileStorage: 'E0893_吐出画像20201019143627_side.zip' ('application/x-zip-compressed')>)]) file is posted
+20201026_120520 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201026_120520 : extraction uploaded zip file at uploads/E0893_吐出画像20201019143627_side
+20201026_120521 : import results from resultsDB.csv was done
+20201026_120523 : auto_tracking is execute with uploads/E0893_吐出画像20201019143627_side/E0893_吐出画像20201019143627, the exec_mode DEBUG
+20201026_120523 : export calculation result to resultsDB.csv was succeed.
+20201026_120523 : files were saved at restored_data/E0893_吐出画像20201019143627_side_3
+20201026_120523 : files at uploads/E0893_吐出画像20201019143627_side and uploads/E0893_吐出画像20201019143627_side.zip were deleted
+20201026_120546 : auto_tracking calculation with POST method was called
+20201026_120546 : ImmutableMultiDict([('upload_file', <FileStorage: 'E0893_吐出画像20201019143627_side.zip' ('application/x-zip-compressed')>)]) file is posted
+20201026_120546 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201026_120546 : extraction uploaded zip file at uploads/E0893_吐出画像20201019143627_side
+20201026_120547 : import results from resultsDB.csv was done
+20201026_120549 : auto_tracking is execute with uploads/E0893_吐出画像20201019143627_side/E0893_吐出画像20201019143627, the exec_mode DEBUG
+20201026_120549 : export calculation result to resultsDB.csv was succeed.
+20201026_120549 : files were saved at restored_data/E0893_吐出画像20201019143627_side_4
+20201026_120549 : files at uploads/E0893_吐出画像20201019143627_side and uploads/E0893_吐出画像20201019143627_side.zip were deleted
+20201026_120945 : auto_tracking calculation with POST method was called
+20201026_120945 : ImmutableMultiDict([('upload_file', <FileStorage: 'E0893_吐出画像20201019143627_side.zip' ('application/x-zip-compressed')>)]) file is posted
+20201026_120945 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201026_120945 : extraction uploaded zip file at uploads/E0893_吐出画像20201019143627_side
+20201026_120945 : import results from resultsDB.csv was done
+20201026_120947 : auto_tracking is execute with uploads/E0893_吐出画像20201019143627_side/E0893_吐出画像20201019143627, the exec_mode DEBUG
+20201026_120947 : export calculation result to resultsDB.csv was succeed.
+20201026_120948 : files were saved at restored_data/E0893_吐出画像20201019143627_side_5
+20201026_120948 : files at uploads/E0893_吐出画像20201019143627_side and uploads/E0893_吐出画像20201019143627_side.zip were deleted
+20201026_121305 : auto_tracking calculation with POST method was called
+20201026_121305 : ImmutableMultiDict([('upload_file', <FileStorage: 'E0893_吐出画像20201019143627_side.zip' ('application/x-zip-compressed')>)]) file is posted
+20201026_121305 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201026_121305 : extraction uploaded zip file at uploads/E0893_吐出画像20201019143627_side
+20201026_121305 : import results from resultsDB.csv was done
+20201026_121307 : auto_tracking is execute with uploads/E0893_吐出画像20201019143627_side/E0893_吐出画像20201019143627, the exec_mode DEBUG
+20201026_121307 : export calculation result to resultsDB.csv was succeed.
+20201026_121308 : files were saved at restored_data/E0893_吐出画像20201019143627_side_6
+20201026_121308 : files at uploads/E0893_吐出画像20201019143627_side and uploads/E0893_吐出画像20201019143627_side.zip were deleted
+20201026_121611 : auto_tracking calculation with POST method was called
+20201026_121611 : ImmutableMultiDict([('upload_file', <FileStorage: 'E0893_吐出画像20201019143627_side.zip' ('application/x-zip-compressed')>)]) file is posted
+20201026_121611 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201026_121611 : extraction uploaded zip file at uploads/E0893_吐出画像20201019143627_side
+20201026_121611 : import results from resultsDB.csv was done
+20201026_121613 : auto_tracking is execute with uploads/E0893_吐出画像20201019143627_side/E0893_吐出画像20201019143627, the exec_mode DEBUG
+20201026_121613 : export calculation result to resultsDB.csv was succeed.
+20201026_121614 : files were saved at restored_data/E0893_吐出画像20201019143627_side_7
+20201026_121614 : files at uploads/E0893_吐出画像20201019143627_side and uploads/E0893_吐出画像20201019143627_side.zip were deleted
+20201026_121932 : auto_tracking calculation with POST method was called
+20201026_121932 : ImmutableMultiDict([('upload_file', <FileStorage: 'E0893_吐出画像20201019143627_side.zip' ('application/x-zip-compressed')>)]) file is posted
+20201026_121932 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201026_121932 : extraction uploaded zip file at uploads/E0893_吐出画像20201019143627_side
+20201026_121932 : import results from resultsDB.csv was done
+20201026_121934 : auto_tracking is execute with uploads/E0893_吐出画像20201019143627_side/E0893_吐出画像20201019143627, the exec_mode DEBUG
+20201026_121934 : export calculation result to resultsDB.csv was succeed.
+20201026_121934 : files were saved at restored_data/E0893_吐出画像20201019143627_side_8
+20201026_121934 : files at uploads/E0893_吐出画像20201019143627_side and uploads/E0893_吐出画像20201019143627_side.zip were deleted
+20201026_122135 : auto_tracking calculation with POST method was called
+20201026_122135 : ImmutableMultiDict([('upload_file', <FileStorage: 'E0893_吐出画像20201019143627_side.zip' ('application/x-zip-compressed')>)]) file is posted
+20201026_122135 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201026_122135 : extraction uploaded zip file at uploads/E0893_吐出画像20201019143627_side
+20201026_122135 : import results from resultsDB.csv was done
+20201026_122137 : auto_tracking is execute with uploads/E0893_吐出画像20201019143627_side/E0893_吐出画像20201019143627, the exec_mode DEBUG
+20201026_122137 : export calculation result to resultsDB.csv was succeed.
+20201026_122138 : files were saved at restored_data/E0893_吐出画像20201019143627_side_9
+20201026_122138 : files at uploads/E0893_吐出画像20201019143627_side and uploads/E0893_吐出画像20201019143627_side.zip were deleted
+20201026_122612 : auto_tracking calculation with POST method was called
+20201026_122612 : ImmutableMultiDict([('upload_file', <FileStorage: 'E0893_吐出画像20201019143627_side.zip' ('application/x-zip-compressed')>)]) file is posted
+20201026_122612 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201026_122612 : extraction uploaded zip file at uploads/E0893_吐出画像20201019143627_side
+20201026_122612 : import results from resultsDB.csv was done
+20201026_122614 : auto_tracking is execute with uploads/E0893_吐出画像20201019143627_side/E0893_吐出画像20201019143627, the exec_mode DEBUG
+20201026_122614 : export calculation result to resultsDB.csv was succeed.
+20201026_122615 : files were saved at restored_data/E0893_吐出画像20201019143627_side_10
+20201026_122615 : files at uploads/E0893_吐出画像20201019143627_side and uploads/E0893_吐出画像20201019143627_side.zip were deleted
+20201026_122727 : auto_tracking calculation with POST method was called
+20201026_122727 : ImmutableMultiDict([('upload_file', <FileStorage: 'E0893_吐出画像20201019143627_side.zip' ('application/x-zip-compressed')>)]) file is posted
+20201026_122727 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201026_122727 : extraction uploaded zip file at uploads/E0893_吐出画像20201019143627_side
+20201026_122727 : import results from resultsDB.csv was done
+20201026_122729 : auto_tracking is execute with uploads/E0893_吐出画像20201019143627_side/E0893_吐出画像20201019143627, the exec_mode DEBUG
+20201026_122729 : export calculation result to resultsDB.csv was succeed.
+20201026_122729 : files were saved at restored_data/E0893_吐出画像20201019143627_side_11
+20201026_122729 : files at uploads/E0893_吐出画像20201019143627_side and uploads/E0893_吐出画像20201019143627_side.zip were deleted
+20201026_122855 : auto_tracking calculation with POST method was called
+20201026_122856 : ImmutableMultiDict([('upload_file', <FileStorage: 'E0893_吐出画像20201019143627_side.zip' ('application/x-zip-compressed')>)]) file is posted
+20201026_122856 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201026_122856 : extraction uploaded zip file at uploads/E0893_吐出画像20201019143627_side
+20201026_122856 : import results from resultsDB.csv was done
+20201026_122858 : auto_tracking is execute with uploads/E0893_吐出画像20201019143627_side/E0893_吐出画像20201019143627, the exec_mode DEBUG
+20201026_122858 : export calculation result to resultsDB.csv was succeed.
+20201026_122858 : files were saved at restored_data/E0893_吐出画像20201019143627_side_12
+20201026_122858 : files at uploads/E0893_吐出画像20201019143627_side and uploads/E0893_吐出画像20201019143627_side.zip were deleted
+20201026_123045 : auto_tracking calculation with POST method was called
+20201026_123045 : ImmutableMultiDict([('upload_file', <FileStorage: 'E0893_吐出画像20201019143627_side.zip' ('application/x-zip-compressed')>)]) file is posted
+20201026_123045 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201026_123045 : extraction uploaded zip file at uploads/E0893_吐出画像20201019143627_side
+20201026_123045 : import results from resultsDB.csv was done
+20201026_123047 : auto_tracking is execute with uploads/E0893_吐出画像20201019143627_side/E0893_吐出画像20201019143627, the exec_mode DEBUG
+20201026_123047 : export calculation result to resultsDB.csv was succeed.
+20201026_123047 : files were saved at restored_data/E0893_吐出画像20201019143627_side_13
+20201026_123048 : files at uploads/E0893_吐出画像20201019143627_side and uploads/E0893_吐出画像20201019143627_side.zip were deleted
+20201026_152304 : auto_tracking calculation with GET method was called
+20201026_152304 : file upload was FAILED
+20201026_152337 : auto_tracking calculation with POST method was called
+20201026_152337 : ImmutableMultiDict([('upload_file', <FileStorage: 'E0893_吐出画像20201019143627_side.zip' ('application/x-zip-compressed')>)]) file is posted
+20201026_152337 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201026_152337 : extraction uploaded zip file at uploads/E0893_吐出画像20201019143627_side
+20201026_152337 : import results from resultsDB.csv was done
+20201026_152340 : auto_tracking is execute with uploads/E0893_吐出画像20201019143627_side/E0893_吐出画像20201019143627, the exec_mode DEBUG
+20201026_152340 : export calculation result to resultsDB.csv was succeed.
+20201026_152340 : files were saved at restored_data/E0893_吐出画像20201019143627_side_14
+20201026_152340 : files at uploads/E0893_吐出画像20201019143627_side and uploads/E0893_吐出画像20201019143627_side.zip were deleted
+20201026_160624 : auto_tracking calculation with POST method was called
+20201026_160624 : ImmutableMultiDict([('upload_file', <FileStorage: 'E0893_吐出画像20201019143627_side.zip' ('application/x-zip-compressed')>)]) file is posted
+20201026_160624 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201026_160624 : extraction uploaded zip file at uploads/E0893_吐出画像20201019143627_side
+20201026_160624 : import results from resultsDB.csv was done
+20201026_160632 : auto_tracking is execute with uploads/E0893_吐出画像20201019143627_side/E0893_吐出画像20201019143627, the exec_mode DEBUG
+20201026_160632 : export calculation result to resultsDB.csv was succeed.
+20201026_160632 : files were saved at restored_data/E0893_吐出画像20201019143627_side
+20201026_160633 : files at uploads/E0893_吐出画像20201019143627_side and uploads/E0893_吐出画像20201019143627_side.zip were deleted
+20201026_185421 : auto_tracking without zip file method is called with GET method.
+20201026_185421 : test_dirs are exist as ['test1', 'test2', 'test3', 'test4']
+20201026_185421 : import results from resultsDB.csv was done
+20201026_185421 : calculation was done.
+20201026_185421 : export calculation result to resultsDB.csv was succeed.
+20201026_185439 : auto_tracking calculation with POST method was called
+20201026_185439 : ImmutableMultiDict([('upload_file', <FileStorage: 'T1172_吐出画像20200330102520.zip' ('application/x-zip-compressed')>)]) file is posted
+20201026_185439 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201026_185439 : extraction uploaded zip file at uploads/T1172_吐出画像20200330102520
+20201026_185439 : import results from resultsDB.csv was done
+20201026_185442 : auto_tracking is execute with uploads/T1172_吐出画像20200330102520/T1172_吐出画像20200330102520, the exec_mode DEBUG
+20201026_185442 : export calculation result to resultsDB.csv was succeed.
+20201026_185442 : files were saved at restored_data/T1172_吐出画像20200330102520
+20201026_185442 : files at uploads/T1172_吐出画像20200330102520 and uploads/T1172_吐出画像20200330102520.zip were deleted
+20201027_090609 : auto_tracking calculation with POST method was called
+20201027_090609 : ImmutableMultiDict([('upload_file', <FileStorage: 'E0893_吐出画像20201019143627_side.zip' ('application/x-zip-compressed')>)]) file is posted
+20201027_090609 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201027_090609 : extraction uploaded zip file at uploads/E0893_吐出画像20201019143627_side
+20201027_090609 : import results from resultsDB.csv was done
+20201027_090612 : auto_tracking is execute with uploads/E0893_吐出画像20201019143627_side/E0893_吐出画像20201019143627, the exec_mode DEBUG
+20201027_090612 : export calculation result to resultsDB.csv was succeed.
+20201027_090612 : files were saved at restored_data/E0893_吐出画像20201019143627_side_2
+20201027_090612 : files at uploads/E0893_吐出画像20201019143627_side and uploads/E0893_吐出画像20201019143627_side.zip were deleted
+20201027_090739 : auto_tracking calculation with POST method was called
+20201027_090739 : ImmutableMultiDict([('upload_file', <FileStorage: 'E0893_吐出画像20201019143627_side.zip' ('application/x-zip-compressed')>)]) file is posted
+20201027_090739 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201027_090739 : extraction uploaded zip file at uploads/E0893_吐出画像20201019143627_side
+20201027_090739 : import results from resultsDB.csv was done
+20201027_090742 : auto_tracking is execute with uploads/E0893_吐出画像20201019143627_side/E0893_吐出画像20201019143627, the exec_mode DEBUG
+20201027_090742 : export calculation result to resultsDB.csv was succeed.
+20201027_090742 : files were saved at restored_data/E0893_吐出画像20201019143627_side_3
+20201027_090742 : files at uploads/E0893_吐出画像20201019143627_side and uploads/E0893_吐出画像20201019143627_side.zip were deleted
+20201027_100943 : auto_tracking calculation with POST method was called
+20201027_100943 : ImmutableMultiDict([('upload_file', <FileStorage: 'E0893_吐出画像20201019143627_side.zip' ('application/x-zip-compressed')>)]) file is posted
+20201027_100943 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201027_100943 : extraction uploaded zip file at uploads/E0893_吐出画像20201019143627_side
+20201027_100943 : import results from resultsDB.csv was done
+20201027_100945 : auto_tracking is execute with uploads/E0893_吐出画像20201019143627_side/E0893_吐出画像20201019143627, the exec_mode DEBUG
+20201027_100945 : export calculation result to resultsDB.csv was succeed.
+20201027_100946 : files were saved at restored_data/E0893_吐出画像20201019143627_side_4
+20201027_100946 : files at uploads/E0893_吐出画像20201019143627_side and uploads/E0893_吐出画像20201019143627_side.zip were deleted
+20201027_101021 : auto_tracking calculation with POST method was called
+20201027_101021 : ImmutableMultiDict([('upload_file', <FileStorage: 'E0893_吐出画像20201019143627_side.zip' ('application/x-zip-compressed')>)]) file is posted
+20201027_101021 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201027_101021 : extraction uploaded zip file at uploads/E0893_吐出画像20201019143627_side
+20201027_101021 : import results from resultsDB.csv was done
+20201027_101024 : auto_tracking is execute with uploads/E0893_吐出画像20201019143627_side/E0893_吐出画像20201019143627, the exec_mode DEBUG
+20201027_101024 : export calculation result to resultsDB.csv was succeed.
+20201027_101024 : files were saved at restored_data/E0893_吐出画像20201019143627_side_5
+20201027_101024 : files at uploads/E0893_吐出画像20201019143627_side and uploads/E0893_吐出画像20201019143627_side.zip were deleted
+20201027_101911 : auto_tracking calculation with POST method was called
+20201027_101911 : ImmutableMultiDict([('upload_file', <FileStorage: 'E0893_吐出画像20201019143627_side.zip' ('application/x-zip-compressed')>)]) file is posted
+20201027_101911 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201027_101911 : extraction uploaded zip file at uploads/E0893_吐出画像20201019143627_side
+20201027_101911 : import results from resultsDB.csv was done
+20201027_101914 : auto_tracking is execute with uploads/E0893_吐出画像20201019143627_side/E0893_吐出画像20201019143627, the exec_mode DEBUG
+20201027_101914 : export calculation result to resultsDB.csv was succeed.
+20201027_101914 : files were saved at restored_data/E0893_吐出画像20201019143627_side_6
+20201027_101914 : files at uploads/E0893_吐出画像20201019143627_side and uploads/E0893_吐出画像20201019143627_side.zip were deleted
+20201027_112934 : auto_tracking calculation with POST method was called
+20201027_112934 : ImmutableMultiDict([('upload_file', <FileStorage: 'E0893_吐出画像20201019143627_side.zip' ('application/x-zip-compressed')>)]) file is posted
+20201027_112934 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201027_112934 : extraction uploaded zip file at uploads/E0893_吐出画像20201019143627_side
+20201027_112934 : import results from resultsDB.csv was done
+20201027_112936 : auto_tracking is execute with uploads/E0893_吐出画像20201019143627_side/E0893_吐出画像20201019143627, the exec_mode DEBUG
+20201027_112936 : export calculation result to resultsDB.csv was succeed.
+20201027_112936 : files were saved at restored_data/E0893_吐出画像20201019143627_side_7
+20201027_112937 : files at uploads/E0893_吐出画像20201019143627_side and uploads/E0893_吐出画像20201019143627_side.zip were deleted
+20201027_113414 : auto_tracking calculation with POST method was called
+20201027_113414 : ImmutableMultiDict([('upload_file', <FileStorage: 'SMZ_test.zip' ('application/x-zip-compressed')>)]) file is posted
+20201027_113414 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201027_113414 : extraction uploaded zip file at uploads/SMZ_test
+20201027_113414 : import results from resultsDB.csv was done
+20201027_113415 : auto_tracking is execute with uploads/SMZ_test/SMZ_test, the exec_mode DEBUG
+20201027_113415 : export calculation result to resultsDB.csv was succeed.
+20201027_113416 : files were saved at restored_data/SMZ_test
+20201027_113416 : files at uploads/SMZ_test and uploads/SMZ_test.zip were deleted
+20201027_121738 : auto_tracking calculation with POST method was called
+20201027_121738 : ImmutableMultiDict([('upload_file', <FileStorage: 'E0893_吐出画像20201019143627_side.zip' ('application/x-zip-compressed')>)]) file is posted
+20201027_121738 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201027_121738 : extraction uploaded zip file at uploads/E0893_吐出画像20201019143627_side
+20201027_121738 : import results from resultsDB.csv was done
+20201027_121740 : auto_tracking is execute with uploads/E0893_吐出画像20201019143627_side/E0893_吐出画像20201019143627, the exec_mode DEBUG
+20201027_121740 : export calculation result to resultsDB.csv was succeed.
+20201027_121740 : files were saved at restored_data/E0893_吐出画像20201019143627_side_8
+20201027_121740 : files at uploads/E0893_吐出画像20201019143627_side and uploads/E0893_吐出画像20201019143627_side.zip were deleted
+20201027_121943 : auto_tracking calculation with POST method was called
+20201027_121943 : ImmutableMultiDict([('upload_file', <FileStorage: 'E0893_吐出画像20201019143627_side.zip' ('application/x-zip-compressed')>)]) file is posted
+20201027_121943 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201027_121943 : extraction uploaded zip file at uploads/E0893_吐出画像20201019143627_side
+20201027_121944 : import results from resultsDB.csv was done
+20201027_121944 : auto_tracking is execute with uploads/E0893_吐出画像20201019143627_side/E0893_吐出画像20201019143627, the exec_mode DEBUG
+20201027_121944 : export calculation result to resultsDB.csv was succeed.
+20201027_121944 : files were saved at restored_data/E0893_吐出画像20201019143627_side_9
+20201027_121944 : files at uploads/E0893_吐出画像20201019143627_side and uploads/E0893_吐出画像20201019143627_side.zip were deleted
+20201027_122032 : auto_tracking calculation with POST method was called
+20201027_122032 : ImmutableMultiDict([('upload_file', <FileStorage: 'E0893_吐出画像20201019143627_side.zip' ('application/x-zip-compressed')>)]) file is posted
+20201027_122032 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201027_122032 : extraction uploaded zip file at uploads/E0893_吐出画像20201019143627_side
+20201027_122032 : import results from resultsDB.csv was done
+20201027_122034 : auto_tracking is execute with uploads/E0893_吐出画像20201019143627_side/E0893_吐出画像20201019143627, the exec_mode DEBUG
+20201027_122034 : export calculation result to resultsDB.csv was succeed.
+20201027_122034 : files were saved at restored_data/E0893_吐出画像20201019143627_side_10
+20201027_122034 : files at uploads/E0893_吐出画像20201019143627_side and uploads/E0893_吐出画像20201019143627_side.zip were deleted
+20201027_122332 : auto_tracking calculation with POST method was called
+20201027_122332 : ImmutableMultiDict([('upload_file', <FileStorage: 'E0893_吐出画像20201019143627_side.zip' ('application/x-zip-compressed')>)]) file is posted
+20201027_122332 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201027_122332 : extraction uploaded zip file at uploads/E0893_吐出画像20201019143627_side
+20201027_122332 : import results from resultsDB.csv was done
+20201027_122334 : auto_tracking is execute with uploads/E0893_吐出画像20201019143627_side/E0893_吐出画像20201019143627, the exec_mode DEBUG
+20201027_122334 : export calculation result to resultsDB.csv was succeed.
+20201027_122334 : files were saved at restored_data/E0893_吐出画像20201019143627_side_11
+20201027_122334 : files at uploads/E0893_吐出画像20201019143627_side and uploads/E0893_吐出画像20201019143627_side.zip were deleted
+20201027_124821 : auto_tracking calculation with POST method was called
+20201027_124821 : ImmutableMultiDict([('upload_file', <FileStorage: 'E0893_吐出画像20201019143627_side.zip' ('application/x-zip-compressed')>)]) file is posted
+20201027_124821 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201027_124821 : extraction uploaded zip file at uploads/E0893_吐出画像20201019143627_side
+20201027_124821 : import results from resultsDB.csv was done
+20201027_124823 : auto_tracking is execute with uploads/E0893_吐出画像20201019143627_side/E0893_吐出画像20201019143627, the exec_mode DEBUG
+20201027_124823 : export calculation result to resultsDB.csv was succeed.
+20201027_124823 : files were saved at restored_data/E0893_吐出画像20201019143627_side_12
+20201027_124823 : files at uploads/E0893_吐出画像20201019143627_side and uploads/E0893_吐出画像20201019143627_side.zip were deleted
+20201027_130006 : auto_tracking calculation with POST method was called
+20201027_130006 : ImmutableMultiDict([('upload_file', <FileStorage: 'E0893_吐出画像20201019143627_side.zip' ('application/x-zip-compressed')>)]) file is posted
+20201027_130006 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201027_130006 : extraction uploaded zip file at uploads/E0893_吐出画像20201019143627_side
+20201027_130006 : import results from resultsDB.csv was done
+20201027_130008 : auto_tracking is execute with uploads/E0893_吐出画像20201019143627_side/E0893_吐出画像20201019143627, the exec_mode DEBUG
+20201027_130008 : export calculation result to resultsDB.csv was succeed.
+20201027_130009 : files were saved at restored_data/E0893_吐出画像20201019143627_side_13
+20201027_130009 : files at uploads/E0893_吐出画像20201019143627_side and uploads/E0893_吐出画像20201019143627_side.zip were deleted
+20201027_130314 : auto_tracking calculation with POST method was called
+20201027_130314 : ImmutableMultiDict([('upload_file', <FileStorage: 'E0893_吐出画像20201019143627_side.zip' ('application/x-zip-compressed')>)]) file is posted
+20201027_130314 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201027_130314 : extraction uploaded zip file at uploads/E0893_吐出画像20201019143627_side
+20201027_130314 : import results from resultsDB.csv was done
+20201027_130317 : auto_tracking is execute with uploads/E0893_吐出画像20201019143627_side/E0893_吐出画像20201019143627, the exec_mode DEBUG
+20201027_130317 : export calculation result to resultsDB.csv was succeed.
+20201027_130317 : files were saved at restored_data/E0893_吐出画像20201019143627_side_14
+20201027_130317 : files at uploads/E0893_吐出画像20201019143627_side and uploads/E0893_吐出画像20201019143627_side.zip were deleted
+20201027_130422 : auto_tracking calculation with POST method was called
+20201027_130422 : ImmutableMultiDict([('upload_file', <FileStorage: 'E0893_吐出画像20201019143627_side.zip' ('application/x-zip-compressed')>)]) file is posted
+20201027_130422 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201027_130422 : extraction uploaded zip file at uploads/E0893_吐出画像20201019143627_side
+20201027_130422 : import results from resultsDB.csv was done
+20201027_130424 : auto_tracking is execute with uploads/E0893_吐出画像20201019143627_side/E0893_吐出画像20201019143627, the exec_mode DEBUG
+20201027_130424 : export calculation result to resultsDB.csv was succeed.
+20201027_130424 : files were saved at restored_data/E0893_吐出画像20201019143627_side_15
+20201027_130424 : files at uploads/E0893_吐出画像20201019143627_side and uploads/E0893_吐出画像20201019143627_side.zip were deleted
+20201027_130453 : auto_tracking calculation with POST method was called
+20201027_130453 : ImmutableMultiDict([('upload_file', <FileStorage: 'E0893_吐出画像20201019143627_side.zip' ('application/x-zip-compressed')>)]) file is posted
+20201027_130453 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201027_130453 : extraction uploaded zip file at uploads/E0893_吐出画像20201019143627_side
+20201027_130453 : import results from resultsDB.csv was done
+20201027_130455 : auto_tracking is execute with uploads/E0893_吐出画像20201019143627_side/E0893_吐出画像20201019143627, the exec_mode DEBUG
+20201027_130455 : export calculation result to resultsDB.csv was succeed.
+20201027_130456 : files were saved at restored_data/E0893_吐出画像20201019143627_side_16
+20201027_130456 : files at uploads/E0893_吐出画像20201019143627_side and uploads/E0893_吐出画像20201019143627_side.zip were deleted
+20201027_130719 : auto_tracking calculation with POST method was called
+20201027_130719 : ImmutableMultiDict([('upload_file', <FileStorage: 'E0893_吐出画像20201019143627_side.zip' ('application/x-zip-compressed')>)]) file is posted
+20201027_130719 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201027_130719 : extraction uploaded zip file at uploads/E0893_吐出画像20201019143627_side
+20201027_130719 : import results from resultsDB.csv was done
+20201027_130721 : auto_tracking is execute with uploads/E0893_吐出画像20201019143627_side/E0893_吐出画像20201019143627, the exec_mode DEBUG
+20201027_130721 : export calculation result to resultsDB.csv was succeed.
+20201027_130721 : files were saved at restored_data/E0893_吐出画像20201019143627_side_17
+20201027_130721 : files at uploads/E0893_吐出画像20201019143627_side and uploads/E0893_吐出画像20201019143627_side.zip were deleted
+20201027_130925 : auto_tracking calculation with POST method was called
+20201027_130925 : ImmutableMultiDict([('upload_file', <FileStorage: 'E0893_吐出画像20201019143627_side.zip' ('application/x-zip-compressed')>)]) file is posted
+20201027_130925 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201027_130925 : extraction uploaded zip file at uploads/E0893_吐出画像20201019143627_side
+20201027_130925 : import results from resultsDB.csv was done
+20201027_130928 : auto_tracking is execute with uploads/E0893_吐出画像20201019143627_side/E0893_吐出画像20201019143627, the exec_mode DEBUG
+20201027_130928 : export calculation result to resultsDB.csv was succeed.
+20201027_130928 : files were saved at restored_data/E0893_吐出画像20201019143627_side_18
+20201027_130928 : files at uploads/E0893_吐出画像20201019143627_side and uploads/E0893_吐出画像20201019143627_side.zip were deleted
+20201027_131351 : auto_tracking calculation with POST method was called
+20201027_131351 : ImmutableMultiDict([('upload_file', <FileStorage: 'E0893_吐出画像20201019143627_side.zip' ('application/x-zip-compressed')>)]) file is posted
+20201027_131351 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201027_131351 : extraction uploaded zip file at uploads/E0893_吐出画像20201019143627_side
+20201027_131351 : import results from resultsDB.csv was done
+20201027_131354 : auto_tracking is execute with uploads/E0893_吐出画像20201019143627_side/E0893_吐出画像20201019143627, the exec_mode DEBUG
+20201027_131354 : export calculation result to resultsDB.csv was succeed.
+20201027_131354 : files were saved at restored_data/E0893_吐出画像20201019143627_side_19
+20201027_131354 : files at uploads/E0893_吐出画像20201019143627_side and uploads/E0893_吐出画像20201019143627_side.zip were deleted
+20201027_131417 : auto_tracking calculation with POST method was called
+20201027_131417 : ImmutableMultiDict([('upload_file', <FileStorage: 'E0893_吐出画像20201019143627_side.zip' ('application/x-zip-compressed')>)]) file is posted
+20201027_131417 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201027_131417 : extraction uploaded zip file at uploads/E0893_吐出画像20201019143627_side
+20201027_131417 : import results from resultsDB.csv was done
+20201027_131420 : auto_tracking is execute with uploads/E0893_吐出画像20201019143627_side/E0893_吐出画像20201019143627, the exec_mode DEBUG
+20201027_131420 : export calculation result to resultsDB.csv was succeed.
+20201027_131421 : files were saved at restored_data/E0893_吐出画像20201019143627_side_20
+20201027_131421 : files at uploads/E0893_吐出画像20201019143627_side and uploads/E0893_吐出画像20201019143627_side.zip were deleted
+20201027_154026 : auto_tracking calculation with POST method was called
+20201027_154026 : ImmutableMultiDict([('upload_file', <FileStorage: 'E0893_吐出画像20201019143627_side.zip' ('application/x-zip-compressed')>)]) file is posted
+20201027_154026 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201027_154026 : extraction uploaded zip file at uploads/E0893_吐出画像20201019143627_side
+20201027_154027 : import results from resultsDB.csv was done
+20201027_154029 : auto_tracking is execute with uploads/E0893_吐出画像20201019143627_side/E0893_吐出画像20201019143627, the exec_mode DEBUG
+20201027_154029 : export calculation result to resultsDB.csv was succeed.
+20201027_154029 : files were saved at restored_data/E0893_吐出画像20201019143627_side_21
+20201027_154029 : files at uploads/E0893_吐出画像20201019143627_side and uploads/E0893_吐出画像20201019143627_side.zip were deleted
+20201027_154120 : auto_tracking calculation with POST method was called
+20201027_154120 : ImmutableMultiDict([('upload_file', <FileStorage: 'E0893_吐出画像20201019143627_side.zip' ('application/x-zip-compressed')>)]) file is posted
+20201027_154120 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201027_154120 : extraction uploaded zip file at uploads/E0893_吐出画像20201019143627_side
+20201027_154120 : import results from resultsDB.csv was done
+20201027_154123 : auto_tracking is execute with uploads/E0893_吐出画像20201019143627_side/E0893_吐出画像20201019143627, the exec_mode DEBUG
+20201027_154123 : export calculation result to resultsDB.csv was succeed.
+20201027_154123 : files were saved at restored_data/E0893_吐出画像20201019143627_side_22
+20201027_154123 : files at uploads/E0893_吐出画像20201019143627_side and uploads/E0893_吐出画像20201019143627_side.zip were deleted
+20201027_154318 : auto_tracking calculation with POST method was called
+20201027_154318 : ImmutableMultiDict([('upload_file', <FileStorage: 'E0893_吐出画像20201019143627_side.zip' ('application/x-zip-compressed')>)]) file is posted
+20201027_154318 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201027_154318 : extraction uploaded zip file at uploads/E0893_吐出画像20201019143627_side
+20201027_154319 : import results from resultsDB.csv was done
+20201027_154321 : auto_tracking is execute with uploads/E0893_吐出画像20201019143627_side/E0893_吐出画像20201019143627, the exec_mode DEBUG
+20201027_154321 : export calculation result to resultsDB.csv was succeed.
+20201027_154321 : files were saved at restored_data/E0893_吐出画像20201019143627_side_23
+20201027_154322 : files at uploads/E0893_吐出画像20201019143627_side and uploads/E0893_吐出画像20201019143627_side.zip were deleted
+20201028_093912 : auto_tracking calculation with POST method was called
+20201028_093912 : ImmutableMultiDict([('upload_file', <FileStorage: 'T1172_吐出画像20200330102520.zip' ('application/x-zip-compressed')>)]) file is posted
+20201028_093912 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201028_093912 : extraction uploaded zip file at uploads/T1172_吐出画像20200330102520
+20201028_093912 : import results from resultsDB.csv was done
+20201028_093914 : auto_tracking is execute with uploads/T1172_吐出画像20200330102520/T1172_吐出画像20200330102520, the exec_mode DEBUG
+20201028_093914 : export calculation result to resultsDB.csv was succeed.
+20201028_093914 : files were saved at restored_data/T1172_吐出画像20200330102520_2
+20201028_093914 : files at uploads/T1172_吐出画像20200330102520 and uploads/T1172_吐出画像20200330102520.zip were deleted
+20201028_113324 : auto_tracking calculation with POST method was called
+20201028_113324 : ImmutableMultiDict([('upload_file', <FileStorage: 'T1172_吐出画像20200330102520.zip' ('application/x-zip-compressed')>)]) file is posted
+20201028_113324 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201028_113324 : extraction uploaded zip file at uploads/T1172_吐出画像20200330102520
+20201028_113324 : import results from resultsDB.csv was done
+20201028_113326 : auto_tracking is execute with uploads/T1172_吐出画像20200330102520/T1172_吐出画像20200330102520, the exec_mode DEBUG
+20201028_113326 : export calculation result to resultsDB.csv was succeed.
+20201028_113326 : files were saved at restored_data/T1172_吐出画像20200330102520_3
+20201028_113327 : files at uploads/T1172_吐出画像20200330102520 and uploads/T1172_吐出画像20200330102520.zip were deleted
+20201028_113407 : auto_tracking calculation with POST method was called
+20201028_113407 : ImmutableMultiDict([('upload_file', <FileStorage: 'SMZ_test.zip' ('application/x-zip-compressed')>)]) file is posted
+20201028_113407 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201028_113407 : extraction uploaded zip file at uploads/SMZ_test
+20201028_113407 : import results from resultsDB.csv was done
+20201028_113409 : auto_tracking is execute with uploads/SMZ_test/SMZ_test, the exec_mode DEBUG
+20201028_113409 : export calculation result to resultsDB.csv was succeed.
+20201028_113409 : files were saved at restored_data/SMZ_test_2
+20201028_113410 : files at uploads/SMZ_test and uploads/SMZ_test.zip were deleted
+20201028_172317 : auto_tracking without zip file method is called with GET method.
+20201028_172317 : test_dirs are exist as ['test1', 'test2', 'test3', 'test4']
+20201028_172317 : import results from resultsDB.csv was done
+20201028_172317 : calculation was done.
+20201028_172317 : export calculation result to resultsDB.csv was succeed.
+20201028_172318 : auto_tracking without zip file method is called with GET method.
+20201028_172318 : test_dirs are exist as ['test1', 'test2', 'test3', 'test4']
+20201028_172318 : import results from resultsDB.csv was done
+20201028_172319 : calculation was done.
+20201028_172319 : export calculation result to resultsDB.csv was succeed.
+20201028_172350 : auto_tracking calculation with POST method was called
+20201028_172351 : ImmutableMultiDict([('upload_file', <FileStorage: 'T1172_吐出画像20200330102520.zip' ('application/x-zip-compressed')>)]) file is posted
+20201028_172351 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201028_172351 : extraction uploaded zip file at uploads/T1172_吐出画像20200330102520
+20201028_172351 : import results from resultsDB.csv was done
+20201028_172353 : auto_tracking is execute with uploads/T1172_吐出画像20200330102520/T1172_吐出画像20200330102520, the exec_mode DEBUG
+20201028_172353 : export calculation result to resultsDB.csv was succeed.
+20201028_172353 : files were saved at restored_data/T1172_吐出画像20200330102520_4
+20201028_172353 : files at uploads/T1172_吐出画像20200330102520 and uploads/T1172_吐出画像20200330102520.zip were deleted
+20201028_172635 : auto_tracking without zip file method is called with GET method.
+20201028_172635 : test_dirs are exist as ['test1', 'test2', 'test3', 'test4']
+20201028_172635 : import results from resultsDB.csv was done
+20201028_172637 : calculation was done.
+20201028_172637 : export calculation result to resultsDB.csv was succeed.
+20201028_172847 : auto_tracking without zip file method is called with GET method.
+20201028_172847 : test_dirs are exist as ['test1', 'test2', 'test3', 'test4']
+20201028_172847 : import results from resultsDB.csv was done
+20201028_172848 : calculation was done.
+20201028_172848 : export calculation result to resultsDB.csv was succeed.
+20201028_173056 : download result_csv file is called with GET method.
+20201028_173106 : download server_log file is called with GET method.
+20201028_173120 : download calculation_log file is called with GET method.
+20201028_173210 : download restored_files is called with GET method.
+20201028_185612 : auto_tracking calculation with GET method was called
+20201028_185612 : file upload was FAILED
+20201028_185617 : auto_tracking calculation with GET method was called
+20201028_185617 : file upload was FAILED
+20201028_185809 : calculate_diameter_thickness method is called with POST method
+20201028_185810 : calculation was done.
+20201028_185853 : calculate_averagethickness method is called with POST method
+20201028_185853 : argments type is invalid.
+20201028_185853 : at least one parameter is not positive value.
+20201028_190011 : calculate_averagethickness method is called with POST method
+20201028_190011 : argments type is invalid.
+20201028_190011 : at least one parameter is not positive value.
+20201028_190126 : calculate_averagethickness method is called with POST method
+20201028_190126 : calculation was done.
+20201028_190138 : calculate_averagethickness method is called with POST method
+20201028_190138 : calculation was done.
+20201028_190311 : calculate_diameter_thickness method is called with POST method
+20201028_190311 : calculation was done.
+20201028_190315 : calculate_diameter_thickness method is called with POST method
+20201028_190315 : calculation was done.
+20201029_092046 : auto_tracking calculation with POST method was called
+20201029_092046 : ImmutableMultiDict([('upload_file', <FileStorage: 'E0893_吐出画像20201019143627_side.zip' ('application/zip')>)]) file is posted
+20201029_092216 : auto_tracking calculation with POST method was called
+20201029_092216 : ImmutableMultiDict([('upload_file', <FileStorage: 'E0893_吐出画像20201019143627_side.zip' ('application/zip')>)]) file is posted
+20201029_092300 : auto_tracking calculation with POST method was called
+20201029_092300 : ImmutableMultiDict([('upload_file', <FileStorage: 'E0893_吐出画像20201019143627_side.zip' ('application/zip')>)]) file is posted
+20201029_092333 : auto_tracking calculation with POST method was called
+20201029_092333 : ImmutableMultiDict([('upload_file', <FileStorage: 'E0893_吐出画像20201019143627_side.zip' ('application/zip')>)]) file is posted
+20201029_092411 : auto_tracking calculation with POST method was called
+20201029_092411 : ImmutableMultiDict([('upload_file', <FileStorage: 'T1172_吐出画像20200330102520.zip' ('application/zip')>)]) file is posted
+20201029_092559 : auto_tracking calculation with POST method was called
+20201029_092559 : ImmutableMultiDict([('upload_file', <FileStorage: 'SMZ_test.zip' ('application/zip')>)]) file is posted
+20201029_092714 : auto_tracking calculation with POST method was called
+20201029_092714 : ImmutableMultiDict([('upload_file', <FileStorage: 'SMZ_test.zip' ('application/zip')>)]) file is posted
+20201029_093413 : auto_tracking calculation with POST method was called
+20201029_093413 : ImmutableMultiDict([('upload_file', <FileStorage: 'E0893_吐出画像20201019143627_side.zip' ('application/zip')>)]) file is posted
+20201029_100558 : calculate_contactagnle_and_firevolume method is called with GET method.
+20201029_100558 : calculation was done.
+20201029_100852 : calculate_averagethickness method is called with GET method
+20201029_100852 : calculation was done.
+20201029_100857 : calculate_averagethickness method is called with GET method
+20201029_100857 : calculation was done.
+20201029_100900 : calculate_averagethickness method is called with GET method
+20201029_100900 : calculation was done.
+20201029_101012 : calculate_averagethickness method is called with GET method
+20201029_101012 : calculation was done.
+20201029_101015 : calculate_averagethickness method is called with GET method
+20201029_101015 : calculation was done.
+20201029_101121 : calculate_averagethickness method is called with GET method
+20201029_101121 : calculation was done.
+20201029_101125 : calculate_averagethickness method is called with GET method
+20201029_101125 : calculation was done.
+20201029_101132 : calculate_averagethickness method is called with GET method
+20201029_101132 : calculation was done.
+20201029_101135 : calculate_averagethickness method is called with GET method
+20201029_101135 : calculation was done.
+20201029_101137 : calculate_averagethickness method is called with GET method
+20201029_101137 : calculation was done.
+20201029_101243 : calculate_contactangle_thickness method is called with GET method
+20201029_101243 : calculation was done.
+20201029_101247 : calculate_contactangle_thickness method is called with GET method
+20201029_101247 : calculation was done.
+20201029_101251 : calculate_contactangle_thickness method is called with GET method
+20201029_101251 : calculation was done.
+20201029_101429 : calculate_averagethickness method is called with GET method
+20201029_101429 : calculation was done.
+20201029_101452 : calculate_averagethickness method is called with GET method
+20201029_101452 : calculation was done.
+20201029_101529 : calculate_averagethickness method is called with GET method
+20201029_101529 : calculation was done.
+20201029_104618 : calculate_averagethickness method is called with GET method
+20201029_104618 : calculation was done.
+20201029_104630 : calculate_averagethickness method is called with GET method
+20201029_104630 : calculation was done.
+20201029_104637 : calculate_averagethickness method is called with GET method
+20201029_104637 : calculation was done.
+20201029_110604 : download restored_files is called with GET method.
+20201029_110606 : download restored_files is called with GET method.
+20201029_110614 : download restored_files is called with GET method.
+20201029_110619 : download restored_files is called with POST method.
+20201029_110619 : form was input ID : microjet,  PW : microjet_python, file Delete : False
+20201029_110631 : download restored_files with the name "restored_files20201029110619.zip" was started.
+20201029_110631 : zip file creation was done.
+20201029_110650 : download server_log file is called with GET method.
+20201029_110656 : download server_log file is called with POST method.
+20201029_110656 : form was input ID : microjet,  PW : microjet_python
+20201029_110656 : download was started.
+20201029_110702 : download calculation_log file is called with GET method.
+20201029_110710 : download calculation_log file is called with POST method.
+20201029_110710 : form was input ID : microjet,  PW : microjet_python
+20201029_110710 : download was started.
+20201029_110717 : download results_csv file is called with GET method.
+20201029_110722 : download result_csv file is called with GET method.
+20201029_110730 : download result_csv file is called with POST method.
+20201029_110730 : form was input ID : microjet,  PW : microjet_python
+20201029_110730 : download was started.
+20201029_111540 : calculate_averagethickness method is called with GET method
+20201029_111540 : calculation was done.
+20201029_111609 : calculate_diameter_thickness method is called with GET method
+20201029_111609 : calculation was done.
+20201029_111653 : calculate_diameter_thickness method is called with GET method
+20201029_111654 : calculation was done.
+20201029_111709 : calculate_diameter_thickness method is called with GET method
+20201029_111709 : calculation was done.
+20201029_111753 : auto_tracking calculation with POST method was called
+20201029_111753 : ImmutableMultiDict([('upload_file', <FileStorage: 'T1172_吐出画像20200330102520.zip' ('application/zip')>)]) file is posted
+20201029_111919 : auto_tracking calculation with POST method was called
+20201029_111919 : ImmutableMultiDict([('upload_file', <FileStorage: 'T1172_吐出画像20200330102520.zip' ('application/zip')>)]) file is posted
+20201029_112541 : auto_tracking calculation with POST method was called
+20201029_112541 : ImmutableMultiDict([('upload_file', <FileStorage: 'T1172_吐出画像20200330102520.zip' ('application/zip')>)]) file is posted
+20201029_112544 : auto_tracking calculation with POST method was called
+20201029_112544 : ImmutableMultiDict([('upload_file', <FileStorage: 'T1172_吐出画像20200330102520.zip' ('application/zip')>)]) file is posted
+20201029_112627 : auto_tracking calculation with POST method was called
+20201029_112627 : ImmutableMultiDict([('upload_file', <FileStorage: 'T1172_吐出画像20200330102520.zip' ('application/zip')>)]) file is posted
+20201029_112627 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201029_112627 : extraction uploaded zip file at uploads/T1172_吐出画像20200330102520
+20201029_112627 : import results from resultsDB.csv was done
+20201029_112629 : auto_tracking is execute with uploads/T1172_吐出画像20200330102520/T1172_吐出画像20200330102520, the exec_mode DEBUG
+20201029_112629 : export calculation result to resultsDB.csv was succeed.
+20201029_112630 : files were saved at restored_data/T1172_吐出画像20200330102520
+20201029_112630 : files at uploads/T1172_吐出画像20200330102520 and uploads/T1172_吐出画像20200330102520.zip were deleted
+20201029_113615 : auto_tracking calculation with POST method was called
+20201029_113615 : ImmutableMultiDict([('upload_file', <FileStorage: 'SMZ_test.zip' ('application/zip')>)]) file is posted
+20201029_113615 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201029_113615 : extraction uploaded zip file at uploads/SMZ_test
+20201029_113615 : import results from resultsDB.csv was done
+20201029_113617 : auto_tracking is execute with uploads/SMZ_test/SMZ_test, the exec_mode DEBUG
+20201029_113617 : export calculation result to resultsDB.csv was succeed.
+20201029_113618 : files were saved at restored_data/SMZ_test
+20201029_113618 : files at uploads/SMZ_test and uploads/SMZ_test.zip were deleted
+20201029_124051 : calculate_diameter_thickness method is called with GET method
+20201029_124051 : calculation was done.
+20201029_124116 : calculate_diameter_thickness method is called with GET method
+20201029_124116 : calculation was done.
+20201029_124122 : calculate_diameter_thickness method is called with GET method
+20201029_124122 : calculation was done.
+20201029_124125 : calculate_diameter_thickness method is called with GET method
+20201029_124125 : calculation was done.
+20201029_124159 : calculate_diameter_thickness method is called with GET method
+20201029_124159 : calculation was done.
+20201029_124345 : calculate_averagethickness method is called with GET method
+20201029_124345 : calculation was done.
+20201029_124346 : calculate_averagethickness method is called with GET method
+20201029_124346 : calculation was done.
+20201029_124346 : calculate_averagethickness method is called with GET method
+20201029_124346 : calculation was done.
+20201029_124346 : calculate_averagethickness method is called with GET method
+20201029_124346 : calculation was done.
+20201029_124347 : calculate_averagethickness method is called with GET method
+20201029_124347 : calculation was done.
+20201029_124347 : calculate_averagethickness method is called with GET method
+20201029_124347 : calculation was done.
+20201029_124347 : calculate_averagethickness method is called with GET method
+20201029_124347 : calculation was done.
+20201029_124348 : calculate_averagethickness method is called with GET method
+20201029_124348 : calculation was done.
+20201029_124348 : calculate_averagethickness method is called with GET method
+20201029_124348 : calculation was done.
+20201029_124348 : calculate_averagethickness method is called with GET method
+20201029_124348 : calculation was done.
+20201029_124348 : calculate_averagethickness method is called with GET method
+20201029_124348 : calculation was done.
+20201029_124349 : calculate_averagethickness method is called with GET method
+20201029_124349 : calculation was done.
+20201029_124349 : calculate_averagethickness method is called with GET method
+20201029_124349 : calculation was done.
+20201029_124407 : calculate_averagethickness method is called with GET method
+20201029_124407 : calculation was done.
+20201029_124410 : calculate_averagethickness method is called with GET method
+20201029_124410 : calculation was done.
+20201029_124411 : calculate_averagethickness method is called with GET method
+20201029_124411 : calculation was done.
+20201029_124411 : calculate_averagethickness method is called with GET method
+20201029_124411 : calculation was done.
+20201029_124412 : calculate_averagethickness method is called with GET method
+20201029_124412 : calculation was done.
+20201029_124412 : calculate_averagethickness method is called with GET method
+20201029_124412 : calculation was done.
+20201029_124413 : calculate_averagethickness method is called with GET method
+20201029_124413 : calculation was done.
+20201029_131142 : calculate_contactagnle_and_firevolume method is called with GET method.
+20201029_131142 : calculation was done.
+20201029_131153 : calculate_contactagnle_and_firevolume method is called with GET method.
+20201029_131153 : calculation was done.
+20201029_131157 : calculate_contactagnle_and_firevolume method is called with GET method.
+20201029_131157 : calculation was done.
+20201029_132034 : calculate_contactagnle_and_firevolume method is called with GET method.
+20201029_132034 : calculation was done.
+20201029_133221 : calculate_contactagnle_and_firevolume method is called with GET method.
+20201029_133221 : calculation was done.
+20201029_133316 : calculate_contactagnle_and_firevolume method is called with GET method.
+20201029_133316 : calculation was done.
+20201029_133327 : calculate_contactagnle_and_firevolume method is called with GET method.
+20201029_133327 : calculation was done.
+20201029_133353 : calculate_contactagnle_and_firevolume method is called with GET method.
+20201029_133353 : calculation was done.
+20201029_133356 : calculate_contactagnle_and_firevolume method is called with GET method.
+20201029_133356 : calculation was done.
+20201029_133401 : calculate_contactagnle_and_firevolume method is called with GET method.
+20201029_133401 : calculation was done.
+20201029_134642 : calculate_contactagnle_and_firevolume method is called with GET method.
+20201029_134642 : calculation was done.
+20201029_134645 : calculate_contactagnle_and_firevolume method is called with GET method.
+20201029_134645 : calculation was done.
+20201029_134650 : calculate_contactagnle_and_firevolume method is called with GET method.
+20201029_134650 : calculation was done.
+20201029_134757 : calculate_contactagnle_and_firevolume method is called with GET method.
+20201029_134757 : calculation was done.
+20201029_134812 : calculate_contactagnle_and_firevolume method is called with GET method.
+20201029_134812 : calculation was done.
+20201029_134815 : calculate_contactagnle_and_firevolume method is called with GET method.
+20201029_134815 : calculation was done.
+20201029_134821 : calculate_contactagnle_and_firevolume method is called with GET method.
+20201029_134821 : calculation was done.
+20201029_134840 : calculate_contactagnle_and_firevolume method is called with GET method.
+20201029_134840 : calculation was done.
+20201029_134843 : calculate_contactagnle_and_firevolume method is called with GET method.
+20201029_134843 : calculation was done.
+20201029_134847 : calculate_contactagnle_and_firevolume method is called with GET method.
+20201029_134847 : calculation was done.
+20201029_134953 : calculate_contactagnle_and_firevolume method is called with GET method.
+20201029_134953 : calculation was done.
+20201029_134958 : calculate_contactagnle_and_firevolume method is called with GET method.
+20201029_134958 : calculation was done.
+20201029_135002 : calculate_contactagnle_and_firevolume method is called with GET method.
+20201029_135002 : calculation was done.
+20201029_145240 : calculate_contactagnle_and_firevolume method is called with GET method.
+20201029_145240 : calculation was done.

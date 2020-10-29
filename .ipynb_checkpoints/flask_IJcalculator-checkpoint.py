@@ -15,17 +15,47 @@ import shutil
 import io
 import time
 
-MIMETYPE_CSV = 'text/csv'
-MIMETYPE_ZIP = 'application/zip'
-UPLOAD_DIR = 'uploads'
-ALLOWED_EXTENSIONS = set(['zip'])
-RESULTSDB = 'resultsDB.csv'
-DEBUG_MODE = 'DEBUG'
-RESTORE_DIR = 'restored_data'
-DOWNLOAD_FILE_TYPE = ['result_csv', 'server_log', 'calculation_log']
-SERVER_LOG = 'server.log'
-CALCULATION_LOG = 'calculation_log.log'
+#API内共通変数
+API_VER = '0.0.0' #APIコードのバージョン、2020.10.21
 
+UPLOAD_DIR = 'uploads' #アップロードファイル格納ディレクトリ名
+ALLOWED_EXTENSIONS = set(['zip']) #許容拡張子
+RESULTSDB = 'resultsDB.csv' #計算結果格納csvファイル名
+SERVER_LOG = 'server.log' #サーバー処理ログ格納ファイル名
+
+#ルーティングURLの指定用ディクショナリ
+URLs = {
+    #自動追尾機能
+    "auto_tracking":'/auto_tracking',
+    #zipファイル投稿
+    "auto_tracking with upload file":'/auto_tracking_upload_file',
+    #厚み、径→接触角、吐出体積計算用
+    "calculation contactangle and volume":"/calculator/contactangle_volume",
+    #吐出体積、径→厚み、接触角計算用
+    "calculation contactangle and thickness":"/calculator/contactangle_thickness",
+    #接触角、吐出体積→厚み、径計算用
+    "calculation diameter and thickness":"/calculator/diameter_thickness",
+    #平均膜厚計算用
+    "calculation average thicnkess":"/calculator/average_thickness",
+    #自動追尾デモ
+    "auto_tracking_demo":"/auto_tracking_demo",
+}
+
+MIMETYPE_CSV = 'text/csv' #csvファイル出力MIMETYPE
+MIMETYPE_ZIP = 'application/zip' #zipファイル出力MIMETYPE
+
+DEBUG_MODE = 'DEBUG' #デバッグモード指定文字列
+RESTORE_DIR = 'restored_data' #解析結果画像出力時保存ディレクトリ名
+CALCULATION_LOG = 'calculation_log.log' #計算処理デバッグ結果格納ファイル名
+
+#装置毎のカメラ解像度、[um/pix]
+dic_camera_resolution = {
+    'LJ-600':3.50,
+    'NJ-X':3.50,
+    'Jet-Tester':3.50,
+}
+
+#appの宣言、Flaskにて起動を指示。
 app = Flask(__name__)
 #★クロスサイト時に必要な設定
 #CORS(app, support_credentials=True)
@@ -34,6 +64,9 @@ app = Flask(__name__)
 
 # 最大アップロードファイルサイズの定義、10MB
 app.config['MAX_CONTENT_LENGTH'] = 10 * 1024 * 1024
+
+# シークレットキーの設定、公開の際にはOSからランダム値を生成し入力する。
+app.config.from_mapping(SECRET_KEY='hogehoge')
 
 def out_server_log(sentence):
     '''
@@ -44,7 +77,6 @@ def out_server_log(sentence):
     ===================
     sentence : str
         出力文字列
-    
     
     return
     ===================
@@ -62,12 +94,19 @@ def is_allwed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 # ファイルを受け取る方法の指定
-@app.route('/auto_tracking', methods=['GET', 'POST'])
+@app.route(URLs["auto_tracking"], methods=['GET', 'POST'])
+@cross_origin(supports_credentials=True)
 def uploads_file():
     '''
     
     '''
-    
+
+    file_read_error_result = {
+        "analysis_date_time":datetime.datetime.now().strftime('%Y-%m-%d_%H:%M:%S'),
+        "API_VER":API_VER,
+        "condition":'upload_file is FAILED.'
+    }
+
     #ログ書きだし
     out_server_log('auto_tracking calculation with {} method was called'.format(request.method))
     #postメソッド時の処理
@@ -75,41 +114,64 @@ def uploads_file():
         #ファイル名取り出しログ
         out_server_log('{} file is posted'.format(request.files))
         # request.files内にuploadFile要素が無い場合
-        if 'uploadFile' not in request.files:
-            make_response(jsonify({'result':'uploadFile is required.'}))
+        if 'upload_file' not in request.files:
             our_server_log('file was empty')
+            return make_response(jsonify(file_read_error_result))
+
         #ファイル受け取り
-        file = request.files['uploadFile']
+        file = request.files['upload_file']
         fileName = file.filename
-        #ファイル保存、UPLOAD_DIR内にzipを出力
-        file.save(os.path.join(UPLOAD_DIR, fileName))
+        if (not fileName) or fileName == '':
+            uploaded_file_name = request.form['filename']
+            uploaded_files = [f for f in os.listdir(UPLOAD_DIR) if f == uploaded_file_name]
+            if len(uploaded_files) != 1:
+                out_server_log('file upload was FAILED')
+                return make_response(jsonify(file_read_error_result))
+            fileName = uploaded_files[0]
+        else:
+            #ファイル保存、UPLOAD_DIR内にzipを出力
+            file.save(os.path.join(UPLOAD_DIR, fileName))
+        uploaded_file_name = str(request.form['filename'])
         #ファイル処理後のサーバー上への保存の選択指示の受け取り
-        flagFileRestore = len(request.form.getlist("filerestore")) != 0
-        #処理モード指示の受け取り
-        exec_mode = DEBUG_MODE if len(request.form.getlist("debugmode")) != 0 else 'NOT_DEBUG_MODE'           
+        flagFileRestore = str(request.form["filerestore"]) == 'RESTORE'
+        #デバッグモード指示受け取り
+        exec_mode = str(request.form["mode"])
+        #カメラ解像度受け取り
+        camera_resolution = float(request.form["camera_resolution"])
     else:
         uploaded_file_name = request.args.get('filename', default='')
         uploaded_files = [f for f in os.listdir(UPLOAD_DIR) if f == uploaded_file_name]
-        print(uploaded_files)
         if len(uploaded_files) != 1:
             out_server_log('file upload was FAILED')
-            result = {
+            result.update({
                 'condition': 'file upload was FAILED'
-            }
+            })
             return make_response(jsonify(result))
         fileName = uploaded_files[0]
         flagFileRestore = str(request.args.get('filerestore', default='not_RESTORE')) == 'RESTORE'
         exec_mode = DEBUG_MODE if request.args.get('mode', default='node_DEBUG') == DEBUG_MODE else 'NOT_DEBUG_MODE'
-        out_server_log('{} file is going to be analysed'.format(fileName))
+        camera_resolution = float(request.args.get('cameraresolution', default=3.50, type=float))
+        out_server_log('{} file is going to be analysed.'.format(fileName))
     
     if '' == fileName:
         our_server_log('uploaded filename was empty.')
-        return make_response(jsonify({'result':'filename must not empty.'}))
+        result.update({
+            'filename':fileName,
+            'condition':'filename was empty.'
+        })
+        return make_response(jsonify(result))
     if not is_allwed_file(fileName):
         out_server_log('extension of uploaded file was not zip.')
-        return make_response(jsonify({'result':'extension is not zip'}))
+        result.update({
+            'filename':fileName,
+            'condition':'extension is not zip.'
+        })
+        return make_response(jsonify(result))
 
-    out_server_log('exec_mode is {}, fire restore is {}'.format(exec_mode, flagFileRestore))
+    out_server_log('exec_mode is {}, fire restore is {}, camera_resolution is {}'.format(
+        exec_mode,
+        flagFileRestore,
+        camera_resolution))
     # ★ポイント4
     created_file_path = os.path.join(UPLOAD_DIR, fileName)
     with zipfile.ZipFile(created_file_path) as existing_zip:
@@ -124,7 +186,7 @@ def uploads_file():
         df = pd.DataFrame(columns = [])
         out_server_log('impot results from {} was FAILED'.format(RESULTSDB))
         
-    result = Get_AutoTracking_Results.get_autoTracking_Results(directory_path, exec_mode)
+    result = Get_AutoTracking_Results.get_autoTracking_Results(directory_path, camera_resolution, API_VER, exec_mode)
     out_server_log('auto_tracking is execute with {}, the exec_mode {}'.format(directory_path, exec_mode))
     try:
         resultJS = json.dumps(result)
@@ -161,18 +223,15 @@ def uploads_file():
         out_server_log('files at {} and {} were deleted'.format(created_file_path.strip('.zip'), created_file_path))
     
     return make_response(jsonify(result))
- 
-@app.route('/auto_tracking_upload_file')
-def upload_file():
-    return render_template('upload.html')
 
 # ファイルサイズ上限オーバー時の処理
 @app.errorhandler(werkzeug.exceptions.RequestEntityTooLarge)
+@cross_origin(supports_credentials=True)
 def handle_over_max_file_size(error):
     out_server_log('uploaded file size is to large.')
     return 'result : file size is overed.'
 
-@app.route("/calculator/contactangle_volume", methods=['GET','POST'])
+@app.route(URLs["calculation contactangle and volume"], methods=['GET'])
 @cross_origin(supports_credentials=True)
 def calculate_contact_angle_and_firevolume():
     '''
@@ -194,23 +253,9 @@ def calculate_contact_angle_and_firevolume():
     diameter = 0.0
     result = []
     out_server_log('calculate_contactagnle_and_firevolume method is called with {} method.'.format(request.method))
-
-    #メソッド別パラメータ取得、POSTメソッド
-    if request.method == 'POST':
-        try:
-            thickness = float(request.form['thickness'])
-            diameter = float(request.form['diameter'])
-            flag_argments_are_good = True
-        except:
-            result = {
-                'condition' : 'argments were invalid!',
-                'correspondence' : 'make both thickness and diameter positive, and both the value types float'
-            }
-            out_server_log('argments type are invalid')
-
-    
+   
     #メソッド別パラメータ取得、GETメソッド
-    elif request.method == 'GET':
+    if request.method == 'GET':
         try:
             thickness = float(request.args.get('thickness'))
             diameter = float(request.args.get('diameter'))
@@ -247,7 +292,7 @@ def calculate_contact_angle_and_firevolume():
     
     return make_response(jsonify(result))  
 
-@app.route("/calculator/contactangle_thickness", methods=['GET', 'POST'])
+@app.route(URLs["calculation contactangle and thickness"], methods=['GET', 'POST'])
 @cross_origin(supports_credentials=True)
 def calculate_contact_angle_and_thickness():
     '''
@@ -267,19 +312,7 @@ def calculate_contact_angle_and_thickness():
     flag_argments_are_good = False
     diameter = 0.0
     firevolume = 0.0
-    if request.method == 'POST':
-        try:
-            diameter = float(request.form['diameter'])
-            firevolume = float(request.form['firevolume'])
-            flag_argments_are_good = True
-        except:
-            result = {
-                'condition' : 'argments were invalid!',
-                'correspondence' : 'make both diameter and firevolume positive, and both the value types float'
-            }
-            out_server_log('argments type is invalid.')
-            
-    elif request.method == 'GET':
+    if request.method == 'GET':
         try:
             diameter = float(request.args.get('diameter'))
             firevolume = float(request.args.get('firevolume'))
@@ -328,7 +361,7 @@ def calculate_contact_angle_and_thickness():
 
     return make_response(jsonify(result))
     
-@app.route("/calculator/diameter_thickness", methods=['GET', 'POST'])
+@app.route(URLs["calculation diameter and thickness"], methods=['GET', 'POST'])
 @cross_origin(supports_credentials=True)
 def calculate_diameter_and_thickness():
     '''
@@ -349,19 +382,7 @@ def calculate_diameter_and_thickness():
     contactangle = 0.0
     firevolume=0.0
 
-    if request.method == 'POST':
-        try:
-            contactangle = float(request.form['contactangle'])
-            firevolume = float(request.form['firevolume'])
-            flag_argments_are_good = True            
-        except:
-            result = {
-                'condition' : 'argments were invalid!',
-                'correspondence' : 'make both contactangle and firevolume positive, and both the value types float'
-            }
-            out_server_log('argments type is invalid.')
-            
-    elif request.method == 'GET':
+    if request.method == 'GET':
         try:
             contactangle = float(request.args.get('contactangle'))
             firevolume = float(request.args.get('firevolume'))
@@ -411,12 +432,12 @@ def calculate_diameter_and_thickness():
     
     return make_response(jsonify(result))
 
-@app.route("/calculator/avethickness/", methods=['GET', 'GET'])
+@app.route(URLs["calculation average thicnkess"], methods=['GET'])
 @cross_origin(supports_credentials=True)
 def calculate_averagethickness():
     '''
     ・機能：印刷メッシュ、液滴サイズ、固形分濃度と繰り返し回数から平均膜厚を計算
-　　・URL：http://192.168.1.44:8080/calculator/avethickness/
+　　・URL：http://192.168.1.44:8080/calculator/avethickness
 　　・パラメータ：pitchexpression : str
                    入力パラメータの表現。「dpi」でdpi表記、それ以外でum表記               
                  dotpitch : float
@@ -447,7 +468,7 @@ def calculate_averagethickness():
             dotpitchlength = float(request.args.get('dotpitch'))
             linepitchlength = float(request.args.get('linepitch'))
             firevolume = float(request.args.get('firevolume'))
-            numprint = float(request.args.get('printcount'))
+            numprint = float(request.args.get('firecycle'))
             concentration = float(request.args.get('concentration'))
             flag_argments_are_good = True
         except:
@@ -457,21 +478,6 @@ def calculate_averagethickness():
             }
             out_server_log('argments type is invalid.')
 
-    elif request.method == 'POST':
-        try:
-            flagDPI = (str(request.form['pitchexpression']) == 'dpi')
-            dotpitchlength = float(request.form['dotpitch'])
-            linepitchlength = float(request.form['linepitch'])
-            firevolume = float(request.form['firevolume'])
-            numprint = float(request.form['printcount'])
-            concentration = float(request.form['concentration'])
-            flag_argments_are_good = True
-        except:
-            result = {
-                'condition' : 'argments were invalid!',
-                'correspondence' : 'make all the argment types except pitchexpression float, and all the values positive. the type of pitchexpression should be string.'
-            }
-            out_server_log('argments type is invalid.')
     else:
         retult = {
             'condition' : 'the method is bad'
@@ -495,7 +501,7 @@ def calculate_averagethickness():
         
     return make_response(jsonify(result))
    
-@app.route("/auto_tracking_demo", methods = ['GET', 'POST'])
+@app.route(URLs["auto_tracking_demo"], methods = ['GET', 'POST'])
 @cross_origin(supports_credentials=True)
 def get_autotracking():
     '''
@@ -566,6 +572,7 @@ def get_autotracking():
 #        print('GET method is working')
         try:
             directory_path = request.args.get('dirpath', type = str)
+            camera_resolution = request.args.get('cameraresolution', type = float)
             exec_mode = request.args.get('mode', default='not_DEBUG', type = str)
             flag_get_argments_is_done = True
         except:
@@ -578,6 +585,7 @@ def get_autotracking():
     elif request.method == 'POST':
         try:
             directory_path = str(request.form['dirpath'])
+            camera_resolution = float(request.form['cameraresolution'])
             exec_mode = str(request.form['mode'])
             flag_get_argments_is_done = True
         except:
@@ -590,7 +598,7 @@ def get_autotracking():
     if flag_get_argments_is_done:
         #特徴量抽出処理
         directory_path = os.path.join('demo_data', directory_path)
-        result = Get_AutoTracking_Results.get_autoTracking_Results(directory_path, exec_mode)
+        result = Get_AutoTracking_Results.get_autoTracking_Results(directory_path, camera_resolution, API_VER, exec_mode)
         out_server_log('calculation was done.')
     else:
         retult = {
@@ -613,105 +621,12 @@ def get_autotracking():
         except:
             out_server_log('read result as json was failured.')
     return make_response(jsonify(result)) 
-   
-@app.route("/download_file/<string:fileType>", methods = ['GET', 'POST'])
-@cross_origin(supports_credentials=True)
-def get_resultFile(fileType):
-    out_server_log('download {} file is called with {} method.'.format(fileType, request.method))
-    if fileType not in DOWNLOAD_FILE_TYPE:
-        return make_response('selected file is not downloadable.')
-    dic_download_type = {
-        DOWNLOAD_FILE_TYPE[0]:RESULTSDB,
-        DOWNLOAD_FILE_TYPE[1]:SERVER_LOG,
-        DOWNLOAD_FILE_TYPE[2]:CALCULATION_LOG,
-    }
-    if request.method == "POST":
-        try:
-            ID = str(request.form['ID'])
-            PW = str(request.form['PW'])
-            out_server_log('form was input ID : {},  PW : {}'.format(ID, PW))
-
-            if ID == "microjet" and PW == "microjet_python":
-                downloadFileName = os.path.splitext('{}'.format(dic_download_type[fileType]))[0] + datetime.datetime.now().strftime('%Y%m%d%H%M%S') \
-                + os.path.splitext('{}'.format(dic_download_type[fileType]))[1]
-                downloadFile = dic_download_type[fileType]
-                out_server_log('download was started.')
-                return send_file(downloadFile, as_attachment = True, \
-                                 attachment_filename = downloadFileName, \
-                                 mimetype = MIMETYPE_CSV)
-            else:
-                out_server_log('download was not started.')
-                return render_template('index.html')
-        except:
-            return render_template('index.html')     
-    else:
-        return render_template('index.html', filetype=fileType)     
-
-@app.route('/download_restored_files', methods = ['GET', 'POST'])
-def donwload_restored_files():
-    '''
-    保存ファイルの出力関数
-    GET:IDとPW入力画面へ遷移
-    POST:入力されたIDとPWを受け取り、結果が正しければ保存ファイルをzipにてまとめて出力し保存。
-    
-    '''
-    
-    out_server_log('download restored_files is called with {} method.'.format(request.method))
-    if request.method == 'POST':
-        ID = str(request.form['ID'])
-        PW = str(request.form['PW'])
-        flag_destroy = len(request.form.getlist("fileDelete")) != 0
-        out_server_log('form was input ID : {},  PW : {}, file Delete : {}'.format(ID, PW, flag_destroy))
-        
-        if ID == "microjet" and PW == "microjet_python":
-            #ゴミファイルの削除
-            for f in os.listdir(RESTORE_DIR):
-                if os.path.isfile(f):
-                    os.remove(f)
-            #RESTORE_DIR内のフォルダ数が0であれば、ダウンロードファイル生成せずに終了
-            if len(os.listdir(RESTORE_DIR)) == 0:
-                return make_response('no files are downloadable.')
-
-            
-            downloadFileName = 'restored_files' + datetime.datetime.now().strftime('%Y%m%d%H%M%S') + '.zip'
-            #zipファイル生成指示
-            shutil.make_archive(downloadFileName.strip('.zip'), 'zip', root_dir=RESTORE_DIR)
-            out_server_log('download restored_files with the name "{}" was started.'.format(downloadFileName))
-            #zipファイル生成待ち
-            waiting_time = 0
-            while ((not os.path.exists(downloadFileName)) and waiting_time < 30):
-                out_server_log('waiting file creation, waiting time = {}'.format(waiting_time))
-                waiting_time = waiting_time + 1
-                time.sleep(1)
-            
-            flag_file_is_exist = os.path.exists(downloadFileName)
-            if flag_file_is_exist:
-                out_server_log('zip file creation was done.')
-                return_data = io.BytesIO()
-                with open(downloadFileName, 'rb') as fo:
-                    return_data.write(fo.read())
-                # (after writing, cursor will be at last byte, so move it to start)
-                return_data.seek(0)
-                if flag_destroy:
-                    shutil.rmtree(RESTORE_DIR)
-                    os.mkdir(RESTORE_DIR)
-                    out_server_log('restored files were destroyed')
-                os.remove(downloadFileName)   
-                return send_file(return_data, as_attachment = True, \
-                                 attachment_filename = downloadFileName, \
-                                 mimetype = MIMETYPE_ZIP)
-            else:
-                out_server_log('zipfile_creation was failed')
-                return make_response('zipfile_creation was failed')
-        else:
-            return make_response(render_template('download_restored.html'))
-    else:
-        return make_response(render_template('download_restored.html'))
-        
-    
+           
+#アプリ起動指示。pythonにて本ファイルを指定すると以下動く。  
 if __name__ == "__main__":
-    app.run(debug=True, 
-            host='0.0.0.0',
-            #ssl_context=context,
-            port=8080,
-            threaded=True)
+    app.run(debug=True, #flaskサーバーがデバッグモードで動くか否か。
+            host='0.0.0.0', #ホスト指定。基本サーバー内部で起動するので、0.0.0.0でOK
+            #ssl_context=context, #ssl通信の設定。本ファイル冒頭のcontextにて指定。
+            port=8080, #ポート番号。ローカルデバッグ時は左記。オンライン公開時はssl通信用の443を使用
+            threaded=True #並列処理の許可。WSGIサーバーを利用する場合はあまり気にしなくても良い。
+           )

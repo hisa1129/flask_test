@@ -1,0 +1,63 @@
+<h2> IJ計算機 </h2>
+<body>
+{% if answertype == "contactangle_volume"%}
+    <p>接触角[°]：{{contact_angle}}</p>
+    <p>体積[pl]：{{fire_volume}}</p>
+{% elif calculationtype == "contactangle_thickness"%}
+    <p>接触角[°]：{{contact_angle}}</p>
+    <p>厚み[um]：{{thickness}}</p>
+{% elif calculationtype == "diameter_thickness" %}
+    <p>液滴径[um]：{{diameter}}</p>
+    <p>厚み[um]：{{thickness}}</p>
+{% elif calculationtype == "average_thickness" %}    
+    <p>平均膜厚[nm]：{{ave_thickness}}</p>
+{% else %}
+    <h1>ここに結果が表示されます。</h1><br>   
+{% endif %}
+    
+{% if calculationtype == "contactangle_volume" %}
+<form method="post" action="/calculator/form/contactangle_volume">
+    <label for="thickness" accesskey="t">厚み[um]：</label>
+    <input type="number" min="0.001" max="10000.0" required="required" value="{{ arg1 }}" step="0.001"  name="thickness"/><br>
+    <label for="diameter" accesskey="d">直径[um]：</label>
+    <input type="number" min="0.001" max="10000.0" required="required" value="{{ arg2 }}" step="0.001"  name="diameter"/><br>
+    <input type="submit" value="submit"/>
+</form>
+{% elif calculationtype == "contactangle_thickness"%}
+<form method="post" action="/calculator/form/contactangle_thickness">
+    <label for="diameter" accesskey="d">直径[um]：</label>
+    <input type="number" min="0.001" max="10000.0" required="required" value="{{ arg1 }}" step="0.001"  name="diameter"/><br>
+    <label for="firevolume" accesskey="d">体積[pl]：</label>
+    <input type="number" min="0.001" max="100000.0" required="required" value="{{ arg2 }}" step="0.001"  name="firevolume"/><br>
+    <input type="submit" value="submit"/>
+</form>
+{% elif calculationtype == "diameter_thickness" %}
+<form method="post" action="/calculator/form/diameter_thickness">
+    <label for="diameter" accesskey="d">接触角[°]：</label>
+    <input type="number" min="0.001" max="179.999" required="required" value="{{ arg1 }}" step="0.001"  name="contactangle"/><br>
+    <label for="firevolume" accesskey="d">体積[pl]：</label>
+    <input type="number" min="0.001" max="100000.0" required="required" value="{{ arg2 }}" step="0.001"  name="firevolume"/><br>
+    <input type="submit" value="submit"/>
+</form>
+{% elif calculationtype == "average_thickness" %}
+<form method="post" action="/calculator/form/average_thickness">
+    <input type="checkbox" name="dpi" value="isDPI"/>単位をdpiにする。<br>
+    <label for="dotpitch" accesskey="d">ドットピッチ[um]：</label>
+    <input type="number" min="0.001" max="100000.000" required="required" value="{{ arg1 }}" step="0.001"  name="dotpitch"/><br>
+    <label for="linepitch" accesskey="l">ラインピッチ[um]：</label>
+    <input type="number" min="0.001" max="100000.000" required="required" value="{{ arg2 }}" step="0.001"  name="linepitch"/><br>
+    <label for="firevolume" accesskey="v">体積[pl]：</label>
+    <input type="number" min="0.001" max="100000.0" required="required" value="{{ arg3 }}" step="0.001"  name="firevolume"/><br>
+    <label for="firecycle" accesskey="f">繰り返し回数[回]：</label>
+    <input type="number" min="1" max="100" required="required" value="1" step="{{ arg4 }}"  name="firecycle"/><br>
+    <label for="concentration" accesskey="c">体積濃度[vol.%]：</label>
+    <input type="number" min="0.001" max="100.0" required="required" value="{{ arg5 }}" step="0.001"  name="concentration"/><br>
+    <input type="submit" value="submit"/>
+</form>
+{% else %}
+    <h1>Please input calculation type</h1><br>
+    <h3>"contactangle_volume", "contactangle_thickness", "diameter_thickness", "average_thickness"</h3><br>
+    
+{% endif %}
+    
+</body>
