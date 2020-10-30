@@ -707,7 +707,7 @@ def calculation_form(calculationType):
             get_url = get_url + calculationType+'?pitchexpression={}&dotpitch={}&linepitch={}&firevolume={}&firecycle={}&concentration={}'\
             .format(pitchexpression, dotpitchlength, linepitchlength, firevolume, numprint, concentration)
         print(get_url)
-        response = requests.get(get_url, veryfy=False, timeout = 10)
+        response = requests.get(get_url, verify=False, timeout = 10)
         answer_json = response.json()
         if calculationType == 'contactangle_volume':
             contact_angle = answer_json['contact_angle[degrees]']
