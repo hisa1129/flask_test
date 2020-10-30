@@ -9,8 +9,7 @@ INPUT_PARAMS_VER = '0.1.0' #入力パラメータバージョン、2020.10.21
 #輪郭抽出前処理に関する入力パラメータ
 auto_binarize = True #大津の二値化による自動閾値判定
 binarize_thresh = 128 #二値化閾値（auto_binarize = Falseの時）
-#輪郭抽出に関するパラメータ
-min_area_thresh = 10 #輪郭面積最小値（最小面積以下の輪郭はノイズと判定）
+min_area_thresh = 5 #輪郭面積最小値（最小面積以下の輪郭はノイズと判定）
 #輪郭解析に関する入力パラメータ
 areaThresh_faced = 500 #吐出開始検出時凸包面積差分閾値
 areaThresh_separated = 2000 #サテライト液尾分離検出時凸包面積差分閾値
@@ -129,7 +128,7 @@ def get_autoTracking_Results(directory_path, camera_resolution, API_VER, exec_mo
                 if flag_is_debugmode:
                     calculation_log('dir_path is {}'.format(directory_path))
                 #1枚目輪郭数取得               
-                num_first_contours = contour_rsts.num_contours_at_first
+                num_first_contours = (float)(sum(contour_rsts.num_contours_at_first))/(float)(len(contour_rsts.num_contours_at_first))
                 if flag_is_debugmode:
                     calculation_log('num_first_contours is {}'.format(num_first_contours))
                 #solidity値取得
@@ -235,7 +234,7 @@ def get_autoTracking_Results(directory_path, camera_resolution, API_VER, exec_mo
                     "main_linearity_error[pix]":trackingResults.Get_MainXY_Fit_Error_Min_Max_Range()[1] - trackingResults.Get_MainXY_Fit_Error_Min_Max_Range()[0],
                     "satellite_linearity_error[pix]":trackingResults.Get_SatelliteXY_Fit_Error_Min_Max_Range()[1] - trackingResults.Get_SatelliteXY_Fit_Error_Min_Max_Range()[0],
                     "AUTO_TRACKING_CODE_VER":AutoTracking.get_code_ver(),
-                    "anormaly_ejections_at_first_image":str(num_first_contours > 1),
+                    "anormaly_ejections_at_first_image":str(num_first_contours > 1.5),
                     "main_velocity_is_too_fast":str(main_average_velocity_stdized > velocity_upperthresh),
                     "main_velocity_is_too_slow":str(main_average_velocity_stdized < velocity_lowerthresh),
                     "nozzle_needs_to_be_clean":str(solidity > Solidity_upperthresh),

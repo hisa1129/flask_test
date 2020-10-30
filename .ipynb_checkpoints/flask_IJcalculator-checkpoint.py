@@ -137,7 +137,10 @@ def uploads_file():
         #デバッグモード指示受け取り
         exec_mode = str(request.form["mode"])
         #カメラ解像度受け取り
-        camera_resolution = float(request.form["camera_resolution"])
+        try:
+            camera_resolution = float(request.form["camera_resolution"])
+        except:
+            camera_resolution = dic_camera_resolution['NJ-X']
     else:
         uploaded_file_name = request.args.get('filename', default='')
         uploaded_files = [f for f in os.listdir(UPLOAD_DIR) if f == uploaded_file_name]

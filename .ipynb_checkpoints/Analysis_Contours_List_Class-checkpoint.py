@@ -344,8 +344,8 @@ class Analysis_Results_List:
     
     def __set_num_initial_contour(self):
         delay_sorted_rsts = sorted(self.analysisResults, key = lambda rs: rs[IDX_DELAY])
-        retNum = len(delay_sorted_rsts[0][IDX_CNT])
-        self.num_contours_at_first = retNum
+        retNum_list = [len(rst[IDX_CNT]) for rst in delay_sorted_rsts if rst[IDX_DELAY] < self.delay_separated]
+        self.num_contours_at_first = retNum_list
 
         return None
     
