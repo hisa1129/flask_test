@@ -667,7 +667,9 @@ def upload_file():
         response = requests.post(
             url = 'http://localhost:{}/auto_tracking'.format(MAIN_SERVER_PORT),
             data = payload,
-            files = files)
+            files = files,
+            verify=False,
+            timeout = 10)
     return make_response(response.json())    
     
 @app.route(URLs["show calculation form"], methods=methods_test)
@@ -705,7 +707,7 @@ def calculation_form(calculationType):
             get_url = get_url + calculationType+'?pitchexpression={}&dotpitch={}&linepitch={}&firevolume={}&firecycle={}&concentration={}'\
             .format(pitchexpression, dotpitchlength, linepitchlength, firevolume, numprint, concentration)
         print(get_url)
-        response = requests.get(get_url)
+        response = requests.get(get_url, veryfy=False, timeout = 10)
         answer_json = response.json()
         if calculationType == 'contactangle_volume':
             contact_angle = answer_json['contact_angle[degrees]']
@@ -845,6 +847,7 @@ def get_resultFile(fileType):
 #アプリ起動指示。pythonにて本ファイルを指定すると以下動く。  
 if __name__ == "__main__":
     if NET_MODE:
+        print('run with net_mode')
         app.run(debug=True, #flaskサーバーがデバッグモードで動くか否か。
                 host='0.0.0.0', #ホスト指定。基本サーバー内部で起動するので、0.0.0.0でOK
                 ssl_context=context, #ssl通信の設定。本ファイル冒頭のcontextにて指定。
@@ -852,6 +855,7 @@ if __name__ == "__main__":
                 threaded=True #並列処理の許可。WSGIサーバーを利用する場合はあまり気にしなくても良い。
                )
     else:
+        print('run with local_mode')
         app.run(debug=True, #flaskサーバーがデバッグモードで動くか否か。
                 host='0.0.0.0', #ホスト指定。基本サーバー内部で起動するので、0.0.0.0でOK
                 #ssl_context=context, #ssl通信の設定。本ファイル冒頭のcontextにて指定。

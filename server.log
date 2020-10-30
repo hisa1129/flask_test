@@ -2461,3 +2461,13 @@
 20201030_193807 : export calculation result to resultsDB.csv was succeed.
 20201030_193807 : files were saved at restored_data/E0893_吐出画像20200327134132F_調整後_3
 20201030_193807 : files at uploads/E0893_吐出画像20200327134132F_調整後 and uploads/E0893_吐出画像20200327134132F_調整後.zip were deleted
+20201030_194858 : calculate_contactagnle_and_firevolume method is called with GET method.
+20201030_194858 : calculation was done.
+20201030_194859 : calculate_contactagnle_and_firevolume method is called with GET method.
+20201030_194859 : calculation was done.
+20201030_194901 : calculate_contactagnle_and_firevolume method is called with GET method.
+20201030_194901 : calculation was done.
+20201030_200740 : calculate_contactagnle_and_firevolume method is called with GET method.
+20201030_200740 : calculation was done.
+20201030_200742 : calculate_contactagnle_and_firevolume method is called with GET method.
+20201030_200742 : calculation was done.
