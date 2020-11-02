@@ -9,7 +9,7 @@ INPUT_PARAMS_VER = '0.1.0' #入力パラメータバージョン、2020.10.21
 #輪郭抽出前処理に関する入力パラメータ
 auto_binarize = True #大津の二値化による自動閾値判定
 binarize_thresh = 128 #二値化閾値（auto_binarize = Falseの時）
-min_area_thresh = 5 #輪郭面積最小値（最小面積以下の輪郭はノイズと判定）
+min_area_thresh = 1 #輪郭面積最小値（最小面積以下の輪郭はノイズと判定）
 #輪郭解析に関する入力パラメータ
 areaThresh_faced = 500 #吐出開始検出時凸包面積差分閾値
 areaThresh_separated = 2000 #サテライト液尾分離検出時凸包面積差分閾値
@@ -78,6 +78,7 @@ def get_autoTracking_Results(directory_path, camera_resolution, API_VER, exec_mo
             exportImage = flag_is_debugmode,
             draw_reg_Detected = flag_is_debugmode,
             DEBUG = flag_is_debugmode)
+        
         if flag_is_debugmode:
             calculation_log('noise remove was done.')
         #成功であれば、flagをTrueに。
@@ -180,7 +181,7 @@ def get_autoTracking_Results(directory_path, camera_resolution, API_VER, exec_mo
                 if flag_is_debugmode:
                     calculation_log('diff_angle is {}'.format(diff_angle))
                 #逸脱液滴検出
-                flag_exotic_droplet = str(contour_rsts.Check_exotic_droplet_exists(trackingResults, pix_mirgin))
+                flag_exotic_droplet, max_exotic_area = contour_rsts.Check_exotic_droplet_exists(trackingResults, pix_mirgin)
                 if flag_is_debugmode:
                     calculation_log('flag exotic droplet is {}'.format(flag_exotic_droplet))
                 #5分割領域ごとの各液滴速度、標準偏差取得
@@ -197,52 +198,53 @@ def get_autoTracking_Results(directory_path, camera_resolution, API_VER, exec_mo
                     main_vel_res = trackingResults.Get_Main_Velocity(base, top)
                     sat_vel_res = trackingResults.Get_Satellite_Velocity(base,top)
                     vel_add_dics.append({
-                        "layered_main_{}_ave[pix/us]".format(i):main_vel_res[0],
-                        "layered_main_{}_stdiv[pix/us]".format(i):main_vel_res[1],
-                        "layered_sat_{}_ave[pix/us]".format(i):sat_vel_res[0],
-                        "layered_sat_{}_ave[pix/us]".format(i):sat_vel_res[1],                        
+                        "layered_main_{}_ave[pix/us]".format(i):check_is_nan(main_vel_res[0]),
+                        "layered_main_{}_stdiv[pix/us]".format(i):check_is_nan(main_vel_res[1]),
+                        "layered_sat_{}_ave[pix/us]".format(i):check_is_nan(sat_vel_res[0]),
+                        "layered_sat_{}_ave[pix/us]".format(i):check_is_nan(sat_vel_res[1]),                        
                     })
                     if flag_is_debugmode:
                         calculation_log('dic_elem_{} was generated as {}'.format(i, vel_add_dics[i]))
                 
                 #dictionaryへの出力
                 result = {
-                    "analysis_date_time":datetime.datetime.now().strftime('%Y-%m-%d_%H:%M:%S'),
-                    "file_name":directory_path,
-                    "camera_resolution[um/pix]":camera_resolution,
-                    "API_VER":API_VER,
-                    "num_contours_at_first":num_first_contours,
-                    "solidity[U]":solidity,
-                    "arc_solidity[u]":arc_solidity,
-                    "flag_droplet_faced":str(flag_droplet_faced),
-                    "faced_delay[us]":faced_delay,
-                    "flag_droplet_separated":str(flag_droplet_separated),
-                    "separated_delay[us]":separated_delay,
-                    "max_regament_delay[us]":max_regament_length_delay,
-                    "max_regament_length[pix]":max_regament_length,
-                    "most_freq_Y[pix]":contour_rsts.freq_Y,
-                    "CONTOUR_CODE_VER":FindContourAnalysis.get_code_ver(),
-                    "main_average_velocity[pix/us]":main_average_velocity,
-                    "main_average_velocity[m/s]":main_average_velocity_stdized,
-                    "main_velocity_stddiv[pix/us]":main_velocity_stdiv,
-                    "main_angle[degrees]":main_angle,
-                    "satellite_average_velocity[pix/us]":satellite_average_velocity,
-                    "satellite_average_velocity[m/s]":satellite_average_velocity_stdized,
-                    "satellite_velocity_stddiv[pix/us]":satellite_velocity_stdiv,
-                    "satellite_angle[degrees]":satellite_angle,
-                    "main-satellite_angle_diff[degrees]":diff_angle,
-                    "main_linearity_error[pix]":trackingResults.Get_MainXY_Fit_Error_Min_Max_Range()[1] - trackingResults.Get_MainXY_Fit_Error_Min_Max_Range()[0],
-                    "satellite_linearity_error[pix]":trackingResults.Get_SatelliteXY_Fit_Error_Min_Max_Range()[1] - trackingResults.Get_SatelliteXY_Fit_Error_Min_Max_Range()[0],
-                    "AUTO_TRACKING_CODE_VER":AutoTracking.get_code_ver(),
-                    "anormaly_ejections_at_first_image":str(num_first_contours > 1.5),
-                    "main_velocity_is_too_fast":str(main_average_velocity_stdized > velocity_upperthresh),
-                    "main_velocity_is_too_slow":str(main_average_velocity_stdized < velocity_lowerthresh),
-                    "nozzle_needs_to_be_clean":str(solidity > Solidity_upperthresh),
-                    "suspicious_visco-elasticity":str(separated_delay > sep_thresh and main_average_velocity_stdized > velocity_septhresh),
-                    "angle-diff_is_too_large":str(diff_angle > diff_angle_thresh),
-                    "exotic-droplet_exists":str(flag_exotic_droplet),
+                    "analysis_date_time":check_is_nan(datetime.datetime.now().strftime('%Y-%m-%d_%H:%M:%S')),
+                    "file_name":check_is_nan(directory_path),
+                    "condition":"calculation was done.",
+                    "camera_resolution[um/pix]":check_is_nan(camera_resolution),
+                    "API_VER":check_is_nan(API_VER),
+                    "ave_num_contours_before_separation":check_is_nan(num_first_contours),
+                    "solidity[U]":check_is_nan(solidity),
+                    "arc_solidity[u]":check_is_nan(arc_solidity),
+                    "flag_droplet_faced":check_is_nan(flag_droplet_faced),
+                    "faced_delay[us]":check_is_nan(faced_delay),
+                    "flag_droplet_separated":check_is_nan(flag_droplet_separated),
+                    "separated_delay[us]":check_is_nan(separated_delay),
+                    "max_regament_delay[us]":check_is_nan(max_regament_length_delay),
+                    "max_regament_length[pix]":check_is_nan(max_regament_length),
+                    "most_freq_Y[pix]":check_is_nan(contour_rsts.freq_Y),
+                    "CONTOUR_CODE_VER":check_is_nan(FindContourAnalysis.get_code_ver()),
+                    "main_average_velocity[pix/us]":check_is_nan(main_average_velocity),
+                    "main_average_velocity[m/s]":check_is_nan(main_average_velocity_stdized),
+                    "main_velocity_stddiv[pix/us]":check_is_nan(main_velocity_stdiv),
+                    "main_angle[degrees]":check_is_nan(main_angle),
+                    "satellite_average_velocity[pix/us]":check_is_nan(satellite_average_velocity),
+                    "satellite_average_velocity[m/s]":check_is_nan(satellite_average_velocity_stdized),
+                    "satellite_velocity_stddiv[pix/us]":check_is_nan(satellite_velocity_stdiv),
+                    "satellite_angle[degrees]":check_is_nan(satellite_angle),
+                    "main-satellite_angle_diff[degrees]":check_is_nan(diff_angle),
+                    "main_linearity_error[pix]":check_is_nan(trackingResults.Get_MainXY_Fit_Error_Min_Max_Range()[1] - trackingResults.Get_MainXY_Fit_Error_Min_Max_Range()[0]),
+                    "satellite_linearity_error[pix]":check_is_nan(trackingResults.Get_SatelliteXY_Fit_Error_Min_Max_Range()[1] - trackingResults.Get_SatelliteXY_Fit_Error_Min_Max_Range()[0]),
+                    "AUTO_TRACKING_CODE_VER":check_is_nan(AutoTracking.get_code_ver()),
+                    "anormaly_ejections_at_first_image":(num_first_contours > 1.5),
+                    "main_velocity_is_too_fast":(main_average_velocity_stdized > velocity_upperthresh),
+                    "main_velocity_is_too_slow":(main_average_velocity_stdized < velocity_lowerthresh),
+                    "nozzle_needs_to_be_clean":(solidity > Solidity_upperthresh),
+                    "suspicious_visco-elasticity":(separated_delay > sep_thresh and main_average_velocity_stdized > velocity_septhresh),
+                    "angle-diff_is_too_large":(diff_angle > diff_angle_thresh),
+                    "exotic-droplet_exists":(flag_exotic_droplet),
                     "THRESH_VALUES_VER":THRESH_VALUES_VER,
-                    "RESERVED0":"aaa",
+                    "RESERVED0":(max_exotic_area),
                     "RESERVED1":"aaa",
                     "RESERVED2":"aaa",
                     "RESERVED3":"aaa",
@@ -265,3 +267,15 @@ def get_autoTracking_Results(directory_path, camera_resolution, API_VER, exec_mo
                     'condition' : 'get_feature_params was failure.'
                 }
     return result
+
+def check_is_nan(check_object):
+    ret_value = None
+    if type(check_object) is None:
+        ret_value = "None"
+    elif type(check_object) is float:
+        ret_value = -1 if math.isnan(check_object) else check_object
+    else:
+        ret_value = check_object
+    calculation_log('check_is_nan from {} to {}'.format(check_object, ret_value))
+    return ret_value
+    
