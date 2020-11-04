@@ -243,7 +243,7 @@ class Analysis_Results_List:
             calculation_log('separation method was called.')
         delay_separated = -1.0
         flag_separated_is_detected = False
-        seeking_results_list = [data for data in self.analysisResults if data[0] > self.delay_faced]
+        seeking_results_list = [data for data in self.analysisResults if data[0] >= self.delay_faced]
         solidity_base = self.solidity
         for i in range(1, len(seeking_results_list)):
             eval_delay = seeking_results_list[i][IDX_DELAY]
@@ -499,7 +499,9 @@ class Analysis_Results_List:
             calculation_log('slopes were calculated. main : {}, sat: {}'.format(main_slope_params, sat_slope_params))
         #逸脱輪郭検出フラグの宣言
         flag_exotic_droplet_exists = False
+        cnt_exotic_areas = []
         for cnt_list in eval_cnts_list:
+            flag_exotic_droplet_detected = False
             if self.__DEBUG:
                 calculation_log('cnt_list with delay {} is called'.format(cnt_list[IDX_DELAY]))
             if len(cnt_list[IDX_CNT]) == 1:
@@ -527,17 +529,15 @@ class Analysis_Results_List:
                 if self.__DEBUG:
                     calculation_log('{} th cnt with delay at {} is called'.format(i, cnt_list[IDX_DELAY]))
                 #各輪郭の重心座標が上記4点で定義される矩形範囲に入るか否かを判定する。
-                flag_exotic_droplet_exists = (cnt.center_X < min_x) or (cnt.center_X > max_x) or (cnt.center_Y < min_y) or (cnt.center_Y > max_y)
-                if flag_exotic_droplet_exists:
+                flag_exotic_droplet_detected = (cnt.center_X < min_x) or (cnt.center_X > max_x) or (cnt.center_Y < min_y) or (cnt.center_Y > max_y)
+                if flag_exotic_droplet_detected:
                     if self.__DEBUG:
                         calculation_log('exotic droplet occured at {} us, X : {}, Y : {} at min_x : {}, max_x : {}, min_y : {}, max_y : {}'.format(
                         cnt_list[IDX_DELAY], cnt.center_X, cnt.center_Y, min_x, max_x, min_y, max_y))
-                    break
+                        flag_exotic_droplet_exists = True
+                        cnt_exotic_areas.append(cnt.area)
                 else:
                     if self.__DEBUG:
                         calculation_log('cnt at delay{} does not contain exotic droplets'.format(cnt_list[IDX_DELAY]))
-            #逸脱輪郭を発見した場合は検証打ち切り
-            if flag_exotic_droplet_exists:
-                break
         
-        return flag_exotic_droplet_exists
+        return flag_exotic_droplet_exists, max(cnt_exotic_areas) if len(cnt_exotic_areas) != 0 else 0

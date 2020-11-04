@@ -243,7 +243,7 @@ class Analysis_Results_List:
             calculation_log('separation method was called.')
         delay_separated = -1.0
         flag_separated_is_detected = False
-        seeking_results_list = [data for data in self.analysisResults if data[0] > self.delay_faced]
+        seeking_results_list = [data for data in self.analysisResults if data[0] >= self.delay_faced]
         solidity_base = self.solidity
         for i in range(1, len(seeking_results_list)):
             eval_delay = seeking_results_list[i][IDX_DELAY]

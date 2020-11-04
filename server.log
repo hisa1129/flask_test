@@ -2512,3 +2512,370 @@
 20201102_100916 : export calculation result to resultsDB.csv was succeed.
 20201102_100916 : files were saved at restored_data/E0893_吐出画像20201019143627_side
 20201102_100917 : files at uploads/E0893_吐出画像20201019143627_side and uploads/E0893_吐出画像20201019143627_side.zip were deleted
+20201102_151841 : auto_tracking calculation with POST method was called
+20201102_151841 : ImmutableMultiDict([('upload_file', <FileStorage: 'intermitency_0.zip' ('application/zip')>)]) file is posted
+20201102_151841 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201102_151841 : extraction uploaded zip file at uploads/intermitency_0
+20201102_151841 : import results from resultsDB.csv was done
+20201102_151842 : auto_tracking is execute with uploads/intermitency_0/intermitency_0, the exec_mode DEBUG
+20201102_151842 : export calculation result to resultsDB.csv was succeed.
+20201102_151842 : files were saved at restored_data/ntermitency_0
+20201102_151842 : files at uploads/intermitency_0 and uploads/intermitency_0.zip were deleted
+20201102_152139 : auto_tracking calculation with POST method was called
+20201102_152139 : ImmutableMultiDict([('upload_file', <FileStorage: 'intermittency1.zip' ('application/zip')>)]) file is posted
+20201102_152139 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201102_152139 : extraction uploaded zip file at uploads/intermittency1
+20201102_152139 : import results from resultsDB.csv was done
+20201102_152140 : auto_tracking is execute with uploads/intermittency1/intermittency1, the exec_mode DEBUG
+20201102_152140 : export calculation result to resultsDB.csv was succeed.
+20201102_152140 : files were saved at restored_data/ntermittency1
+20201102_152140 : files at uploads/intermittency1 and uploads/intermittency1.zip were deleted
+20201102_182349 : extraction uploaded zip file at uploads/断続吐出20201102174747
+20201102_182349 : import results from resultsDB.csv was done
+20201102_182412 : extraction uploaded zip file at uploads/断続吐出20201102174747
+20201102_182412 : import results from resultsDB.csv was done
+20201102_182424 : extraction uploaded zip file at uploads/断続吐出20201102174747
+20201102_182424 : import results from resultsDB.csv was done
+20201102_182510 : extraction uploaded zip file at uploads/断続吐出20201102174747
+20201102_182510 : import results from resultsDB.csv was done
+20201102_182614 : extraction uploaded zip file at uploads/断続吐出20201102174747
+20201102_182614 : import results from resultsDB.csv was done
+20201102_182652 : extraction uploaded zip file at uploads/断続吐出20201102174747
+20201102_182652 : import results from resultsDB.csv was done
+20201102_182653 : files were saved at restored_data/断続吐出20201102174747
+20201102_182653 : files at uploads/断続吐出20201102174747 and uploads/断続吐出20201102174747.zip were deleted
+20201102_192001 : extraction uploaded zip file at uploads/断続吐出20201102191100
+20201102_192002 : import results from resultsDB.csv was done
+20201102_192002 : files were saved at restored_data/断続吐出20201102191100
+20201102_192002 : files at uploads/断続吐出20201102191100 and uploads/断続吐出20201102191100.zip were deleted
+20201102_192138 : extraction uploaded zip file at uploads/断続吐出20201102191100
+20201102_192138 : import results from resultsDB.csv was done
+20201102_192139 : files were saved at restored_data/断続吐出20201102191100_2
+20201102_192139 : files at uploads/断続吐出20201102191100 and uploads/断続吐出20201102191100.zip were deleted
+20201102_192737 : auto_tracking calculation with POST method was called
+20201102_192737 : ImmutableMultiDict([('upload_file', <FileStorage: '2th_20201102191143.zip' ('application/zip')>)]) file is posted
+20201102_192737 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201102_192738 : extraction uploaded zip file at uploads/2th_20201102191143
+20201102_192738 : import results from resultsDB.csv was done
+20201102_192738 : auto_tracking is execute with uploads/2th_20201102191143/2th_20201102191143, the exec_mode DEBUG
+20201102_192739 : export calculation result to resultsDB.csv was succeed.
+20201102_192739 : files were saved at restored_data/2th_20201102191143
+20201102_192739 : files at uploads/2th_20201102191143 and uploads/2th_20201102191143.zip were deleted
+20201102_192903 : extraction uploaded zip file at uploads/MultipleIntermittency_20201102191100
+20201102_192904 : import results from resultsDB.csv was done
+20201102_192904 : files were saved at restored_data/MultipleIntermittency_20201102191100
+20201102_192904 : files at uploads/MultipleIntermittency_20201102191100 and uploads/MultipleIntermittency_20201102191100.zip were deleted
+20201102_193123 : extraction uploaded zip file at uploads/MultipleIntermittency_20201102191100
+20201102_193124 : import results from resultsDB.csv was done
+20201102_193124 : files were saved at restored_data/MultipleIntermittency_20201102191100_2
+20201102_193124 : files at uploads/MultipleIntermittency_20201102191100 and uploads/MultipleIntermittency_20201102191100.zip were deleted
+20201102_193221 : extraction uploaded zip file at uploads/MultipleIntermittency_20201102191100
+20201102_193221 : import results from resultsDB.csv was done
+20201102_193222 : files were saved at restored_data/MultipleIntermittency_20201102191100_3
+20201102_193222 : files at uploads/MultipleIntermittency_20201102191100 and uploads/MultipleIntermittency_20201102191100.zip were deleted
+20201102_194024 : extraction uploaded zip file at uploads/MultipleIntermittency_20201102191100
+20201102_194024 : import results from resultsDB.csv was done
+20201102_194025 : files were saved at restored_data/MultipleIntermittency_20201102191100_4
+20201102_194025 : files at uploads/MultipleIntermittency_20201102191100 and uploads/MultipleIntermittency_20201102191100.zip were deleted
+20201102_194557 : extraction uploaded zip file at uploads/MultipleIntermittency_20201102191100
+20201102_194557 : import results from resultsDB.csv was done
+20201102_194557 : files were saved at restored_data/MultipleIntermittency_20201102191100_5
+20201102_194558 : files at uploads/MultipleIntermittency_20201102191100 and uploads/MultipleIntermittency_20201102191100.zip were deleted
+20201102_194916 : extraction uploaded zip file at uploads/MultipleIntermittency_20201102191100
+20201102_194917 : import results from resultsDB.csv was done
+20201102_194917 : files were saved at restored_data/MultipleIntermittency_20201102191100
+20201102_194917 : files at uploads/MultipleIntermittency_20201102191100 and uploads/MultipleIntermittency_20201102191100.zip were deleted
+20201102_195133 : extraction uploaded zip file at uploads/MultipleIntermittency_20201102191100
+20201102_195134 : import results from resultsDB.csv was done
+20201102_195400 : extraction uploaded zip file at uploads/MultipleIntermittency_20201102191100
+20201102_195400 : import results from resultsDB.csv was done
+20201102_195400 : files were saved at restored_data/MultipleIntermittency_20201102191100_2
+20201102_195400 : files at uploads/MultipleIntermittency_20201102191100 and uploads/MultipleIntermittency_20201102191100.zip were deleted
+20201102_195501 : extraction uploaded zip file at uploads/MultipleIntermittency_20201102191100
+20201102_195501 : import results from resultsDB.csv was done
+20201102_195502 : files were saved at restored_data/MultipleIntermittency_20201102191100_3
+20201102_195502 : files at uploads/MultipleIntermittency_20201102191100 and uploads/MultipleIntermittency_20201102191100.zip were deleted
+20201102_195653 : extraction uploaded zip file at uploads/MultipleIntermittency_20201102191100
+20201102_195654 : import results from resultsDB.csv was done
+20201102_195731 : extraction uploaded zip file at uploads/MultipleIntermittency_20201102191100
+20201102_195731 : import results from resultsDB.csv was done
+20201102_195742 : files were saved at restored_data/MultipleIntermittency_20201102191100_4
+20201102_195742 : files at uploads/MultipleIntermittency_20201102191100 and uploads/MultipleIntermittency_20201102191100.zip were deleted
+20201102_201631 : extraction uploaded zip file at uploads/MultipleIntermittency_20201102191100
+20201102_201632 : import results from resultsDB.csv was done
+20201102_201632 : files were saved at restored_data/MultipleIntermittency_20201102191100_5
+20201102_201632 : files at uploads/MultipleIntermittency_20201102191100 and uploads/MultipleIntermittency_20201102191100.zip were deleted
+20201102_201802 : extraction uploaded zip file at uploads/MultipleIntermittency_20201102191100
+20201102_201803 : import results from resultsDB.csv was done
+20201102_201803 : files were saved at restored_data/MultipleIntermittency_20201102191100_6
+20201102_201803 : files at uploads/MultipleIntermittency_20201102191100 and uploads/MultipleIntermittency_20201102191100.zip were deleted
+20201102_201834 : extraction uploaded zip file at uploads/MultipleIntermittency_20201102191100
+20201102_201835 : import results from resultsDB.csv was done
+20201102_201835 : files were saved at restored_data/MultipleIntermittency_20201102191100_7
+20201102_201835 : files at uploads/MultipleIntermittency_20201102191100 and uploads/MultipleIntermittency_20201102191100.zip were deleted
+20201102_201855 : extraction uploaded zip file at uploads/MultipleIntermittency_20201102191100
+20201102_201855 : import results from resultsDB.csv was done
+20201102_201856 : files were saved at restored_data/MultipleIntermittency_20201102191100_8
+20201102_201856 : files at uploads/MultipleIntermittency_20201102191100 and uploads/MultipleIntermittency_20201102191100.zip were deleted
+20201102_202014 : extraction uploaded zip file at uploads/MultipleIntermittency_20201102191100
+20201102_202015 : import results from resultsDB.csv was done
+20201102_202015 : files were saved at restored_data/MultipleIntermittency_20201102191100_9
+20201102_202015 : files at uploads/MultipleIntermittency_20201102191100 and uploads/MultipleIntermittency_20201102191100.zip were deleted
+20201102_202259 : extraction uploaded zip file at uploads/MultipleIntermittency_20201102191100
+20201102_202300 : import results from resultsDB.csv was done
+20201102_202300 : files were saved at restored_data/MultipleIntermittency_20201102191100_10
+20201102_202300 : files at uploads/MultipleIntermittency_20201102191100 and uploads/MultipleIntermittency_20201102191100.zip were deleted
+20201102_202341 : extraction uploaded zip file at uploads/MultipleIntermittency_20201102191100
+20201102_202342 : import results from resultsDB.csv was done
+20201102_202342 : files were saved at restored_data/MultipleIntermittency_20201102191100_11
+20201102_202342 : files at uploads/MultipleIntermittency_20201102191100 and uploads/MultipleIntermittency_20201102191100.zip were deleted
+20201102_202427 : extraction uploaded zip file at uploads/MultipleIntermittency_20201102191100
+20201102_202427 : import results from resultsDB.csv was done
+20201102_202428 : files were saved at restored_data/MultipleIntermittency_20201102191100_12
+20201102_202428 : files at uploads/MultipleIntermittency_20201102191100 and uploads/MultipleIntermittency_20201102191100.zip were deleted
+20201102_202512 : extraction uploaded zip file at uploads/MultipleIntermittency_20201102191100
+20201102_202512 : import results from resultsDB.csv was done
+20201102_202513 : files were saved at restored_data/MultipleIntermittency_20201102191100_13
+20201102_202513 : files at uploads/MultipleIntermittency_20201102191100 and uploads/MultipleIntermittency_20201102191100.zip were deleted
+20201102_202550 : extraction uploaded zip file at uploads/MultipleIntermittency_20201102191100
+20201102_202551 : import results from resultsDB.csv was done
+20201102_202551 : files were saved at restored_data/MultipleIntermittency_20201102191100_14
+20201102_202551 : files at uploads/MultipleIntermittency_20201102191100 and uploads/MultipleIntermittency_20201102191100.zip were deleted
+20201102_203850 : extraction uploaded zip file at uploads/MultipleIntermittency_20201102191100
+20201102_203850 : import results from resultsDB.csv was done
+20201102_203851 : files were saved at restored_data/MultipleIntermittency_20201102191100
+20201102_203851 : files at uploads/MultipleIntermittency_20201102191100 and uploads/MultipleIntermittency_20201102191100.zip were deleted
+20201102_204458 : extraction uploaded zip file at uploads/MultipleIntermittency_20201102191100
+20201102_204458 : import results from resultsDB.csv was done
+20201102_204511 : files were saved at restored_data/MultipleIntermittency_20201102191100_2
+20201102_204511 : files at uploads/MultipleIntermittency_20201102191100 and uploads/MultipleIntermittency_20201102191100.zip were deleted
+20201102_204813 : extraction uploaded zip file at uploads/MultipleIntermittency_20201102191100
+20201102_204814 : import results from resultsDB.csv was done
+20201102_204814 : files were saved at restored_data/MultipleIntermittency_20201102191100_3
+20201102_204814 : files at uploads/MultipleIntermittency_20201102191100 and uploads/MultipleIntermittency_20201102191100.zip were deleted
+20201102_204913 : extraction uploaded zip file at uploads/MultipleIntermittency_20201102191100
+20201102_204913 : import results from resultsDB.csv was done
+20201102_204925 : files were saved at restored_data/MultipleIntermittency_20201102191100_4
+20201102_204925 : files at uploads/MultipleIntermittency_20201102191100 and uploads/MultipleIntermittency_20201102191100.zip were deleted
+20201102_205053 : extraction uploaded zip file at uploads/MultipleIntermittency_20201102191100
+20201102_205054 : import results from resultsDB.csv was done
+20201102_205110 : files were saved at restored_data/MultipleIntermittency_20201102191100_5
+20201102_205110 : files at uploads/MultipleIntermittency_20201102191100 and uploads/MultipleIntermittency_20201102191100.zip were deleted
+20201102_205542 : extraction uploaded zip file at uploads/MultipleIntermittency_20201102191100
+20201102_205543 : import results from resultsDB.csv was done
+20201102_205553 : files were saved at restored_data/MultipleIntermittency_20201102191100_6
+20201102_205553 : files at uploads/MultipleIntermittency_20201102191100 and uploads/MultipleIntermittency_20201102191100.zip were deleted
+20201102_213521 : extraction uploaded zip file at uploads/MultipleIntermittency_20201102191100
+20201102_213521 : import results from resultsDB.csv was done
+20201102_213535 : files were saved at restored_data/MultipleIntermittency_20201102191100_7
+20201102_213536 : files at uploads/MultipleIntermittency_20201102191100 and uploads/MultipleIntermittency_20201102191100.zip were deleted
+20201104_090650 : auto_tracking calculation with POST method was called
+20201104_090650 : ImmutableMultiDict([('upload_file', <FileStorage: '2th_20201102191143.zip' ('application/zip')>)]) file is posted
+20201104_090650 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201104_090650 : extraction uploaded zip file at uploads/2th_20201102191143
+20201104_090650 : import results from resultsDB.csv was done
+20201104_090651 : auto_tracking is execute with uploads/2th_20201102191143/2th_20201102191143, the exec_mode DEBUG
+20201104_090651 : export calculation result to resultsDB.csv was succeed.
+20201104_090651 : files were saved at restored_data/2th_20201102191143
+20201104_090651 : files at uploads/2th_20201102191143 and uploads/2th_20201102191143.zip were deleted
+20201104_091508 : auto_tracking calculation with POST method was called
+20201104_091508 : ImmutableMultiDict([('upload_file', <FileStorage: 'SMZ_test.zip' ('application/zip')>)]) file is posted
+20201104_091508 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201104_091508 : extraction uploaded zip file at uploads/SMZ_test
+20201104_091508 : import results from resultsDB.csv was done
+20201104_091510 : auto_tracking is execute with uploads/SMZ_test/SMZ_test, the exec_mode DEBUG
+20201104_091510 : export calculation result to resultsDB.csv was succeed.
+20201104_091510 : files were saved at restored_data/SMZ_test
+20201104_091510 : files at uploads/SMZ_test and uploads/SMZ_test.zip were deleted
+20201104_091603 : auto_tracking calculation with POST method was called
+20201104_091603 : ImmutableMultiDict([('upload_file', <FileStorage: 'T1172_吐出画像20200330102520.zip' ('application/zip')>)]) file is posted
+20201104_091603 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201104_091603 : extraction uploaded zip file at uploads/T1172_吐出画像20200330102520
+20201104_091603 : import results from resultsDB.csv was done
+20201104_091606 : auto_tracking is execute with uploads/T1172_吐出画像20200330102520/T1172_吐出画像20200330102520, the exec_mode DEBUG
+20201104_091606 : export calculation result to resultsDB.csv was succeed.
+20201104_091606 : files were saved at restored_data/T1172_吐出画像20200330102520
+20201104_091606 : files at uploads/T1172_吐出画像20200330102520 and uploads/T1172_吐出画像20200330102520.zip were deleted
+20201104_091745 : auto_tracking calculation with POST method was called
+20201104_091745 : ImmutableMultiDict([('upload_file', <FileStorage: 'T1354_吐出画像20200625150057.zip' ('application/zip')>)]) file is posted
+20201104_091745 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201104_091745 : extraction uploaded zip file at uploads/T1354_吐出画像20200625150057
+20201104_091745 : import results from resultsDB.csv was done
+20201104_091747 : auto_tracking is execute with uploads/T1354_吐出画像20200625150057/T1354_吐出画像20200625150057, the exec_mode DEBUG
+20201104_091747 : export calculation result to resultsDB.csv was succeed.
+20201104_091748 : files were saved at restored_data/T1354_吐出画像20200625150057
+20201104_091748 : files at uploads/T1354_吐出画像20200625150057 and uploads/T1354_吐出画像20200625150057.zip were deleted
+20201104_092134 : auto_tracking calculation with POST method was called
+20201104_092134 : ImmutableMultiDict([('upload_file', <FileStorage: 'T1354_吐出画像20200625150057.zip' ('application/zip')>)]) file is posted
+20201104_092134 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201104_092134 : extraction uploaded zip file at uploads/T1354_吐出画像20200625150057
+20201104_092134 : import results from resultsDB.csv was done
+20201104_092136 : auto_tracking is execute with uploads/T1354_吐出画像20200625150057/T1354_吐出画像20200625150057, the exec_mode DEBUG
+20201104_092136 : export calculation result to resultsDB.csv was succeed.
+20201104_092137 : files were saved at restored_data/T1354_吐出画像20200625150057_2
+20201104_092137 : files at uploads/T1354_吐出画像20200625150057 and uploads/T1354_吐出画像20200625150057.zip were deleted
+20201104_093020 : auto_tracking calculation with POST method was called
+20201104_093020 : ImmutableMultiDict([('upload_file', <FileStorage: '2th_20201102191143.zip' ('application/zip')>)]) file is posted
+20201104_093020 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201104_093020 : extraction uploaded zip file at uploads/2th_20201102191143
+20201104_093020 : import results from resultsDB.csv was done
+20201104_093021 : auto_tracking is execute with uploads/2th_20201102191143/2th_20201102191143, the exec_mode DEBUG
+20201104_093021 : export calculation result to resultsDB.csv was succeed.
+20201104_093021 : files were saved at restored_data/2th_20201102191143_2
+20201104_093022 : files at uploads/2th_20201102191143 and uploads/2th_20201102191143.zip were deleted
+20201104_110555 : auto_tracking calculation with POST method was called
+20201104_110555 : ImmutableMultiDict([('upload_file', <FileStorage: '2th_20201102191143.zip' ('application/zip')>)]) file is posted
+20201104_110555 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201104_110555 : extraction uploaded zip file at uploads/2th_20201102191143
+20201104_110555 : import results from resultsDB.csv was done
+20201104_110556 : auto_tracking is execute with uploads/2th_20201102191143/2th_20201102191143, the exec_mode DEBUG
+20201104_110556 : export calculation result to resultsDB.csv was succeed.
+20201104_110556 : files were saved at restored_data/2th_20201102191143_3
+20201104_110556 : files at uploads/2th_20201102191143 and uploads/2th_20201102191143.zip were deleted
+20201104_111151 : auto_tracking calculation with POST method was called
+20201104_111151 : ImmutableMultiDict([('upload_file', <FileStorage: '2th_20201102191143.zip' ('application/zip')>)]) file is posted
+20201104_111151 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201104_111151 : extraction uploaded zip file at uploads/2th_20201102191143
+20201104_111151 : import results from resultsDB.csv was done
+20201104_111152 : auto_tracking is execute with uploads/2th_20201102191143/2th_20201102191143, the exec_mode DEBUG
+20201104_111152 : export calculation result to resultsDB.csv was succeed.
+20201104_111152 : files were saved at restored_data/2th_20201102191143_4
+20201104_111152 : files at uploads/2th_20201102191143 and uploads/2th_20201102191143.zip were deleted
+20201104_111218 : auto_tracking calculation with POST method was called
+20201104_111218 : ImmutableMultiDict([('upload_file', <FileStorage: 'T1172_吐出画像20200330102520.zip' ('application/zip')>)]) file is posted
+20201104_111218 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201104_111218 : extraction uploaded zip file at uploads/T1172_吐出画像20200330102520
+20201104_111218 : import results from resultsDB.csv was done
+20201104_111221 : auto_tracking is execute with uploads/T1172_吐出画像20200330102520/T1172_吐出画像20200330102520, the exec_mode DEBUG
+20201104_111221 : export calculation result to resultsDB.csv was succeed.
+20201104_111221 : files were saved at restored_data/T1172_吐出画像20200330102520_2
+20201104_111221 : files at uploads/T1172_吐出画像20200330102520 and uploads/T1172_吐出画像20200330102520.zip were deleted
+20201104_111257 : auto_tracking calculation with POST method was called
+20201104_111257 : ImmutableMultiDict([('upload_file', <FileStorage: 'T1172_吐出画像20200330102520.zip' ('application/zip')>)]) file is posted
+20201104_111257 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201104_111257 : extraction uploaded zip file at uploads/T1172_吐出画像20200330102520
+20201104_111257 : import results from resultsDB.csv was done
+20201104_111300 : auto_tracking is execute with uploads/T1172_吐出画像20200330102520/T1172_吐出画像20200330102520, the exec_mode DEBUG
+20201104_111300 : export calculation result to resultsDB.csv was succeed.
+20201104_111300 : files were saved at restored_data/T1172_吐出画像20200330102520_3
+20201104_111301 : files at uploads/T1172_吐出画像20200330102520 and uploads/T1172_吐出画像20200330102520.zip were deleted
+20201104_133842 : extraction uploaded zip file at uploads/FreqCharMeas_20201104133154
+20201104_133842 : import results from resultsDB.csv was done
+20201104_133848 : files were saved at restored_data/FreqCharMeas_20201104133154
+20201104_133848 : files at uploads/FreqCharMeas_20201104133154 and uploads/FreqCharMeas_20201104133154.zip were deleted
+20201104_142314 : extraction uploaded zip file at uploads/FreqCharMeas_20201104133154
+20201104_142314 : import results from resultsDB.csv was done
+20201104_142321 : files were saved at restored_data/FreqCharMeas_20201104133154_2
+20201104_142321 : files at uploads/FreqCharMeas_20201104133154 and uploads/FreqCharMeas_20201104133154.zip were deleted
+20201104_164233 : extraction uploaded zip file at uploads/FreqCharMeas_20201104162601
+20201104_164233 : import results from resultsDB.csv was done
+20201104_164239 : files were saved at restored_data/FreqCharMeas_20201104162601
+20201104_164239 : files at uploads/FreqCharMeas_20201104162601 and uploads/FreqCharMeas_20201104162601.zip were deleted
+20201104_164908 : extraction uploaded zip file at uploads/FreqCharMeas_20201104162601
+20201104_164908 : import results from resultsDB.csv was done
+20201104_164914 : files were saved at restored_data/FreqCharMeas_20201104162601_2
+20201104_164914 : files at uploads/FreqCharMeas_20201104162601 and uploads/FreqCharMeas_20201104162601.zip were deleted
+20201104_165045 : extraction uploaded zip file at uploads/FreqCharMeas_20201104133154
+20201104_165045 : import results from resultsDB.csv was done
+20201104_165051 : files were saved at restored_data/FreqCharMeas_20201104133154_3
+20201104_165052 : files at uploads/FreqCharMeas_20201104133154 and uploads/FreqCharMeas_20201104133154.zip were deleted
+20201104_165134 : extraction uploaded zip file at uploads/FreqCharMeas_20201104162601
+20201104_165134 : import results from resultsDB.csv was done
+20201104_165140 : files were saved at restored_data/FreqCharMeas_20201104162601_3
+20201104_165140 : files at uploads/FreqCharMeas_20201104162601 and uploads/FreqCharMeas_20201104162601.zip were deleted
+20201104_165243 : extraction uploaded zip file at uploads/FreqCharMeas_20201104162601
+20201104_165243 : import results from resultsDB.csv was done
+20201104_165249 : files were saved at restored_data/FreqCharMeas_20201104162601_4
+20201104_165249 : files at uploads/FreqCharMeas_20201104162601 and uploads/FreqCharMeas_20201104162601.zip were deleted
+20201104_171619 : extraction uploaded zip file at uploads/FreqCharMeas_20201104162601
+20201104_171619 : import results from resultsDB.csv was done
+20201104_171619 : files were saved at restored_data/FreqCharMeas_20201104162601_5
+20201104_171619 : files at uploads/FreqCharMeas_20201104162601 and uploads/FreqCharMeas_20201104162601.zip were deleted
+20201104_171757 : extraction uploaded zip file at uploads/FreqCharMeas_20201104162601
+20201104_171757 : import results from resultsDB.csv was done
+20201104_171757 : files were saved at restored_data/FreqCharMeas_20201104162601_6
+20201104_171757 : files at uploads/FreqCharMeas_20201104162601 and uploads/FreqCharMeas_20201104162601.zip were deleted
+20201104_172347 : extraction uploaded zip file at uploads/FreqCharMeas_20201104162601
+20201104_172347 : import results from resultsDB.csv was done
+20201104_172348 : files were saved at restored_data/FreqCharMeas_20201104162601_7
+20201104_172348 : files at uploads/FreqCharMeas_20201104162601 and uploads/FreqCharMeas_20201104162601.zip were deleted
+20201104_172548 : extraction uploaded zip file at uploads/FreqCharMeas_20201104162601
+20201104_172548 : import results from resultsDB.csv was done
+20201104_172549 : files were saved at restored_data/FreqCharMeas_20201104162601_8
+20201104_172549 : files at uploads/FreqCharMeas_20201104162601 and uploads/FreqCharMeas_20201104162601.zip were deleted
+20201104_172637 : extraction uploaded zip file at uploads/FreqCharMeas_20201104162601
+20201104_172637 : import results from resultsDB.csv was done
+20201104_172637 : files were saved at restored_data/FreqCharMeas_20201104162601_9
+20201104_172637 : files at uploads/FreqCharMeas_20201104162601 and uploads/FreqCharMeas_20201104162601.zip were deleted
+20201104_174448 : extraction uploaded zip file at uploads/FreqCharMeas_20201104162601
+20201104_174449 : import results from resultsDB.csv was done
+20201104_174454 : files were saved at restored_data/FreqCharMeas_20201104162601_10
+20201104_174455 : files at uploads/FreqCharMeas_20201104162601 and uploads/FreqCharMeas_20201104162601.zip were deleted
+20201104_174649 : auto_tracking calculation with POST method was called
+20201104_174649 : ImmutableMultiDict([('upload_file', <FileStorage: '2th_20201102191143.zip' ('application/zip')>)]) file is posted
+20201104_174649 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201104_174649 : extraction uploaded zip file at uploads/2th_20201102191143
+20201104_174649 : import results from resultsDB.csv was done
+20201104_174650 : auto_tracking is execute with uploads/2th_20201102191143/2th_20201102191143, the exec_mode DEBUG
+20201104_174650 : export calculation result to resultsDB.csv was succeed.
+20201104_174650 : files were saved at restored_data/2th_20201102191143_5
+20201104_174650 : files at uploads/2th_20201102191143 and uploads/2th_20201102191143.zip were deleted
+20201104_174753 : auto_tracking calculation with POST method was called
+20201104_174753 : ImmutableMultiDict([('upload_file', <FileStorage: '2th_20201102191143.zip' ('application/zip')>)]) file is posted
+20201104_174753 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201104_174753 : extraction uploaded zip file at uploads/2th_20201102191143
+20201104_174753 : import results from resultsDB.csv was done
+20201104_174754 : auto_tracking is execute with uploads/2th_20201102191143/2th_20201102191143, the exec_mode DEBUG
+20201104_174754 : export calculation result to resultsDB.csv was succeed.
+20201104_174754 : files were saved at restored_data/2th_20201102191143_6
+20201104_174754 : files at uploads/2th_20201102191143 and uploads/2th_20201102191143.zip were deleted
+20201104_175045 : auto_tracking calculation with POST method was called
+20201104_175045 : ImmutableMultiDict([('upload_file', <FileStorage: '2th_20201102191143.zip' ('application/zip')>)]) file is posted
+20201104_175045 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201104_175045 : extraction uploaded zip file at uploads/2th_20201102191143
+20201104_175045 : import results from resultsDB.csv was done
+20201104_175045 : auto_tracking is execute with uploads/2th_20201102191143/2th_20201102191143, the exec_mode DEBUG
+20201104_175045 : export calculation result to resultsDB.csv was succeed.
+20201104_175045 : files were saved at restored_data/2th_20201102191143_7
+20201104_175045 : files at uploads/2th_20201102191143 and uploads/2th_20201102191143.zip were deleted
+20201104_175129 : auto_tracking calculation with POST method was called
+20201104_175129 : ImmutableMultiDict([('upload_file', <FileStorage: '2th_20201102191143.zip' ('application/zip')>)]) file is posted
+20201104_175129 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201104_175129 : extraction uploaded zip file at uploads/2th_20201102191143
+20201104_175129 : import results from resultsDB.csv was done
+20201104_175130 : auto_tracking is execute with uploads/2th_20201102191143/2th_20201102191143, the exec_mode DEBUG
+20201104_175130 : export calculation result to resultsDB.csv was succeed.
+20201104_175130 : files were saved at restored_data/2th_20201102191143_8
+20201104_175130 : files at uploads/2th_20201102191143 and uploads/2th_20201102191143.zip were deleted
+20201104_175310 : auto_tracking calculation with POST method was called
+20201104_175310 : ImmutableMultiDict([('upload_file', <FileStorage: '2th_20201102191143.zip' ('application/zip')>)]) file is posted
+20201104_175310 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201104_175310 : extraction uploaded zip file at uploads/2th_20201102191143
+20201104_175310 : import results from resultsDB.csv was done
+20201104_175330 : auto_tracking is execute with uploads/2th_20201102191143/2th_20201102191143, the exec_mode DEBUG
+20201104_175330 : export calculation result to resultsDB.csv was succeed.
+20201104_175330 : files were saved at restored_data/2th_20201102191143_9
+20201104_175330 : files at uploads/2th_20201102191143 and uploads/2th_20201102191143.zip were deleted
+20201104_175336 : auto_tracking calculation with POST method was called
+20201104_175336 : ImmutableMultiDict([('upload_file', <FileStorage: '2th_20201102191143.zip' ('application/zip')>)]) file is posted
+20201104_175336 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201104_175336 : extraction uploaded zip file at uploads/2th_20201102191143
+20201104_175336 : import results from resultsDB.csv was done
+20201104_175357 : auto_tracking is execute with uploads/2th_20201102191143/2th_20201102191143, the exec_mode DEBUG
+20201104_175357 : export calculation result to resultsDB.csv was succeed.
+20201104_175357 : files were saved at restored_data/2th_20201102191143_10
+20201104_175357 : files at uploads/2th_20201102191143 and uploads/2th_20201102191143.zip were deleted
+20201104_175408 : auto_tracking calculation with POST method was called
+20201104_175408 : ImmutableMultiDict([('upload_file', <FileStorage: 'E0893_吐出画像20201019143627_side.zip' ('application/zip')>)]) file is posted
+20201104_175408 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201104_175408 : extraction uploaded zip file at uploads/E0893_吐出画像20201019143627_side
+20201104_175408 : import results from resultsDB.csv was done
+20201104_175508 : auto_tracking calculation with POST method was called
+20201104_175508 : ImmutableMultiDict([('upload_file', <FileStorage: 'E0893_吐出画像20201019143627_side.zip' ('application/zip')>)]) file is posted
+20201104_175508 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201104_175508 : extraction uploaded zip file at uploads/E0893_吐出画像20201019143627_side
+20201104_175508 : import results from resultsDB.csv was done
+20201104_175512 : auto_tracking is execute with uploads/E0893_吐出画像20201019143627_side/E0893_吐出画像20201019143627, the exec_mode DEBUG
+20201104_175512 : export calculation result to resultsDB.csv was succeed.
+20201104_175512 : files were saved at restored_data/E0893_吐出画像20201019143627_side
+20201104_175512 : files at uploads/E0893_吐出画像20201019143627_side and uploads/E0893_吐出画像20201019143627_side.zip were deleted

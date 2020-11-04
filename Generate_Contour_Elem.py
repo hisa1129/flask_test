@@ -14,6 +14,12 @@ IDX_CNT = 1
 IDX_X = 0
 IDX_Y = 1
 
+gamma = 0.8
+# ガンマ値を使って Look up tableを作成
+lookUpTable = np.empty((1,256), np.uint8)
+for i in range(256):
+    lookUpTable[0,i] = np.clip(pow(i / 255.0, gamma) * 255.0, 0, 255)
+
 
 #解析結果取得関数
 def analyse_Image(delay, 
@@ -69,6 +75,10 @@ def analyse_Image(delay,
     img = cv2.imread(path)
     if DEBUG:
         calculation_log('image file {} was imported'.format(path))
+    #ガウシアンによるぼかし。バックグラウンドノイズの除去
+#    img = cv2.GaussianBlur(img,(9, 9),3)    
+    #ガンマ関数
+#    img = gamma_function(img)
     #画像のグレイスケール化
     im = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
@@ -135,10 +145,9 @@ def analyse_Image(delay,
                 #ヴォイド輪郭を完全に覆う最小の長方形の最小X、最大X、最大Y座標を取得する。（最小Yは必ず0である。）
                 left_X_min = min([vCnt[0][0] for vCnt in voidContour])
                 right_X_Max = max([vCnt[0][0] for vCnt in voidContour])
-                Y = max([vCnt[0][1] for vCnt in voidContour])
-                
-                #元画像にて、上記長方形座標の内部を黒で塗りつぶす。
-                img = cv2.rectangle(img, (left_X_min, 0), (right_X_Max, Y), (0,0,0), -1)
+                Y = max([vCnt[0][1] for vCnt in voidContour])              
+                img = cv2.fillConvexPoly(img, voidContour, color=(0,0,0))
+                #img = cv2.rectangle(img, (left_X_min, 0), (right_X_Max, Y), (0,0,0), -1)
                 if DEBUG:
                     calculation_log('img is filled with rectangle Xleft = {}, Xright = {}, Y = {}'.format(
                         left_X_min, 
@@ -371,3 +380,7 @@ def analyse_Image(delay,
             calculation_log('export image at {}'.format(savePath))
     #輪郭解析結果リストを返す
     return cntResults      
+
+def gamma_function(img):
+    calculation_log('gamma_function is calling.')
+    return cv2.LUT(img, lookUpTable)    

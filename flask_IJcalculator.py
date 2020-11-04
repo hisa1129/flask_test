@@ -60,6 +60,8 @@ URLs = {
     "download restored files":'/download_restored_files', 
     #計算フォーム出力用
     "show calculation form":"/calculator/form/<string:calculationType>",
+    #断続吐出解析
+    "analyze_multipleintermittency_firing":"/analyse/multi_intermittency",
 }
 
 #ポート番号指定、ローカルデバッグで8080、ネット上で443
@@ -71,6 +73,7 @@ MIMETYPE_CSV = 'text/csv' #csvファイル出力MIMETYPE
 MIMETYPE_ZIP = 'application/zip' #zipファイル出力MIMETYPE
 
 DEBUG_MODE = 'DEBUG' #デバッグモード指定文字列
+RESTORE_MODE = 'RESTORE' #ファイル保持モード指定文字列
 RESTORE_DIR = 'restored_data' #解析結果画像出力時保存ディレクトリ名
 CALCULATION_LOG = 'calculation_log.log' #計算処理デバッグ結果格納ファイル名
 
@@ -160,7 +163,7 @@ def uploads_file():
             file.save(os.path.join(UPLOAD_DIR, fileName))
         uploaded_file_name = str(request.form['filename'])
         #ファイル処理後のサーバー上への保存の選択指示の受け取り
-        flagFileRestore = str(request.form["filerestore"]) == 'RESTORE'
+        flagFileRestore = str(request.form["filerestore"]) == RESTORE_MODE
         #デバッグモード指示受け取り
         exec_mode = str(request.form["mode"])
         #カメラ解像度受け取り
@@ -844,6 +847,100 @@ def get_resultFile(fileType):
     else:
         return make_response(render_template('index.html', filetype=fileType))
 
+@app.route(URLs["analyze_multipleintermittency_firing"], methods = methods_test)
+@cross_origin(supports_credentials=True)
+def anaylse_intermittency_test():
+    if request.method == 'GET':
+        file_read_error_result = {
+            "analysis_date_time":datetime.datetime.now().strftime('%Y-%m-%d_%H:%M:%S'),
+            "API_VER":API_VER,
+            "condition":'upload_file is FAILED.'
+        }
+        flag_file_extraction_done = False
+        results = []
+        try:
+            print('try get args')
+            component_file_name = str(request.args.get('filename'))
+            exec_mode = str(request.args.get('mode'))
+            flagFileRestore = str(request.args.get('filerestore'))==RESTORE_MODE
+            #カメラ解像度受け取り
+            try:
+                camera_resolution = float(request.form["camera_resolution"])
+            except:
+                camera_resolution = dic_camera_resolution['NJ-X']
+            print('get args is good.')
+            if '' == component_file_name:
+                our_server_log('uploaded filename was empty.')
+                result = {
+                    'filename':component_file_name,
+                    'condition':'filename was empty.'
+                }
+                return make_response(jsonify(result))
+            if not is_allwed_file(component_file_name):
+                out_server_log('extension of uploaded file was not zip.')
+                result = ({
+                    'filename':component_file_name,
+                    'condition':'extension is not zip.'
+                })
+                return make_response(jsonify(result))
+            print([component_file_name, exec_mode, flagFileRestore])
+
+            created_file_path = os.path.join(UPLOAD_DIR, component_file_name)
+            print(created_file_path)
+            try:
+                with zipfile.ZipFile(created_file_path) as existing_zip:
+                    out_server_log('extraction uploaded zip file at {}'.format(created_file_path.strip('.zip')))
+                    existing_zip.extractall(created_file_path.strip('.zip'))
+                created_dir = [f for f in os.listdir(created_file_path.strip('.zip')) if os.path.isdir(os.path.join(created_file_path.strip('.zip'), f))][0]
+                parent_directory_path = os.path.join(UPLOAD_DIR, created_dir, created_dir)
+                print(parent_directory_path)
+                flag_file_extraction_done = True
+            except:
+                results = [file_read_error_result]
+        except:
+            print('argments is not good.')
+            results = [file_read_error_result]
+        if flag_file_extraction_done:
+            try:
+                df = pd.read_csv(RESULTSDB)
+                out_server_log('import results from {} was done'.format(RESULTSDB))
+            except:
+                df = pd.DataFrame(columns = [])
+                out_server_log('impot results from {} was FAILED'.format(RESULTSDB))
+
+            dirs = os.listdir(parent_directory_path)
+            print(dirs)
+            for _dir in dirs:
+                print(_dir)
+                _dir = os.path.join(parent_directory_path, _dir)
+                print(_dir)
+                results.append(Get_AutoTracking_Results.get_autoTracking_Results(_dir, camera_resolution, API_VER, exec_mode))
+            df_add = pd.DataFrame(results)
+            df = pd.concat([df, df_add], axis = 0)
+            df.to_csv(RESULTSDB, index = False, encoding = 'utf-8-sig') 
+            
+            if not flagFileRestore:
+                #生成ファイル処理
+                shutil.rmtree(UPLOAD_DIR)
+                os.mkdir(UPLOAD_DIR) 
+                out_server_log('Both files at {}, and the uploaded zipfile {} were deleted'.format(created_file_path.strip('.zip'), created_file_path))
+            else:
+                src = created_file_path.strip('.zip')
+                dst = os.path.join(RESTORE_DIR, component_file_name.strip('.zip'))
+                dst_org = dst
+                fileNum = 2
+                while os.path.exists(dst):
+                    dst = dst_org + '_{}'.format(fileNum)
+                    fileNum = fileNum + 1
+                shutil.copytree(src, dst)
+                out_server_log('files were saved at {}'.format(dst))
+                shutil.rmtree(UPLOAD_DIR)
+                os.mkdir(UPLOAD_DIR)       
+                out_server_log('files at {} and {} were deleted'.format(created_file_path.strip('.zip'), created_file_path))
+    
+    return make_response(jsonify(results))
+
+    
 #アプリ起動指示。pythonにて本ファイルを指定すると以下動く。  
 if __name__ == "__main__":
     if NET_MODE:

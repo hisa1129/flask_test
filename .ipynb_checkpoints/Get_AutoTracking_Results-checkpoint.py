@@ -7,6 +7,17 @@ import math
 INPUT_PARAMS_VER = '0.1.0' #入力パラメータバージョン、2020.10.21
 
 #輪郭抽出前処理に関する入力パラメータ
+input_params_dic = {
+    "auto_binarize":True,
+    "binarize_thresh":128,
+    "min_area_thresh":1,
+    "areThresh_faced":500,
+    "areaThresh_separated":2000,
+    "arclengthThresh":25,
+    "solidity_ratio_thresh":1.5,
+    "noise_remove_topological_dist_thresh":20,
+    "noise_remove_area_thresh":40,
+}
 auto_binarize = True #大津の二値化による自動閾値判定
 binarize_thresh = 128 #二値化閾値（auto_binarize = Falseの時）
 min_area_thresh = 1 #輪郭面積最小値（最小面積以下の輪郭はノイズと判定）
@@ -20,6 +31,14 @@ noise_remove_area_thresh = 40 #輪郭ノイズ除去時面積上限値
 
 
 THRESH_VALUES_VER = '0.1.3' #閾値パラメータバージョン、2020.10.21
+thresh_values_dic = {
+    "velocity_uppsethresh":8.5,
+    "velocity_lowerthresh":4.5,
+    "Solidity_upperthresh":1.016,
+    "sep_thresh":300.0,
+    "diff_angle_thresh":1.753,
+    "pix_mirgin":20,
+}
 
 #吐出状態判定時閾値
 velocity_upperthresh = 8.5 #吐出速度上限[m/s]
@@ -198,44 +217,44 @@ def get_autoTracking_Results(directory_path, camera_resolution, API_VER, exec_mo
                     main_vel_res = trackingResults.Get_Main_Velocity(base, top)
                     sat_vel_res = trackingResults.Get_Satellite_Velocity(base,top)
                     vel_add_dics.append({
-                        "layered_main_{}_ave[pix/us]".format(i):check_is_nan(main_vel_res[0]),
-                        "layered_main_{}_stdiv[pix/us]".format(i):check_is_nan(main_vel_res[1]),
-                        "layered_sat_{}_ave[pix/us]".format(i):check_is_nan(sat_vel_res[0]),
-                        "layered_sat_{}_ave[pix/us]".format(i):check_is_nan(sat_vel_res[1]),                        
+                        "layered_main_{}_ave[pix/us]".format(i):nan_to_minus1(main_vel_res[0]),
+                        "layered_main_{}_stdiv[pix/us]".format(i):nan_to_minus1(main_vel_res[1]),
+                        "layered_sat_{}_ave[pix/us]".format(i):nan_to_minus1(sat_vel_res[0]),
+                        "layered_sat_{}_ave[pix/us]".format(i):nan_to_minus1(sat_vel_res[1]),                        
                     })
                     if flag_is_debugmode:
                         calculation_log('dic_elem_{} was generated as {}'.format(i, vel_add_dics[i]))
                 
                 #dictionaryへの出力
                 result = {
-                    "analysis_date_time":check_is_nan(datetime.datetime.now().strftime('%Y-%m-%d_%H:%M:%S')),
-                    "file_name":check_is_nan(directory_path),
+                    "analysis_date_time":nan_to_minus1(datetime.datetime.now().strftime('%Y-%m-%d_%H:%M:%S')),
+                    "file_name":nan_to_minus1(directory_path),
                     "condition":"calculation was done.",
-                    "camera_resolution[um/pix]":check_is_nan(camera_resolution),
-                    "API_VER":check_is_nan(API_VER),
-                    "ave_num_contours_before_separation":check_is_nan(num_first_contours),
-                    "solidity[U]":check_is_nan(solidity),
-                    "arc_solidity[u]":check_is_nan(arc_solidity),
-                    "flag_droplet_faced":check_is_nan(flag_droplet_faced),
-                    "faced_delay[us]":check_is_nan(faced_delay),
-                    "flag_droplet_separated":check_is_nan(flag_droplet_separated),
-                    "separated_delay[us]":check_is_nan(separated_delay),
-                    "max_regament_delay[us]":check_is_nan(max_regament_length_delay),
-                    "max_regament_length[pix]":check_is_nan(max_regament_length),
-                    "most_freq_Y[pix]":check_is_nan(contour_rsts.freq_Y),
-                    "CONTOUR_CODE_VER":check_is_nan(FindContourAnalysis.get_code_ver()),
-                    "main_average_velocity[pix/us]":check_is_nan(main_average_velocity),
-                    "main_average_velocity[m/s]":check_is_nan(main_average_velocity_stdized),
-                    "main_velocity_stddiv[pix/us]":check_is_nan(main_velocity_stdiv),
-                    "main_angle[degrees]":check_is_nan(main_angle),
-                    "satellite_average_velocity[pix/us]":check_is_nan(satellite_average_velocity),
-                    "satellite_average_velocity[m/s]":check_is_nan(satellite_average_velocity_stdized),
-                    "satellite_velocity_stddiv[pix/us]":check_is_nan(satellite_velocity_stdiv),
-                    "satellite_angle[degrees]":check_is_nan(satellite_angle),
-                    "main-satellite_angle_diff[degrees]":check_is_nan(diff_angle),
-                    "main_linearity_error[pix]":check_is_nan(trackingResults.Get_MainXY_Fit_Error_Min_Max_Range()[1] - trackingResults.Get_MainXY_Fit_Error_Min_Max_Range()[0]),
-                    "satellite_linearity_error[pix]":check_is_nan(trackingResults.Get_SatelliteXY_Fit_Error_Min_Max_Range()[1] - trackingResults.Get_SatelliteXY_Fit_Error_Min_Max_Range()[0]),
-                    "AUTO_TRACKING_CODE_VER":check_is_nan(AutoTracking.get_code_ver()),
+                    "camera_resolution[um/pix]":nan_to_minus1(camera_resolution),
+                    "API_VER":nan_to_minus1(API_VER),
+                    "ave_num_contours_before_separation":nan_to_minus1(num_first_contours),
+                    "solidity[U]":nan_to_minus1(solidity),
+                    "arc_solidity[u]":nan_to_minus1(arc_solidity),
+                    "flag_droplet_faced":nan_to_minus1(flag_droplet_faced),
+                    "faced_delay[us]":nan_to_minus1(faced_delay),
+                    "flag_droplet_separated":nan_to_minus1(flag_droplet_separated),
+                    "separated_delay[us]":nan_to_minus1(separated_delay),
+                    "max_regament_delay[us]":nan_to_minus1(max_regament_length_delay),
+                    "max_regament_length[pix]":nan_to_minus1(max_regament_length),
+                    "most_freq_Y[pix]":nan_to_minus1(contour_rsts.freq_Y),
+                    "CONTOUR_CODE_VER":nan_to_minus1(FindContourAnalysis.get_code_ver()),
+                    "main_average_velocity[pix/us]":nan_to_minus1(main_average_velocity),
+                    "main_average_velocity[m/s]":nan_to_minus1(main_average_velocity_stdized),
+                    "main_velocity_stddiv[pix/us]":nan_to_minus1(main_velocity_stdiv),
+                    "main_angle[degrees]":nan_to_minus1(main_angle),
+                    "satellite_average_velocity[pix/us]":nan_to_minus1(satellite_average_velocity),
+                    "satellite_average_velocity[m/s]":nan_to_minus1(satellite_average_velocity_stdized),
+                    "satellite_velocity_stddiv[pix/us]":nan_to_minus1(satellite_velocity_stdiv),
+                    "satellite_angle[degrees]":nan_to_minus1(satellite_angle),
+                    "main-satellite_angle_diff[degrees]":nan_to_minus1(diff_angle),
+                    "main_linearity_error[pix]":nan_to_minus1(trackingResults.Get_MainXY_Fit_Error_Min_Max_Range()[1] - trackingResults.Get_MainXY_Fit_Error_Min_Max_Range()[0]),
+                    "satellite_linearity_error[pix]":nan_to_minus1(trackingResults.Get_SatelliteXY_Fit_Error_Min_Max_Range()[1] - trackingResults.Get_SatelliteXY_Fit_Error_Min_Max_Range()[0]),
+                    "AUTO_TRACKING_CODE_VER":nan_to_minus1(AutoTracking.get_code_ver()),
                     "anormaly_ejections_at_first_image":(num_first_contours > 1.5),
                     "main_velocity_is_too_fast":(main_average_velocity_stdized > velocity_upperthresh),
                     "main_velocity_is_too_slow":(main_average_velocity_stdized < velocity_lowerthresh),
@@ -244,12 +263,14 @@ def get_autoTracking_Results(directory_path, camera_resolution, API_VER, exec_mo
                     "angle-diff_is_too_large":(diff_angle > diff_angle_thresh),
                     "exotic-droplet_exists":(flag_exotic_droplet),
                     "THRESH_VALUES_VER":THRESH_VALUES_VER,
-                    "RESERVED0":(max_exotic_area),
+                    "RESERVED0":nan_to_minus1(max_exotic_area),
                     "RESERVED1":"aaa",
                     "RESERVED2":"aaa",
                     "RESERVED3":"aaa",
                     "RESERVED4":"aaa",
                 }
+                result = add_message(result)
+                
                 if flag_is_debugmode:
                     calculation_log('json elem was exported.')
                 #5分割各液滴速度 - 標準偏差結果追記
@@ -268,7 +289,7 @@ def get_autoTracking_Results(directory_path, camera_resolution, API_VER, exec_mo
                 }
     return result
 
-def check_is_nan(check_object):
+def nan_to_minus1(check_object):
     ret_value = None
     if type(check_object) is None:
         ret_value = "None"
@@ -276,6 +297,37 @@ def check_is_nan(check_object):
         ret_value = -1 if math.isnan(check_object) else check_object
     else:
         ret_value = check_object
-    calculation_log('check_is_nan from {} to {}'.format(check_object, ret_value))
+    calculation_log('nan_to_minus1 from {} to {}'.format(check_object, ret_value))
     return ret_value
+
+def add_message(result):
+    sentences_reserved1 = []
+    sentences_reserved2 = []
+    sentences_reserved3 = []
+    sentences_reserved4 = []
+    if result["anormaly_ejections_at_first_image"]:
+        sentences_reserved1.append("suspicious of doublet_droplet or mistize satellite")
+    if result["main_velocity_is_too_fast"]:
+        sentences_reserved2.append("main velocity too fast")
+    elif result["main_velocity_is_too_slow"]:
+        sentences_reserved2.append("main velocity too slow")
+    if result["nozzle_needs_to_be_clean"]:
+        sentences_reserved3.append("suspicious of abnormal deposits on the nozzle")
+    if result["suspicious_visco-elasticity"]:
+        sentences_reserved4.append("suspicious of too large viscosity or visco-elasticity. please confirm liquid composition")
+    if result["angle-diff_is_too_large"]:
+        sentences_reserved1.append("difference between main and satellite droplet angle too large")
+    if result["exotic-droplet_exists"]:
+        sentences_reserved1.append("suspicisous of scattered-ejaction")
+    
+    result.update({
+        "RESERVED1":', '.join(sentences_reserved1),
+        "RESERVED2":', '.join(sentences_reserved2),
+        "RESERVED3":', '.join(sentences_reserved3),
+        "RESERVED4":', '.join(sentences_reserved4),
+    })
+    
+    return result
+        
+        
     
