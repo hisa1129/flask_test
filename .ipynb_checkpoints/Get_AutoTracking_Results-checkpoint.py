@@ -4,7 +4,7 @@ from CalculationLog import calculation_log
 import datetime
 import math
 
-INPUT_PARAMS_VER = '0.1.0' #入力パラメータバージョン、2020.10.21
+INPUT_PARAMS_VER = '0.1.1' #入力パラメータバージョン、2020.10.21
 
 #輪郭抽出前処理に関する入力パラメータ
 input_params_dic = {

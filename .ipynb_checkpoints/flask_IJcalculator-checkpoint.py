@@ -31,7 +31,7 @@ if len(args) > 2:
         print('net mode')
 
 #API内共通変数
-API_VER = '0.0.0' #APIコードのバージョン、2020.10.21
+API_VER = '0.0.1' #APIコードのバージョン、2020.10.21
 
 UPLOAD_DIR = 'uploads' #アップロードファイル格納ディレクトリ名
 ALLOWED_EXTENSIONS = set(['zip']) #許容拡張子

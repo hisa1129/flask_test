@@ -5,6 +5,7 @@ import math #math関数のインポート
 import os #os関連インポート
 import Contour_Elem
 from itertools import groupby
+import gc
 
 #analysisResults用インデックス、配列2番目にて指定。
 IDX_DELAY = 0
@@ -80,14 +81,14 @@ def analyse_Image(delay,
     #ガンマ関数
 #    img = gamma_function(img)
     #画像のグレイスケール化
-    im = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-
+    im = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)   
     #二値化、オートバイナライズか否かで挙動違う
     ret, im_bin = cv2.threshold(
         im,
         binarize_thresh, 
         255, 
         (cv2.THRESH_BINARY_INV + cv2.THRESH_OTSU) if auto_binarize else (cv2.THRESH_BINARY_INV))
+    ret = ret - 1
     #輪郭抽出
     contours, hierarchy = cv2.findContours(im_bin, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
     #閾値でフィルタ
@@ -146,7 +147,7 @@ def analyse_Image(delay,
                 left_X_min = min([vCnt[0][0] for vCnt in voidContour])
                 right_X_Max = max([vCnt[0][0] for vCnt in voidContour])
                 Y = max([vCnt[0][1] for vCnt in voidContour])              
-                img = cv2.fillConvexPoly(img, voidContour, color=(0,0,0))
+                img = cv2.fillConvexPoly(img, voidContour, color=(ret,ret,ret))
                 #img = cv2.rectangle(img, (left_X_min, 0), (right_X_Max, Y), (0,0,0), -1)
                 if DEBUG:
                     calculation_log('img is filled with rectangle Xleft = {}, Xright = {}, Y = {}'.format(
@@ -213,7 +214,7 @@ def analyse_Image(delay,
         #Y座標の期待値を算出
         Y_ = (int)(YAreas / Areas)
         #長方形を黒で塗りつぶす。
-        img = cv2.rectangle(img,(leftX, 0),(rightX, Y_),(0, 0, 0),-1)
+        img = cv2.rectangle(img,(leftX, 0),(rightX, Y_),(ret, ret, ret),-1)
         if DEBUG:
             calculation_log('img is filled with rectangle Xleft = {}, Xright = {}, Y = {}'.format(leftX, rightX, Y_))
 
@@ -321,6 +322,10 @@ def analyse_Image(delay,
         if DEBUG:
             calculation_log('cnt with main_Y is {} is appended'.format(cntResults[-1].main_Y))
     
+    #メモリ解放
+    del im
+    gc.collect()
+    
     #面積で降順ソート
     cntResults.sort(key= lambda res: res.area, reverse=True)
     if DEBUG:
@@ -378,6 +383,9 @@ def analyse_Image(delay,
         cv2.imwrite(savePath, img)
         if DEBUG:
             calculation_log('export image at {}'.format(savePath))
+    
+    del img
+    gc.collect()
     #輪郭解析結果リストを返す
     return cntResults      
 

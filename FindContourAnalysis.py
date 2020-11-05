@@ -14,7 +14,7 @@ from Contour_Elem import *
 from Generate_Contour_Elem import *
 
 #コードバージョン記載
-CONTOUR_CODE_VER = '0.0.1'
+CONTOUR_CODE_VER = '0.0.2'
 
 #analysisResults用インデックス、配列2番目にて指定。
 IDX_DELAY = 0

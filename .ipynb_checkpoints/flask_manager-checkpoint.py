@@ -14,7 +14,7 @@ import time
 import requests
 
 #API内共通変数
-API_VER = '0.0.0' #APIコードのバージョン、2020.10.21
+API_VER = '0.0.1' #APIコードのバージョン、2020.10.21
 
 UPLOAD_DIR = 'uploads' #アップロードファイル格納ディレクトリ名
 ALLOWED_EXTENSIONS = set(['zip']) #許容拡張子
@@ -39,14 +39,14 @@ DEBUG_MODE = 'DEBUG' #デバッグモード指定文字列
 RESTORE_DIR = 'restored_data' #解析結果画像出力時保存ディレクトリ名
 CALCULATION_LOG = 'calculation_log.log' #計算処理デバッグ結果格納ファイル名
 
-MAIN_SERVER_PORT = '8080'
+MAIN_SERVER_PORT = '443'
 
 #appの宣言、Flaskにて起動を指示。
 app = Flask(__name__)
 #★クロスサイト時に必要な設定
-#CORS(app, support_credentials=True)
-#context = ssl.SSLContext(ssl.PROTOCOL_TLSv1_2)
-#context.load_cert_chain('cert.crt', 'server_secret.key')
+CORS(app, support_credentials=True)
+context = ssl.SSLContext(ssl.PROTOCOL_TLSv1_2)
+context.load_cert_chain('cert.crt', 'server_secret.key')
 
 # 最大アップロードファイルサイズの定義、10MB
 app.config['MAX_CONTENT_LENGTH'] = 10 * 1024 * 1024
@@ -300,7 +300,7 @@ def get_resultFile(fileType):
 if __name__ == "__main__":
     app.run(debug=True, #flaskサーバーがデバッグモードで動くか否か。
             host='0.0.0.0', #ホスト指定。基本サーバー内部で起動するので、0.0.0.0でOK
-            #ssl_context=context, #ssl通信の設定。本ファイル冒頭のcontextにて指定。
-            port=8000, #ポート番号。ローカルデバッグ時は左記。オンライン公開時はssl通信用の443を使用
+            ssl_context=context, #ssl通信の設定。本ファイル冒頭のcontextにて指定。
+            port=MAIN_SERVER_PORT, #ポート番号。ローカルデバッグ時は左記。オンライン公開時はssl通信用の443を使用
             threaded=True #並列処理の許可。WSGIサーバーを利用する場合はあまり気にしなくても良い。
            )
