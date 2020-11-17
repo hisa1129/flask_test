@@ -78,6 +78,7 @@ DEBUG_MODE = 'DEBUG' #デバッグモード指定文字列
 RESTORE_MODE = 'RESTORE' #ファイル保持モード指定文字列
 RESTORE_DIR = 'restored_data' #解析結果画像出力時保存ディレクトリ名
 CALCULATION_LOG = 'calculation_log.log' #計算処理デバッグ結果格納ファイル名
+DOWNLOAD_FILE_TYPE = ['result_csv', 'server_log', 'calculation_log'] #管理ファイルDL時指定キー
 
 #装置毎のカメラ解像度、[um/pix]
 dic_camera_resolution = {
