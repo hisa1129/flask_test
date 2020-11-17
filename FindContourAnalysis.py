@@ -12,6 +12,7 @@ from CalculationLog import calculation_log
 import Analysis_Contours_List_Class
 from Contour_Elem import *
 from Generate_Contour_Elem import *
+import gc
 
 #コードバージョン記載
 CONTOUR_CODE_VER = '0.0.2'
@@ -145,11 +146,9 @@ def analyse_Images_List(directoryPath,
             mkdir,
             flag_export_fillImg = False,
             DEBUG = DEBUG)
-        #一度バラしてリストに格納
-        for rst in appendResults:
-            analysisResultsList.append(rst)
-            if DEBUG:
-                calculation_log('analysis image results were appended for the delay {} with file {}'.format(delay, filePath))
+        analysisResultsList.append(appendResults)
+        if DEBUG:
+            calculation_log('analysis image results were appended for the delay {} with file {}'.format(delay, filePath))
 
     #全画像輪郭解析実施後処理
     if DEBUG:
@@ -174,17 +173,17 @@ def analyse_Images_List(directoryPath,
         if DEBUG:
             calculation_log('detected delay is {} us, and detected length is {} pix'.format(regamentResults[1], regamentResults[0]))
         #当該輪郭の検出
-        drawResultCnts = list(filter(lambda data: data[0] == regamentResults[1], retAnalysisResults.analysisResults))[0]
-        drawResultCnt = list(filter(lambda cnt: cnt.get_regament_length() == regamentResults[0], drawResultCnts[1]))[0]
+        drawResultCnts = list(filter(lambda data: data.delay == regamentResults[1], retAnalysisResults.analysisResults))[0]
+        drawResultCnt = list(filter(lambda cnt: cnt.get_regament_length() == regamentResults[0], drawResultCnts.contours))[0]
         #ディレクトリ生成
         os.makedirs(directoryPath+'/rgResult', exist_ok=True)
         #当該ディレイの画像ファイルパス取得
         if DEBUG:
             calculation_log('mkdir at {}/rgResult'.format(directoryPath))
         try:
-            filePath = glob.glob(directoryPath+'/*{0}.jpg'.format(str(drawResultCnts[0])))[0]
+            filePath = glob.glob(directoryPath+'/*{0}.jpg'.format(str(drawResultCnts.delay)))[0]
         except:
-            filePath = glob.glob(directoryPath+'/*{0}.jpg'.format(str((int)(drawResultCnts[0]))))[0]
+            filePath = glob.glob(directoryPath+'/*{0}.jpg'.format(str((int)(drawResultCnts.delay))))[0]
         #当該画像データ取得
         im = cv2.imread(filePath)
         #リガメント描画

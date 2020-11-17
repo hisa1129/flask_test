@@ -70,97 +70,95 @@ def auto_Tracking(dirPath,#フォルダパス, str
     #メイン液滴の追尾
     if rsts.flag_faced_is_detected == True:
         #追尾対象の抽出
-        rstsMain = [rst for rst in rsts.analysisResults if rst[0] >= rsts.delay_faced]
+        rstsMain = [rst for rst in rsts.analysisResults if rst.delay >= rsts.delay_faced]
         #ディレイ順に昇順ソート
-        rstsMain.sort(key = lambda rst:rst[index_delay])
-        #検出開始タイミングで面積順に降順ソート
-        rstsMain[0][index_Cnt].sort(key = lambda cnt:cnt.area, reverse=True)
+        rstsMain.sort(key = lambda rst:rst.delay)
         #検出開始時のメイン液滴座標のディレイと座標格納、面積最大の輪郭にて       
-        tracking_Results.Set_MainXY(rstsMain[0][index_delay], rstsMain[0][index_Cnt][0].main_X, rstsMain[0][index_Cnt][0].main_Y)
+        tracking_Results.Set_MainXY(rstsMain[0].delay, rstsMain[0].contours[0].main_X, rstsMain[0].contours[0].main_Y)
         #追尾対象のディレイ写真が2枚以上の場合
         if len(rstsMain)>1:
             #追尾検出2枚目の検出
-            if len(rstsMain[1][index_Cnt]) > 1:
+            if len(rstsMain[1].contours) > 1:
                 #対象輪郭が2つ以上の場合、初回の結果との距離順にソート。ソート後、最近傍のメイン液滴を格納。
-                rstsMain[1][index_Cnt].sort(key = lambda rst : (rst.main_X - tracking_Results.results[0].main_X) ** 2 + (rst.main_Y - tracking_Results.results[0].main_Y)**2)
+                rstsMain[1].contours.sort(key = lambda rst : (rst.main_X - tracking_Results.results[0].main_X) ** 2 + (rst.main_Y - tracking_Results.results[0].main_Y)**2)
             #追尾検出2枚目のディレイと座標格納
-            tracking_Results.Set_MainXY(rstsMain[1][index_delay], rstsMain[1][index_Cnt][0].main_X, rstsMain[1][index_Cnt][0].main_Y)
+            tracking_Results.Set_MainXY(rstsMain[1].delay, rstsMain[1].contours[0].main_X, rstsMain[1].contours[0].main_Y)
             #追尾検出3枚目以降
             for i in range(2, len(rstsMain)):
                 #ソート基準座標の計算
                 #ディレイ比計算
-                delayRatio = (rstsMain[i][index_delay] - rstsMain[i-2][index_delay]) / (rstsMain[i-1][index_delay] - rstsMain[i-2][index_delay])
+                delayRatio = (rstsMain[i].delay - rstsMain[i-2].delay) / (rstsMain[i-1].delay - rstsMain[i-2].delay)
                 #予想基準座標算出
                 ptEval_X = tracking_Results.results[-2].main_X + delayRatio * (tracking_Results.results[-1].main_X - tracking_Results.results[-2].main_X)
                 ptEval_Y = tracking_Results.results[-2].main_Y + delayRatio * (tracking_Results.results[-1].main_Y - tracking_Results.results[-2].main_Y)
                 #予想Y座標が画像Y座標最大値より大きい場合は追尾打ち切り
-                if ptEval_Y >= rstsMain[i][index_Cnt][0].imgYMax:
+                if ptEval_Y >= rstsMain[i].contours[0].imgYMax:
                     break
                 #評価点が2点以上の場合の処理
-                if len(rstsMain[i][index_Cnt]) > 1:
+                if len(rstsMain[i].contours) > 1:
                     #評価基準点と各輪郭のメイン液滴座標距離順に輪郭群をソート。ソート後、最近傍のメイン液滴を格納。
-                    rstsMain[i][index_Cnt].sort(key = lambda rst : (rst.main_X - ptEval_X) ** 2 + (rst.main_Y - ptEval_Y)**2)
+                    rstsMain[i].contours.sort(key = lambda rst : (rst.main_X - ptEval_X) ** 2 + (rst.main_Y - ptEval_Y)**2)
                 #最近傍座標が画像際下端より下に来た場合は打ち切り
-                if rstsMain[i][index_Cnt][0].main_Y > rstsMain[i][index_Cnt][0].imgYMax:
+                if rstsMain[i].contours[0].main_Y > rstsMain[i].contours[0].imgYMax:
                     break
                 #最近傍座標が一つ前の結果より上に来た場合は打ち切り
-                if rstsMain[i][index_Cnt][0].main_Y < tracking_Results.results[-1].main_Y:
+                if rstsMain[i].contours[0].main_Y < tracking_Results.results[-1].main_Y:
                     break
                 #検出結果の格納
-                tracking_Results.Set_MainXY(rstsMain[i][index_delay], rstsMain[i][index_Cnt][0].main_X, rstsMain[i][index_Cnt][0].main_Y)
+                tracking_Results.Set_MainXY(rstsMain[i].delay, rstsMain[i].contours[0].main_X, rstsMain[i].contours[0].main_Y)
 
     if DEBUG:
         calculation_log('main_tracking was completed.')
     #サテライト液滴の追尾
     if rsts.flag_separated_is_detected == True:
         #追尾対象の抽出
-        rstsSatellite = [rst for rst in rsts.analysisResults if rst[index_delay] >= rsts.delay_separated]
+        rstsSatellite = [rst for rst in rsts.analysisResults if rst.delay >= rsts.delay_separated]
         #ディレイ順に昇順ソート
-        rstsSatellite.sort(key = lambda rst:rst[index_delay])
+        rstsSatellite.sort(key = lambda rst:rst.delay)
         #1枚目の輪郭数カウント、2以上でソート
-        if len(rstsSatellite[0][index_Cnt]) > 1:
+        if len(rstsSatellite[0].contours) > 1:
             #面積順で輪郭リストをソート、降順
-            rstsSatellite[0][index_Cnt].sort(key=lambda cnt: cnt.area, reverse = True)
+            rstsSatellite[0].contours.sort(key=lambda cnt: cnt.area, reverse = True)
             #対象輪郭の抽出、面積最大→ノズルの検出
-            rstBase = rstsSatellite[0][index_Cnt][0]
+            rstBase = rstsSatellite[0].contours[0]
             #Y座標のみでノズルY座標からの距離順ソート。X座標を含むと最大輪郭のノイズを拾うことがあるためY座標のみで実施。
-            rstsSatellite[0][index_Cnt].sort(key = lambda cnt2: (rstBase.main_Y - cnt2.satellite_Y) ** 2)
+            rstsSatellite[0].contours.sort(key = lambda cnt2: (rstBase.main_Y - cnt2.satellite_Y) ** 2)
         #1枚目輪郭の結果格納
-        tracking_Results.Set_SatelliteXY(rstsSatellite[0][index_delay], rstsSatellite[0][index_Cnt][0].satellite_X, rstsSatellite[0][index_Cnt][0].satellite_Y)
+        tracking_Results.Set_SatelliteXY(rstsSatellite[0].delay, rstsSatellite[0].contours[0].satellite_X, rstsSatellite[0].contours[0].satellite_Y)
         #追尾対象のディレイ写真が2枚以上の場合
         if len(rstsSatellite) >1:
             #追尾検出2枚目の検出
             #2枚目に格納されている輪郭情報が2以上の場合
-            if len(rstsSatellite[1][index_Cnt]) > 1:
+            if len(rstsSatellite[1].contours) > 1:
                 #サテライト液滴X座標がnanではないものを抽出。
                 lstSat = list(filter(lambda rst: not math.isnan(rst.satellite_X), tracking_Results.results))
                 #satelliteのY座標が一つ前のY座標より下に来るもののみ抽出
-                rstAdd = [rst for rst in rstsSatellite[1][index_Cnt] if rst.satellite_Y >= lstSat[-1].satellite_Y]
+                rstAdd = [rst for rst in rstsSatellite[1].contours if rst.satellite_Y >= lstSat[-1].satellite_Y]
                 #一つ前の結果からの距離順にて昇順ソート。
                 rstAdd.sort(key = lambda rst : (rst.satellite_X - lstSat[-1].satellite_X) ** 2 + (rst.satellite_Y - lstSat[-1].satellite_Y)**2)
             else:
                 #対象の輪郭が1つの場合、そのまま結果の格納用オブジェクトをコピー
-                rstAdd = rstsSatellite[1][index_Cnt]                
+                rstAdd = rstsSatellite[1].contours                
             #サテライト液滴追尾結果の格納
-            tracking_Results.Set_SatelliteXY(rstsSatellite[1][index_delay], rstAdd[0].satellite_X, rstAdd[0].satellite_Y)
+            tracking_Results.Set_SatelliteXY(rstsSatellite[1].delay, rstAdd[0].satellite_X, rstAdd[0].satellite_Y)
 
             #追尾検出3枚目以降            
             for i in range(2, len(rstsSatellite)):
                 #i枚目の輪郭格納結果数が0であれば打ち切り
-                if len(rstsSatellite[i][index_Cnt]) == 0:
+                if len(rstsSatellite[i].contours) == 0:
                     break
 
                 #すでに格納されている結果から、satellite_X座標がnanではないものを抽出。
                 lstSat = list(filter(lambda rst: not math.isnan(rst.satellite_X), tracking_Results.results))     
                 #ひとつ前の結果のサテライトY座標より下にサテライトY座標がくるもののみを抽出
-                rstAdd = [rst for rst in rstsSatellite[i][index_Cnt] if rst.satellite_Y >= lstSat[-1].satellite_Y]
+                rstAdd = [rst for rst in rstsSatellite[i].contours if rst.satellite_Y >= lstSat[-1].satellite_Y]
                 #抽出結果数が0であれば打ち切り
                 if len(rstAdd) == 0:
                     break
                 #抽出結果を、ひとつ前のサテライト座標からの距離順に昇順ソート→最も近いものをサテライト液滴として採用。
                 rstAdd.sort(key = lambda rst : (rst.satellite_X - lstSat[-1].satellite_X) ** 2 + (rst.satellite_Y - lstSat[-1].satellite_Y)**2)
                 #サテライト検出結果を格納
-                tracking_Results.Set_SatelliteXY(rstsSatellite[i][index_delay], rstAdd[0].satellite_X, rstAdd[0].satellite_Y)
+                tracking_Results.Set_SatelliteXY(rstsSatellite[i].delay, rstAdd[0].satellite_X, rstAdd[0].satellite_Y)
 
     if DEBUG:
         calculation_log('satellite_tracking was completed.')

@@ -62,6 +62,8 @@ URLs = {
     "show calculation form":"/calculator/form/<string:calculationType>",
     #断続吐出解析
     "analyze_multipleintermittency_firing":"/analyse/multi_intermittency",
+    # 1枚画像テスト用
+    "analyze_single_delay_image":"/analyse/single_delay_image",
 }
 
 #ポート番号指定、ローカルデバッグで8080、ネット上で443
@@ -142,10 +144,10 @@ def uploads_file():
     #postメソッド時の処理
     if request.method == "POST":
         #ファイル名取り出しログ
-        out_server_log('{} file is posted'.format(request.files))
+        out_server_log('{} file is posted, {}, {}, {}'.format(request.files, request.form['filename'], request.form['mode'], request.form['filerestore']))
         # request.files内にuploadFile要素が無い場合
         if 'upload_file' not in request.files:
-            our_server_log('file was empty')
+            out_server_log('file was empty')
             return make_response(jsonify(file_read_error_result))
 
         #ファイル受け取り
@@ -174,17 +176,19 @@ def uploads_file():
     
     if '' == fileName:
         our_server_log('uploaded filename was empty.')
-        result.update({
+        file_read_error_result.update({
             'filename':fileName,
             'condition':'filename was empty.'
         })
+        result = file_read_error_result
         return make_response(jsonify(result))
     if not is_allwed_file(fileName):
         out_server_log('extension of uploaded file was not zip.')
-        result.update({
+        file_read_error_result.update({
             'filename':fileName,
             'condition':'extension is not zip.'
         })
+        result = file_read_error_result
         return make_response(jsonify(result))
 
     out_server_log('exec_mode is {}, fire restore is {}, camera_resolution is {}'.format(
@@ -196,6 +200,7 @@ def uploads_file():
     with zipfile.ZipFile(created_file_path) as existing_zip:
         out_server_log('extraction uploaded zip file at {}'.format(created_file_path.strip('.zip')))
         existing_zip.extractall(created_file_path.strip('.zip'))
+    time.sleep(0.3)
     created_dir = [f for f in os.listdir(created_file_path.strip('.zip')) if os.path.isdir(os.path.join(created_file_path.strip('.zip'), f))][0]
     directory_path = os.path.join(created_file_path.strip('.zip'), created_dir)
     try:
@@ -240,7 +245,7 @@ def uploads_file():
         shutil.rmtree(UPLOAD_DIR)
         os.mkdir(UPLOAD_DIR)       
         out_server_log('files at {} and {} were deleted'.format(created_file_path.strip('.zip'), created_file_path))
-    
+    time.sleep(0.2)
     return make_response(jsonify(result))
 
 # ファイルサイズ上限オーバー時の処理
@@ -940,7 +945,40 @@ def anaylse_intermittency_test():
     
     return make_response(jsonify(results))
 
-    
+@app.route(URLs["analyze_single_delay_image"], methods = methods_test)
+@cross_origin(supports_credentials=True)
+def analyze_single_delay_images():
+    if request.method == 'GET':
+        return render_template('upload_double_images.html')
+    else:
+        #ファイル受け取り
+        file_1 = request.files['upload_file_1']
+        fileName_1 = file_1.filename
+        file_2 = request.files['upload_file_2']
+        fileName_2 = file_2.filename
+        exec_mode = 'DEBUG' if len(request.form.getlist("debugmode")) != 0 else 'not_DEBUG'
+        file_restore = 'RESTORE' if len(request.form.getlist("filerestore")) != 0 else 'DESTROY'
+        camera_resolution = float(request.form["camera_resolution"])
+        #ファイル保存、UPLOAD_DIR内にzipを出力
+        file_1.save(os.path.join(UPLOAD_DIR, fileName_1))
+        filepath_1 = os.path.join(UPLOAD_DIR, fileName_1)
+        file_2.save(os.path.join(UPLOAD_DIR, fileName_2))
+        filepath_2 = os.path.join(UPLOAD_DIR, fileName_2)
+        ret_result = Get_AutoTracking_Results.comparison_images(filepath_1, filepath_2, exec_mode)
+        if file_restore:
+            src = UPLOAD_DIR
+            dst = os.path.join(RESTORE_DIR, datetime.datetime.now().strftime('%Y-%m-%d_%H-%M-%S'))
+            dst_org = dst
+            fileNum = 2
+            while os.path.exists(dst):
+                dst = dst_org + '_{}'.format(fileNum)
+                fileNum = fileNum + 1
+            shutil.copytree(src, dst)
+        shutil.rmtree(UPLOAD_DIR)
+        os.mkdir(UPLOAD_DIR) 
+        
+        return make_response(jsonify(ret_result))
+
 #アプリ起動指示。pythonにて本ファイルを指定すると以下動く。  
 if __name__ == "__main__":
     if NET_MODE:

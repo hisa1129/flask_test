@@ -127,25 +127,12 @@ class Analysis_Results_List:
         '''
         if DEBUG:
             calculation_log('constructor was called.')
-        #ディレイでソート
-        analysis_results_list.sort(key=lambda rst: rst.delay)
-        #結果格納リスト
-        groupResults = []
-        #グループ化
-        for delay_key, contours_group in groupby(analysis_results_list, key=lambda rst:rst.delay):
-            listGroup = list(contours_group)
-            if len(listGroup) > 1:
-                #面積にて降順ソート
-                listGroup.sort(key=lambda rst:rst.area, reverse=True)
-            #ディレイタイムでGroupBy、groupResultsを生成。
-            groupResults.append([delay_key, listGroup])
-            if DEBUG:
-                calculation_log('delay = {}, and contour count = {}'.format(delay_key, len(listGroup)))
-        #結果の格納
         if DEBUG:
             calculation_log('set params to class_field parameters.')
         #ディレイ時間にて昇順ソートしanalysisResultsに格納
-        self.analysisResults = sorted(groupResults, key=lambda grs:grs[IDX_DELAY])
+        analysis_results_list.sort(key=lambda rst: rst.delay)
+        self.analysisResults = analysis_results_list
+
         #以下、プロパティのセット
         self.__DEBUG = DEBUG
         self.__area_mirgin_detect_faced = area_mirgin_detect_faced
@@ -169,6 +156,7 @@ class Analysis_Results_List:
         self.__set_volume()
         self.__set_freq_Y()
         self.__set_num_initial_contour()
+        self.__set_magnitude_of_doublet_droplet()
 
         if DEBUG:
             calculation_log('set feature params was completed.')
@@ -183,16 +171,10 @@ class Analysis_Results_List:
         '''
         if self.__DEBUG:
             calculation_log('solidity method was called.') 
-        #各ディレイ時間における輪郭データを面積をキーに降順ソート
-        rsts = [[data[IDX_DELAY], sorted(data[IDX_CNT], key=lambda rs: rs.area, reverse=True)] for data in self.analysisResults]
-        #各ディレイ時間を最大面積輪郭のSolidity値をキーに昇順ソート
-        #Solidity = convex_hukk_contour_area / area
-        rsts.sort(key=lambda rst:rst[IDX_CNT][0].convex_hull_contour_area / rst[IDX_CNT][0].area)
-        #Solidityの最小値を取得
-        solidity = rsts[0][IDX_CNT][0].convex_hull_contour_area / rsts[0][IDX_CNT][0].area
+        solidity_list = [cnts.solidity_of_nozzle for cnts in self.analysisResults]
         #クラスプロパティにセット
-        self.solidity = solidity
-    
+        self.solidity = min(solidity_list)
+           
         return None
     
     def __set_droplet_faced(self):
@@ -209,17 +191,17 @@ class Analysis_Results_List:
         flag_faced_is_detected = False
         #
         for i in range(1, len(self.analysisResults)):
-            evaluation_delay = self.analysisResults[i][IDX_DELAY]
-            evaluation_contour_list_after = sorted(self.analysisResults[i][IDX_CNT], key = lambda cnt: cnt.area, reverse = True)
-            evaluation_contour_list_before = sorted(self.analysisResults[i-1][IDX_CNT], key = lambda cnt2: cnt2.area, reverse = True)
-            flag_detection = evaluation_contour_list_after[0].convex_hull_contour_area - self.__area_mirgin_detect_faced > \
-            evaluation_contour_list_before[0].convex_hull_contour_area
+            evaluation_delay = self.analysisResults[i].delay
+            before_convex_hull_area = self.analysisResults[i-1].convex_hull_area_of_nozzle
+            after_convex_hull_area = self.analysisResults[i].convex_hull_area_of_nozzle
+            flag_detection = after_convex_hull_area - self.__area_mirgin_detect_faced > before_convex_hull_area
             if self.__DEBUG:
                 calculation_log('delay : {}, evaluation_area : {} evaluation_area_before : {}'.format(
                     evaluation_delay,
-                    evaluation_contour_list_after[0].convex_hull_contour_area,
-                    evaluation_contour_list_before[0].convex_hull_contour_area)
+                    after_convex_hull_area,
+                    before_convex_hull_area)
                                )
+
             if flag_detection:
                 delay_faced = evaluation_delay
                 flag_faced_is_detected = True
@@ -243,17 +225,15 @@ class Analysis_Results_List:
             calculation_log('separation method was called.')
         delay_separated = -1.0
         flag_separated_is_detected = False
-        seeking_results_list = [data for data in self.analysisResults if data[0] >= self.delay_faced]
+        seeking_results_list = [data for data in self.analysisResults if data.delay >= self.delay_faced]
         solidity_base = self.solidity
         for i in range(1, len(seeking_results_list)):
-            eval_delay = seeking_results_list[i][IDX_DELAY]
-            eval_contour_list_after = sorted(seeking_results_list[i][IDX_CNT], key = lambda cnt: cnt.area, reverse = True)
-            eval_contour_list_before = sorted(seeking_results_list[i-1][IDX_CNT], key = lambda cnt2: cnt2.area, reverse = True)
-            flag_convexhull_contour_area = (eval_contour_list_after[0].convex_hull_contour_area +\
-                                            self.__area_mirgin_detect_separation < eval_contour_list_before[0].convex_hull_contour_area)
-            flag_convexhull_contour_arclength = (eval_contour_list_after[0].arclength + self.__arc_length_mirgin_detect_separation <\
-                                                 eval_contour_list_before[0].arclength)
-            solidity_at_seeking_result = eval_contour_list_after[0].convex_hull_contour_area / eval_contour_list_after[0].area
+            eval_delay = seeking_results_list[i].delay
+            flag_convexhull_contour_area = (seeking_results_list[i].convex_hull_area_of_nozzle +\
+                                            self.__area_mirgin_detect_separation < seeking_results_list[i-1].convex_hull_area_of_nozzle)
+            flag_convexhull_contour_arclength = (seeking_results_list[i].arclength_of_nozzle + self.__arc_length_mirgin_detect_separation <\
+                                                 seeking_results_list[i-1].arclength_of_nozzle)
+            solidity_at_seeking_result = seeking_results_list[i].solidity_of_nozzle
             eval_ratio = solidity_at_seeking_result / solidity_base
             flag_solidity_is_plausible =  eval_ratio < self.__solidity_mirgin_detect_separation
             if self.__DEBUG:
@@ -262,9 +242,10 @@ class Analysis_Results_List:
                     solidity_at_seeking_result,
                     eval_ratio,
                     flag_solidity_is_plausible)
-                               )               
+                               )  
+            
             if flag_convexhull_contour_area and flag_convexhull_contour_arclength and flag_solidity_is_plausible:
-                delay_separated = seeking_results_list[i][IDX_DELAY]
+                delay_separated = eval_delay
                 flag_separated_is_detected = True
                 break
         if self.__DEBUG:
@@ -279,8 +260,7 @@ class Analysis_Results_List:
             regamentLengthMax_Delay, regamentLengthMax = math.nan, math.nan
         else:
             #リガメント長格納用リスト
-            regamentLengthList = [[max([dat.get_regament_length() for dat in data[IDX_CNT]]), data[IDX_DELAY]] for data in\
-                                  self.analysisResults if data[IDX_DELAY] >= self.delay_separated]
+            regamentLengthList = [[data.max_reg_length_in_delay, data.delay] for data in self.analysisResults if data.delay >= self.delay_separated]
             #リガメント長さ順で昇順ソート
             regamentLengthList.sort(key=lambda rst:rst[0])             
             #最大リガメント長さ、およびそのディレイを取得
@@ -298,10 +278,10 @@ class Analysis_Results_List:
         '''
         if self.__DEBUG:
             calculation_log('arc_solidity method was called.') 
-        rsts = [sorted(data[IDX_CNT], key=lambda rs: rs.area, reverse=True) for data in self.analysisResults]
-        arc_solidity = max([(dat[0].convex_hull_contour_arclength / dat[0].arclength) for dat in rsts])
+        rsts = [cnts.convex_hull_arclength_of_nozzle / cnts.arclength_of_nozzle for cnts in self.analysisResults]
+        arc_solidity = max(rsts)
         self.arc_solidity = arc_solidity
-        
+               
         return None
     
     def __set_volume(self):
@@ -310,17 +290,17 @@ class Analysis_Results_List:
         '''
         if self.__DEBUG:
             calculation_log('volume method was called.')         
-        lstReached = list(filter(lambda dat: len([d for d in dat[IDX_CNT] if d.main_Y == d.imgYMax]) != 0, self.analysisResults))
+        lstReached = list(filter(lambda dat: len([d for d in dat.contours if d.main_Y == d.imgYMax]) != 0, self.analysisResults))
         if len(lstReached) == 0:
             delay_upper_limit = 1000
             reaching_delay = delay_upper_limit
         else:
-            reaching_delay = list(filter(lambda dat: len([d for d in dat[IDX_CNT] if d.main_Y == d.imgYMax]) != 0, self.analysisResults))[IDX_DELAY][0]
-        lst = [dat for dat in self.analysisResults if (dat[IDX_DELAY] >= self.delay_separated) and (dat[IDX_DELAY] < reaching_delay)]
+            reaching_delay = list(filter(lambda dat: len([d for d in dat.contours if d.main_Y == d.imgYMax]) != 0, self.analysisResults))[0].delay
+        lst = [dat for dat in self.analysisResults if (dat.delay >= self.delay_separated) and (dat.delay < reaching_delay)]
         if len(lst) == 0:
             volumeAve = -1
             volumeStdDiv = -1
-        volumeList = [sum([dat.volume for dat in data[IDX_CNT][1:]]) for data in lst if len(data[IDX_CNT]) > 1]
+        volumeList = [data.volume_without_nozzle for data in lst if len(data.contours) > 1]
         if len(volumeList) == 0:
             volumeAve = 0
             volumeStdDiv = 0
@@ -335,40 +315,36 @@ class Analysis_Results_List:
     def __set_freq_Y(self):
         if self.__DEBUG:
             calculation_log('freq_Y method was called.')            
-        rsts = [sorted(data[IDX_CNT], key=lambda rs: rs.area, reverse=True) for data in self.analysisResults]
-        cnt_target = list(filter(lambda dat: (dat[0].convex_hull_contour_area / dat[0].area) == self.solidity , rsts))[IDX_DELAY][0]
-        self.freq_Y = cnt_target.freq_Y
-        self.freq_Y_cnt = cnt_target.freq_num
+        target_cnt = [cnts for cnts in self.analysisResults if cnts.solidity_of_nozzle == self.solidity][0]        
+        self.freq_Y = target_cnt.freq_Y_of_Nozzle
+        self.freq_Y_cnt = target_cnt.num_freq_Y_of_Nozzle
         
         return None
     
     def __set_num_initial_contour(self):
-        delay_sorted_rsts = sorted(self.analysisResults, key = lambda rs: rs[IDX_DELAY])
-        retNum_list = [len(rst[IDX_CNT]) for rst in delay_sorted_rsts if rst[IDX_DELAY] < self.delay_separated]
-        self.num_contours_at_first = retNum_list
+        if self.__DEBUG:
+            calculation_log('num_ave_contour_method was called.')            
+        if self.flag_separated_is_detected:
+            retNum_list = [len(rst.contours) for rst in self.analysisResults if rst.delay < self.delay_separated]
+            self.num_contours_at_first = retNum_list
+        else:
+            self.num_contours_at_first = -1
 
         return None
-    
-    def __set_magnitude_of_doubletDroplet(self):
+       
+    def __set_magnitude_of_doublet_droplet(self):      
         '''
-        二重吐出度評価用関数
-        液滴分離検出後のノズル面積 - 1枚目のノズル面積の最大値
+        二重吐出度計算関数
         
-        Parameters
-        ----------        
-        area_mirgin_detectSeparation : float
-            分離検出面積閾値[pix]、初期値2000
-        arc_length_mirgin_detectSeparation ：float
-            分離検出輪郭長閾値[pix]、初期値10
-        
-        Return
-        ----------
-        maximum_area_diff : float
-             最大面積差分[pix]
         '''
-        
-        maximum_area_diff = max([data[1][0].area for data in self.analysisResults if data[0]>self.delay_separated]) - self.analysisResults[0][1][0].area
-        self.magnitude_of_doubletdroplet = maximum_area_diff
+        if self.__DEBUG:
+            calculation_log('detect magnitude of doublet_droplet method was called.')
+        if self.flag_separated_is_detected:
+            seeking_results_list = [cnts.solidity_of_nozzle for cnts in self.analysisResults if cnts.delay > self.delay_separated]
+            diff_solidity_after_separation = max(seeking_results_list) - min(seeking_results_list)     
+            self.magnitude_of_doublet_droplet = diff_solidity_after_separation       
+        else:
+            self.magnitude_of_doublet_droplet = -1
         return None
     
     def __get_CntDist_is_closer(self, cntResult1, cntResult2, thresh):
@@ -397,7 +373,6 @@ class Analysis_Results_List:
             類似判定結果
                                 
         '''
-        
         dMainXY = math.sqrt((cntResult1.main_X - cntResult2.main_X)**2 +\
                             (cntResult1.main_Y - cntResult2.main_Y)**2)
         dSatelliteXY = math.sqrt((cntResult1.satellite_X - cntResult2.satellite_X)**2 +\
@@ -436,38 +411,44 @@ class Analysis_Results_List:
         #以下、削除先データの削除。
         #i,jのアサインが変わるのでこの段階では削除元のデータは削除しない。
         #検索順はi, j昇順なので、削除元のデータのindexは削除後に再度別の輪郭の削除が生じても変化はしない。
-        for i in range(len(self.analysisResults)):           
-            for j in range(1, len(self.analysisResults[i][IDX_CNT])):
+        for i in range(len(self.analysisResults)):
+#            print('{}'.format(i))
+            for j in range(1, len(self.analysisResults[i].contours)):
+#                print('{}'.format(j))
                 flagDelDone = False
-
-                for k in range(i + 1, len(self.analysisResults)):                    
-                    for l in range(1, len(self.analysisResults[k][IDX_CNT])):
-                        if self.__get_CntDist_is_closer(self.analysisResults[i][IDX_CNT][j],
-                                                      self.analysisResults[k][IDX_CNT][l],
+                for k in range(i + 1, len(self.analysisResults)):
+#                    print('{}'.format(k))
+                    for l in range(1, len(self.analysisResults[k].contours)):
+#                        print('{}'.format(l))
+                        if self.__get_CntDist_is_closer(self.analysisResults[i].contours[j],
+                                                      self.analysisResults[k].contours[l],
                                                       self.__noise_remove_topological_dist_thresh):
-                            area, regLength = self.analysisResults[k][IDX_CNT][l].area, self.analysisResults[k][IDX_CNT][l].get_regament_length()
+                            area = self.analysisResults[k].contours[l].area
                             if area < self.__noise_remove_area_thresh:
+#                                print('{}, {}, will be deled'.format(k, l))
                                 if self.__DEBUG:
                                     calculation_log('contour with X,Y = {}, {} and area = {} was deleted as noise'.format(
-                                        self.analysisResults[k][IDX_CNT][l].main_X,
-                                        self.analysisResults[k][IDX_CNT][l].main_Y,
-                                        self.analysisResults[k][IDX_CNT][l].area)
+                                        self.analysisResults[k].contours[l].main_X,
+                                        self.analysisResults[k].contours[l].main_Y,
+                                        self.analysisResults[k].contours[l].area)
                                                    )
-                                del self.analysisResults[k][IDX_CNT][l]
+                                lists = self.analysisResults[k].contours.pop(l)
+ #                               print('{}, {}, del done'.format(k, l))
                                 flagDelDone = True
-                            break
+                                break
                             
                 if flagDelDone == True:
-                    removeIndexList.append([i, j, self.analysisResults[i][IDX_CNT][j]])
+                    removeIndexList.append([i, j, self.analysisResults[i].contours[j]])
 
+#        print('first_remove was done')
         #以下、削除元データの削除。     
         flagAllRemoveIsSucceed = False
         for removeElem in removeIndexList:
-            testList = [cnt for cnt in self.analysisResults[removeElem[0]][IDX_CNT] if not removeElem[2].is_equal(cnt)]
+            testList = [cnt for cnt in self.analysisResults[removeElem[0]].contours if not removeElem[2].is_equal(cnt)]
             if len(testList) != 0:
-                self.analysisResults[removeElem[0]][IDX_CNT] = testList
+                self.analysisResults[removeElem[0]].contours = testList
                 flagAllRemoveIsSucceed = True
-                
+        
         return flagAllRemoveIsSucceed
     
     def Check_exotic_droplet_exists(self, tracking_Results, pix_mirgin):
@@ -488,8 +469,6 @@ class Analysis_Results_List:
 
         
         '''
-        #逸脱評価輪郭リストの取得
-        eval_cnts_list = [[cnts[IDX_DELAY], sorted(cnts[IDX_CNT], key = lambda cnt:cnt.area, reverse = True)] for cnts in self.analysisResults]
         if self.__DEBUG:
             calculation_log('eval cnts is called.')
         #追尾結果より、メイン-サテライト液滴トラッキング近似結果の取得
@@ -500,44 +479,45 @@ class Analysis_Results_List:
         #逸脱輪郭検出フラグの宣言
         flag_exotic_droplet_exists = False
         cnt_exotic_areas = []
-        for cnt_list in eval_cnts_list:
+        for cnt_list in self.analysisResults:
             flag_exotic_droplet_detected = False
             if self.__DEBUG:
-                calculation_log('cnt_list with delay {} is called'.format(cnt_list[IDX_DELAY]))
-            if len(cnt_list[IDX_CNT]) == 1:
+                calculation_log('cnt_list with delay {} is called'.format(cnt_list.delay))
+            if len(cnt_list.contours) == 1:
                 if self.__DEBUG:
                     calculation_log('length is 1.')
                 continue
             #通常輪郭存在領域の指定
             #max_x:X座標右端、サテライトかメイン液滴x座標 + mirgin値の最大値
-            max_x = max([main_slope_params[0] * cnt_list[IDX_DELAY] + main_slope_params[1] + pix_mirgin,\
-                         sat_slope_params[0] * cnt_list[IDX_DELAY] + sat_slope_params[1] + pix_mirgin])
+            max_x = max([main_slope_params[0] * cnt_list.delay + main_slope_params[1] + pix_mirgin,\
+                         sat_slope_params[0] * cnt_list.delay + sat_slope_params[1] + pix_mirgin])
             #min_x:X座標左端、サテライトかメイン液滴x座標 - mirgin値の最大値
-            min_x = min([main_slope_params[0] * cnt_list[IDX_DELAY] + main_slope_params[1] - pix_mirgin,\
-                         sat_slope_params[0] * cnt_list[IDX_DELAY] + sat_slope_params[1] - pix_mirgin])
+            min_x = min([main_slope_params[0] * cnt_list.delay + main_slope_params[1] - pix_mirgin,\
+                         sat_slope_params[0] * cnt_list.delay + sat_slope_params[1] - pix_mirgin])
             #max_y:Y座標下端、メイン液滴y座標 + mirgin値、または画像下端Y座標の最大値
-            max_y = min([main_slope_params[2] * cnt_list[IDX_DELAY] + main_slope_params[3] + pix_mirgin,\
-                         cnt_list[IDX_CNT][0].imgYMax])
+            max_y = min([main_slope_params[2] * cnt_list.delay + main_slope_params[3] + pix_mirgin,\
+                         cnt_list.contours[0].imgYMax])
             #max_y:Y座標上端、サテライト液滴y座標 + mirgin値、または画像上端Y座標の最小値
-            min_y = max([sat_slope_params[2] * cnt_list[IDX_DELAY] + sat_slope_params[3] - pix_mirgin,\
+            min_y = max([sat_slope_params[2] * cnt_list.delay + sat_slope_params[3] - pix_mirgin,\
                          0])           
             
             #吐出輪郭の検証
             #ノズル輪郭は除く（ゆえにレンジは1からスタート）
-            for i in range(1, len(cnt_list[IDX_CNT])):
-                cnt = cnt_list[IDX_CNT][i]
+            for i in range(1, len(cnt_list.contours)):
+                cnt = cnt_list.contours[i]
                 if self.__DEBUG:
-                    calculation_log('{} th cnt with delay at {} is called'.format(i, cnt_list[IDX_DELAY]))
+                    calculation_log('{} th cnt with delay at {} is called'.format(i, cnt_list.delay))
                 #各輪郭の重心座標が上記4点で定義される矩形範囲に入るか否かを判定する。
                 flag_exotic_droplet_detected = (cnt.center_X < min_x) or (cnt.center_X > max_x) or (cnt.center_Y < min_y) or (cnt.center_Y > max_y)
                 if flag_exotic_droplet_detected:
                     if self.__DEBUG:
                         calculation_log('exotic droplet occured at {} us, X : {}, Y : {} at min_x : {}, max_x : {}, min_y : {}, max_y : {}'.format(
-                        cnt_list[IDX_DELAY], cnt.center_X, cnt.center_Y, min_x, max_x, min_y, max_y))
+                        cnt_list.delay, cnt.center_X, cnt.center_Y, min_x, max_x, min_y, max_y))
                         flag_exotic_droplet_exists = True
                         cnt_exotic_areas.append(cnt.area)
                 else:
                     if self.__DEBUG:
-                        calculation_log('cnt at delay{} does not contain exotic droplets'.format(cnt_list[IDX_DELAY]))
+                        calculation_log('cnt at delay{} does not contain exotic droplets'.format(cnt_list.delay))
+        ret_max_areas = max(cnt_exotic_areas) if len(cnt_exotic_areas) != 0 else 0
         
-        return flag_exotic_droplet_exists, max(cnt_exotic_areas) if len(cnt_exotic_areas) != 0 else 0
+        return flag_exotic_droplet_exists, ret_max_areas

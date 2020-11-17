@@ -1,4 +1,6 @@
 import AutoTracking
+import Analysis_Results_Class
+import Generate_Contour_Elem
 import FindContourAnalysis
 from CalculationLog import calculation_log
 import datetime
@@ -6,18 +8,6 @@ import math
 
 INPUT_PARAMS_VER = '0.1.1' #入力パラメータバージョン、2020.10.21
 
-#輪郭抽出前処理に関する入力パラメータ
-input_params_dic = {
-    "auto_binarize":True,
-    "binarize_thresh":128,
-    "min_area_thresh":1,
-    "areThresh_faced":500,
-    "areaThresh_separated":2000,
-    "arclengthThresh":25,
-    "solidity_ratio_thresh":1.5,
-    "noise_remove_topological_dist_thresh":20,
-    "noise_remove_area_thresh":40,
-}
 auto_binarize = True #大津の二値化による自動閾値判定
 binarize_thresh = 128 #二値化閾値（auto_binarize = Falseの時）
 min_area_thresh = 1 #輪郭面積最小値（最小面積以下の輪郭はノイズと判定）
@@ -29,16 +19,20 @@ solidity_ratio_thresh = 1.5 #サテライト液尾分離検出solidity比閾値
 noise_remove_topological_dist_thresh = 20 #輪郭ノイズ除去時位相空間上ノイズ距離
 noise_remove_area_thresh = 40 #輪郭ノイズ除去時面積上限値
 
+#輪郭抽出前処理に関する入力パラメータ
+input_params_dic = {
+    "auto_binarize":auto_binarize,
+    "binarize_thresh":binarize_thresh,
+    "min_area_thresh":min_area_thresh,
+    "areaThresh_faced":areaThresh_faced,
+    "areaThresh_separated":areaThresh_separated,
+    "arclengthThresh":arclengthThresh,
+    "solidity_ratio_thresh":solidity_ratio_thresh,
+    "noise_remove_topological_dist_thresh":noise_remove_topological_dist_thresh,
+    "noise_remove_area_thresh":noise_remove_area_thresh,
+}
 
 THRESH_VALUES_VER = '0.1.3' #閾値パラメータバージョン、2020.10.21
-thresh_values_dic = {
-    "velocity_uppsethresh":8.5,
-    "velocity_lowerthresh":4.5,
-    "Solidity_upperthresh":1.016,
-    "sep_thresh":300.0,
-    "diff_angle_thresh":1.753,
-    "pix_mirgin":20,
-}
 
 #吐出状態判定時閾値
 velocity_upperthresh = 8.5 #吐出速度上限[m/s]
@@ -49,12 +43,61 @@ sep_thresh = 300.0 #粘弾性判定、液滴分離閾値。閾値以上で候補
 diff_angle_thresh = 1.753 #メイン - サテライト液滴吐出角度差閾値（90%の吐出が下記角度差範囲に入る値を採用）
 pix_mirgin = 20 #逸脱吐出検出判定
 
+thresh_values_dic = {
+    "velocity_upperthresh":velocity_upperthresh,
+    "velocity_lowerthresh":velocity_lowerthresh,
+    "Solidity_upperthresh":Solidity_upperthresh,
+    "velocity_septhresh":velocity_septhresh,
+    "sep_thresh":sep_thresh,
+    "diff_angle_thresh":diff_angle_thresh,
+    "pix_mirgin":pix_mirgin,
+}
+
+
 #解析拡張パラメータ
 num_div_velocity_layer = 5 #液滴速度測定区分数
 
 
 #デバッグモード指定文字列、exec_mdoe == DEBUG_MODEでデバッグモード処理
 DEBUG_MODE = 'DEBUG'
+
+def comparison_images(file1_path, file2_path, exec_mode = DEBUG_MODE, delay = 100):
+    flag_debug_mode = exec_mode == DEBUG_MODE 
+    image1_contours = Generate_Contour_Elem.analyse_Image(delay,
+                                                          file1_path,
+                                                          input_params_dic['min_area_thresh'],
+                                                          input_params_dic['binarize_thresh'],
+                                                          input_params_dic['auto_binarize'],
+                                                          flag_debug_mode,
+                                                          flag_debug_mode,
+                                                          flag_debug_mode,
+                                                          flag_debug_mode,
+                                                          flag_debug_mode,
+                                                          flag_debug_mode,
+                                                          flag_debug_mode)
+
+    image2_contours = Generate_Contour_Elem.analyse_Image(delay,
+                                                          file2_path,
+                                                          input_params_dic['min_area_thresh'],
+                                                          input_params_dic['binarize_thresh'],
+                                                          input_params_dic['auto_binarize'],
+                                                          flag_debug_mode,
+                                                          flag_debug_mode,
+                                                          flag_debug_mode,
+                                                          flag_debug_mode,
+                                                          flag_debug_mode,
+                                                          flag_debug_mode,
+                                                          flag_debug_mode)
+    ret_result = {
+        "diff_main_X" : str(image1_contours.max_mainX - image2_contours.max_mainX),
+        "diff_main_Y" : str(image1_contours.max_mainY - image2_contours.max_mainY),
+        "diff_satellite_X" : str(image1_contours.satellite_suspicious_X - image2_contours.satellite_suspicious_X),
+        "diff_satellite_Y" : str(image1_contours.satellite_suspicious_Y - image2_contours.satellite_suspicious_Y),
+        "diff_regament_length" : str(image1_contours.max_reg_length_in_delay - image2_contours.max_reg_length_in_delay),
+    }
+    
+    return ret_result
+    
 
 def get_autoTracking_Results(directory_path, camera_resolution, API_VER, exec_mode):
     '''
@@ -81,15 +124,15 @@ def get_autoTracking_Results(directory_path, camera_resolution, API_VER, exec_mo
     try:
         contour_rsts = FindContourAnalysis.analyse_Images_List(
             directoryPath = directory_path,
-            min_area_thresh = min_area_thresh,
-            binarize_thresh = binarize_thresh,
-            auto_binarize = auto_binarize,
-            area_mirgin_detect_faced = areaThresh_faced,
-            area_mirgin_detect_separation = areaThresh_separated,
-            arc_length_mirgin_detect_separation = arclengthThresh,
-            solidity_mirgin_detect_separation = solidity_ratio_thresh,
-            noise_remove_topological_dist_thresh = noise_remove_topological_dist_thresh,
-            noise_remove_area_thresh = noise_remove_area_thresh,
+            min_area_thresh = input_params_dic["min_area_thresh"],
+            binarize_thresh = input_params_dic["binarize_thresh"],
+            auto_binarize = input_params_dic["auto_binarize"],
+            area_mirgin_detect_faced = input_params_dic["areaThresh_faced"],
+            area_mirgin_detect_separation = input_params_dic["areaThresh_separated"],
+            arc_length_mirgin_detect_separation = input_params_dic["arclengthThresh"],
+            solidity_mirgin_detect_separation = input_params_dic["solidity_ratio_thresh"],
+            noise_remove_topological_dist_thresh = input_params_dic["noise_remove_topological_dist_thresh"],
+            noise_remove_area_thresh = input_params_dic["noise_remove_area_thresh"],
             mkdir = flag_is_debugmode,
             draw_contour = flag_is_debugmode,
             draw_convexhull = flag_is_debugmode,
@@ -98,9 +141,6 @@ def get_autoTracking_Results(directory_path, camera_resolution, API_VER, exec_mo
             draw_reg_Detected = flag_is_debugmode,
             DEBUG = flag_is_debugmode)
         
-        if flag_is_debugmode:
-            calculation_log('noise remove was done.')
-        #成功であれば、flagをTrueに。
         flag_contour_select_was_done = True
         if flag_is_debugmode:
             calculation_log('contour selection was done')
@@ -111,7 +151,7 @@ def get_autoTracking_Results(directory_path, camera_resolution, API_VER, exec_mo
             calculation_log('contour_selection was failure.')
         result = {
             "analysis_date_time":datetime.datetime.now().strftime('%Y-%m-%d_%H:%M:%S'),
-            "dirPath":directory_path,
+            "filename":directory_path.split('/')[-1],
             'condition' : 'contour selection was failure.' 
         }
     
@@ -135,7 +175,7 @@ def get_autoTracking_Results(directory_path, camera_resolution, API_VER, exec_mo
                 calculation_log('auto_tracking was failed')
             result = {
                 "analysis_date_time":datetime.datetime.now().strftime('%Y-%m-%d_%H:%M:%S'),
-                "dirPath":directory_path,
+                "filename":directory_path.split('/')[-1],
                 'condition' : 'auto_tracking was failure.'
             }
         
@@ -200,11 +240,13 @@ def get_autoTracking_Results(directory_path, camera_resolution, API_VER, exec_mo
                 if flag_is_debugmode:
                     calculation_log('diff_angle is {}'.format(diff_angle))
                 #逸脱液滴検出
-                flag_exotic_droplet, max_exotic_area = contour_rsts.Check_exotic_droplet_exists(trackingResults, pix_mirgin)
+                flag_exotic_droplet, max_exotic_area = contour_rsts.Check_exotic_droplet_exists(
+                    trackingResults,
+                    thresh_values_dic['pix_mirgin'])
                 if flag_is_debugmode:
                     calculation_log('flag exotic droplet is {}'.format(flag_exotic_droplet))
                 #5分割領域ごとの各液滴速度、標準偏差取得
-                y_max = contour_rsts.analysisResults[0][1][0].imgYMax
+                y_max = contour_rsts.analysisResults[0].contours[0].imgYMax
                 if flag_is_debugmode:
                     calculation_log('y_max = {}'.format(y_max))
                 y_diff = (float)(y_max) / (float)(num_div_velocity_layer)
@@ -256,11 +298,12 @@ def get_autoTracking_Results(directory_path, camera_resolution, API_VER, exec_mo
                     "satellite_linearity_error[pix]":nan_to_minus1(trackingResults.Get_SatelliteXY_Fit_Error_Min_Max_Range()[1] - trackingResults.Get_SatelliteXY_Fit_Error_Min_Max_Range()[0]),
                     "AUTO_TRACKING_CODE_VER":nan_to_minus1(AutoTracking.get_code_ver()),
                     "anormaly_ejections_at_first_image":(num_first_contours > 1.5),
-                    "main_velocity_is_too_fast":(main_average_velocity_stdized > velocity_upperthresh),
-                    "main_velocity_is_too_slow":(main_average_velocity_stdized < velocity_lowerthresh),
-                    "nozzle_needs_to_be_clean":(solidity > Solidity_upperthresh),
-                    "suspicious_visco-elasticity":(separated_delay > sep_thresh and main_average_velocity_stdized > velocity_septhresh),
-                    "angle-diff_is_too_large":(diff_angle > diff_angle_thresh),
+                    "main_velocity_is_too_fast":(main_average_velocity_stdized > thresh_values_dic['velocity_upperthresh']),
+                    "main_velocity_is_too_slow":(main_average_velocity_stdized < thresh_values_dic['velocity_lowerthresh']),
+                    "nozzle_needs_to_be_clean":(solidity > thresh_values_dic['Solidity_upperthresh']),
+                    "suspicious_visco-elasticity":(separated_delay > thresh_values_dic["sep_thresh"] and \
+                                                   main_average_velocity_stdized > thresh_values_dic["velocity_septhresh"]),
+                    "angle-diff_is_too_large":(diff_angle > thresh_values_dic["diff_angle_thresh"]),
                     "exotic-droplet_exists":(flag_exotic_droplet),
                     "THRESH_VALUES_VER":THRESH_VALUES_VER,
                     "RESERVED0":nan_to_minus1(max_exotic_area),
@@ -297,7 +340,6 @@ def nan_to_minus1(check_object):
         ret_value = -1 if math.isnan(check_object) else check_object
     else:
         ret_value = check_object
-    calculation_log('nan_to_minus1 from {} to {}'.format(check_object, ret_value))
     return ret_value
 
 def add_message(result):

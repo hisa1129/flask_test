@@ -6,6 +6,7 @@ import os #os関連インポート
 import Contour_Elem
 from itertools import groupby
 import gc
+import Analysis_Results_Class
 
 #analysisResults用インデックス、配列2番目にて指定。
 IDX_DELAY = 0
@@ -22,6 +23,35 @@ for i in range(256):
     lookUpTable[0,i] = np.clip(pow(i / 255.0, gamma) * 255.0, 0, 255)
 
 
+def filter2d(src, kernel):
+    '''
+    画像作用関数
+    
+    Parameter
+    =================
+    src : np.array
+        入力画像
+    kernel : np.array
+        フィルター行列
+    
+    return
+    =================
+    dst : np.array
+        出力画像
+    '''
+    m, n = kernel.shape
+    
+    d = int((m-1) / 2)
+    h, w = src.shape[0], src.shape[1]
+    
+    dst = np.zeros((h,w))
+    
+    for y in range(d, h-d):
+        for x in range(d, w-d):
+            dst[y][x] = np.sum(src[y-d:y+d+1, x-d:x+d+1]*kernel)
+    
+    return dst
+    
 #解析結果取得関数
 def analyse_Image(delay, 
                   path,
@@ -82,6 +112,14 @@ def analyse_Image(delay,
 #    img = gamma_function(img)
     #画像のグレイスケール化
     im = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)   
+    
+    #エッジ強調フィルタのテスト。余計な計算コストとノイズを拾いやすくなることから様子見。
+#    kernel = np.array([[-1,-1,-1],
+#                      [-1,9,-1],
+#                      [-1,-1,-1]])
+    
+#    im = cv2.filter2D(im, -1, kernel)
+    
     #二値化、オートバイナライズか否かで挙動違う
     ret, im_bin = cv2.threshold(
         im,
@@ -238,7 +276,6 @@ def analyse_Image(delay,
         #閾値でフィルタ
         contours = [cnt for cnt in contours if cv2.contourArea(cnt) > min_area_thresh]
 
-
     #輪郭面積でソート
     contours.sort(key=lambda cnt: cv2.contourArea(cnt), reverse = True)
     if DEBUG:
@@ -322,12 +359,9 @@ def analyse_Image(delay,
         if DEBUG:
             calculation_log('cnt with main_Y is {} is appended'.format(cntResults[-1].main_Y))
     
-    #メモリ解放
-    del im
-    gc.collect()
-    
+    cntResults.sort(key= lambda res: res.area, reverse=True)  
     #面積で降順ソート
-    cntResults.sort(key= lambda res: res.area, reverse=True)
+    analysis_contours = Analysis_Results_Class.Analysis_Results(delay, cntResults, DEBUG)
     if DEBUG:
         calculation_log('length of cntResults is {}'.format(len(cntResults)))
     #以下、画像出力対応
@@ -384,10 +418,13 @@ def analyse_Image(delay,
         if DEBUG:
             calculation_log('export image at {}'.format(savePath))
     
+    #メモリ解放
     del img
+    del im
+    del contours
     gc.collect()
     #輪郭解析結果リストを返す
-    return cntResults      
+    return analysis_contours    
 
 def gamma_function(img):
     calculation_log('gamma_function is calling.')
