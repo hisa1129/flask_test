@@ -227,13 +227,9 @@ def uploads_file():
             out_server_log('read_dataframe from json-formatted string was failured.')
     except:
         out_server_log('read result as json was failured.')
-        
-    if not flagFileRestore:
-        #生成ファイル処理
-        shutil.rmtree(UPLOAD_DIR)
-        os.mkdir(UPLOAD_DIR) 
-        out_server_log('Both files at {}, and the uploaded zipfile {} were deleted'.format(created_file_path.strip('.zip'), created_file_path))
-    else:
+    
+    #ファイルの保存
+    if flagFileRestore:
         src = created_file_path.strip('.zip')
         dst = os.path.join(RESTORE_DIR, fileName.strip('.zip'))
         dst_org = dst
@@ -243,10 +239,12 @@ def uploads_file():
             fileNum = fileNum + 1
         shutil.copytree(src, dst)
         out_server_log('files were saved at {}'.format(dst))
-        shutil.rmtree(UPLOAD_DIR)
-        os.mkdir(UPLOAD_DIR)       
-        out_server_log('files at {} and {} were deleted'.format(created_file_path.strip('.zip'), created_file_path))
-    time.sleep(0.2)
+
+    #生成ファイルの削除
+    shutil.rmtree(created_file_path.strip('.zip'))
+    os.remove(created_file_path)
+    out_server_log('Both files at {}, and the uploaded zipfile {} were deleted'.format(created_file_path.strip('.zip'), created_file_path))
+    
     return make_response(jsonify(result))
 
 # ファイルサイズ上限オーバー時の処理

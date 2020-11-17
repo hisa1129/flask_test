@@ -3916,3 +3916,28 @@
 20201116_150802 : export calculation result to resultsDB.csv was succeed.
 20201116_150802 : files were saved at restored_data/2th_20201102191143_2
 20201116_150802 : files at uploads/2th_20201102191143 and uploads/2th_20201102191143.zip were deleted
+20201117_135503 : auto_tracking calculation with POST method was called
+20201117_135503 : ImmutableMultiDict([('upload_file', <FileStorage: 'E0893_吐出画像20200327134132F_調整後.zip' ('application/zip')>)]) file is posted, E0893_吐出画像20200327134132F_調整後.zip, DEBUG, RESTORE
+20201117_135503 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201117_135503 : extraction uploaded zip file at uploads/E0893_吐出画像20200327134132F_調整後
+20201117_135503 : import results from resultsDB.csv was done
+20201117_135507 : auto_tracking is execute with uploads/E0893_吐出画像20200327134132F_調整後/E0893_吐出画像20200327134132, the exec_mode DEBUG
+20201117_135507 : export calculation result to resultsDB.csv was succeed.
+20201117_135507 : files were saved at restored_data/E0893_吐出画像20200327134132F_調整後
+20201117_135920 : auto_tracking calculation with POST method was called
+20201117_135920 : ImmutableMultiDict([('upload_file', <FileStorage: 'E0893_吐出画像20200327134132F_調整後.zip' ('application/zip')>)]) file is posted, E0893_吐出画像20200327134132F_調整後.zip, DEBUG, RESTORE
+20201117_135920 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201117_135921 : extraction uploaded zip file at uploads/E0893_吐出画像20200327134132F_調整後
+20201117_135921 : import results from resultsDB.csv was done
+20201117_135924 : auto_tracking is execute with uploads/E0893_吐出画像20200327134132F_調整後/E0893_吐出画像20200327134132, the exec_mode DEBUG
+20201117_135924 : export calculation result to resultsDB.csv was succeed.
+20201117_135924 : files were saved at restored_data/E0893_吐出画像20200327134132F_調整後_2
+20201117_140100 : auto_tracking calculation with POST method was called
+20201117_140100 : ImmutableMultiDict([('upload_file', <FileStorage: 'E0893_吐出画像20200327134132F_調整後.zip' ('application/zip')>)]) file is posted, E0893_吐出画像20200327134132F_調整後.zip, DEBUG, RESTORE
+20201117_140100 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201117_140100 : extraction uploaded zip file at uploads/E0893_吐出画像20200327134132F_調整後
+20201117_140100 : import results from resultsDB.csv was done
+20201117_140103 : auto_tracking is execute with uploads/E0893_吐出画像20200327134132F_調整後/E0893_吐出画像20200327134132, the exec_mode DEBUG
+20201117_140103 : export calculation result to resultsDB.csv was succeed.
+20201117_140104 : files were saved at restored_data/E0893_吐出画像20200327134132F_調整後_3
+20201117_140104 : Both files at uploads/E0893_吐出画像20200327134132F_調整後, and the uploaded zipfile uploads/E0893_吐出画像20200327134132F_調整後.zip were deleted
