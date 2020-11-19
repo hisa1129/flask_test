@@ -121,15 +121,12 @@ def auto_Tracking(dirPath,#フォルダパス, str
         rstsSatellite.sort(key = lambda rst:rst.delay)
         #1枚目の輪郭数カウント、2以上でソート
         if len(rstsSatellite[0].contours) > 1:
-            print("before 1st sort")
             #面積順で輪郭リストをソート、降順
             rstsSatellite[0].contours.sort(key=lambda cnt: cnt.area, reverse = True)
             #対象輪郭の抽出、面積最大→ノズルの検出
             rstBase = rstsSatellite[0].contours[0]
             #satelliteのY座標がノズルのY座標より下に来るもののみ抽出
-            print("before add")
             rstAdd = [rst for rst in rstsSatellite[0].contours if rst.satellite_Y >= rstBase.main_Y]
-            print(len(rstAdd))
             if len(rstAdd) == 0:
                 flag_sat_is_trackable = False                
             if len(rstAdd) == 1:
@@ -141,7 +138,6 @@ def auto_Tracking(dirPath,#フォルダパス, str
         if flag_sat_is_trackable:
             #1枚目輪郭の結果格納
             tracking_Results.Set_SatelliteXY(rstsSatellite[0].delay, rstAdd[0].satellite_X, rstAdd[0].satellite_Y)
-            print('1st added')
             #追尾対象のディレイ写真が2枚以上の場合
             if len(rstsSatellite) >1:
                 #追尾検出2枚目の検出
