@@ -14,7 +14,7 @@ import cv2
 from CalculationLog import calculation_log
 
 #コードバージョン
-AUTO_TRACKING_VER = '0.0.2'
+AUTO_TRACKING_VER = '0.0.5'
 
 def get_code_ver():
     '''
@@ -94,6 +94,9 @@ def auto_Tracking(dirPath,#フォルダパス, str
                 #予想Y座標が画像Y座標最大値より大きい場合は追尾打ち切り
                 if ptEval_Y >= rstsMain[i].contours[0].imgYMax:
                     break
+                #評価輪郭数0の場合は打ち切り
+                if len(rstsMain[i].contours) == 0:
+                    break
                 #評価点が2点以上の場合の処理
                 if len(rstsMain[i].contours) > 1:
                     #評価基準点と各輪郭のメイン液滴座標距離順に輪郭群をソート。ソート後、最近傍のメイン液滴を格納。
@@ -134,8 +137,11 @@ def auto_Tracking(dirPath,#フォルダパス, str
                 lstSat = list(filter(lambda rst: not math.isnan(rst.satellite_X), tracking_Results.results))
                 #satelliteのY座標が一つ前のY座標より下に来るもののみ抽出
                 rstAdd = [rst for rst in rstsSatellite[1].contours if rst.satellite_Y >= lstSat[-1].satellite_Y]
-                #一つ前の結果からの距離順にて昇順ソート。
-                rstAdd.sort(key = lambda rst : (rst.satellite_X - lstSat[-1].satellite_X) ** 2 + (rst.satellite_Y - lstSat[-1].satellite_Y)**2)
+                if len(rstAdd) > 0:
+                    #一つ前の結果からの距離順にて昇順ソート。
+                    rstAdd.sort(key = lambda rst : (rst.satellite_X - lstSat[-1].satellite_X) ** 2 + (rst.satellite_Y - lstSat[-1].satellite_Y)**2)
+                else:
+                    rstAdd = sorted(lstSat, key=lambda rst : (rst.satellite_X - lstSat[-1].satellite_X) ** 2 + (rst.satellite_Y - lstSat[-1].satellite_Y)**2)
             else:
                 #対象の輪郭が1つの場合、そのまま結果の格納用オブジェクトをコピー
                 rstAdd = rstsSatellite[1].contours                

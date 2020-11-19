@@ -326,9 +326,9 @@ class Analysis_Results_List:
             calculation_log('num_ave_contour_method was called.')            
         if self.flag_separated_is_detected:
             retNum_list = [len(rst.contours) for rst in self.analysisResults if rst.delay < self.delay_separated]
-            self.num_contours_at_first = retNum_list
         else:
-            self.num_contours_at_first = -1
+            retNum_list = [len(rst.contours) for rst in self.analysisResults]            
+        self.num_contours_at_first = retNum_list
 
         return None
        

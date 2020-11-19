@@ -15,7 +15,7 @@ from Generate_Contour_Elem import *
 import gc
 
 #コードバージョン記載
-CONTOUR_CODE_VER = '0.0.2'
+CONTOUR_CODE_VER = '0.0.5'
 
 #analysisResults用インデックス、配列2番目にて指定。
 IDX_DELAY = 0
@@ -106,6 +106,10 @@ def analyse_Images_List(directoryPath,
     #ファイルリストの取得
     extension = '.jpg'
     files = glob.glob(directoryPath + "/*" + extension)
+    if len(files) < 2:
+        calculation_log('num_files are 0 or 1')
+        return None
+        
     if DEBUG:
         calculation_log('files are imported, {}'.format(len(files)))
         calculation_log('min_area_thresh is {}'.format(min_area_thresh))
@@ -172,31 +176,35 @@ def analyse_Images_List(directoryPath,
         regamentResults = retAnalysisResults.max_regament_length, retAnalysisResults.delay_max_regament_detected
         if DEBUG:
             calculation_log('detected delay is {} us, and detected length is {} pix'.format(regamentResults[1], regamentResults[0]))
-        #当該輪郭の検出
-        drawResultCnts = list(filter(lambda data: data.delay == regamentResults[1], retAnalysisResults.analysisResults))[0]
-        drawResultCnt = list(filter(lambda cnt: cnt.get_regament_length() == regamentResults[0], drawResultCnts.contours))[0]
-        #ディレクトリ生成
-        os.makedirs(directoryPath+'/rgResult', exist_ok=True)
-        #当該ディレイの画像ファイルパス取得
-        if DEBUG:
-            calculation_log('mkdir at {}/rgResult'.format(directoryPath))
-        try:
-            filePath = glob.glob(directoryPath+'/*{0}.jpg'.format(str(drawResultCnts.delay)))[0]
-        except:
-            filePath = glob.glob(directoryPath+'/*{0}.jpg'.format(str((int)(drawResultCnts.delay))))[0]
-        #当該画像データ取得
-        im = cv2.imread(filePath)
-        #リガメント描画
-        im = cv2.line(im,
-                      ((int)(drawResultCnt.main_X),(int)(drawResultCnt.main_Y)),
-                      ((int)(drawResultCnt.satellite_X),(int)(drawResultCnt.satellite_Y)),
-                      (255, 255, 128),
-                      3)
-        #ファイル出力
-        savePath = directoryPath+'/rgResult/' + os.path.basename(filePath) + '_drawRegament.jpg'
-        cv2.imwrite(savePath, im)
-        if DEBUG:
-            calculation_log('export regament result image, {}'.format(savePath))
+        if not math.isnan(regamentResults[1]):           
+            #当該輪郭の検出
+            drawResultCnts = list(filter(lambda data: data.delay == regamentResults[1], retAnalysisResults.analysisResults))[0]
+            drawResultCnt = list(filter(lambda cnt: cnt.get_regament_length() == regamentResults[0], drawResultCnts.contours))[0]
+            #ディレクトリ生成
+            os.makedirs(directoryPath+'/rgResult', exist_ok=True)
+            #当該ディレイの画像ファイルパス取得
+            if DEBUG:
+                calculation_log('mkdir at {}/rgResult'.format(directoryPath))
+            try:
+                filePath = glob.glob(directoryPath+'/*{0}.jpg'.format(str(drawResultCnts.delay)))[0]
+            except:
+                filePath = glob.glob(directoryPath+'/*{0}.jpg'.format(str((int)(drawResultCnts.delay))))[0]
+            #当該画像データ取得
+            im = cv2.imread(filePath)
+            #リガメント描画
+            im = cv2.line(im,
+                          ((int)(drawResultCnt.main_X),(int)(drawResultCnt.main_Y)),
+                          ((int)(drawResultCnt.satellite_X),(int)(drawResultCnt.satellite_Y)),
+                          (255, 255, 128),
+                          3)
+            #ファイル出力
+            savePath = directoryPath+'/rgResult/' + os.path.basename(filePath) + '_drawRegament.jpg'
+            cv2.imwrite(savePath, im)
+            if DEBUG:
+                calculation_log('export regament result image, {}'.format(savePath))
+        
+        else:
+            calculation_log('reg_detection is not succeed, so rgResult was not drawn.')        
     
     #成功処理
     if DEBUG:

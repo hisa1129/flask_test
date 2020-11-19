@@ -8,7 +8,6 @@ import math
 
 INPUT_PARAMS_VER = '0.1.1' #入力パラメータバージョン、2020.10.21
 
-
 auto_binarize = True #大津の二値化による自動閾値判定
 binarize_thresh = 128 #二値化閾値（auto_binarize = Falseの時）
 min_area_thresh = 1 #輪郭面積最小値（最小面積以下の輪郭はノイズと判定）
@@ -145,7 +144,19 @@ def get_autoTracking_Results(directory_path, camera_resolution, API_VER, exec_mo
         flag_contour_select_was_done = True
         if flag_is_debugmode:
             calculation_log('contour selection was done')
-    
+        if contour_rsts is None:
+            result = {
+                "analysis_date_time":nan_to_minus1(datetime.datetime.now().strftime('%Y-%m-%d_%H:%M:%S')),
+                "file_name":nan_to_minus1(directory_path),
+                "condition":"num_files are not more than 2.",
+                "camera_resolution[um/pix]":nan_to_minus1(camera_resolution),
+                "API_VER":nan_to_minus1(API_VER),
+                "CONTOUR_CODE_VER":nan_to_minus1(FindContourAnalysis.get_code_ver()),
+                "AUTO_TRACKING_CODE_VER":nan_to_minus1(AutoTracking.get_code_ver()),
+                "THRESH_VALUES_VER":THRESH_VALUES_VER,
+            }
+            return result        
+        
     #輪郭抽出失敗時処理
     except:
         if flag_is_debugmode:
@@ -188,6 +199,7 @@ def get_autoTracking_Results(directory_path, camera_resolution, API_VER, exec_mo
                 directory_path = directory_path.split('/')[-1]
                 if flag_is_debugmode:
                     calculation_log('dir_path is {}'.format(directory_path))
+                
                 #1枚目輪郭数取得               
                 num_first_contours = (float)(sum(contour_rsts.num_contours_at_first))/(float)(len(contour_rsts.num_contours_at_first))
                 if flag_is_debugmode:
@@ -328,7 +340,7 @@ def get_autoTracking_Results(directory_path, camera_resolution, API_VER, exec_mo
                     calculation_log('get_feature_params was failure.')
                 result = {
                     "analysis_date_time":datetime.datetime.now().strftime('%Y-%m-%d_%H:%M:%S'),
-                    "dirPath":directory_path,
+                    "filename":directory_path,
                     'condition' : 'get_feature_params was failure.'
                 }
     return result
@@ -337,7 +349,7 @@ def nan_to_minus1(check_object):
     ret_value = None
     if type(check_object) is None:
         ret_value = "None"
-    elif type(check_object) is float:
+    elif (type(check_object) is float) or (type(check_object) is int):
         ret_value = -1 if math.isnan(check_object) else check_object
     else:
         ret_value = check_object
