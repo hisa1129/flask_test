@@ -4049,3 +4049,75 @@
 20201119_165432 : export calculation result to resultsDB.csv was succeed.
 20201119_165432 : files were saved at restored_data/SMZ_test
 20201119_165432 : Both files at uploads/SMZ_test, and the uploaded zipfile uploads/SMZ_test.zip were deleted
+20201119_172658 : auto_tracking calculation with POST method was called
+20201119_172658 : ImmutableMultiDict([('upload_file', <FileStorage: 'trackable_test.zip' ('application/zip')>)]) file is posted, trackable_test.zip, DEBUG, RESTORE
+20201119_172658 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201119_172658 : extraction uploaded zip file at uploads/trackable_test
+20201119_172659 : import results from resultsDB.csv was done
+20201119_172701 : auto_tracking is execute with uploads/trackable_test/trackable_test, the exec_mode DEBUG
+20201119_172701 : export calculation result to resultsDB.csv was succeed.
+20201119_172701 : files were saved at restored_data/trackable_test
+20201119_172701 : Both files at uploads/trackable_test, and the uploaded zipfile uploads/trackable_test.zip were deleted
+20201119_172947 : auto_tracking calculation with POST method was called
+20201119_172947 : ImmutableMultiDict([('upload_file', <FileStorage: 'trackable_test.zip' ('application/zip')>)]) file is posted, trackable_test.zip, DEBUG, RESTORE
+20201119_172947 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201119_172947 : extraction uploaded zip file at uploads/trackable_test
+20201119_172948 : import results from resultsDB.csv was done
+20201119_172950 : auto_tracking is execute with uploads/trackable_test/trackable_test, the exec_mode DEBUG
+20201119_172950 : export calculation result to resultsDB.csv was succeed.
+20201119_172950 : files were saved at restored_data/trackable_test_2
+20201119_172950 : Both files at uploads/trackable_test, and the uploaded zipfile uploads/trackable_test.zip were deleted
+20201119_195326 : auto_tracking calculation with POST method was called
+20201119_195326 : ImmutableMultiDict([('upload_file', <FileStorage: 'trackable_test.zip' ('application/zip')>)]) file is posted, trackable_test.zip, DEBUG, RESTORE
+20201119_195326 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201119_195326 : extraction uploaded zip file at uploads/trackable_test
+20201119_195326 : import results from resultsDB.csv was done
+20201119_195328 : auto_tracking is execute with uploads/trackable_test/trackable_test, the exec_mode DEBUG
+20201119_195328 : export calculation result to resultsDB.csv was succeed.
+20201119_195329 : files were saved at restored_data/trackable_test_3
+20201119_195329 : Both files at uploads/trackable_test, and the uploaded zipfile uploads/trackable_test.zip were deleted
+20201119_195539 : auto_tracking calculation with POST method was called
+20201119_195539 : ImmutableMultiDict([('upload_file', <FileStorage: 'trackable_test.zip' ('application/zip')>)]) file is posted, trackable_test.zip, DEBUG, RESTORE
+20201119_195539 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201119_195539 : extraction uploaded zip file at uploads/trackable_test
+20201119_195540 : import results from resultsDB.csv was done
+20201119_195542 : auto_tracking is execute with uploads/trackable_test/trackable_test, the exec_mode DEBUG
+20201119_195542 : export calculation result to resultsDB.csv was succeed.
+20201119_195542 : files were saved at restored_data/trackable_test_4
+20201119_195542 : Both files at uploads/trackable_test, and the uploaded zipfile uploads/trackable_test.zip were deleted
+20201119_195632 : auto_tracking calculation with POST method was called
+20201119_195632 : ImmutableMultiDict([('upload_file', <FileStorage: 'trackable_test.zip' ('application/zip')>)]) file is posted, trackable_test.zip, DEBUG, RESTORE
+20201119_195632 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201119_195632 : extraction uploaded zip file at uploads/trackable_test
+20201119_195632 : import results from resultsDB.csv was done
+20201119_195634 : auto_tracking is execute with uploads/trackable_test/trackable_test, the exec_mode DEBUG
+20201119_195634 : export calculation result to resultsDB.csv was succeed.
+20201119_195634 : files were saved at restored_data/trackable_test_5
+20201119_195635 : Both files at uploads/trackable_test, and the uploaded zipfile uploads/trackable_test.zip were deleted
+20201119_195831 : auto_tracking calculation with POST method was called
+20201119_195831 : ImmutableMultiDict([('upload_file', <FileStorage: 'trackable_test.zip' ('application/zip')>)]) file is posted, trackable_test.zip, DEBUG, RESTORE
+20201119_195831 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201119_195831 : extraction uploaded zip file at uploads/trackable_test
+20201119_195832 : import results from resultsDB.csv was done
+20201119_195833 : auto_tracking is execute with uploads/trackable_test/trackable_test, the exec_mode DEBUG
+20201119_195834 : export calculation result to resultsDB.csv was succeed.
+20201119_195834 : files were saved at restored_data/trackable_test_6
+20201119_195834 : Both files at uploads/trackable_test, and the uploaded zipfile uploads/trackable_test.zip were deleted
+20201119_195930 : auto_tracking calculation with POST method was called
+20201119_195930 : ImmutableMultiDict([('upload_file', <FileStorage: 'trackable_test.zip' ('application/zip')>)]) file is posted, trackable_test.zip, DEBUG, RESTORE
+20201119_195930 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201119_195930 : extraction uploaded zip file at uploads/trackable_test
+20201119_195931 : import results from resultsDB.csv was done
+20201119_195932 : auto_tracking is execute with uploads/trackable_test/trackable_test, the exec_mode DEBUG
+20201119_195932 : export calculation result to resultsDB.csv was succeed.
+20201119_195933 : files were saved at restored_data/trackable_test_7
+20201119_195933 : Both files at uploads/trackable_test, and the uploaded zipfile uploads/trackable_test.zip were deleted
+20201119_200006 : auto_tracking calculation with POST method was called
+20201119_200006 : ImmutableMultiDict([('upload_file', <FileStorage: 'trackable_test.zip' ('application/zip')>)]) file is posted, trackable_test.zip, DEBUG, RESTORE
+20201119_200006 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201119_200006 : extraction uploaded zip file at uploads/trackable_test
+20201119_200007 : import results from resultsDB.csv was done
+20201119_200009 : auto_tracking is execute with uploads/trackable_test/trackable_test, the exec_mode DEBUG
+20201119_200009 : export calculation result to resultsDB.csv was succeed.
+20201119_200009 : files were saved at restored_data/trackable_test_8
+20201119_200009 : Both files at uploads/trackable_test, and the uploaded zipfile uploads/trackable_test.zip were deleted

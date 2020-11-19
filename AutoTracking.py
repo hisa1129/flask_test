@@ -14,7 +14,7 @@ import cv2
 from CalculationLog import calculation_log
 
 #コードバージョン
-AUTO_TRACKING_VER = '0.0.5'
+AUTO_TRACKING_VER = '0.0.6'
 
 def get_code_ver():
     '''
@@ -113,6 +113,7 @@ def auto_Tracking(dirPath,#フォルダパス, str
     if DEBUG:
         calculation_log('main_tracking was completed.')
     #サテライト液滴の追尾
+    flag_sat_is_trackable = True
     if rsts.flag_separated_is_detected == True:
         #追尾対象の抽出
         rstsSatellite = [rst for rst in rsts.analysisResults if rst.delay >= rsts.delay_separated]
@@ -120,51 +121,66 @@ def auto_Tracking(dirPath,#フォルダパス, str
         rstsSatellite.sort(key = lambda rst:rst.delay)
         #1枚目の輪郭数カウント、2以上でソート
         if len(rstsSatellite[0].contours) > 1:
+            print("before 1st sort")
             #面積順で輪郭リストをソート、降順
             rstsSatellite[0].contours.sort(key=lambda cnt: cnt.area, reverse = True)
             #対象輪郭の抽出、面積最大→ノズルの検出
             rstBase = rstsSatellite[0].contours[0]
-            #Y座標のみでノズルY座標からの距離順ソート。X座標を含むと最大輪郭のノイズを拾うことがあるためY座標のみで実施。
-            rstsSatellite[0].contours.sort(key = lambda cnt2: (rstBase.main_Y - cnt2.satellite_Y) ** 2)
-        #1枚目輪郭の結果格納
-        tracking_Results.Set_SatelliteXY(rstsSatellite[0].delay, rstsSatellite[0].contours[0].satellite_X, rstsSatellite[0].contours[0].satellite_Y)
-        #追尾対象のディレイ写真が2枚以上の場合
-        if len(rstsSatellite) >1:
-            #追尾検出2枚目の検出
-            #2枚目に格納されている輪郭情報が2以上の場合
-            if len(rstsSatellite[1].contours) > 1:
-                #サテライト液滴X座標がnanではないものを抽出。
-                lstSat = list(filter(lambda rst: not math.isnan(rst.satellite_X), tracking_Results.results))
-                #satelliteのY座標が一つ前のY座標より下に来るもののみ抽出
-                rstAdd = [rst for rst in rstsSatellite[1].contours if rst.satellite_Y >= lstSat[-1].satellite_Y]
-                if len(rstAdd) > 0:
-                    #一つ前の結果からの距離順にて昇順ソート。
-                    rstAdd.sort(key = lambda rst : (rst.satellite_X - lstSat[-1].satellite_X) ** 2 + (rst.satellite_Y - lstSat[-1].satellite_Y)**2)
-                else:
-                    rstAdd = sorted(lstSat, key=lambda rst : (rst.satellite_X - lstSat[-1].satellite_X) ** 2 + (rst.satellite_Y - lstSat[-1].satellite_Y)**2)
+            #satelliteのY座標がノズルのY座標より下に来るもののみ抽出
+            print("before add")
+            rstAdd = [rst for rst in rstsSatellite[0].contours if rst.satellite_Y >= rstBase.main_Y]
+            print(len(rstAdd))
+            if len(rstAdd) == 0:
+                flag_sat_is_trackable = False                
+            if len(rstAdd) == 1:
+                rstAdd
             else:
-                #対象の輪郭が1つの場合、そのまま結果の格納用オブジェクトをコピー
-                rstAdd = rstsSatellite[1].contours                
-            #サテライト液滴追尾結果の格納
-            tracking_Results.Set_SatelliteXY(rstsSatellite[1].delay, rstAdd[0].satellite_X, rstAdd[0].satellite_Y)
+                #一つ前の結果からの距離順にて昇順ソート。
+                rstAdd.sort(key = lambda rst : (rst.satellite_Y - rstBase.main_Y)**2)
 
-            #追尾検出3枚目以降            
-            for i in range(2, len(rstsSatellite)):
-                #i枚目の輪郭格納結果数が0であれば打ち切り
-                if len(rstsSatellite[i].contours) == 0:
-                    break
+        if flag_sat_is_trackable:
+            #1枚目輪郭の結果格納
+            tracking_Results.Set_SatelliteXY(rstsSatellite[0].delay, rstAdd[0].satellite_X, rstAdd[0].satellite_Y)
+            print('1st added')
+            #追尾対象のディレイ写真が2枚以上の場合
+            if len(rstsSatellite) >1:
+                #追尾検出2枚目の検出
+                #2枚目に格納されている輪郭情報が2以上の場合
+                if len(rstsSatellite[1].contours) > 1:
+                    #サテライト液滴X座標がnanではないものを抽出。
+                    lstSat = list(filter(lambda rst: not math.isnan(rst.satellite_X), tracking_Results.results))
+                    #satelliteのY座標が一つ前のY座標より下に来るもののみ抽出
+                    rstAdd = [rst for rst in rstsSatellite[1].contours if rst.satellite_Y >= lstSat[-1].satellite_Y]
+                    print(len(rstAdd))
+                    if len(rstAdd) > 0:
+                        #一つ前の結果からの距離順にて昇順ソート。
+                        rstAdd.sort(key = lambda rst : (rst.satellite_X - lstSat[-1].satellite_X) ** 2 + (rst.satellite_Y - lstSat[-1].satellite_Y)**2)
+                    else:
+                        rstAdd = sorted(lstSat, key=lambda rst : (rst.satellite_X - lstSat[-1].satellite_X) ** 2 + (rst.satellite_Y - lstSat[-1].satellite_Y)**2)
+                else:
+                    #対象の輪郭が1つの場合、そのまま結果の格納用オブジェクトをコピー
+                    rstAdd = rstsSatellite[1].contours                
+                #サテライト液滴追尾結果の格納
+                tracking_Results.Set_SatelliteXY(rstsSatellite[1].delay, rstAdd[0].satellite_X, rstAdd[0].satellite_Y)
+                print('2nd added')
 
-                #すでに格納されている結果から、satellite_X座標がnanではないものを抽出。
-                lstSat = list(filter(lambda rst: not math.isnan(rst.satellite_X), tracking_Results.results))     
-                #ひとつ前の結果のサテライトY座標より下にサテライトY座標がくるもののみを抽出
-                rstAdd = [rst for rst in rstsSatellite[i].contours if rst.satellite_Y >= lstSat[-1].satellite_Y]
-                #抽出結果数が0であれば打ち切り
-                if len(rstAdd) == 0:
-                    break
-                #抽出結果を、ひとつ前のサテライト座標からの距離順に昇順ソート→最も近いものをサテライト液滴として採用。
-                rstAdd.sort(key = lambda rst : (rst.satellite_X - lstSat[-1].satellite_X) ** 2 + (rst.satellite_Y - lstSat[-1].satellite_Y)**2)
-                #サテライト検出結果を格納
-                tracking_Results.Set_SatelliteXY(rstsSatellite[i].delay, rstAdd[0].satellite_X, rstAdd[0].satellite_Y)
+                #追尾検出3枚目以降            
+                for i in range(2, len(rstsSatellite)):
+                    #i枚目の輪郭格納結果数が0であれば打ち切り
+                    if len(rstsSatellite[i].contours) == 0:
+                        break
+
+                    #すでに格納されている結果から、satellite_X座標がnanではないものを抽出。
+                    lstSat = list(filter(lambda rst: not math.isnan(rst.satellite_X), tracking_Results.results))     
+                    #ひとつ前の結果のサテライトY座標より下にサテライトY座標がくるもののみを抽出
+                    rstAdd = [rst for rst in rstsSatellite[i].contours if rst.satellite_Y >= lstSat[-1].satellite_Y]
+                    #抽出結果数が0であれば打ち切り
+                    if len(rstAdd) == 0:
+                        break
+                    #抽出結果を、ひとつ前のサテライト座標からの距離順に昇順ソート→最も近いものをサテライト液滴として採用。
+                    rstAdd.sort(key = lambda rst : (rst.satellite_X - lstSat[-1].satellite_X) ** 2 + (rst.satellite_Y - lstSat[-1].satellite_Y)**2)
+                    #サテライト検出結果を格納
+                    tracking_Results.Set_SatelliteXY(rstsSatellite[i].delay, rstAdd[0].satellite_X, rstAdd[0].satellite_Y)
 
     if DEBUG:
         calculation_log('satellite_tracking was completed.')
