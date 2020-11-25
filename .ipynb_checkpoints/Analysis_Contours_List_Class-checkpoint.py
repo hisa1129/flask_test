@@ -236,6 +236,7 @@ class Analysis_Results_List:
             solidity_at_seeking_result = seeking_results_list[i].solidity_of_nozzle
             eval_ratio = solidity_at_seeking_result / solidity_base
             flag_solidity_is_plausible =  eval_ratio < self.__solidity_mirgin_detect_separation
+            flag_length_of_contours = (len(seeking_results_list[i].contours) > 1)
             if self.__DEBUG:
                 calculation_log('delay at {}, solidity is {}, eval ratio is {}, and flag is {}'.format(
                     eval_delay,
@@ -244,7 +245,7 @@ class Analysis_Results_List:
                     flag_solidity_is_plausible)
                                )  
             
-            if flag_convexhull_contour_area and flag_convexhull_contour_arclength and flag_solidity_is_plausible:
+            if flag_convexhull_contour_area and flag_convexhull_contour_arclength and flag_solidity_is_plausible and flag_length_of_contours:
                 delay_separated = eval_delay
                 flag_separated_is_detected = True
                 break
@@ -340,9 +341,12 @@ class Analysis_Results_List:
         if self.__DEBUG:
             calculation_log('detect magnitude of doublet_droplet method was called.')
         if self.flag_separated_is_detected:
-            seeking_results_list = [cnts.solidity_of_nozzle for cnts in self.analysisResults if cnts.delay > self.delay_separated]
-            diff_solidity_after_separation = max(seeking_results_list) - min(seeking_results_list)     
-            self.magnitude_of_doublet_droplet = diff_solidity_after_separation       
+            seeking_results_list = [cnts.solidity_of_nozzle for cnts in self.analysisResults if cnts.delay >= self.delay_separated]
+            if len(seeking_results_list) == 1:
+                self.magnitude_of_doublet_droplet = -1
+            else:
+                diff_solidity_after_separation = max(seeking_results_list) - min(seeking_results_list)     
+                self.magnitude_of_doublet_droplet = diff_solidity_after_separation       
         else:
             self.magnitude_of_doublet_droplet = -1
         return None

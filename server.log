@@ -4121,3 +4121,39 @@
 20201119_200009 : export calculation result to resultsDB.csv was succeed.
 20201119_200009 : files were saved at restored_data/trackable_test_8
 20201119_200009 : Both files at uploads/trackable_test, and the uploaded zipfile uploads/trackable_test.zip were deleted
+20201120_144347 : auto_tracking calculation with POST method was called
+20201120_144347 : ImmutableMultiDict([('upload_file', <FileStorage: 'contour_error.zip' ('application/zip')>)]) file is posted, contour_error.zip, DEBUG, RESTORE
+20201120_144347 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201120_144347 : extraction uploaded zip file at uploads/contour_error
+20201120_144347 : import results from resultsDB.csv was done
+20201120_144349 : auto_tracking is execute with uploads/contour_error/contour_error, the exec_mode DEBUG
+20201120_144349 : export calculation result to resultsDB.csv was succeed.
+20201120_144349 : files were saved at restored_data/contour_error
+20201120_144349 : Both files at uploads/contour_error, and the uploaded zipfile uploads/contour_error.zip were deleted
+20201120_165920 : auto_tracking calculation with POST method was called
+20201120_165920 : ImmutableMultiDict([('upload_file', <FileStorage: 'separate_error.zip' ('application/zip')>)]) file is posted, separate_error.zip, DEBUG, RESTORE
+20201120_165920 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201120_165920 : extraction uploaded zip file at uploads/separate_error
+20201120_165920 : import results from resultsDB.csv was done
+20201120_165922 : auto_tracking is execute with uploads/separate_error/separate_error, the exec_mode DEBUG
+20201120_165922 : export calculation result to resultsDB.csv was succeed.
+20201120_165922 : files were saved at restored_data/separate_error
+20201120_165922 : Both files at uploads/separate_error, and the uploaded zipfile uploads/separate_error.zip were deleted
+20201120_171829 : auto_tracking calculation with POST method was called
+20201120_171829 : ImmutableMultiDict([('upload_file', <FileStorage: 'autotracking_error.zip' ('application/zip')>)]) file is posted, autotracking_error.zip, DEBUG, RESTORE
+20201120_171829 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201120_171829 : extraction uploaded zip file at uploads/autotracking_error
+20201120_171830 : import results from resultsDB.csv was done
+20201120_171833 : auto_tracking is execute with uploads/autotracking_error/autotracking_error, the exec_mode DEBUG
+20201120_171833 : export calculation result to resultsDB.csv was succeed.
+20201120_171834 : files were saved at restored_data/autotracking_error
+20201120_171834 : Both files at uploads/autotracking_error, and the uploaded zipfile uploads/autotracking_error.zip were deleted
+20201125_121726 : auto_tracking calculation with POST method was called
+20201125_121726 : ImmutableMultiDict([('upload_file', <FileStorage: 'autotracking_error.zip' ('application/zip')>)]) file is posted, autotracking_error.zip, DEBUG, RESTORE
+20201125_121726 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201125_121726 : extraction uploaded zip file at uploads/autotracking_error
+20201125_121726 : import results from resultsDB.csv was done
+20201125_121730 : auto_tracking is execute with uploads/autotracking_error/autotracking_error, the exec_mode DEBUG
+20201125_121730 : export calculation result to resultsDB.csv was succeed.
+20201125_121730 : files were saved at restored_data/autotracking_error_2
+20201125_121730 : Both files at uploads/autotracking_error, and the uploaded zipfile uploads/autotracking_error.zip were deleted
