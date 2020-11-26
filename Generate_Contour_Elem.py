@@ -134,7 +134,13 @@ def analyse_Image(delay,
     
     #インデックス値宣言、輪郭X座標インデックス、Y座標インデックスを指定。
     indX, indY = 0, 1
-    
+    imgYMax, _= im.shape
+    yMax_at_largest_contour = max(contours[0], key = lambda pt2:pt2[0,1])[0,1]
+    calculation_log('ymax_at_largest_contour is {}'.format(yMax_at_largest_contour))
+    if yMax_at_largest_contour == imgYMax - 1:
+        contours.pop(0)
+        calculation_log('delete bottom noise')
+
     #以下、ノズル輪郭補正
     #ターゲットとなる輪郭を抽出（ノズル輪郭は必ず画像上端にあるため、輪郭のうち少なくとも1つはY = 0を含む）
     targetCnts = [cnt for cnt in contours if any([pt[0,indY] == 0 for pt in cnt])]
@@ -278,11 +284,21 @@ def analyse_Image(delay,
 
     #輪郭面積でソート
     contours.sort(key=lambda cnt: cv2.contourArea(cnt), reverse = True)
+    yMax_at_largest_contour = max(contours[0], key = lambda pt2:pt2[0,1])[0,1]
+    ymin_at_largest_contour = min(contours[0], key = lambda pt2:pt2[0,1])[0,1]
+    calculation_log('ymax_at_largest_contour is {} after modified'.format(yMax_at_largest_contour))
+    if yMax_at_largest_contour == imgYMax - 1:
+        contours.pop(0)
+        imgYMax = ymin_at_largest_contour
+        calculation_log('delete bottom noise')
     if DEBUG:
         calculation_log('the length of contours is {}'.format(len(contours)))
     #輪郭結果格納リストの宣言
     cntResults = []
-    imgYMax, _= im.shape
+    
+    #サテライトY順に降順ソート
+    contours.sort(key=lambda cnt: min(cnt, key = lambda pt2:pt2[0,1])[0,1])
+    
     #各輪郭に対する処理
     for cnt in contours:
         #輪郭面積
@@ -359,7 +375,8 @@ def analyse_Image(delay,
         if DEBUG:
             calculation_log('cnt with main_Y is {} is appended'.format(cntResults[-1].main_Y))
     
-    cntResults.sort(key= lambda res: res.area, reverse=True)  
+    cntResults = [cnt for cnt in cntResults if cnt.main_Y <= imgYMax]
+    cntResults.sort(key= lambda res: res.satellite_Y)  
     #面積で降順ソート
     analysis_contours = Analysis_Results_Class.Analysis_Results(delay, cntResults, DEBUG)
     if DEBUG:
@@ -417,7 +434,7 @@ def analyse_Image(delay,
         cv2.imwrite(savePath, img)
         if DEBUG:
             calculation_log('export image at {}'.format(savePath))
-    
+        
     #メモリ解放
     del img
     del im

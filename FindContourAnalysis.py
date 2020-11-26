@@ -247,7 +247,7 @@ def drawContours(delay,
     contours, hierarchy = cv2.findContours(im_bin, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
     #閾値でフィルタ
     contours = [cnt for cnt in contours if cv2.contourArea(cnt) > min_area_thresh].sort(
-        key = lambda rst: cv2.contourArea(rst), reverse=True)
+        key=lambda cnt: min(cnt, key = lambda pt2:pt2[0,1])[0,1])
     im = cv2.drawContours(im, [contours[0]], -1, (0,255,0), 2)
     if len(contours) > 1:
         im = cv2.drawContours(im, contours[1:], -1, (0,255,0), 1)
