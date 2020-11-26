@@ -234,19 +234,19 @@ class Tracking_Results:
         #計算対象リスト要素数が2以上の場合
         else:
             #ディレイ値、メインX座標、メインY座標の平均値を取得
-            aveDelay = sum(map(lambda rst: rst.delay, lst))/len(lst)
-            aveMainX = sum(map(lambda rst: rst.main_X, lst))/len(lst)
-            aveMainY = sum(map(lambda rst: rst.main_Y, lst))/len(lst)   
+            aveDelay = sum(map(lambda rst: rst.delay, lst))/(float)(len(lst))
+            aveMainX = sum(map(lambda rst: (float)(rst.main_X), lst))/(float)(len(lst))
+            aveMainY = sum(map(lambda rst: (float)(rst.main_Y), lst))/(float)(len(lst))   
 
             #ディレイ値、メインX座標、メインY座標の分散値を取得
             sumVarianceSq_delay = sum(map(lambda rst: (rst.delay - aveDelay)**2, lst))
-            sumVarianceSq_mainX = sum(map(lambda rst: (rst.main_X - aveMainX)**2, lst))
-            sumVarianceSq_mainY = sum(map(lambda rst: (rst.main_Y - aveMainY)**2, lst))
+            sumVarianceSq_mainX = sum(map(lambda rst: ((float)(rst.main_X) - aveMainX)**2, lst))
+            sumVarianceSq_mainY = sum(map(lambda rst: ((float)(rst.main_Y) - aveMainY)**2, lst))
             
             #メインX - delay、メインY - delay、メインX - メインY座標の共分散を取得
-            sumCoVariance_mainX_delay = sum(map(lambda rst: (rst.delay - aveDelay)*(rst.main_X - aveMainX), lst))
-            sumCoVariance_mainY_delay = sum(map(lambda rst: (rst.delay - aveDelay)*(rst.main_Y - aveMainY), lst))
-            sumCoVariance_mainX_mainY = sum(map(lambda rst: (rst.main_X - aveMainX)*(rst.main_Y - aveMainY), lst))
+            sumCoVariance_mainX_delay = sum(map(lambda rst: (rst.delay - aveDelay)*((float)(rst.main_X) - aveMainX), lst))
+            sumCoVariance_mainY_delay = sum(map(lambda rst: (rst.delay - aveDelay)*((float)(rst.main_Y) - aveMainY), lst))
+            sumCoVariance_mainX_mainY = sum(map(lambda rst: ((float)(rst.main_X) - aveMainX)*((float)(rst.main_Y) - aveMainY), lst))
             
             #「傾き = 共分散 / 分散」から傾きを取得 
             slopeMainX_delay = sumCoVariance_mainX_delay/sumVarianceSq_delay
@@ -317,8 +317,8 @@ class Tracking_Results:
             
             #ディレイ値、メインX座標、メインY座標の分散値を取得
             sumVarianceSq_delay = sum(map(lambda rst: (rst.delay - aveSatDelay)**2, lst))
-            sumVarianceSq_satelliteX = sum(map(lambda rst: (rst.satellite_X - aveSatelliteX)**2, lst))
-            sumVarianceSq_satelliteY = sum(map(lambda rst: (rst.satellite_Y - aveSatelliteY)**2, lst))
+            sumVarianceSq_satelliteX = sum(map(lambda rst: ((float)(rst.satellite_X) - aveSatelliteX)**2, lst))
+            sumVarianceSq_satelliteY = sum(map(lambda rst: ((float)(rst.satellite_Y) - aveSatelliteY)**2, lst))
             
             #メインX - delay、メインY - delay、メインX - メインY座標の共分散を取得
             sumCoVariance_satelliteX_delay = sum(map(lambda rst: (rst.delay - aveSatDelay)*\

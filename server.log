@@ -4301,3 +4301,21 @@
 20201126_173140 : export calculation result to resultsDB.csv was succeed.
 20201126_173141 : files were saved at restored_data/under_black_7
 20201126_173141 : Both files at uploads/under_black, and the uploaded zipfile uploads/under_black.zip were deleted
+20201126_175315 : auto_tracking calculation with POST method was called
+20201126_175315 : ImmutableMultiDict([('upload_file', <FileStorage: 'main_error_nan.zip' ('application/zip')>)]) file is posted, main_error_nan.zip, DEBUG, RESTORE
+20201126_175315 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201126_175315 : extraction uploaded zip file at uploads/main_error_nan
+20201126_175316 : import results from resultsDB.csv was done
+20201126_175317 : auto_tracking is execute with uploads/main_error_nan/main_error_nan, the exec_mode DEBUG
+20201126_175317 : export calculation result to resultsDB.csv was succeed.
+20201126_175317 : files were saved at restored_data/main_error_nan
+20201126_175317 : Both files at uploads/main_error_nan, and the uploaded zipfile uploads/main_error_nan.zip were deleted
+20201126_175433 : auto_tracking calculation with POST method was called
+20201126_175433 : ImmutableMultiDict([('upload_file', <FileStorage: 'background_failure.zip' ('application/zip')>)]) file is posted, background_failure.zip, DEBUG, RESTORE
+20201126_175433 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201126_175433 : extraction uploaded zip file at uploads/background_failure
+20201126_175433 : import results from resultsDB.csv was done
+20201126_175439 : auto_tracking is execute with uploads/background_failure/background_failure, the exec_mode DEBUG
+20201126_175439 : export calculation result to resultsDB.csv was succeed.
+20201126_175439 : files were saved at restored_data/background_failure
+20201126_175439 : Both files at uploads/background_failure, and the uploaded zipfile uploads/background_failure.zip were deleted
