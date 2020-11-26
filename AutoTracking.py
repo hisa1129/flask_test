@@ -14,7 +14,7 @@ import cv2
 from CalculationLog import calculation_log
 
 #コードバージョン
-AUTO_TRACKING_VER = '0.0.7'
+AUTO_TRACKING_VER = '0.0.8'
 
 def get_code_ver():
     '''

@@ -311,9 +311,9 @@ class Tracking_Results:
         #計算対象リスト要素数が2以上の場合
         else:           
             #ディレイ値、メインX座標、メインY座標の平均値を取得
-            aveSatDelay = sum(map(lambda rst: rst.delay, lst))/len(lst)
-            aveSatelliteX = sum(map(lambda rst: rst.satellite_X, lst))/len(lst)
-            aveSatelliteY = sum(map(lambda rst: rst.satellite_Y, lst))/len(lst)   
+            aveSatDelay = sum(map(lambda rst: rst.delay, lst))/(float)(len(lst))
+            aveSatelliteX = sum(map(lambda rst: (float)(rst.satellite_X), lst))/(float)(len(lst))
+            aveSatelliteY = sum(map(lambda rst: (float)(rst.satellite_Y), lst))/(float)(len(lst))   
             
             #ディレイ値、メインX座標、メインY座標の分散値を取得
             sumVarianceSq_delay = sum(map(lambda rst: (rst.delay - aveSatDelay)**2, lst))
@@ -321,9 +321,12 @@ class Tracking_Results:
             sumVarianceSq_satelliteY = sum(map(lambda rst: (rst.satellite_Y - aveSatelliteY)**2, lst))
             
             #メインX - delay、メインY - delay、メインX - メインY座標の共分散を取得
-            sumCoVariance_satelliteX_delay = sum(map(lambda rst: (rst.delay - aveSatDelay)*(rst.satellite_X - aveSatelliteX), lst))
-            sumCoVariance_satelliteY_delay = sum(map(lambda rst: (rst.delay - aveSatDelay)*(rst.satellite_Y - aveSatelliteY), lst))
-            sumCoVariance_satelliteX_satelliteY = sum(map(lambda rst: (rst.satellite_Y - aveSatelliteY)*(rst.satellite_X - aveSatelliteX), lst))
+            sumCoVariance_satelliteX_delay = sum(map(lambda rst: (rst.delay - aveSatDelay)*\
+                                                     ((float)(rst.satellite_X) - aveSatelliteX), lst))
+            sumCoVariance_satelliteY_delay = sum(map(lambda rst: (rst.delay - aveSatDelay)*\
+                                                     ((float)(rst.satellite_Y) - aveSatelliteY), lst))
+            sumCoVariance_satelliteX_satelliteY = sum(map(lambda rst: ((float)(rst.satellite_Y) - aveSatelliteY)\
+                                                          *((float)(rst.satellite_X) - aveSatelliteX), lst))
             
             #「傾き = 共分散 / 分散」から傾きを取得 
             slopeSatelliteX_delay = sumCoVariance_satelliteX_delay/sumVarianceSq_delay
@@ -437,7 +440,7 @@ class Tracking_Results:
             fit_results = self.get_Main_vector_slope_intercept(pixHigh, pixLow)
             fit_result_slope, fit_resut_intercept = fit_results[4], fit_results[5]
             #特性予測値からの距離を取得
-            evalList = [rst.main_X - fit_result_slope * rst.main_Y - fit_resut_intercept for rst in lst]
+            evalList = [(float)(rst.main_X) - fit_result_slope * (float)(rst.main_Y) - fit_resut_intercept for rst in lst]
             #最大、最小ズレを取得
             retValue = [min(evalList), max(evalList)]
         return retValue
@@ -470,7 +473,7 @@ class Tracking_Results:
             fit_results = self.get_Satellite_vector_slope_intercept(pixHigh, pixLow)
             fit_result_slope, fit_resut_intercept = fit_results[4], fit_results[5]
             #特性予測値からの距離を取得
-            evalList = [rst.satellite_X - fit_result_slope * rst.satellite_Y - fit_resut_intercept for rst in lst]
+            evalList = [(float)(rst.satellite_X) - fit_result_slope * (float)(rst.satellite_Y) - fit_resut_intercept for rst in lst]
             #最大、最小ズレを取得
             retValue = [min(evalList), max(evalList)]
         return retValue   
