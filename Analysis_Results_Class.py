@@ -16,18 +16,20 @@ class Analysis_Results:
         self.delay = delay
         self.__DEBUG = DEBUG
         if DEBUG:
-            calculation_log('datas were setted.')            
-        self.__set_convex_hull_area_of_nozzle()
-        self.__set_area_of_nozzle()
-        self.__set_arclength_of_nozzle()
-        self.__set_convex_hull_arclength_of_nozzle()
-        self.__set_solidity_of_nozzle()
-        self.__set_freq_Y_of_nozzle()
-        self.__set_num_contours()
-        self.__set_max_reg_length_in_delay()
-        self.__set_max_mainXY()
-        self.__set_satellite_suspicious_XY()
-        self.__set_volume_without_nozzle()
+            calculation_log('datas were setted.')
+        if len(self.contours) != 0:
+            self.__set_convex_hull_area_of_nozzle()
+            self.__set_area_of_nozzle()
+            self.__set_arclength_of_nozzle()
+            self.__set_convex_hull_arclength_of_nozzle()
+            self.__set_solidity_of_nozzle()
+            self.__set_freq_Y_of_nozzle()
+            self.__set_num_contours()
+            self.__set_max_reg_length_in_delay()
+            self.__set_max_mainXY()
+            self.__set_satellite_suspicious_XY()
+            self.__set_volume_without_nozzle()
+            
         return None
            
     def __set_convex_hull_area_of_nozzle(self):

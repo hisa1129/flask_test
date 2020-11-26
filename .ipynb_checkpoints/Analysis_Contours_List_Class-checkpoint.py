@@ -129,6 +129,7 @@ class Analysis_Results_List:
             calculation_log('constructor was called.')
         if DEBUG:
             calculation_log('set params to class_field parameters.')
+        analysis_results_list = [rsts for rsts in analysis_results_list if len(rsts.contours) != 0]
         #ディレイ時間にて昇順ソートしanalysisResultsに格納
         analysis_results_list.sort(key=lambda rst: rst.delay)
         self.analysisResults = analysis_results_list

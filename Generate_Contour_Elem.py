@@ -16,6 +16,8 @@ IDX_CNT = 1
 IDX_X = 0
 IDX_Y = 1
 
+num_evaluate_contour_max = 100
+
 gamma = 0.8
 # ガンマ値を使って Look up tableを作成
 lookUpTable = np.empty((1,256), np.uint8)
@@ -284,6 +286,8 @@ def analyse_Image(delay,
 
     #輪郭面積でソート
     contours.sort(key=lambda cnt: cv2.contourArea(cnt), reverse = True)
+    if len(contours) > num_evaluate_contour_max:
+        contours = contours[:num_evaluate_contour_max]
     yMax_at_largest_contour = max(contours[0], key = lambda pt2:pt2[0,1])[0,1]
     ymin_at_largest_contour = min(contours[0], key = lambda pt2:pt2[0,1])[0,1]
     calculation_log('ymax_at_largest_contour is {} after modified'.format(yMax_at_largest_contour))
