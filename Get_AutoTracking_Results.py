@@ -6,13 +6,13 @@ from CalculationLog import calculation_log
 import datetime
 import math
 
-INPUT_PARAMS_VER = '0.1.1' #入力パラメータバージョン、2020.10.21
+INPUT_PARAMS_VER = '0.1.2' #入力パラメータバージョン、2020.10.21
 
 auto_binarize = True #大津の二値化による自動閾値判定
 binarize_thresh = 128 #二値化閾値（auto_binarize = Falseの時）
 min_area_thresh = 1 #輪郭面積最小値（最小面積以下の輪郭はノイズと判定）
 #輪郭解析に関する入力パラメータ
-areaThresh_faced = 500 #吐出開始検出時凸包面積差分閾値
+areaThresh_faced = 1000 #吐出開始検出時凸包面積差分閾値
 areaThresh_separated = 2000 #サテライト液尾分離検出時凸包面積差分閾値
 arclengthThresh = 25 #サテライト液尾分離検出時輪郭長差分閾値
 solidity_ratio_thresh = 1.5 #サテライト液尾分離検出solidity比閾値
@@ -249,7 +249,7 @@ def get_autoTracking_Results(directory_path, camera_resolution, API_VER, exec_mo
                 if flag_is_debugmode:
                     calculation_log('satellite_ave_vel_stdized is {}'.format(satellite_average_velocity_stdized))
                 #メイン-サテライト液滴角度差取得
-                diff_angle = abs(main_angle - satellite_angle)
+                diff_angle = abs(inf_to_value(main_angle) - inf_to_value(satellite_angle))
                 if flag_is_debugmode:
                     calculation_log('diff_angle is {}'.format(diff_angle))
                 #逸脱液滴検出
@@ -301,14 +301,18 @@ def get_autoTracking_Results(directory_path, camera_resolution, API_VER, exec_mo
                     "main_average_velocity[pix/us]":nan_to_minus1(main_average_velocity),
                     "main_average_velocity[m/s]":nan_to_minus1(main_average_velocity_stdized),
                     "main_velocity_stddiv[pix/us]":nan_to_minus1(main_velocity_stdiv),
-                    "main_angle[degrees]":nan_to_minus1(main_angle),
+                    "main_angle[degrees]":nan_to_minus1(inf_to_value(main_angle)),
                     "satellite_average_velocity[pix/us]":nan_to_minus1(satellite_average_velocity),
                     "satellite_average_velocity[m/s]":nan_to_minus1(satellite_average_velocity_stdized),
                     "satellite_velocity_stddiv[pix/us]":nan_to_minus1(satellite_velocity_stdiv),
-                    "satellite_angle[degrees]":nan_to_minus1(satellite_angle),
+                    "satellite_angle[degrees]":nan_to_minus1(inf_to_value(satellite_angle)),
                     "main-satellite_angle_diff[degrees]":nan_to_minus1(diff_angle),
-                    "main_linearity_error[pix]":nan_to_minus1(trackingResults.Get_MainXY_Fit_Error_Min_Max_Range()[1] - trackingResults.Get_MainXY_Fit_Error_Min_Max_Range()[0]),
-                    "satellite_linearity_error[pix]":nan_to_minus1(trackingResults.Get_SatelliteXY_Fit_Error_Min_Max_Range()[1] - trackingResults.Get_SatelliteXY_Fit_Error_Min_Max_Range()[0]),
+                    "main_linearity_error[pix]":nan_to_minus1(
+                        inf_to_value(trackingResults.Get_MainXY_Fit_Error_Min_Max_Range()[1]) - \
+                        inf_to_value(trackingResults.Get_MainXY_Fit_Error_Min_Max_Range()[0])),
+                    "satellite_linearity_error[pix]":nan_to_minus1(
+                        inf_to_value(trackingResults.Get_SatelliteXY_Fit_Error_Min_Max_Range()[1]) - \
+                        inf_to_value(trackingResults.Get_SatelliteXY_Fit_Error_Min_Max_Range()[0])),
                     "AUTO_TRACKING_CODE_VER":nan_to_minus1(AutoTracking.get_code_ver()),
                     "anormaly_ejections_at_first_image":(num_first_contours > 1.5),
                     "main_velocity_is_too_fast":(main_average_velocity_stdized > thresh_values_dic['velocity_upperthresh']),
@@ -316,7 +320,8 @@ def get_autoTracking_Results(directory_path, camera_resolution, API_VER, exec_mo
                     "nozzle_needs_to_be_clean":(solidity > thresh_values_dic['Solidity_upperthresh']),
                     "suspicious_visco-elasticity":(separated_delay > thresh_values_dic["sep_thresh"] and \
                                                    main_average_velocity_stdized > thresh_values_dic["velocity_septhresh"]),
-                    "angle-diff_is_too_large":(diff_angle > thresh_values_dic["diff_angle_thresh"]),
+                    "angle-diff_is_too_large":(diff_angle > thresh_values_dic["diff_angle_thresh"]) \
+                    if not math.isnan(diff_angle) else True,
                     "exotic-droplet_exists":(flag_exotic_droplet),
                     "THRESH_VALUES_VER":THRESH_VALUES_VER,
                     "RESERVED0":nan_to_minus1(max_exotic_area),
@@ -353,6 +358,16 @@ def nan_to_minus1(check_object):
         ret_value = -1 if math.isnan(check_object) else check_object
     else:
         ret_value = check_object
+    return ret_value
+
+def inf_to_value(check_float):
+    ret_value = None
+    if check_float == -float('inf'):
+        ret_value = -1000
+    elif check_float == float('inf'):
+        ret_value = 1000
+    else:
+        ret_value = check_float
     return ret_value
 
 def add_message(result):

@@ -363,7 +363,9 @@ class Tracking_Results:
         lst = [l for l in self.results if not (math.isnan(l.main_X) or l.main_Y < pixHigh or l.main_Y > pixLow)]       
         #計算対象リスト要素数が0 or 1では計算不可能なので、nanを返す
         if len(lst) < 2:
-            retValue = math.nan
+            #nanを返すと最終的に-1になるので、-90 < Θ < 90の範囲外の値を入れる。
+            value_angle_is_not_detected = float('inf')
+            retValue = value_angle_is_not_detected
         #計算対象リスト要素数が2以上の場合
         else:
             #メイン液滴傾き取得
@@ -395,7 +397,9 @@ class Tracking_Results:
         lst = [l for l in self.results if not (math.isnan(l.satellite_X) or l.satellite_Y < pixHigh or l.satellite_Y > pixLow)]
         #計算対象リスト要素数が0 or 1では計算不可能なので、nanを返す
         if len(lst) < 2:
-            retValue = math.nan
+            #nanを返すと最終的に-1になるので、-90 < Θ < 90の範囲外の値を入れる。
+            value_angle_is_not_detected = float('inf')
+            retValue = value_angle_is_not_detected
         #計算対象リスト要素数が2以上の場合
         else:
             #サテライト液滴傾き取得
@@ -426,7 +430,8 @@ class Tracking_Results:
         lst = [l for l in self.results if not (math.isnan(l.main_X) or l.main_Y < pixHigh or l.main_Y > pixLow)]       
         #計算対象リスト要素数が0 or 1では計算不可能なので、nanを返す
         if len(lst) < 2:
-            retValue = [math.nan, math.nan]
+            #nanを返すと最終的に-1になるので、-90 < Θ < 90の範囲外の値を入れる。
+            retValue = [-float('inf'), float('inf')]
         else:
             #メイン液滴液滴特性取得
             fit_results = self.get_Main_vector_slope_intercept(pixHigh, pixLow)
@@ -459,7 +464,7 @@ class Tracking_Results:
         lst = [l for l in self.results if not (math.isnan(l.satellite_X) or l.satellite_Y < pixHigh or l.satellite_Y > pixLow)]       
         #計算対象リスト要素数が0 or 1では計算不可能なので、nanを返す
         if len(lst) < 2:
-            retValue = [math.nan, math.nan]
+            retValue = [-float('inf'), float('inf')]
         else:
             #サテライト液滴液滴特性取得
             fit_results = self.get_Satellite_vector_slope_intercept(pixHigh, pixLow)
