@@ -308,11 +308,9 @@ def get_autoTracking_Results(directory_path, camera_resolution, API_VER, exec_mo
                     "satellite_angle[degrees]":nan_to_minus1(inf_to_value(satellite_angle)),
                     "main-satellite_angle_diff[degrees]":nan_to_minus1(diff_angle),
                     "main_linearity_error[pix]":nan_to_minus1(
-                        inf_to_value(trackingResults.Get_MainXY_Fit_Error_Min_Max_Range()[1]) - \
-                        inf_to_value(trackingResults.Get_MainXY_Fit_Error_Min_Max_Range()[0])),
+                        inf_to_value(trackingResults.Get_MainXY_Fit_Error_Min_Max_Range()[1]) - inf_to_value(trackingResults.Get_MainXY_Fit_Error_Min_Max_Range()[0])),
                     "satellite_linearity_error[pix]":nan_to_minus1(
-                        inf_to_value(trackingResults.Get_SatelliteXY_Fit_Error_Min_Max_Range()[1]) - \
-                        inf_to_value(trackingResults.Get_SatelliteXY_Fit_Error_Min_Max_Range()[0])),
+                        inf_to_value(trackingResults.Get_SatelliteXY_Fit_Error_Min_Max_Range()[1]) - inf_to_value(trackingResults.Get_SatelliteXY_Fit_Error_Min_Max_Range()[0])),
                     "AUTO_TRACKING_CODE_VER":nan_to_minus1(AutoTracking.get_code_ver()),
                     "anormaly_ejections_at_first_image":(num_first_contours > 1.5),
                     "main_velocity_is_too_fast":(main_average_velocity_stdized > thresh_values_dic['velocity_upperthresh']),
