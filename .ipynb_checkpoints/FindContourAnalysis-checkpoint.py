@@ -15,7 +15,7 @@ from Generate_Contour_Elem import *
 import gc
 
 #コードバージョン記載
-CONTOUR_CODE_VER = '0.0.6'
+CONTOUR_CODE_VER = '0.0.7'
 
 #analysisResults用インデックス、配列2番目にて指定。
 IDX_DELAY = 0
@@ -115,6 +115,7 @@ def analyse_Images_List(directoryPath,
         calculation_log('min_area_thresh is {}'.format(min_area_thresh))
     #解析結果集計用リスト
     analysisResultsList = []
+    flag_image_modified_deeply = False
     #ファイル名末尾よりディレイ時間取得
     for filePath in files:
         #ファイル名前よりディレイ時間の取得
@@ -150,7 +151,9 @@ def analyse_Images_List(directoryPath,
             mkdir,
             flag_export_fillImg = False,
             DEBUG = DEBUG)
-        analysisResultsList.append(appendResults)
+        analysisResultsList.append(appendResults[0])
+        if appendResults[1]:
+            flag_image_modified_deeply = True
         if DEBUG:
             calculation_log('analysis image results were appended for the delay {} with file {}'.format(delay, filePath))
 
@@ -210,7 +213,7 @@ def analyse_Images_List(directoryPath,
     if DEBUG:
         calculation_log('cnt selection was completed.')
     #関数終了
-    return retAnalysisResults
+    return retAnalysisResults, flag_image_modified_deeply
 
 def drawContours(delay,
                  path,

@@ -5,6 +5,7 @@ import FindContourAnalysis
 from CalculationLog import calculation_log
 import datetime
 import math
+import numpy as np
 
 INPUT_PARAMS_VER = '0.1.2' #入力パラメータバージョン、2020.10.21
 
@@ -12,7 +13,7 @@ auto_binarize = True #大津の二値化による自動閾値判定
 binarize_thresh = 128 #二値化閾値（auto_binarize = Falseの時）
 min_area_thresh = 1 #輪郭面積最小値（最小面積以下の輪郭はノイズと判定）
 #輪郭解析に関する入力パラメータ
-areaThresh_faced = 1000 #吐出開始検出時凸包面積差分閾値
+areaThresh_faced = 1500 #吐出開始検出時凸包面積差分閾値
 areaThresh_separated = 2000 #サテライト液尾分離検出時凸包面積差分閾値
 arclengthThresh = 25 #サテライト液尾分離検出時輪郭長差分閾値
 solidity_ratio_thresh = 1.5 #サテライト液尾分離検出solidity比閾値
@@ -122,7 +123,7 @@ def get_autoTracking_Results(directory_path, camera_resolution, API_VER, exec_mo
 
     #輪郭抽出計算の実施。
     try:
-        contour_rsts = FindContourAnalysis.analyse_Images_List(
+        contour_rsts, flag_image_modified_deeply = FindContourAnalysis.analyse_Images_List(
             directoryPath = directory_path,
             min_area_thresh = input_params_dic["min_area_thresh"],
             binarize_thresh = input_params_dic["binarize_thresh"],
@@ -190,6 +191,11 @@ def get_autoTracking_Results(directory_path, camera_resolution, API_VER, exec_mo
                 "filename":directory_path.split('/')[-1],
                 'condition' : 'auto_tracking was failure.'
             }
+        
+        ##以下、吐出開始、分離検知ディレイ修正コマンド
+        ##テスト版につきしばらく実行しない。
+        #contour_rsts.modify_faced_delay_and_freq_Y()
+        #contour_rsts.modify_separated_delay(trackingResults)
         
         #疑似追尾成功→特徴量計算
         if flag_tracking_was_done:
@@ -280,6 +286,11 @@ def get_autoTracking_Results(directory_path, camera_resolution, API_VER, exec_mo
                     if flag_is_debugmode:
                         calculation_log('dic_elem_{} was generated as {}'.format(i, vel_add_dics[i]))
                 
+                leg_ref = (nan_to_minus1(contour_rsts.delay_separated) - nan_to_minus1(contour_rsts.delay_faced)) * nan_to_minus1(main_average_velocity)
+                leg_eval_ratio = leg_ref / nan_to_minus1(max_regament_length)
+                if leg_eval_ratio < 0:
+                    leg_eval_ratio = -1
+                
                 #dictionaryへの出力
                 result = {
                     "analysis_date_time":nan_to_minus1(datetime.datetime.now().strftime('%Y-%m-%d_%H:%M:%S')),
@@ -312,23 +323,21 @@ def get_autoTracking_Results(directory_path, camera_resolution, API_VER, exec_mo
                     "satellite_linearity_error[pix]":nan_to_minus1(
                         inf_to_value(trackingResults.Get_SatelliteXY_Fit_Error_Min_Max_Range()[1]) - inf_to_value(trackingResults.Get_SatelliteXY_Fit_Error_Min_Max_Range()[0])),
                     "AUTO_TRACKING_CODE_VER":nan_to_minus1(AutoTracking.get_code_ver()),
-                    "anormaly_ejections_at_first_image":(num_first_contours > 1.5),
-                    "main_velocity_is_too_fast":(main_average_velocity_stdized > thresh_values_dic['velocity_upperthresh']),
-                    "main_velocity_is_too_slow":(main_average_velocity_stdized < thresh_values_dic['velocity_lowerthresh']),
-                    "nozzle_needs_to_be_clean":(solidity > thresh_values_dic['Solidity_upperthresh']),
-                    "suspicious_visco-elasticity":(separated_delay > thresh_values_dic["sep_thresh"] and \
-                                                   main_average_velocity_stdized > thresh_values_dic["velocity_septhresh"]),
-                    "angle-diff_is_too_large":(diff_angle > thresh_values_dic["diff_angle_thresh"]) \
-                    if not math.isnan(diff_angle) else True,
-                    "exotic-droplet_exists":(flag_exotic_droplet),
+                    "anormaly_ejections_at_first_image":nan_to_minus1(num_first_contours > 1.5),
+                    "main_velocity_is_too_fast":nan_to_minus1(main_average_velocity_stdized > thresh_values_dic['velocity_upperthresh']),
+                    "main_velocity_is_too_slow":nan_to_minus1(main_average_velocity_stdized < thresh_values_dic['velocity_lowerthresh']),
+                    "nozzle_needs_to_be_clean":nan_to_minus1(solidity > thresh_values_dic['Solidity_upperthresh']),
+                    "suspicious_visco-elasticity":nan_to_minus1((separated_delay > thresh_values_dic["sep_thresh"]) and (main_average_velocity_stdized > thresh_values_dic["velocity_septhresh"])),
+                    "angle-diff_is_too_large":nan_to_minus1((diff_angle > thresh_values_dic["diff_angle_thresh"]) if not math.isnan(diff_angle) else True),
+                    "exotic-droplet_exists":nan_to_minus1(flag_exotic_droplet),
                     "THRESH_VALUES_VER":THRESH_VALUES_VER,
-                    "RESERVED0":nan_to_minus1(max_exotic_area),
-                    "RESERVED1":"aaa",
-                    "RESERVED2":"aaa",
+                    "RESERVED0":"max_exotic_contour_area is {}".format(nan_to_minus1(max_exotic_area)),
+                    "RESERVED1":("image_modified_deeply is {}".format(nan_to_minus1(flag_image_modified_deeply))).lower(),
+                    "RESERVED2":str(nan_to_minus1(inf_to_value(leg_eval_ratio))),
                     "RESERVED3":"aaa",
                     "RESERVED4":"aaa",
                 }
-                result = add_message(result)
+                #result = add_message(result)
                 
                 if flag_is_debugmode:
                     calculation_log('json elem was exported.')
@@ -354,6 +363,8 @@ def nan_to_minus1(check_object):
         ret_value = "None"
     elif (type(check_object) is float) or (type(check_object) is int):
         ret_value = -1 if math.isnan(check_object) else check_object
+    elif (type(check_object) is np.bool_):
+        ret_value = (bool)(check_object)
     else:
         ret_value = check_object
     return ret_value

@@ -104,6 +104,7 @@ def analyse_Image(delay,
     '''
     if DEBUG:
         calculation_log('import file is {} with the fill img flag is {}'.format(path, flag_export_fillImg))
+    flag_image_modify_deeply = False
     #BGR画像の読み込み
     img = cv2.imread(path)
     if DEBUG:
@@ -261,6 +262,7 @@ def analyse_Image(delay,
         Y_ = (int)(YAreas / Areas)
         #長方形を黒で塗りつぶす。
         img = cv2.rectangle(img,(leftX, 0),(rightX, Y_),(ret, ret, ret),-1)
+        flag_image_modify_deeply = True
         if DEBUG:
             calculation_log('img is filled with rectangle Xleft = {}, Xright = {}, Y = {}'.format(leftX, rightX, Y_))
 
@@ -445,7 +447,7 @@ def analyse_Image(delay,
     del contours
     gc.collect()
     #輪郭解析結果リストを返す
-    return analysis_contours    
+    return analysis_contours, flag_image_modify_deeply
 
 def gamma_function(img):
     calculation_log('gamma_function is calling.')

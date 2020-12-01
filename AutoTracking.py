@@ -93,9 +93,13 @@ def auto_Tracking(dirPath,#フォルダパス, str
                 ptEval_Y = tracking_Results.results[-2].main_Y + delayRatio * (tracking_Results.results[-1].main_Y - tracking_Results.results[-2].main_Y)
                 #予想Y座標が画像Y座標最大値より大きい場合は追尾打ち切り
                 if ptEval_Y >= rstsMain[i].contours[0].imgYMax:
+                    if DEBUG:
+                        calculation_log('main_tracking is stopped caused by the imgY_limitation at delay {}'.format(rstsMain[i].delay))
                     break
                 #評価輪郭数0の場合は打ち切り
                 if len(rstsMain[i].contours) == 0:
+                    if DEBUG:
+                        calculation_log('main_tracking is stopped caused by zero evaluatable contours at delay {}'.format(rstsMain[i].delay))
                     break
                 #評価点が2点以上の場合の処理
                 if len(rstsMain[i].contours) > 1:
@@ -103,9 +107,13 @@ def auto_Tracking(dirPath,#フォルダパス, str
                     rstsMain[i].contours.sort(key = lambda rst : (rst.main_X - ptEval_X) ** 2 + (rst.main_Y - ptEval_Y)**2)
                 #最近傍座標が画像際下端より下に来た場合は打ち切り
                 if rstsMain[i].contours[0].main_Y > rstsMain[i].contours[0].imgYMax:
+                    if DEBUG:
+                        calculation_log('main_tracking is stopped caused by most_plausible main_Y over imgYMax at delay {}'.format(rstsMain[i].delay))
                     break
                 #最近傍座標が一つ前の結果より上に来た場合は打ち切り
                 if rstsMain[i].contours[0].main_Y < tracking_Results.results[-1].main_Y:
+                    if DEBUG:
+                        calculation_log('main_tracking is stopped caused by inverse_direction_main_Y at delay {}'.format(rstsMain[i].delay))
                     break
                 #検出結果の格納
                 tracking_Results.Set_MainXY(rstsMain[i].delay, rstsMain[i].contours[0].main_X, rstsMain[i].contours[0].main_Y)
@@ -180,6 +188,8 @@ def auto_Tracking(dirPath,#フォルダパス, str
 
     if DEBUG:
         calculation_log('satellite_tracking was completed.')
+        for elem in tracking_Results.results:
+            calculation_log('delay : {}us, main_X : {}, main_Y : {}, sat_X : {}, sat_Y : {}'.format(elem.delay, elem.main_X, elem.main_Y, elem.satellite_X, elem.satellite_Y))
     
     #格納結果をディレイ時間に対して昇順でソート
     tracking_Results.results.sort(key = lambda rst: rst.delay)
@@ -190,7 +200,11 @@ def auto_Tracking(dirPath,#フォルダパス, str
     #追尾結果の描画指定の場合
     if draw_Tracking_Results:
         #追尾結果描画関数の呼び出し
-        drawTrackingResult(dirPath=dirPath, trackingRsts=tracking_Results, draw_Fitting_Line = draw_Fitting_Line, DEBUG = DEBUG)        
+        try:
+            drawTrackingResult(dirPath=dirPath, trackingRsts=tracking_Results, draw_Fitting_Line = draw_Fitting_Line, DEBUG = DEBUG)      
+        except:
+            if DEBUG:
+                calculation_log('auto_tracking_export_failure.')
     #指定したディレクトリパスをprint（!!!後ほどコメントアウト!!!）
     print(dirPath)
     #追尾結果を返す
@@ -255,6 +269,7 @@ def drawTrackingResult(dirPath,
         
         if not flag_delay_is_get:
             delay = -1.0
+            print("delay_not_estimated at {}".format(f))
        
         if (float)(delay) in [(float)(de.delay) for de in trackingRsts.results if not math.isnan(de.main_X)]:
             x = [rst for rst in trackingRsts.results if (float)(rst.delay) == (float)(delay)][0].main_X

@@ -18,6 +18,7 @@ class Analysis_Results:
         if DEBUG:
             calculation_log('datas were setted.')
         if len(self.contours) != 0:
+            self.__set_main_Y_of_nozzle()
             self.__set_convex_hull_area_of_nozzle()
             self.__set_area_of_nozzle()
             self.__set_arclength_of_nozzle()
@@ -30,8 +31,14 @@ class Analysis_Results:
             self.__set_satellite_suspicious_XY()
             self.__set_volume_without_nozzle()
             
+        return None          
+        
+    def __set_main_Y_of_nozzle(self):
+        if self.__DEBUG:
+            calculation_log('set nozzle_main_Y')
+        self.main_Y_of_nozzle = self.contours[0].main_Y
         return None
-           
+    
     def __set_convex_hull_area_of_nozzle(self):
         '''
         ノズルのConvex_Hull_Area値を取得する関数

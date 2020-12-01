@@ -526,3 +526,51 @@ class Analysis_Results_List:
         ret_max_areas = max(cnt_exotic_areas) if len(cnt_exotic_areas) != 0 else 0
         
         return flag_exotic_droplet_exists, ret_max_areas
+    
+    def modify_faced_delay_and_freq_Y(self):
+        if not self.flag_faced_is_detected:
+            return
+        print('modify_faced_delay_was_called, faced_delay : {}, freq_Y : {}'.format(self.delay_faced, self.freq_Y))
+        index_faced_delay = len([contours for contours in self.analysisResults if contours.delay < self.delay_faced])
+        if index_faced_delay == 0:
+            return None
+        if len(self.analysisResults) - 1 < index_faced_delay:
+            return None
+        delta_S1 = self.analysisResults[index_faced_delay].convex_hull_area_of_nozzle - self.analysisResults[index_faced_delay - 1].convex_hull_area_of_nozzle
+        delta_S2 = self.analysisResults[index_faced_delay + 1].convex_hull_area_of_nozzle - self.analysisResults[index_faced_delay].convex_hull_area_of_nozzle
+        delay_1 = self.analysisResults[index_faced_delay].delay
+        delay_2 = self.analysisResults[index_faced_delay + 1].delay
+        delta_delay = delay_2 - delay_1
+        delay_faced_modified = self.analysisResults[index_faced_delay].delay - delta_delay * delta_S1 / delta_S2
+        print("estimated_delay_faced :{}, delay_limit : {}".format(
+            delay_faced_modified, self.analysisResults[index_faced_delay - 1].delay))
+        if delay_faced_modified > self.analysisResults[index_faced_delay - 1].delay:
+            self.delay_faced = delay_faced_modified
+        freq_Y_modified = (self.analysisResults[index_faced_delay].main_Y_of_nozzle * (delay_2 - delay_faced_modified) - \
+                       self.analysisResults[index_faced_delay + 1].main_Y_of_nozzle * (delay_1 - delay_faced_modified)) / delta_delay
+        print('estimated_freq_Y : {}'.format(freq_Y_modified))
+        if abs(freq_Y_modified - self.freq_Y) < self.analysisResults[index_faced_delay].contours[0].imgYMax * 0.05:
+            self.freq_Y = freq_Y_modified
+        print('modify_faced_delay_was_done, faced_delay : {}, freq_Y : {}'.format(self.delay_faced, self.freq_Y))
+        return None
+    
+    def modify_separated_delay(self, tracking_Results):
+        if not self.flag_separated_is_detected:
+            return None
+        print('modify_separated_delay_was_called, delay_separated : {}'.format(self.delay_separated))        
+        index_separated = len([contours for contours in self.analysisResults if contours.delay < self.delay_separated])
+        eval_tracking_rsts = [tr for tr in tracking_Results.results if tr.delay >= self.delay_separated]
+        if len(self.analysisResults) - 1 < index_separated:
+            return None
+        delay_1 = self.analysisResults[index_separated].delay
+        delay_2 = self.analysisResults[index_separated + 1].delay
+        delta_delay = delay_2 - delay_1
+        delta_Y2 = eval_tracking_rsts[1].satellite_Y - self.freq_Y
+        delta_Y1 = eval_tracking_rsts[0].satellite_Y - self.freq_Y
+        delay_separated_modified = (delay_1 * delta_Y2 - delay_2 * delta_Y1)/(eval_tracking_rsts[1].satellite_Y - eval_tracking_rsts[0].satellite_Y )
+        print("estimated_delay_separated :{}, delay_limit : {}".format(
+            delay_separated_modified, self.analysisResults[index_separated - 1].delay))
+        if delay_separated_modified > self.analysisResults[index_separated - 1].delay:
+            self.delay_separated = delay_separated_modified
+        print('modify_separated_delay_was_done, delay_separated : {}'.format(self.delay_separated))        
+        return None

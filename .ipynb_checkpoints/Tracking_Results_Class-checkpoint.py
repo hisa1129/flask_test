@@ -321,12 +321,9 @@ class Tracking_Results:
             sumVarianceSq_satelliteY = sum(map(lambda rst: ((float)(rst.satellite_Y) - aveSatelliteY)**2, lst))
             
             #メインX - delay、メインY - delay、メインX - メインY座標の共分散を取得
-            sumCoVariance_satelliteX_delay = sum(map(lambda rst: (rst.delay - aveSatDelay)*\
-                                                     ((float)(rst.satellite_X) - aveSatelliteX), lst))
-            sumCoVariance_satelliteY_delay = sum(map(lambda rst: (rst.delay - aveSatDelay)*\
-                                                     ((float)(rst.satellite_Y) - aveSatelliteY), lst))
-            sumCoVariance_satelliteX_satelliteY = sum(map(lambda rst: ((float)(rst.satellite_Y) - aveSatelliteY)\
-                                                          *((float)(rst.satellite_X) - aveSatelliteX), lst))
+            sumCoVariance_satelliteX_delay = sum(map(lambda rst: (rst.delay - aveSatDelay)*((float)(rst.satellite_X) - aveSatelliteX), lst))
+            sumCoVariance_satelliteY_delay = sum(map(lambda rst: (rst.delay - aveSatDelay)*((float)(rst.satellite_Y) - aveSatelliteY), lst))
+            sumCoVariance_satelliteX_satelliteY = sum(map(lambda rst: ((float)(rst.satellite_Y) - aveSatelliteY)*((float)(rst.satellite_X) - aveSatelliteX), lst))
             
             #「傾き = 共分散 / 分散」から傾きを取得 
             slopeSatelliteX_delay = sumCoVariance_satelliteX_delay/sumVarianceSq_delay
