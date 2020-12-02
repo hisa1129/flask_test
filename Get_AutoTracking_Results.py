@@ -194,8 +194,6 @@ def get_autoTracking_Results(directory_path, camera_resolution, API_VER, exec_mo
         
         ##以下、吐出開始、分離検知ディレイ修正コマンド
         ##テスト版につきしばらく実行しない。
-        #contour_rsts.modify_faced_delay_and_freq_Y()
-        #contour_rsts.modify_separated_delay(trackingResults)
         
         #疑似追尾成功→特徴量計算
         if flag_tracking_was_done:
@@ -286,11 +284,21 @@ def get_autoTracking_Results(directory_path, camera_resolution, API_VER, exec_mo
                     if flag_is_debugmode:
                         calculation_log('dic_elem_{} was generated as {}'.format(i, vel_add_dics[i]))
                 
+                #以下、テストコード
                 leg_ref = (nan_to_minus1(contour_rsts.delay_separated) - nan_to_minus1(contour_rsts.delay_faced)) * nan_to_minus1(main_average_velocity)
                 leg_eval_ratio = leg_ref / nan_to_minus1(max_regament_length)
                 if leg_eval_ratio < 0:
                     leg_eval_ratio = -1
-                
+                contour_rsts.modify_faced_delay_and_freq_Y()
+                contour_rsts.modify_separated_delay(trackingResults)
+                try:
+                    max_main_angle_disturbance = max([abs(angle_elem - main_angle) for angle_elem in contour_rsts.get_main_angle_list(trackingResults)])
+                    max_satellite_angle_disturbance = max([abs(angle_elem - satellite_angle) for angle_elem in contour_rsts.get_satellite_angle_list(trackingResults)])
+                except:
+                    max_main_angle_disturbance = -1
+                    max_satellite_angle_disturbance - 1
+                #テストコード、ここまで
+                    
                 #dictionaryへの出力
                 result = {
                     "analysis_date_time":nan_to_minus1(datetime.datetime.now().strftime('%Y-%m-%d_%H:%M:%S')),
@@ -331,9 +339,9 @@ def get_autoTracking_Results(directory_path, camera_resolution, API_VER, exec_mo
                     "angle-diff_is_too_large":nan_to_minus1((diff_angle > thresh_values_dic["diff_angle_thresh"]) if not math.isnan(diff_angle) else True),
                     "exotic-droplet_exists":nan_to_minus1(flag_exotic_droplet),
                     "THRESH_VALUES_VER":THRESH_VALUES_VER,
-                    "RESERVED0":"max_exotic_contour_area is {}".format(nan_to_minus1(max_exotic_area)),
-                    "RESERVED1":("image_modified_deeply is {}".format(nan_to_minus1(flag_image_modified_deeply))).lower(),
-                    "RESERVED2":str(nan_to_minus1(inf_to_value(leg_eval_ratio))),
+                    "RESERVED0":"layered_main_4_ave : leg_eval_ratio, layered_main_4_stdiv : max_exotic_area, layered_sat_4_ave : flag_image_modified_deeply, layered_sat_4_stdiv : max_main_angle_disturbance, layered_main_3_ave : max_satellite_angle_disturbance, layered_main_3_stdiv : modified_delay_faced, layered_sat_3_ave : modified_delay_separated, layered_sat_3_stdiv : modified_freq_Y, layered_main_2_ave : modified_freq_X",
+                    "RESERVED1":"aaa",
+                    "RESERVED2":"aaa",
                     "RESERVED3":"aaa",
                     "RESERVED4":"aaa",
                 }
@@ -344,6 +352,17 @@ def get_autoTracking_Results(directory_path, camera_resolution, API_VER, exec_mo
                 #5分割各液滴速度 - 標準偏差結果追記
                 for dic_elem in vel_add_dics:
                     result.update(dic_elem)
+                result.update({
+                    "layered_main_4_ave[pix/us]":nan_to_minus1(inf_to_value(leg_eval_ratio)),
+                    "layered_main_4_stdiv[pix/us]":nan_to_minus1(max_exotic_area),
+                    "layered_sat_4_ave[pix/us]":1 if flag_image_modified_deeply else 0,
+                    "layered_sat_4_stdiv[pix/us]":nan_to_minus1(max_main_angle_disturbance),
+                    "layered_main_3_ave[pix/us]":nan_to_minus1(max_satellite_angle_disturbance),
+                    "layered_main_3_stdiv[pix/us]":nan_to_minus1(contour_rsts.modified_delay_faced),
+                    "layered_sat_3_ave[pix/us]":nan_to_minus1(contour_rsts.modified_delay_separated),
+                    "layered_sat_3_stdiv[pix/us]":nan_to_minus1(contour_rsts.modified_freq_Y),
+                    "layered_main_2_ave[pix/us]":nan_to_minus1(contour_rsts.modified_freq_X),
+                })
                 if flag_is_debugmode:
                     calculation_log(result)
             #計算失敗時処理

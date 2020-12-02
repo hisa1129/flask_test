@@ -4728,3 +4728,39 @@
 20201201_172224 : export calculation result to resultsDB.csv was succeed.
 20201201_172224 : files were saved at restored_data/trackingerror
 20201201_172224 : Both files at uploads/trackingerror, and the uploaded zipfile uploads/trackingerror.zip were deleted
+20201202_101945 : auto_tracking calculation with POST method was called
+20201202_101945 : ImmutableMultiDict([('upload_file', <FileStorage: 'under_black.zip' ('application/zip')>)]) file is posted, under_black.zip, DEBUG, RESTORE
+20201202_101945 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201202_101945 : extraction uploaded zip file at uploads/under_black
+20201202_101945 : import results from resultsDB.csv was done
+20201202_101949 : auto_tracking is execute with uploads/under_black/under_black, the exec_mode DEBUG
+20201202_101950 : export calculation result to resultsDB.csv was succeed.
+20201202_101950 : files were saved at restored_data/under_black
+20201202_101950 : Both files at uploads/under_black, and the uploaded zipfile uploads/under_black.zip were deleted
+20201202_102324 : auto_tracking calculation with POST method was called
+20201202_102324 : ImmutableMultiDict([('upload_file', <FileStorage: 'under_black.zip' ('application/zip')>)]) file is posted, under_black.zip, DEBUG, RESTORE
+20201202_102324 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201202_102324 : extraction uploaded zip file at uploads/under_black
+20201202_102324 : import results from resultsDB.csv was done
+20201202_102328 : auto_tracking is execute with uploads/under_black/under_black, the exec_mode DEBUG
+20201202_102328 : export calculation result to resultsDB.csv was succeed.
+20201202_102328 : files were saved at restored_data/under_black_2
+20201202_102329 : Both files at uploads/under_black, and the uploaded zipfile uploads/under_black.zip were deleted
+20201202_102650 : auto_tracking calculation with POST method was called
+20201202_102650 : ImmutableMultiDict([('upload_file', <FileStorage: 'under_black.zip' ('application/zip')>)]) file is posted, under_black.zip, DEBUG, RESTORE
+20201202_102650 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201202_102650 : extraction uploaded zip file at uploads/under_black
+20201202_102651 : import results from resultsDB.csv was done
+20201202_102655 : auto_tracking is execute with uploads/under_black/under_black, the exec_mode DEBUG
+20201202_102655 : export calculation result to resultsDB.csv was succeed.
+20201202_102655 : files were saved at restored_data/under_black_3
+20201202_102655 : Both files at uploads/under_black, and the uploaded zipfile uploads/under_black.zip were deleted
+20201202_102714 : auto_tracking calculation with POST method was called
+20201202_102714 : ImmutableMultiDict([('upload_file', <FileStorage: 'auto_tracking_failure_3.zip' ('application/zip')>)]) file is posted, auto_tracking_failure_3.zip, DEBUG, RESTORE
+20201202_102714 : exec_mode is DEBUG, fire restore is True, camera_resolution is 3.5
+20201202_102714 : extraction uploaded zip file at uploads/auto_tracking_failure_3
+20201202_102714 : import results from resultsDB.csv was done
+20201202_102717 : auto_tracking is execute with uploads/auto_tracking_failure_3/auto_tracking_failure_3, the exec_mode DEBUG
+20201202_102718 : export calculation result to resultsDB.csv was succeed.
+20201202_102718 : files were saved at restored_data/auto_tracking_failure_3
+20201202_102718 : Both files at uploads/auto_tracking_failure_3, and the uploaded zipfile uploads/auto_tracking_failure_3.zip were deleted
