@@ -5,6 +5,7 @@ from Contour_Elem import *
 import math
 from itertools import groupby
 from Tracking_Results_Class import *
+import cv2
 
 #analysisResults用インデックス、配列2番目にて指定。
 IDX_DELAY = 0
@@ -527,15 +528,17 @@ class Analysis_Results_List:
         
         return flag_exotic_droplet_exists, ret_max_areas
     
-    def modify_faced_delay_and_freq_Y(self):
+    def modify_faced_delay_and_freq_Y(self, tracking_Results):
         if not self.flag_faced_is_detected:
             delay_faced_modified = -1
             freq_Y_modified = -1
+            freq_X_modified = -1
         else:
             index_faced_delay = len([contours for contours in self.analysisResults if contours.delay < self.delay_faced])
             if index_faced_delay == 0 or len(self.analysisResults) - 1 < index_faced_delay:
                 delay_faced_modified = -1
                 freq_Y_modified = -1
+                freq_X_modified = -1
             else:
                 delta_S1 = self.analysisResults[index_faced_delay].convex_hull_area_of_nozzle - self.analysisResults[index_faced_delay - 1].convex_hull_area_of_nozzle
                 delta_S2 = self.analysisResults[index_faced_delay + 1].convex_hull_area_of_nozzle - self.analysisResults[index_faced_delay].convex_hull_area_of_nozzle
@@ -545,9 +548,13 @@ class Analysis_Results_List:
                 delay_faced_modified = self.analysisResults[index_faced_delay].delay - delta_delay * delta_S1 / delta_S2
                 freq_Y_modified = (self.analysisResults[index_faced_delay].main_Y_of_nozzle * (delay_2 - delay_faced_modified) - \
                                    self.analysisResults[index_faced_delay + 1].main_Y_of_nozzle * (delay_1 - delay_faced_modified)) / delta_delay
-                
+                _, _, _, _, main_slope, main_intercept = tracking_Results.get_Main_vector_slope_intercept()
+                freq_X_modified = main_slope * freq_Y_modified + main_intercept
+
         self.modified_delay_faced = delay_faced_modified
         self.modified_freq_Y = freq_Y_modified
+        self.modified_freq_X = freq_X_modified
+        
         return None
     
     def modify_separated_delay(self, tracking_Results):
@@ -567,11 +574,8 @@ class Analysis_Results_List:
                 delta_Y2 = eval_tracking_rsts[1].satellite_Y - self.modified_freq_Y
                 delta_Y1 = eval_tracking_rsts[0].satellite_Y - self.modified_freq_Y
                 delay_separated_modified = (delay_1 * delta_Y2 - delay_2 * delta_Y1)/(eval_tracking_rsts[1].satellite_Y - eval_tracking_rsts[0].satellite_Y)
-                _, _, _, _, main_slope, main_intercept = tracking_Results.get_Main_vector_slope_intercept()
-                freq_X_modified = main_slope * self.modified_freq_Y + main_intercept
 
         self.modified_delay_separated = delay_separated_modified
-        self.modified_freq_X = freq_X_modified
         return None
     
     def get_main_angle_list(self, tracking_Results):
@@ -597,5 +601,3 @@ class Analysis_Results_List:
                 retValue = 90.0
             angles_list.append(retValue)
         return angles_list
-        
-            

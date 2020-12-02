@@ -295,6 +295,7 @@ def drawContours(delay,
     savePath = (os.path.dirname(path) + '/drawRsts/'+ os.path.splitext(os.path.basename(path))[0] + \
                 '_drawResult.jpg') if mkdir else (os.path.splitext(path)[0] + "_drawResult.jpg")
     cv2.imwrite(savePath, im)
+    del im
     if DEBUG:
         calculation_log('export debug image at {}'.format(savePath))
     return None

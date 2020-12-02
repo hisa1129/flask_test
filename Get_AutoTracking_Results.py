@@ -6,6 +6,9 @@ from CalculationLog import calculation_log
 import datetime
 import math
 import numpy as np
+import os
+import cv2
+import glob
 
 INPUT_PARAMS_VER = '0.1.2' #入力パラメータバージョン、2020.10.21
 
@@ -200,9 +203,9 @@ def get_autoTracking_Results(directory_path, camera_resolution, API_VER, exec_mo
             try:                              
                 #出力用の値の整理
                 #ファイル名取得
-                directory_path = directory_path.split('/')[-1]
+                directory_path_show = directory_path.split('/')[-1]
                 if flag_is_debugmode:
-                    calculation_log('dir_path is {}'.format(directory_path))
+                    calculation_log('dir_path is {}'.format(directory_path_show))
                 
                 #1枚目輪郭数取得               
                 num_first_contours = (float)(sum(contour_rsts.num_contours_at_first))/(float)(len(contour_rsts.num_contours_at_first))
@@ -286,23 +289,52 @@ def get_autoTracking_Results(directory_path, camera_resolution, API_VER, exec_mo
                 
                 #以下、テストコード
                 leg_ref = (nan_to_minus1(contour_rsts.delay_separated) - nan_to_minus1(contour_rsts.delay_faced)) * nan_to_minus1(main_average_velocity)
-                leg_eval_ratio = leg_ref / nan_to_minus1(max_regament_length)
-                if leg_eval_ratio < 0:
+                leg_eval_ratio = nan_to_minus1(leg_ref) / nan_to_minus1(max_regament_length)
+                print("leg_ref_is calculated")
+                if nan_to_minus1(leg_eval_ratio) < 0:
                     leg_eval_ratio = -1
-                contour_rsts.modify_faced_delay_and_freq_Y()
+                contour_rsts.modify_faced_delay_and_freq_Y(trackingResults)
                 contour_rsts.modify_separated_delay(trackingResults)
+                print('modified_calculated')
                 try:
                     max_main_angle_disturbance = max([abs(angle_elem - main_angle) for angle_elem in contour_rsts.get_main_angle_list(trackingResults)])
                     max_satellite_angle_disturbance = max([abs(angle_elem - satellite_angle) for angle_elem in contour_rsts.get_satellite_angle_list(trackingResults)])
                 except:
                     max_main_angle_disturbance = -1
-                    max_satellite_angle_disturbance - 1
+                    max_satellite_angle_disturbance = - 1
+                try:
+                    if flag_is_debugmode:
+                        print('draw start, directory_path is {}'.format(directory_path))
+                        if not os.path.exists(directory_path + "/drawModifiedNozzleXY"):
+                            print('makedirs start for {}'.format(directory_path + "/drawModifiedNozzleXY"))
+                            os.makedirs(directory_path + "/drawModifiedNozzleXY", exist_ok = True)
+                            if flag_is_debugmode:
+                                calculation_log('mkdir at {}/drawModifiedNozzleXY'.format(directory_path))
+                        print("globbing")
+                        pathes = glob.glob(directory_path + "/*.jpg")
+                        print("globed")
+                        signature_size = 5
+                        print("path is {}".format(pathes[0]))
+                        im = cv2.imread(pathes[0])
+                        print("imread")
+                        x = contour_rsts.modified_freq_X
+                        y = contour_rsts.modified_freq_Y
+                        im = cv2.rectangle(im,((int)(x-signature_size),(int)(y-signature_size)),((int)(x+signature_size),(int)(y+signature_size)),\
+                               (0,0,255),3)
+                        print('imdrawn')
+                        savePath = directory_path + "/drawModifiedNozzleXY/" + os.path.splitext(os.path.basename(pathes[0]))[0] + "_modifiedXY.jpg"
+                        print('export succeed.')
+                        cv2.imwrite(savePath, im)
+                        del im
+                except:
+                    calculation_log('drawing_modofied_XY_failure')
+                    
                 #テストコード、ここまで
                     
                 #dictionaryへの出力
                 result = {
                     "analysis_date_time":nan_to_minus1(datetime.datetime.now().strftime('%Y-%m-%d_%H:%M:%S')),
-                    "file_name":nan_to_minus1(directory_path),
+                    "file_name":nan_to_minus1(directory_path_show),
                     "condition":"calculation was done.",
                     "camera_resolution[um/pix]":nan_to_minus1(camera_resolution),
                     "API_VER":nan_to_minus1(API_VER),
